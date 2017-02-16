@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
+		7ED80F4B1E554D8100954DAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F4A1E554D8100954DAF /* AppDelegate.m */; };
+		7ED80F4E1E554D8100954DAF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F4D1E554D8100954DAF /* ViewController.m */; };
+		7ED80F511E554D8100954DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F4F1E554D8100954DAF /* Main.storyboard */; };
+		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
+		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
+		7ED80F611E554D8100954DAF /* ShareImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F601E554D8100954DAF /* ShareImageTests.m */; };
+		7ED80F6C1E554D8100954DAF /* ShareImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F6B1E554D8100954DAF /* ShareImageUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7ED80F5D1E554D8100954DAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED80F3B1E554D8000954DAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED80F421E554D8000954DAF;
+			remoteInfo = ShareImage;
+		};
+		7ED80F681E554D8100954DAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED80F3B1E554D8000954DAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED80F421E554D8000954DAF;
+			remoteInfo = ShareImage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7ED80F491E554D8100954DAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7ED80F4A1E554D8100954DAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7ED80F4C1E554D8100954DAF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7ED80F4D1E554D8100954DAF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7ED80F501E554D8100954DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7ED80F551E554D8100954DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7ED80F571E554D8100954DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ED80F5C1E554D8100954DAF /* ShareImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED80F601E554D8100954DAF /* ShareImageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareImageTests.m; sourceTree = "<group>"; };
+		7ED80F621E554D8100954DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ED80F671E554D8100954DAF /* ShareImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ED80F6B1E554D8100954DAF /* ShareImageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareImageUITests.m; sourceTree = "<group>"; };
+		7ED80F6D1E554D8100954DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7ED80F401E554D8000954DAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F591E554D8100954DAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F641E554D8100954DAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7ED80F3A1E554D8000954DAF = {
+			isa = PBXGroup;
+			children = (
+				7ED80F451E554D8100954DAF /* ShareImage */,
+				7ED80F5F1E554D8100954DAF /* ShareImageTests */,
+				7ED80F6A1E554D8100954DAF /* ShareImageUITests */,
+				7ED80F441E554D8100954DAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7ED80F441E554D8100954DAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7ED80F431E554D8100954DAF /* ShareImage.app */,
+				7ED80F5C1E554D8100954DAF /* ShareImageTests.xctest */,
+				7ED80F671E554D8100954DAF /* ShareImageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7ED80F451E554D8100954DAF /* ShareImage */ = {
+			isa = PBXGroup;
+			children = (
+				7ED80F491E554D8100954DAF /* AppDelegate.h */,
+				7ED80F4A1E554D8100954DAF /* AppDelegate.m */,
+				7ED80F4C1E554D8100954DAF /* ViewController.h */,
+				7ED80F4D1E554D8100954DAF /* ViewController.m */,
+				7ED80F4F1E554D8100954DAF /* Main.storyboard */,
+				7ED80F521E554D8100954DAF /* Assets.xcassets */,
+				7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */,
+				7ED80F571E554D8100954DAF /* Info.plist */,
+				7ED80F461E554D8100954DAF /* Supporting Files */,
+			);
+			path = ShareImage;
+			sourceTree = "<group>";
+		};
+		7ED80F461E554D8100954DAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7ED80F471E554D8100954DAF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ED80F5F1E554D8100954DAF /* ShareImageTests */ = {
+			isa = PBXGroup;
+			children = (
+				7ED80F601E554D8100954DAF /* ShareImageTests.m */,
+				7ED80F621E554D8100954DAF /* Info.plist */,
+			);
+			path = ShareImageTests;
+			sourceTree = "<group>";
+		};
+		7ED80F6A1E554D8100954DAF /* ShareImageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7ED80F6B1E554D8100954DAF /* ShareImageUITests.m */,
+				7ED80F6D1E554D8100954DAF /* Info.plist */,
+			);
+			path = ShareImageUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7ED80F421E554D8000954DAF /* ShareImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED80F701E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImage" */;
+			buildPhases = (
+				7ED80F3F1E554D8000954DAF /* Sources */,
+				7ED80F401E554D8000954DAF /* Frameworks */,
+				7ED80F411E554D8000954DAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareImage;
+			productName = ShareImage;
+			productReference = 7ED80F431E554D8100954DAF /* ShareImage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7ED80F5B1E554D8100954DAF /* ShareImageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED80F731E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImageTests" */;
+			buildPhases = (
+				7ED80F581E554D8100954DAF /* Sources */,
+				7ED80F591E554D8100954DAF /* Frameworks */,
+				7ED80F5A1E554D8100954DAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ED80F5E1E554D8100954DAF /* PBXTargetDependency */,
+			);
+			name = ShareImageTests;
+			productName = ShareImageTests;
+			productReference = 7ED80F5C1E554D8100954DAF /* ShareImageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7ED80F661E554D8100954DAF /* ShareImageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ED80F761E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImageUITests" */;
+			buildPhases = (
+				7ED80F631E554D8100954DAF /* Sources */,
+				7ED80F641E554D8100954DAF /* Frameworks */,
+				7ED80F651E554D8100954DAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ED80F691E554D8100954DAF /* PBXTargetDependency */,
+			);
+			name = ShareImageUITests;
+			productName = ShareImageUITests;
+			productReference = 7ED80F671E554D8100954DAF /* ShareImageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7ED80F3B1E554D8000954DAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = DaiSuke;
+				TargetAttributes = {
+					7ED80F421E554D8000954DAF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = D54GZX79JD;
+						ProvisioningStyle = Automatic;
+					};
+					7ED80F5B1E554D8100954DAF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = D54GZX79JD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7ED80F421E554D8000954DAF;
+					};
+					7ED80F661E554D8100954DAF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = D54GZX79JD;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7ED80F421E554D8000954DAF;
+					};
+				};
+			};
+			buildConfigurationList = 7ED80F3E1E554D8000954DAF /* Build configuration list for PBXProject "ShareImage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7ED80F3A1E554D8000954DAF;
+			productRefGroup = 7ED80F441E554D8100954DAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7ED80F421E554D8000954DAF /* ShareImage */,
+				7ED80F5B1E554D8100954DAF /* ShareImageTests */,
+				7ED80F661E554D8100954DAF /* ShareImageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7ED80F411E554D8000954DAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */,
+				7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */,
+				7ED80F511E554D8100954DAF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F5A1E554D8100954DAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F651E554D8100954DAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7ED80F3F1E554D8000954DAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED80F4E1E554D8100954DAF /* ViewController.m in Sources */,
+				7ED80F4B1E554D8100954DAF /* AppDelegate.m in Sources */,
+				7ED80F481E554D8100954DAF /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F581E554D8100954DAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED80F611E554D8100954DAF /* ShareImageTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED80F631E554D8100954DAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED80F6C1E554D8100954DAF /* ShareImageUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7ED80F5E1E554D8100954DAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ED80F421E554D8000954DAF /* ShareImage */;
+			targetProxy = 7ED80F5D1E554D8100954DAF /* PBXContainerItemProxy */;
+		};
+		7ED80F691E554D8100954DAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7ED80F421E554D8000954DAF /* ShareImage */;
+			targetProxy = 7ED80F681E554D8100954DAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7ED80F4F1E554D8100954DAF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7ED80F501E554D8100954DAF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7ED80F551E554D8100954DAF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7ED80F6E1E554D8100954DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7ED80F6F1E554D8100954DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7ED80F711E554D8100954DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImage/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7ED80F721E554D8100954DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImage/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7ED80F741E554D8100954DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareImage.app/ShareImage";
+			};
+			name = Debug;
+		};
+		7ED80F751E554D8100954DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareImage.app/ShareImage";
+			};
+			name = Release;
+		};
+		7ED80F771E554D8100954DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ShareImage;
+			};
+			name = Debug;
+		};
+		7ED80F781E554D8100954DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = D54GZX79JD;
+				INFOPLIST_FILE = ShareImageUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DaiSuke.ShareImageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ShareImage;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7ED80F3E1E554D8000954DAF /* Build configuration list for PBXProject "ShareImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED80F6E1E554D8100954DAF /* Debug */,
+				7ED80F6F1E554D8100954DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7ED80F701E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED80F711E554D8100954DAF /* Debug */,
+				7ED80F721E554D8100954DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7ED80F731E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED80F741E554D8100954DAF /* Debug */,
+				7ED80F751E554D8100954DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7ED80F761E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ED80F771E554D8100954DAF /* Debug */,
+				7ED80F781E554D8100954DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7ED80F3B1E554D8000954DAF /* Project object */;
+}
