@@ -1,0 +1,42 @@
+//
+//  DMeViewController.m
+//  DFrame
+//
+//  Created by DaiSuke on 16/8/22.
+//  Copyright © 2016年 DaiSuke. All rights reserved.
+//
+
+#import "DMeViewController.h"
+
+@interface DMeViewController ()
+
+@end
+
+@implementation DMeViewController
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+}
+
+- (void)baseViewControllerDidClickNavigationLeftBtn:(UIButton *)leftBtn{
+    
+}
+
+- (void)baseViewControllerDidClickNavigationRightBtn:(UIButton *)rightBtn{
+    
+
+}
+
+@end

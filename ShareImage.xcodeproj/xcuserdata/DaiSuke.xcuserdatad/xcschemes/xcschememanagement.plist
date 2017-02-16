@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ShareImageWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>7ED80F661E554D8100954DAF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7ED811871E55594700954DAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

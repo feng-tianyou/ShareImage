@@ -1,0 +1,112 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - BaiduMobStat (4.3.0)
+  - DACircularProgress (2.3.1)
+  - DKNightVersion (2.4.2):
+    - DKNightVersion/Core (= 2.4.2)
+    - DKNightVersion/CoreAnimation (= 2.4.2)
+    - DKNightVersion/UIKit (= 2.4.2)
+  - DKNightVersion/Core (2.4.2):
+    - DKNightVersion/Core/DeallocBlockExecutor (= 2.4.2)
+    - DKNightVersion/Core/extobjc (= 2.4.2)
+  - DKNightVersion/Core/DeallocBlockExecutor (2.4.2)
+  - DKNightVersion/Core/extobjc (2.4.2)
+  - DKNightVersion/CoreAnimation (2.4.2):
+    - DKNightVersion/Core
+  - DKNightVersion/UIKit (2.4.2):
+    - DKNightVersion/Core
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - JSPatch (1.1.2):
+    - JSPatch/Core (= 1.1.2)
+  - JSPatch/Core (1.1.2)
+  - JSPatchPlatform (1.6.5):
+    - JSPatchPlatform/Core (= 1.6.5)
+  - JSPatchPlatform/Core (1.6.5):
+    - JSPatch
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.12)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
+  - SDAutoLayout (2.1.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.1.2)
+  - TZImagePickerController (1.7.8)
+  - UMengUShare/Core (6.2.0):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.2.0)
+  - UMengUShare/Social/Email (6.2.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/QQ (6.2.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.2.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/SMS (6.2.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.2.0):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.2.0):
+    - UMengUShare/Core
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BaiduMobStat
+  - DKNightVersion
+  - FMDB
+  - JSPatchPlatform
+  - MJRefresh
+  - MWPhotoBrowser
+  - SDAutoLayout
+  - SVProgressHUD
+  - TZImagePickerController
+  - UMengUShare/Social/Email
+  - UMengUShare/Social/QQ
+  - UMengUShare/Social/Sina
+  - UMengUShare/Social/SMS
+  - UMengUShare/Social/WeChat
+  - UMengUShare/UI
+  - YYKit
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMobStat: 2c4828d07d4b3d2fc2142262db03e685db74c0d9
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  DKNightVersion: a211bacb8d6a9677722aaf93e292a4e5908490c1
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JSPatch: 741205ebb2e2238c223a436e4c8cf75cf40a345f
+  JSPatchPlatform: 45e5a0b2d0a229baec33cbcf7dd3fdb0630edbe8
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+  UMengUShare: 700415220ee9df4051d27d8a31fb1286a8f3b4e6
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: efa78f05e53a797571fda38e2c71e2baed4ba536
+
+COCOAPODS: 1.0.0
