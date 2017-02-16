@@ -9,8 +9,12 @@
 #import "DLoginService.h"
 #import "DLoginValidRule.h"
 
+// model
+#import "DOAuthAccountModel.h"
+
 // network
 #import "DLoginNetwork.h"
+
 
 @implementation DLoginService
 
@@ -62,6 +66,21 @@
             
             [DBlockTool executeVoidBlock:succeededBlock];
         }
+    } onError:errorBlock];
+}
+
+
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(JsonModelBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock{
+    
+    [self.network oauthAccountByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DOAuthAccountModel *model = [DOAuthAccountModel modelWithJSON:dic];
+        
+        // 归档
+        [DOAuthAccountTool saveAccount:model];
+        
+        [DBlockTool executeModelBlock:succeededBlock model:model];
     } onError:errorBlock];
 }
 

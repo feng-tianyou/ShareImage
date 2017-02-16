@@ -146,7 +146,15 @@ static NSInteger iErrorCount = 0;
 
 
 
-
+- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel{
+    [self addLoadingView];
+    
+    [self.service oauthAccountByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 

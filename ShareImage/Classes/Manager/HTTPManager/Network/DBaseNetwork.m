@@ -191,26 +191,6 @@
             onError:(ErrorBlock) errorBlock
 {
     __weak DBaseNetwork *weakSelf = self;
-    if(paramsDic != nil){
-//        NSString *strKey = [NSString stringWithFormat:YWQ_NETWORK_KEY_FOR_POSTBYUID,self.userId];
-        
-//        NSString *strParam = (NSString *)[TGCacheManager getTGObjectForKey:strKey];
-//        NSString *strNewParam = [ZKBTools getStrJsonByDic:paramsDic];
-//        if(strParam.length > 0 && [strParam isEqualToString:strNewParam]){
-//            return;
-//        }
-//        DLog(@"%@",strNewParam);
-//        [TGCacheManager setTGObjectByData:strNewParam forKey:strKey];
-    }
-//    NSURLSessionDataTask *task = [self POST:path parameters:paramsDic success:^(NSURLSessionDataTask *task, id responseObject) {
-////        NSString *strKey = [NSString stringWithFormat:YWQ_NETWORK_KEY_FOR_POSTBYUID,self.userId];
-//        //        [TGCacheManager setTGObjectByData:nil forKey:strKey];
-//        [weakSelf proccessResponseData:responseObject task:task onSucceeded:succeededBlock onError:errorBlock];
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-////        NSString *strKey = [NSString stringWithFormat:YWQ_NETWORK_KEY_FOR_POSTBYUID,self.userId];
-//        //        [TGCacheManager setTGObjectByData:nil forKey:strKey];
-//        [weakSelf proccessError:error task:task onError:errorBlock];
-//    }];
     NSURLSessionDataTask *task = [self POST:path parameters:paramsDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -375,13 +355,16 @@
 - (void)proccessSucceedBlockByDic:(NSDictionary *)dic
                    succeededBlock:(NSDictionaryBlock)succeededBlock
                           onError:(ErrorBlock) errorBlock{
-    if(HTTPSTATECODESUCCESS){
-        ExistActionDo(succeededBlock, succeededBlock(dic));
-    }
-    else{
-        DError *customError=[[DError alloc] initWithCode:10005 description:nil];
-        ExistActionDo(errorBlock, errorBlock(customError));
-    }
+//    if(HTTPSTATECODESUCCESS){
+//        ExistActionDo(succeededBlock, succeededBlock(dic));
+//    }
+//    else{
+//        DError *customError=[[DError alloc] initWithCode:10005 description:nil];
+//        ExistActionDo(errorBlock, errorBlock(customError));
+//    }
+    
+    // 第三方授权，不错处理
+    ExistActionDo(succeededBlock, succeededBlock(dic));
     
 }
 

@@ -18,6 +18,8 @@
 #import "DTestPhotoViewController.h"
 #import "DTestViewController.h"
 
+#import "DOAuthViewController.h"
+
 #import "DWebViewController.h"
 
 #import "DEmotionManager.h"
@@ -70,7 +72,7 @@ static NSString * const cellID = @"cell";
 
 - (NSMutableArray *)testDatas{
     if (_testDatas == nil) {
-        _testDatas = [NSMutableArray arrayWithArray:@[@"指纹验证", @"数据存储", @"表情面板", @"图片管理", @"分享", @"请求管理", @"主题", @"二维码", @"扫二维码", @"网页浏览器", @"导航栏按钮设置", @"第三方登录", @"提示数字", @"测试JSPatch", @"Widget", @"Lottie转场动画", @"Lottie动画"]];
+        _testDatas = [NSMutableArray arrayWithArray:@[@"OAuth",@"指纹验证", @"数据存储", @"表情面板", @"图片管理", @"分享", @"请求管理", @"主题", @"二维码", @"扫二维码", @"网页浏览器", @"导航栏按钮设置", @"第三方登录", @"提示数字", @"测试JSPatch", @"Widget", @"Lottie转场动画", @"Lottie动画"]];
     }
     return _testDatas;
 }
@@ -126,6 +128,13 @@ static NSString * const cellID = @"cell";
     switch (indexPath.row) {
         case 0:
         {
+            // OAuth
+            [self.navigationController pushViewController:[[DOAuthViewController alloc] init] animated:YES];
+            
+        }
+            break;
+        case 1:
+        {
             // 指纹验证
             BOOL canPolicy = [DFingerPrintManager canEvaluatePolicy];
             if (!canPolicy) {
@@ -143,7 +152,7 @@ static NSString * const cellID = @"cell";
             
         }
             break;
-        case 1:
+        case 2:
         {
             // 数据存储
             DTestUserProxy *proxy = [[DTestUserProxy alloc] init];
@@ -174,7 +183,7 @@ static NSString * const cellID = @"cell";
             //    DLog(@"%@", @(success));
         }
             break;
-        case 2:
+        case 3:
         {
             // 表情面板
             UIView *bgView = [[UIView alloc] init];
@@ -202,26 +211,26 @@ static NSString * const cellID = @"cell";
             [alert show];
         }
             break;
-        case 3:
+        case 4:
         {
             // 图片管理
             [self.navigationController pushViewController:[[DTestPhotoViewController alloc] init] animated:YES];
         }
             break;
-        case 4:
+        case 5:
         {
             // 分享
             [DShareManager  shareUrlForAllPlatformByTitle:@"DaiSuke" content:@"DaiSuke的网站" shareUrl:@"http://daisuke.cn" parentController:self];
         }
             break;
-        case 5:
+        case 6:
         {
             // 请求管理(底层绑定了测试Token)
             DUserManager *manager = [DUserManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
             [manager getAccount];
         }
             break;
-        case 6:
+        case 7:
         {
             // 主题
             if (!_theme) {
@@ -233,7 +242,7 @@ static NSString * const cellID = @"cell";
             }
         }
             break;
-        case 7:
+        case 8:
         {
             // 二维码
             _qrImageView = ({
@@ -252,19 +261,19 @@ static NSString * const cellID = @"cell";
             
         }
             break;
-        case 8:
+        case 9:
         {
             // 扫二维码
             [self.navigationController pushViewController:[[DScanQRCodeViewController alloc] init] animated:YES];
         }
             break;
-        case 9:
+        case 10:
         {
             // 网页浏览器
              [self.navigationController pushViewController:[[DWebViewController alloc] initWithUrl:@"http://daisuke.cn"] animated:YES];
         }
             break;
-        case 10:
+        case 11:
         {
             // 导航栏按钮设置
             
@@ -273,39 +282,39 @@ static NSString * const cellID = @"cell";
 
         }
             break;
-        case 11:
+        case 12:
         {
             // 第三方登录
             [self presentViewController:[[DLoginViewController alloc] init] animated:YES completion:nil];
             
         }
             break;
-        case 12:
+        case 13:
         {
             // 提示数字
             self.tabBarItem.badgeValue = @"10";
             [UIApplication sharedApplication].applicationIconBadgeNumber = 10;
         }
             break;
-        case 13:
+        case 14:
         {
             // 提示数字
             [self.navigationController pushViewController:[[DTestViewController alloc] init] animated:YES];
         }
             break;
-        case 14:
+        case 15:
         {
             // Widget
             [self localError:@"移步看手机的今天安排" isAlertFor2Second:NO];
         }
             break;
-        case 15:
+        case 16:
         {
             // @"Lottie转场动画"
             [self lottiePresentViewController:[[DLoginViewController alloc] init] animated:YES completion:nil];
         }
             break;
-        case 16:
+        case 17:
         {
             // @"Lottie动画"
             [self lottiePresentViewController:[[DLottieViewController alloc] init] animated:YES completion:nil];

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
+		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
+		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
+		7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */; };
 		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
 		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
 		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
@@ -170,6 +173,7 @@
 		7ED811A61E5559D600954DAF /* message_cooperation_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A01E5559D600954DAF /* message_cooperation_delete@2x.png */; };
 		7ED811A71E5559D600954DAF /* message_project_alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A11E5559D600954DAF /* message_project_alert@2x.png */; };
 		7ED811A81E5559D600954DAF /* message_project_resource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A21E5559D600954DAF /* message_project_resource@2x.png */; };
+		7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED811AB1E5580D200954DAF /* DOAuthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +217,13 @@
 /* Begin PBXFileReference section */
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
+		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
+		7E7873741E559DF700213B1B /* DOAuthParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthParamModel.m; sourceTree = "<group>"; };
+		7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamProtocol.h; sourceTree = "<group>"; };
+		7E7873781E55AAE300213B1B /* DOAuthAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthAccountModel.h; sourceTree = "<group>"; };
+		7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountModel.m; sourceTree = "<group>"; };
+		7E78737B1E55ACE100213B1B /* DOAuthAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthAccountTool.h; sourceTree = "<group>"; };
+		7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountTool.m; sourceTree = "<group>"; };
 		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -549,6 +560,8 @@
 		7ED811A01E5559D600954DAF /* message_cooperation_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_cooperation_delete@2x.png"; sourceTree = "<group>"; };
 		7ED811A11E5559D600954DAF /* message_project_alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_project_alert@2x.png"; sourceTree = "<group>"; };
 		7ED811A21E5559D600954DAF /* message_project_resource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_project_resource@2x.png"; sourceTree = "<group>"; };
+		7ED811AA1E5580D200954DAF /* DOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthViewController.h; sourceTree = "<group>"; };
+		7ED811AB1E5580D200954DAF /* DOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthViewController.m; sourceTree = "<group>"; };
 		BCCCCB4B3D0941142A77DFC7 /* Pods-ShareImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -666,6 +679,7 @@
 		7ED80F791E55550100954DAF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7ED811A91E5580AD00954DAF /* OAuth */,
 				7ED80F7A1E55550100954DAF /* AppDelegate */,
 				7ED80F831E55550100954DAF /* MainFrame */,
 				7ED80F961E55550100954DAF /* Manager */,
@@ -907,6 +921,8 @@
 			children = (
 				7ED80FDB1E55550100954DAF /* DLoginParamModel.h */,
 				7ED80FDC1E55550100954DAF /* DLoginParamModel.m */,
+				7E7873731E559DF700213B1B /* DOAuthParamModel.h */,
+				7E7873741E559DF700213B1B /* DOAuthParamModel.m */,
 			);
 			path = ParamModel;
 			sourceTree = "<group>";
@@ -914,6 +930,7 @@
 		7ED80FDD1E55550100954DAF /* ParamProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */,
 				7ED80FDE1E55550100954DAF /* DLoginParamProtocol.h */,
 			);
 			path = ParamProtocol;
@@ -976,6 +993,8 @@
 			children = (
 				7ED80FF51E55550100954DAF /* DUserModel.h */,
 				7ED80FF61E55550100954DAF /* DUserModel.m */,
+				7E7873781E55AAE300213B1B /* DOAuthAccountModel.h */,
+				7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1507,6 +1526,17 @@
 			path = image;
 			sourceTree = "<group>";
 		};
+		7ED811A91E5580AD00954DAF /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				7ED811AA1E5580D200954DAF /* DOAuthViewController.h */,
+				7ED811AB1E5580D200954DAF /* DOAuthViewController.m */,
+				7E78737B1E55ACE100213B1B /* DOAuthAccountTool.h */,
+				7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
 		C0D7BB80420A79B8748121B4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1617,6 +1647,7 @@
 		7ED80F3B1E554D8000954DAF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = D;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = DaiSuke;
 				TargetAttributes = {
@@ -1780,6 +1811,7 @@
 				7ED810FD1E55550100954DAF /* DLoginNetwork.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
 				7ED811271E55550100954DAF /* LOTAnimationCache.m in Sources */,
+				7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */,
 				7ED810E91E55550100954DAF /* DJsonCache.m in Sources */,
 				7ED8111A1E55550100954DAF /* LOTEllipseShapeLayer.m in Sources */,
 				7ED811011E55550100954DAF /* DLoginValidRule.m in Sources */,
@@ -1795,6 +1827,7 @@
 				7ED811361E55550100954DAF /* LOTShapePath.m in Sources */,
 				7ED811331E55550100954DAF /* LOTShapeCircle.m in Sources */,
 				7ED810EC1E55550100954DAF /* DEmotionManager.m in Sources */,
+				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
 				7ED8110A1E55550100954DAF /* DWebViewController.m in Sources */,
 				7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */,
 				7ED810E51E55550100954DAF /* DTabBarButton.m in Sources */,
@@ -1814,6 +1847,7 @@
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				7ED810FA1E55550100954DAF /* DLoginManager.m in Sources */,
 				7ED8117F1E55573300954DAF /* DLottieViewController.m in Sources */,
+				7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */,
 				7ED811221E55550100954DAF /* LOTAnimatableColorValue.m in Sources */,
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
@@ -1834,6 +1868,7 @@
 				7ED811001E55550100954DAF /* DLoginParamModel.m in Sources */,
 				7ED811261E55550100954DAF /* LOTAnimatableShapeValue.m in Sources */,
 				7ED811381E55550100954DAF /* LOTShapeStroke.m in Sources */,
+				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
 				7ED810ED1E55550100954DAF /* DEmotionView.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
@@ -2225,6 +2260,7 @@
 				7ED811971E55594800954DAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

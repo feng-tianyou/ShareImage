@@ -39,4 +39,17 @@
     } onError:errorBlock];
 }
 
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(NSDictionaryBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForOAuthAccount];
+    [self opPostWithUrlPath:@"https://unsplash.com/oauth/token" params:dicParam needUUID:NO needToken:NO onSucceeded:^(NSDictionary *dic) {
+        ExistActionDo(succeededBlock, succeededBlock(dic));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+    
+    
+}
+
 @end

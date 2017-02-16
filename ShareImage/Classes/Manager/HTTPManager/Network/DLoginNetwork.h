@@ -8,6 +8,7 @@
 
 #import "DBaseNetwork.h"
 #import "DLoginParamProtocol.h"
+#import "DOAuthParamProtocol.h"
 
 @interface DLoginNetwork : DBaseNetwork
 
@@ -24,5 +25,9 @@
 - (void)getTokenByParamModel:(id<DLoginParamProtocol>)paramModel
                 onSucceeded:(NSDictionaryBlock)succeededBlock
                     onError:(ErrorBlock)errorBlock;
+
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(NSDictionaryBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock;
 
 @end

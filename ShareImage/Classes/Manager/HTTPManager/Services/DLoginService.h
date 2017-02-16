@@ -8,6 +8,7 @@
 
 #import "DBaseService.h"
 #import "DLoginParamProtocol.h"
+#import "DOAuthParamProtocol.h"
 
 @interface DLoginService : DBaseService
 
@@ -24,5 +25,10 @@
 - (void)loginByParamModel:(id<DLoginParamProtocol>)paramModel
               onSucceeded:(VoidBlock)succeededBlock
                   onError:(ErrorBlock)errorBlock;
+
+
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(JsonModelBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock;
 
 @end

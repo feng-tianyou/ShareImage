@@ -18,63 +18,7 @@
 @end
 
 @implementation DWebViewController
-#pragma mark - get & set
-- (WKWebView *)webView{
-    if (!_webView) {
-        // 配置文件
-        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-        
-        if (IOS9) {
-            // 允许视频播放
-            configuration.allowsAirPlayForMediaPlayback = YES;
-            // 允许图片播放
-            configuration.allowsPictureInPictureMediaPlayback = YES;
-        }
-        
-        // 允许在线播放
-        configuration.allowsInlineMediaPlayback = YES;
-        
-        // 循序与网页交互
-        configuration.selectionGranularity = YES;
-        
-        // 是否支持记忆读取
-        configuration.suppressesIncrementalRendering = YES;
-        
-        _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-        
-        // 设置代理
-        _webView.UIDelegate = self;
-        _webView.navigationDelegate = self;
-        
-        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-        // 开启手势触摸
-        _webView.allowsBackForwardNavigationGestures = YES;
-        // 适应设定的尺寸
-        [_webView sizeToFit];
-    }
-    return _webView;
-}
 
-- (UIProgressView *)progressView{
-    if (!_progressView) {
-        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        // 设置进度条颜色
-        [_progressView setTrackTintColor:[UIColor whiteColor]];
-        _progressView.progressTintColor = [UIColor setHexColor:@"#76EE00"];
-    }
-    return _progressView;
-}
-
-- (UIButton *)closeBtn{
-    if (!_closeBtn) {
-        _closeBtn = [[UIButton alloc] init];
-        [_closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_closeBtn setTitle:@"Close" forState:UIControlStateNormal];
-        [_closeBtn addTarget:self action:@selector(clickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
-        _closeBtn.hidden = YES;
-    }
-    return _closeBtn;
-}
 
 #pragma mark - 暴露方法
 - (instancetype)initWithUrl:(NSString *)url{
@@ -391,6 +335,64 @@
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
+    
+#pragma mark - get & set
+- (WKWebView *)webView{
+    if (!_webView) {
+        // 配置文件
+        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+        
+        if (IOS9) {
+            // 允许视频播放
+            configuration.allowsAirPlayForMediaPlayback = YES;
+            // 允许图片播放
+            configuration.allowsPictureInPictureMediaPlayback = YES;
+        }
+        
+        // 允许在线播放
+        configuration.allowsInlineMediaPlayback = YES;
+        
+        // 循序与网页交互
+        configuration.selectionGranularity = YES;
+        
+        // 是否支持记忆读取
+        configuration.suppressesIncrementalRendering = YES;
+        
+        _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
+        
+        // 设置代理
+        _webView.UIDelegate = self;
+        _webView.navigationDelegate = self;
+        
+        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+        // 开启手势触摸
+        _webView.allowsBackForwardNavigationGestures = YES;
+        // 适应设定的尺寸
+        [_webView sizeToFit];
+    }
+    return _webView;
+}
+    
+- (UIProgressView *)progressView{
+    if (!_progressView) {
+        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        // 设置进度条颜色
+        [_progressView setTrackTintColor:[UIColor whiteColor]];
+        _progressView.progressTintColor = [UIColor setHexColor:@"#76EE00"];
+    }
+    return _progressView;
+}
+    
+- (UIButton *)closeBtn{
+    if (!_closeBtn) {
+        _closeBtn = [[UIButton alloc] init];
+        [_closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_closeBtn setTitle:@"Close" forState:UIControlStateNormal];
+        [_closeBtn addTarget:self action:@selector(clickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
+        _closeBtn.hidden = YES;
+    }
+    return _closeBtn;
+}
 
 
 

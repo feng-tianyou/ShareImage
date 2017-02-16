@@ -10,6 +10,9 @@
 #import "DLoginParamProtocol.h"
 #import "DLoginParamModel.h"
 
+#import "DOAuthParamProtocol.h"
+#import "DOAuthParamModel.h"
+
 @interface DLoginManager : DBaseManager
 
 /**
@@ -38,5 +41,9 @@
  @param platformType 登录平台
  */
 - (void)loginByThirdPlatform:(LoginPlatformType)platformType;
+
+
+
+- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel;
 
 @end
