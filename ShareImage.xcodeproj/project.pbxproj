@@ -16,6 +16,8 @@
 		7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */; };
 		7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */; };
 		7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */; };
+		7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */; };
+		7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */; };
 		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
 		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
 		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
@@ -235,6 +237,10 @@
 		7EAFD4B61E56B29400BBA972 /* DPhotosParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosParamProtocol.h; sourceTree = "<group>"; };
 		7EAFD4B81E56D7BE00BBA972 /* DPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosModel.h; sourceTree = "<group>"; };
 		7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosModel.m; sourceTree = "<group>"; };
+		7EAFD4BC1E56DFFC00BBA972 /* DHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeTableViewCell.h; sourceTree = "<group>"; };
+		7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeTableViewCell.m; sourceTree = "<group>"; };
+		7EAFD4BF1E56EF8F00BBA972 /* DHomeCellTipLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeCellTipLabel.h; sourceTree = "<group>"; };
+		7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeCellTipLabel.m; sourceTree = "<group>"; };
 		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -616,6 +622,17 @@
 				7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		7EAFD4BB1E56DFE600BBA972 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7EAFD4BC1E56DFFC00BBA972 /* DHomeTableViewCell.h */,
+				7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */,
+				7EAFD4BF1E56EF8F00BBA972 /* DHomeCellTipLabel.h */,
+				7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7ED80F3A1E554D8000954DAF = {
@@ -1051,6 +1068,7 @@
 		7ED810011E55550100954DAF /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				7EAFD4BB1E56DFE600BBA972 /* View */,
 				7ED810021E55550100954DAF /* DHomeViewController.h */,
 				7ED810031E55550100954DAF /* DHomeViewController.m */,
 			);
@@ -1856,6 +1874,7 @@
 				7ED811221E55550100954DAF /* LOTAnimatableColorValue.m in Sources */,
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
+				7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */,
 				7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */,
 				7ED811801E55573300954DAF /* DTestPhotoViewController.m in Sources */,
 				7ED8115C1E55550100954DAF /* DNotificationTool.m in Sources */,
@@ -1883,6 +1902,7 @@
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
 				7ED8112B1E55550100954DAF /* CADisplayLink.m in Sources */,
+				7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */,
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,

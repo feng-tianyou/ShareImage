@@ -7,13 +7,13 @@
 //
 
 #import "DHomeViewController.h"
+#import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
 
 #import "DPhotosParamModel.h"
 
 #import <MJRefresh/MJRefresh.h>
 
-static NSString * const cellID = @"cell";
 
 @interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -70,7 +70,7 @@ static NSString * const cellID = @"cell";
             DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
             DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
             paramModel.page = 1;
-            paramModel.per_page = 2;
+            paramModel.per_page = 20;
             [manager fetchPhotosByParamModel:paramModel];
             
         });
@@ -97,8 +97,20 @@ static NSString * const cellID = @"cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    DHomeTableViewCell *cell = [DHomeTableViewCell cellWithTableView:tableView];
+    [cell setClickIconBlock:^{
+        DLog(@"点击头像");
+    }];
+    if (self.photos.count > indexPath.row) {
+        cell.photosModel = self.photos[indexPath.row];
+    }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    id model = self.photos[indexPath.row];
+    CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DHomeTableViewCell class] contentViewWidth:self.view.width];
+    return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -125,8 +137,11 @@ static NSString * const cellID = @"cell";
 #pragma mark - 请求回调
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
     
+    self.page++;
+    [self.photos addObjectsFromArray:arrData];
     
     [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
     [self.tableView reloadData];
 }
 
@@ -139,9 +154,8 @@ static NSString * const cellID = @"cell";
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dk_backgroundColorPicker = DKColorPickerWithKey(BG);
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-        
     }
     return _tableView;
 }
