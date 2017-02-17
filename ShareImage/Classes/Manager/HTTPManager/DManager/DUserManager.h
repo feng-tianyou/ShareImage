@@ -7,8 +7,13 @@
 //
 
 #import "DBaseManager.h"
+#import "DOAuthParamProtocol.h"
+#import "DOAuthParamModel.h"
 
 @interface DUserManager : DBaseManager
+
+- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel;
+
 
 /**
  *  获取用户信息

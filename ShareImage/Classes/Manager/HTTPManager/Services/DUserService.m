@@ -21,8 +21,6 @@
 
 @implementation DUserService
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(DUserService)
-
 - (DUserNetwork *)userNetwork{
     if(_userNetwork == nil){
         _userNetwork = [DUserNetwork shareEngine];
@@ -30,6 +28,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DUserService)
     _userNetwork.userInfoForCancelTask = _dicUserInfo;
     return _userNetwork;
 }
+
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(JsonModelBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock{
+    
+    [self.network oauthAccountByParamModel:paramModel onSucceeded:^(id responseObject) {
+        DLog(@"%@",responseObject);
+        DOAuthAccountModel *model = [DOAuthAccountModel modelWithJSON:responseObject];
+        
+        KGLOBALINFOMANAGER.accessToken = model.access_token;
+        KGLOBALINFOMANAGER.refreshToken = model.refresh_token;
+        
+        // 归档
+        [DOAuthAccountTool saveAccount:model];
+        
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
 
 /**
  *  获取用户信息

@@ -11,6 +11,17 @@
 
 @implementation DUserManager
 
+- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel{
+    [self addLoadingView];
+    
+    [self.service oauthAccountByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+
 /**
  *  获取用户信息
  

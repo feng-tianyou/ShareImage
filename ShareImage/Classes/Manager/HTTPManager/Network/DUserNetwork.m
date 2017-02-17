@@ -22,6 +22,20 @@
     return _engine;
 }
 
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(NSObjectBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForOAuthAccount];
+    [self opPostWithUrlPath:@"https://unsplash.com/oauth/token" params:dicParam needUUID:NO needToken:NO onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+    
+    
+}
+
+
 /**
  *  获取用户信息
  *

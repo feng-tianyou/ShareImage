@@ -71,11 +71,22 @@
     return self;
 }
 
+#pragma mark - GET
+/**
+ GET请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opGetWithUrlPath:(NSString *)path
                  params:(NSDictionary *)paramsDic
                needUUID:(BOOL)needUUID
               needToken:(BOOL)needToken
-            onSucceeded:(NSDictionaryBlock) succeededBlock
+            onSucceeded:(NSObjectBlock) succeededBlock
                 onError:(ErrorBlock) errorBlock{
     if(needUUID)
     {
@@ -86,8 +97,8 @@
     if (needToken)
     {
         [self setTokenForHead];
-        [self opGetByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opGetByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:^(DError *error) {
             if([error.errorCode isEqualToString:ERRCODE0001] && KGLOBALINFOMANAGER.isLogin)
             {
@@ -102,7 +113,7 @@
                                       needUUID:needUUID
                                      needToken:needToken
                                    onSucceeded:^(NSDictionary *dic) {
-                                       [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                                       ExistActionDo(succeededBlock, succeededBlock(dic));
                                    } onError:errorBlock];
                 } onError:errorBlock];
             }
@@ -114,15 +125,15 @@
     }
     else
     {
-        [self opGetByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opGetByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:errorBlock];
     }
 }
 
 -(void)opGetByPath:(NSString *)path
              param:(NSDictionary *)paramsDic
-       onSucceeded:(NSDictionaryBlock) succeededBlock
+       onSucceeded:(NSObjectBlock) succeededBlock
            onError:(ErrorBlock) errorBlock{
     __weak DBaseNetwork *weakSelf = self;
     DLog(@"%@,%@",self.userInfoForCancelTask,path);
@@ -137,11 +148,23 @@
     [KGLOBALINFOMANAGER addTask:task userInfo:self.userInfoForCancelTask];
 }
 
+
+#pragma mark - POST
+/**
+ POST请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opPostWithUrlPath:(NSString *)path
                   params:(NSDictionary *)paramsDic
                 needUUID:(BOOL)needUUID
                needToken:(BOOL)needToken
-             onSucceeded:(NSDictionaryBlock) succeededBlock
+             onSucceeded:(NSObjectBlock) succeededBlock
                  onError:(ErrorBlock) errorBlock{
     if(needUUID)
     {
@@ -150,8 +173,8 @@
     __weak DBaseNetwork *weakSelf = self;
     if (needToken){
         [self setTokenForHead];
-        [self opPostByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opPostByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:^(DError *error) {
             if([error.errorCode isEqualToString:ERRCODE0001] && KGLOBALINFOMANAGER.isLogin)
             {
@@ -167,7 +190,7 @@
                                        needUUID:needUUID
                                       needToken:needToken
                                     onSucceeded:^(NSDictionary *dic) {
-                                        [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                                        ExistActionDo(succeededBlock, succeededBlock(dic));
                                     } onError:errorBlock];
                 } onError:errorBlock];
             }
@@ -179,15 +202,15 @@
     }
     else
     {
-        [self opPostByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opPostByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:errorBlock];
     }
 }
 
 -(void)opPostByPath:(NSString *)path
               param:(NSDictionary *)paramsDic
-        onSucceeded:(NSDictionaryBlock) succeededBlock
+        onSucceeded:(NSObjectBlock) succeededBlock
             onError:(ErrorBlock) errorBlock
 {
     __weak DBaseNetwork *weakSelf = self;
@@ -203,11 +226,22 @@
     
 }
 
+#pragma mark - PUT
+/**
+ PUT请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opPutWithUrlPath:(NSString *)path
                  params:(NSDictionary *)paramsDic
                needUUID:(BOOL)needUUID
               needToken:(BOOL)needToken
-            onSucceeded:(NSDictionaryBlock) succeededBlock
+            onSucceeded:(NSObjectBlock) succeededBlock
                 onError:(ErrorBlock) errorBlock{
     if(needUUID)
     {
@@ -216,8 +250,8 @@
     __weak DBaseNetwork *weakSelf = self;
     if (needToken){
         [self setTokenForHead];
-        [self opPutByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opPutByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:^(DError *error) {
             if([error.errorCode isEqualToString:ERRCODE0001] && KGLOBALINFOMANAGER.isLogin)
             {
@@ -232,7 +266,7 @@
                                       needUUID:needUUID
                                      needToken:needToken
                                    onSucceeded:^(NSDictionary *dic) {
-                                       [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                                       ExistActionDo(succeededBlock, succeededBlock(dic));
                                    } onError:errorBlock];
                 } onError:errorBlock];
             }
@@ -244,8 +278,8 @@
     }
     else
     {
-        [self opPutByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opPutByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:errorBlock];
     }
 }
@@ -264,12 +298,22 @@
     [KGLOBALINFOMANAGER addTask:task userInfo:self.userInfoForCancelTask];
 }
 
-
+#pragma mark - DELETE
+/**
+ DELETE请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opDeleteWithUrlPath:(NSString *)path
                     params:(NSDictionary *)paramsDic
                   needUUID:(BOOL)needUUID
                  needToken:(BOOL)needToken
-               onSucceeded:(NSDictionaryBlock) succeededBlock
+               onSucceeded:(NSObjectBlock) succeededBlock
                    onError:(ErrorBlock) errorBlock{
     if(needUUID)
     {
@@ -278,8 +322,8 @@
     __weak DBaseNetwork *weakSelf = self;
     if (needToken){
         [self setTokenForHead];
-        [self opDeleteByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opDeleteByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:^(DError *error) {
             if([error.errorCode isEqualToString:ERRCODE0001] && KGLOBALINFOMANAGER.isLogin)
             {
@@ -295,7 +339,7 @@
                                          needUUID:needUUID
                                         needToken:needToken
                                       onSucceeded:^(NSDictionary *dic) {
-                                          [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                                          ExistActionDo(succeededBlock, succeededBlock(dic));
                                       } onError:errorBlock];
                 } onError:errorBlock];
             }
@@ -307,8 +351,8 @@
     }
     else
     {
-        [self opDeleteByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-            [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+        [self opDeleteByPath:path param:paramsDic onSucceeded:^(id responseObject) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
         } onError:errorBlock];
     }
 }
@@ -327,24 +371,18 @@
     [KGLOBALINFOMANAGER addTask:task userInfo:self.userInfoForCancelTask];
 }
 
+
+#pragma mark - 私有方法
 - (void)proccessResponseData:(id)responseObject
                         task:(NSURLSessionDataTask *)task
-                 onSucceeded:(NSDictionaryBlock) succeededBlock
+                 onSucceeded:(NSObjectBlock) succeededBlock
                      onError:(ErrorBlock) errorBlock{
     [KGLOBALINFOMANAGER removeTask:task userInfo:self.userInfoForCancelTask];
-    id result=[self handleResponseData:responseObject];
-    [self saveCookies];
-    if ([result isKindOfClass:[DError class]]
-        && ![[(DError *)result errorCode] isEqualToString:@"3840"]) {
-        ExistActionDo(errorBlock, errorBlock(result));
-        return;
-    }else if([result isKindOfClass:[NSDictionary class]]){
-        //返回验证结果
-        ExistActionDo(succeededBlock, succeededBlock(result));
-    }
-    else if(responseObject){
+    
+//    [self saveCookies];
+    if(responseObject){
         //返回字符串结果
-        ExistActionDo(succeededBlock, succeededBlock((NSDictionary *)responseObject));
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
     }
     else{
         DError *customError=[[DError alloc] initWithCode:10005 description:nil];
@@ -352,21 +390,6 @@
     }
 }
 
-- (void)proccessSucceedBlockByDic:(NSDictionary *)dic
-                   succeededBlock:(NSDictionaryBlock)succeededBlock
-                          onError:(ErrorBlock) errorBlock{
-//    if(HTTPSTATECODESUCCESS){
-//        ExistActionDo(succeededBlock, succeededBlock(dic));
-//    }
-//    else{
-//        DError *customError=[[DError alloc] initWithCode:10005 description:nil];
-//        ExistActionDo(errorBlock, errorBlock(customError));
-//    }
-    
-    // 第三方授权，不错处理
-    ExistActionDo(succeededBlock, succeededBlock(dic));
-    
-}
 
 - (void)proccessError:(NSError * _Nonnull)error
                  task:(NSURLSessionDataTask *)task
@@ -393,7 +416,7 @@
         [weakSelf setTokenForHead];
         if([methor isEqualToString:kHttpMethorGet]){
             [weakSelf opGetByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-                [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                ExistActionDo(succeededBlock, succeededBlock(dic));
             } onError:^(DError *error) {
                 if([error.errorCode isEqualToString:ERRCODE0001] && KGLOBALINFOMANAGER.isLogin)
                 {
@@ -416,7 +439,7 @@
                                           needUUID:needUUID
                                          needToken:YES
                                        onSucceeded:^(NSDictionary *dic) {
-                                           [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                                           ExistActionDo(succeededBlock, succeededBlock(dic));
                                        } onError:errorBlock];
                     } onError:errorBlock];
                 }
@@ -428,73 +451,33 @@
         }
         else if([methor isEqualToString:kHttpMethorPost]){
             [weakSelf opPostByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-                [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                ExistActionDo(succeededBlock, succeededBlock(dic));
             } onError:errorBlock];
         }
         else if([methor isEqualToString:kHttpMethorPut]){
             [weakSelf opPutByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-                [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                ExistActionDo(succeededBlock, succeededBlock(dic));
             } onError:errorBlock];
         }
         else if([methor isEqualToString:kHttpMethorDelete]){
             [weakSelf opDeleteByPath:path param:paramsDic onSucceeded:^(NSDictionary *dic) {
-                [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                ExistActionDo(succeededBlock, succeededBlock(dic));
             } onError:errorBlock];
         }
     });
 }
 
-#pragma mark 处理返回得数据
--(id)handleResponseData:(NSData *)data
-{
-    DError *error = nil;
-    if([[data class] isSubclassOfClass:[NSDictionary class]]){
-        id responseDic = data;
-        if([responseDic objectForKey:@"state_code"]
-           && ![[responseDic objectForKey:@"state_code"] isEqualToString:kSuccessHttp])
-        {
-            error = [[DError alloc] initWithDictionary:responseDic];
-            return error;
-        }
-        return responseDic;
-    }
-    if(data)
-    {
-        NSError *err = nil;
-        id responseDic = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:NSJSONReadingMutableLeaves
-                                                           error:&err];
-        //        NSJSONReadingMutableContainers = (1UL << 0),  可添加新成员
-        //        NSJSONReadingMutableLeaves = (1UL << 1),      返回对象是未知的
-        //        NSJSONReadingAllowFragments = (1UL << 2)      不能再修改
-        if(err)
-        {
-            error = [[DError alloc] initWithCode:err.code description:err.description];
-            return error;
-        }
-        else if([responseDic objectForKey:@"state_code"]
-                && ![[responseDic objectForKey:@"state_code"] isEqualToString:kSuccessHttp])
-        {
-            error = [[DError alloc] initWithDictionary:responseDic];
-            return error;
-        }
-        else
-        {
-            return responseDic;
-        }
-    }
-    return error;
-}
 
 
 - (void)setTokenForHead{
     NSString *strToken = [self.accessToken copy];
+    DOAuthAccountModel *model = [DOAuthAccountTool account];
     if(strToken.length == 0){
-        strToken = @"9ff3e9d525ac18e96f2e02c440d57bae";
+        strToken = model.access_token;
     }
     
-    [self.requestSerializer setValue:strToken forHTTPHeaderField:@"Authorize"];
-    [self.requestSerializer setValue:@"2016-04-18" forHTTPHeaderField:@"Versions"];
+    [self.requestSerializer setValue:[NSString stringWithFormat:@"%@ %@", model.token_type, strToken] forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:@"v1" forHTTPHeaderField:@"Accept-Versions"];
     
 }
 
@@ -598,7 +581,6 @@
     if(KGLOBALINFOMANAGER.deviceToken && KGLOBALINFOMANAGER.deviceToken.length > 0){
         dicParam = @{kParamRefreshToken:refreshToken,kParamDeviceToken:KGLOBALINFOMANAGER.deviceToken};
     }
-    __weak DBaseNetwork *weakSelf = self;
     [self opGetWithUrlPath:kPathToken
                     params:dicParam
                   needUUID:YES
@@ -606,7 +588,7 @@
                onSucceeded:^(NSDictionary *dic) {
                    NSDictionary *dicData = [dic objectForKey:@"data"];
                    [self setUserDefaultByDicData:dicData];
-                   [weakSelf proccessSucceedBlockByDic:dic succeededBlock:succeededBlock onError:errorBlock];
+                   ExistActionDo(succeededBlock, succeededBlock(dic));
                    _dicRefreshToken = dic;
                    _error = nil;
                    KGLOBALINFOMANAGER.isGetRefreshToken = NO;
@@ -646,6 +628,9 @@
                }];
 }
 
+
+
+#pragma mark - get & set
 -(NSString *)accessToken
 {
     return KGLOBALINFOMANAGER.accessToken;
@@ -668,26 +653,6 @@
     return udid;
 }
 
--(NSArray *)proccessArrData:(NSArray *)arr
-{
-    if(arr && arr.count > 0)
-    {
-        return arr;
-    }
-    return @[];
-}
-
-#pragma mark 数组转换成json
--(NSString *)arrDataToJson:(NSArray *)arr
-{
-    if(arr && arr.count > 0)
-    {
-        id result = [NSJSONSerialization dataWithJSONObject:arr options:kNilOptions error:nil];
-        NSString *str = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
-        return str;
-    }
-    return @"[]";
-}
 
 
 @end

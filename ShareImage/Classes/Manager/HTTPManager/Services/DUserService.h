@@ -7,10 +7,13 @@
 //
 
 #import "DBaseService.h"
+#import "DOAuthParamProtocol.h"
 
 @interface DUserService : DBaseService
 
-+ (id)share;
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(JsonModelBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock;
 
 /**
  *  获取用户信息

@@ -7,7 +7,6 @@
 //
 
 #import "DLoginViewController.h"
-#import "DLoginManager.h"
 #import "DFingerPrintManager.h"
 #import "DTestViewController.h"
 
@@ -94,18 +93,15 @@
 
 
 - (void)wxlogin{
-    DLoginManager *manager = [DLoginManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    [manager loginByThirdPlatform:LoginPlatformType_Wechat];
+    
 }
 
 - (void)qqlogin{
-    DLoginManager *manager = [DLoginManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    [manager loginByThirdPlatform:LoginPlatformType_QQ];
+    
 }
 
 - (void)wblogin{
-    DLoginManager *manager = [DLoginManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    [manager loginByThirdPlatform:LoginPlatformType_Sina];
+    
 }
 
 - (void)requestServiceSucceedByUserInfo:(NSDictionary *)userInfo{

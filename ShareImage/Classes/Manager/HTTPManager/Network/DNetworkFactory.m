@@ -10,11 +10,9 @@
 
 // network
 #import "DUserNetwork.h"
-#import "DLoginNetwork.h"
 
 // service
 #import "DUserService.h"
-#import "DLoginService.h"
 
 @implementation DNetworkFactory
 
@@ -25,9 +23,6 @@
     
     if([serviceClass isSubclassOfClass:[DUserService class]]){
         network = [DUserNetwork shareEngine];
-    }
-    else if ([serviceClass isSubclassOfClass:[DLoginService class]]){
-        network = [DLoginNetwork shareEngine];
     }
     
     if(!network){

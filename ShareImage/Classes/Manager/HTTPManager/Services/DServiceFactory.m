@@ -10,10 +10,8 @@
 
 // service
 #import "DUserService.h"
-#import "DLoginService.h"
 
 // manager
-#import "DLoginManager.h"
 #import "DUserManager.h"
 
 
@@ -26,9 +24,6 @@
     
     if([managerClass isSubclassOfClass:[DUserManager class]]){
         service = [DUserService getServiceByInfo:manager.info];
-    }
-    else if ([managerClass isSubclassOfClass:[DLoginManager class]]){
-        service = [DLoginService getServiceByInfo:manager.info];
     }
 
     if(!service){

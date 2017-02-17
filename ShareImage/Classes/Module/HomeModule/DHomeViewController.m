@@ -29,6 +29,7 @@
 
 #import <MJRefresh/MJRefresh.h>
 #import "DLottieViewController.h"
+#import "DUserNetwork.h"
 
 static NSString * const cellID = @"cell";
 
@@ -130,6 +131,8 @@ static NSString * const cellID = @"cell";
         {
             // OAuth
             [self.navigationController pushViewController:[[DOAuthViewController alloc] init] animated:YES];
+            
+            
             
         }
             break;

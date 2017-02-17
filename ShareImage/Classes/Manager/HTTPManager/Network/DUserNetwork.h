@@ -7,11 +7,17 @@
 //
 
 #import "DBaseNetwork.h"
+#import "DOAuthParamProtocol.h"
 
 @interface DUserNetwork : DBaseNetwork
 
 #pragma mark 单例实现初始化
 + (DUserNetwork *)shareEngine;
+
+
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+                     onSucceeded:(NSObjectBlock)succeededBlock
+                         onError:(ErrorBlock)errorBlock;
 
 /**
  *  获取用户信息

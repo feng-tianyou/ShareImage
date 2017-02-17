@@ -48,16 +48,11 @@
 		7ED810F71E55550100954DAF /* DError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FC61E55550100954DAF /* DError.m */; };
 		7ED810F81E55550100954DAF /* DErrorRespone.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FC81E55550100954DAF /* DErrorRespone.m */; };
 		7ED810F91E55550100954DAF /* DLocalError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCA1E55550100954DAF /* DLocalError.m */; };
-		7ED810FA1E55550100954DAF /* DLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCD1E55550100954DAF /* DLoginManager.m */; };
 		7ED810FB1E55550100954DAF /* DUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCF1E55550100954DAF /* DUserManager.m */; };
 		7ED810FC1E55550100954DAF /* DBaseNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD21E55550100954DAF /* DBaseNetwork.m */; };
-		7ED810FD1E55550100954DAF /* DLoginNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD41E55550100954DAF /* DLoginNetwork.m */; };
 		7ED810FE1E55550100954DAF /* DNetworkFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD61E55550100954DAF /* DNetworkFactory.m */; };
 		7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD81E55550100954DAF /* DUserNetwork.m */; };
-		7ED811001E55550100954DAF /* DLoginParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FDC1E55550100954DAF /* DLoginParamModel.m */; };
-		7ED811011E55550100954DAF /* DLoginValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FE11E55550100954DAF /* DLoginValidRule.m */; };
 		7ED811021E55550100954DAF /* DBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FE41E55550100954DAF /* DBaseService.m */; };
-		7ED811031E55550100954DAF /* DLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FE61E55550100954DAF /* DLoginService.m */; };
 		7ED811041E55550100954DAF /* DServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FE81E55550100954DAF /* DServiceFactory.m */; };
 		7ED811051E55550100954DAF /* DUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FEA1E55550100954DAF /* DUserService.m */; };
 		7ED811061E55550100954DAF /* DPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FED1E55550100954DAF /* DPhotoManager.m */; };
@@ -301,27 +296,16 @@
 		7ED80FC81E55550100954DAF /* DErrorRespone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DErrorRespone.m; sourceTree = "<group>"; };
 		7ED80FC91E55550100954DAF /* DLocalError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLocalError.h; sourceTree = "<group>"; };
 		7ED80FCA1E55550100954DAF /* DLocalError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLocalError.m; sourceTree = "<group>"; };
-		7ED80FCC1E55550100954DAF /* DLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginManager.h; sourceTree = "<group>"; };
-		7ED80FCD1E55550100954DAF /* DLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginManager.m; sourceTree = "<group>"; };
 		7ED80FCE1E55550100954DAF /* DUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserManager.h; sourceTree = "<group>"; };
 		7ED80FCF1E55550100954DAF /* DUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserManager.m; sourceTree = "<group>"; };
 		7ED80FD11E55550100954DAF /* DBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBaseNetwork.h; sourceTree = "<group>"; };
 		7ED80FD21E55550100954DAF /* DBaseNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBaseNetwork.m; sourceTree = "<group>"; };
-		7ED80FD31E55550100954DAF /* DLoginNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginNetwork.h; sourceTree = "<group>"; };
-		7ED80FD41E55550100954DAF /* DLoginNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginNetwork.m; sourceTree = "<group>"; };
 		7ED80FD51E55550100954DAF /* DNetworkFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNetworkFactory.h; sourceTree = "<group>"; };
 		7ED80FD61E55550100954DAF /* DNetworkFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNetworkFactory.m; sourceTree = "<group>"; };
 		7ED80FD71E55550100954DAF /* DUserNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserNetwork.h; sourceTree = "<group>"; };
 		7ED80FD81E55550100954DAF /* DUserNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserNetwork.m; sourceTree = "<group>"; };
-		7ED80FDB1E55550100954DAF /* DLoginParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginParamModel.h; sourceTree = "<group>"; };
-		7ED80FDC1E55550100954DAF /* DLoginParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginParamModel.m; sourceTree = "<group>"; };
-		7ED80FDE1E55550100954DAF /* DLoginParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginParamProtocol.h; sourceTree = "<group>"; };
-		7ED80FE01E55550100954DAF /* DLoginValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginValidRule.h; sourceTree = "<group>"; };
-		7ED80FE11E55550100954DAF /* DLoginValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginValidRule.m; sourceTree = "<group>"; };
 		7ED80FE31E55550100954DAF /* DBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBaseService.h; sourceTree = "<group>"; };
 		7ED80FE41E55550100954DAF /* DBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBaseService.m; sourceTree = "<group>"; };
-		7ED80FE51E55550100954DAF /* DLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginService.h; sourceTree = "<group>"; };
-		7ED80FE61E55550100954DAF /* DLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginService.m; sourceTree = "<group>"; };
 		7ED80FE71E55550100954DAF /* DServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DServiceFactory.h; sourceTree = "<group>"; };
 		7ED80FE81E55550100954DAF /* DServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DServiceFactory.m; sourceTree = "<group>"; };
 		7ED80FE91E55550100954DAF /* DUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserService.h; sourceTree = "<group>"; };
@@ -883,8 +867,6 @@
 		7ED80FCB1E55550100954DAF /* DManager */ = {
 			isa = PBXGroup;
 			children = (
-				7ED80FCC1E55550100954DAF /* DLoginManager.h */,
-				7ED80FCD1E55550100954DAF /* DLoginManager.m */,
 				7ED80FCE1E55550100954DAF /* DUserManager.h */,
 				7ED80FCF1E55550100954DAF /* DUserManager.m */,
 			);
@@ -896,8 +878,6 @@
 			children = (
 				7ED80FD11E55550100954DAF /* DBaseNetwork.h */,
 				7ED80FD21E55550100954DAF /* DBaseNetwork.m */,
-				7ED80FD31E55550100954DAF /* DLoginNetwork.h */,
-				7ED80FD41E55550100954DAF /* DLoginNetwork.m */,
 				7ED80FD51E55550100954DAF /* DNetworkFactory.h */,
 				7ED80FD61E55550100954DAF /* DNetworkFactory.m */,
 				7ED80FD71E55550100954DAF /* DUserNetwork.h */,
@@ -919,8 +899,6 @@
 		7ED80FDA1E55550100954DAF /* ParamModel */ = {
 			isa = PBXGroup;
 			children = (
-				7ED80FDB1E55550100954DAF /* DLoginParamModel.h */,
-				7ED80FDC1E55550100954DAF /* DLoginParamModel.m */,
 				7E7873731E559DF700213B1B /* DOAuthParamModel.h */,
 				7E7873741E559DF700213B1B /* DOAuthParamModel.m */,
 			);
@@ -931,7 +909,6 @@
 			isa = PBXGroup;
 			children = (
 				7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */,
-				7ED80FDE1E55550100954DAF /* DLoginParamProtocol.h */,
 			);
 			path = ParamProtocol;
 			sourceTree = "<group>";
@@ -939,8 +916,6 @@
 		7ED80FDF1E55550100954DAF /* ValidRule */ = {
 			isa = PBXGroup;
 			children = (
-				7ED80FE01E55550100954DAF /* DLoginValidRule.h */,
-				7ED80FE11E55550100954DAF /* DLoginValidRule.m */,
 			);
 			path = ValidRule;
 			sourceTree = "<group>";
@@ -950,8 +925,6 @@
 			children = (
 				7ED80FE31E55550100954DAF /* DBaseService.h */,
 				7ED80FE41E55550100954DAF /* DBaseService.m */,
-				7ED80FE51E55550100954DAF /* DLoginService.h */,
-				7ED80FE61E55550100954DAF /* DLoginService.m */,
 				7ED80FE71E55550100954DAF /* DServiceFactory.h */,
 				7ED80FE81E55550100954DAF /* DServiceFactory.m */,
 				7ED80FE91E55550100954DAF /* DUserService.h */,
@@ -1808,15 +1781,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED810FD1E55550100954DAF /* DLoginNetwork.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
 				7ED811271E55550100954DAF /* LOTAnimationCache.m in Sources */,
 				7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */,
 				7ED810E91E55550100954DAF /* DJsonCache.m in Sources */,
 				7ED8111A1E55550100954DAF /* LOTEllipseShapeLayer.m in Sources */,
-				7ED811011E55550100954DAF /* DLoginValidRule.m in Sources */,
 				7ED810DA1E55550100954DAF /* AppDelegate+DCommon.m in Sources */,
-				7ED811031E55550100954DAF /* DLoginService.m in Sources */,
 				7ED8110D1E55550100954DAF /* DHomeViewController.m in Sources */,
 				7ED8112E1E55550100954DAF /* UIBezierPath.m in Sources */,
 				7ED8115B1E55550100954DAF /* DNavigationTool.m in Sources */,
@@ -1845,7 +1815,6 @@
 				7ED810F11E55550100954DAF /* DDataBaseProxy.m in Sources */,
 				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
-				7ED810FA1E55550100954DAF /* DLoginManager.m in Sources */,
 				7ED8117F1E55573300954DAF /* DLottieViewController.m in Sources */,
 				7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */,
 				7ED811221E55550100954DAF /* LOTAnimatableColorValue.m in Sources */,
@@ -1865,7 +1834,6 @@
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
 				7ED8113A1E55550100954DAF /* LOTShapeTrimPath.m in Sources */,
 				7ED811061E55550100954DAF /* DPhotoManager.m in Sources */,
-				7ED811001E55550100954DAF /* DLoginParamModel.m in Sources */,
 				7ED811261E55550100954DAF /* LOTAnimatableShapeValue.m in Sources */,
 				7ED811381E55550100954DAF /* LOTShapeStroke.m in Sources */,
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,

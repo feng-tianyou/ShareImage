@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "DLoginManager.h"
 
 
 @interface ViewController ()
@@ -28,11 +27,7 @@
 }
 
 - (void)testLogin{
-    DLoginManager *manager = [DLoginManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    DLoginParamModel *param = [[DLoginParamModel alloc] init];
-    param.userNo = @"13570385104";
-    param.password = @"123456";
-    [manager loginByParamModel:param];
+    
 }
 
 

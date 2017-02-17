@@ -137,7 +137,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
         
     }
     if (!_accessToken) {
-        _accessToken = @"";
+        DOAuthAccountModel *model = [DOAuthAccountTool account];
+        _accessToken = model.access_token;
     }
     return _accessToken;
 }
@@ -180,7 +181,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
         
     }
     if (!_refreshToken) {
-        _refreshToken = @"";
+        DOAuthAccountModel *model = [DOAuthAccountTool account];
+        _refreshToken = model.refresh_token;
     }
     return _refreshToken;
 }

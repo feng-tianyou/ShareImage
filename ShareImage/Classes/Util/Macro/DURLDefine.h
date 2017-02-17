@@ -15,11 +15,11 @@
 #ifdef  DEBUG   //DeBug版本宏
 
 //#define kHttpURL        @"测试地址"
-#define kHttpURL        @"http://api.ywq.t.tgnet.com"
+#define kHttpURL        @"https://api.unsplash.com"
 
 #else           //Release版本宏（发布版本）
 
-#define kHttpURL        @"发布的"
+#define kHttpURL        @"https://api.unsplash.com"
 
 #endif
 

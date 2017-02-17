@@ -25,9 +25,8 @@
 
 -(id)initWithBaseURL:(NSURL *)url;
 
-#pragma mark 处理返回得数据
--(id)handleResponseData:(NSData *)data;
 
+#pragma mark - 额外方法
 -(void)saveCookies;
 
 -(void)setUserDefaultByDicData:(NSDictionary *)dicData;
@@ -38,35 +37,79 @@
 
 - (void)proccessResponseData:(id)responseObject
                         task:(NSURLSessionDataTask *)task
-                 onSucceeded:(NSDictionaryBlock) succeededBlock
+                 onSucceeded:(NSObjectBlock) succeededBlock
                      onError:(ErrorBlock) errorBlock;
 
--(void)opPostWithUrlPath:(NSString *)path
-                  params:(NSDictionary *)paramsDic
-                needUUID:(BOOL)needUUID
-               needToken:(BOOL)needToken
-             onSucceeded:(NSDictionaryBlock) succeededBlock
-                 onError:(ErrorBlock) errorBlock;
-
+#pragma mark - 请求方法
+/**
+ GET请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opGetWithUrlPath:(NSString *)path
                  params:(NSDictionary *)paramsDic
                needUUID:(BOOL)needUUID
               needToken:(BOOL)needToken
-            onSucceeded:(NSDictionaryBlock) succeededBlock
+            onSucceeded:(NSObjectBlock) succeededBlock
                 onError:(ErrorBlock) errorBlock;
 
+
+/**
+ POST请求
+
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+-(void)opPostWithUrlPath:(NSString *)path
+                  params:(NSDictionary *)paramsDic
+                needUUID:(BOOL)needUUID
+               needToken:(BOOL)needToken
+             onSucceeded:(NSObjectBlock) succeededBlock
+                 onError:(ErrorBlock) errorBlock;
+
+
+
+/**
+ PUT请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opPutWithUrlPath:(NSString *)path
                  params:(NSDictionary *)paramsDic
                needUUID:(BOOL)needUUID
               needToken:(BOOL)needToken
-            onSucceeded:(NSDictionaryBlock) succeededBlock
+            onSucceeded:(NSObjectBlock) succeededBlock
                 onError:(ErrorBlock) errorBlock;
 
+/**
+ DELETE请求
+ 
+ @param path 请求路径
+ @param paramsDic 参数
+ @param needUUID UUID
+ @param needToken Token
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 -(void)opDeleteWithUrlPath:(NSString *)path
                     params:(NSDictionary *)paramsDic
                   needUUID:(BOOL)needUUID
                  needToken:(BOOL)needToken
-               onSucceeded:(NSDictionaryBlock) succeededBlock
+               onSucceeded:(NSObjectBlock) succeededBlock
                    onError:(ErrorBlock) errorBlock;
 
 
@@ -85,15 +128,10 @@
 -(void)reFreshTokenOnSucceeded:(NSDictionaryBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock;
 
-//-(BOOL)isValidAccessToken;
 
--(NSArray *)proccessArrData:(NSArray *)arr;
 
-#pragma mark 数组转换成json
--(NSString *)arrDataToJson:(NSArray *)arr;
-
--(NSDictionary *)addAccessTokenForDicParam:(NSDictionary *)dicParam;
-
+#pragma mark 添加Token到参数
+- (NSDictionary *)addAccessTokenForDicParam:(NSDictionary *)dicParam;
 
 
 @end

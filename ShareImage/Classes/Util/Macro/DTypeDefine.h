@@ -18,6 +18,7 @@ typedef void (^UidAndNameBlock)(long long uid,NSString *name);
 typedef void (^NSIntegerBlock)(NSInteger integer);
 typedef void (^NSStringBlock)(NSString *str);
 typedef void (^NSDictionaryBlock)(NSDictionary *dic);
+typedef void (^NSObjectBlock)(id);
 typedef void (^NSDictionaryForCacheBlock)(NSDictionary *dic,BOOL isCache);
 typedef void (^NSArrayBlock)(NSArray *arr);
 typedef void (^UIImageBlock)(UIImage *img);
