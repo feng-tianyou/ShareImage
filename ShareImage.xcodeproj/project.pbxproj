@@ -18,6 +18,7 @@
 		7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */; };
 		7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */; };
 		7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */; };
+		7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */; };
 		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
 		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
 		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
@@ -241,6 +242,8 @@
 		7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeTableViewCell.m; sourceTree = "<group>"; };
 		7EAFD4BF1E56EF8F00BBA972 /* DHomeCellTipLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeCellTipLabel.h; sourceTree = "<group>"; };
 		7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeCellTipLabel.m; sourceTree = "<group>"; };
+		7EAFD4C21E56FF1900BBA972 /* DPhotosValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosValidRule.h; sourceTree = "<group>"; };
+		7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosValidRule.m; sourceTree = "<group>"; };
 		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -965,6 +968,8 @@
 		7ED80FDF1E55550100954DAF /* ValidRule */ = {
 			isa = PBXGroup;
 			children = (
+				7EAFD4C21E56FF1900BBA972 /* DPhotosValidRule.h */,
+				7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */,
 			);
 			path = ValidRule;
 			sourceTree = "<group>";
@@ -1900,6 +1905,7 @@
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
 				7ED811241E55550100954DAF /* LOTAnimatablePointValue.m in Sources */,
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,
+				7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */,
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
 				7ED8112B1E55550100954DAF /* CADisplayLink.m in Sources */,
 				7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */,

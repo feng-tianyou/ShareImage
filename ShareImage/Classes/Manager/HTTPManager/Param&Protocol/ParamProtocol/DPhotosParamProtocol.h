@@ -17,7 +17,21 @@
 // 排序：(Valid values: latest, oldest, popular; default: latest)
 @property (nonatomic, copy) NSString *order_by;
 
+// --------
+// 图片ID
+@property (nonatomic, copy) NSString *pid;
+// 图片的宽度，以像素为单位
+@property (nonatomic, assign) NSInteger width;
+// 图片的高度，以像素为单位
+@property (nonatomic, assign) NSInteger height;
+// 裁剪rect，用逗号分隔整数，表示裁剪矩形的x,y,w,h
+@property (nonatomic, copy) NSString *rect;
+
+
+
 #pragma mark - 获取参数
 - (NSDictionary *)getParamDicForGetPhotos;
+
+- (NSDictionary *)getParamDicForGetPhoto;
 
 @end

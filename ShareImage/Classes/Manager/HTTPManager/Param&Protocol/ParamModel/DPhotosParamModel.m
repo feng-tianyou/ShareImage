@@ -17,4 +17,11 @@
              @"order_by":ExistStringGet(self.order_by)};
 }
 
+- (NSDictionary *)getParamDicForGetPhoto{
+    return @{@"id":ExistStringGet(self.pid),
+             @"w":@(self.width),
+             @"h":@(self.height),
+             @"rect":ExistStringGet(self.rect),};
+}
+
 @end

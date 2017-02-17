@@ -11,6 +11,8 @@
 
 #import "DPhotosModel.h"
 
+#import "DPhotosValidRule.h"
+
 @implementation DPhotosService
 
 /**
@@ -35,7 +37,27 @@
     } onError:errorBlock];
 }
 
-
+/**
+ 获取单张图片详情
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                   onSucceeded:(JsonModelBlock)succeededBlock
+                       onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getPhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        
+    } onError:^(DError *error) {
+        
+    }];
+}
 
 
 @end

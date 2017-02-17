@@ -28,4 +28,15 @@
                   onSucceeded:(NSArrayBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock;
 
+/**
+ 获取单张图片详情
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                   onSucceeded:(NSDictionaryBlock)succeededBlock
+                       onError:(ErrorBlock)errorBlock;
+
 @end

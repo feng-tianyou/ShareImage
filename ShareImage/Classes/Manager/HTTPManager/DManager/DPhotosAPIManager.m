@@ -25,4 +25,13 @@
     }];
 }
 
+/**
+ 获取单张图片详情
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
+}
+
 @end

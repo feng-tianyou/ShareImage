@@ -18,4 +18,18 @@
  */
 - (void)fetchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
+
+
+/**
+ 获取单张图片详情
+
+ @param paramModel 参数模型
+ */
+- (void)fetchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
+
+
+
+
+
 @end
