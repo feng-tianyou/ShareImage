@@ -1,5 +1,5 @@
 //
-//  DUserManager.h
+//  DUserAPIManager.h
 //  DFrame
 //
 //  Created by DaiSuke on 16/9/27.
@@ -10,7 +10,7 @@
 #import "DOAuthParamProtocol.h"
 #import "DOAuthParamModel.h"
 
-@interface DUserManager : DBaseManager
+@interface DUserAPIManager : DBaseManager
 
 - (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel;
 

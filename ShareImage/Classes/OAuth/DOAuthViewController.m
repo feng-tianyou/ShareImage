@@ -7,7 +7,7 @@
 //
 
 #import "DOAuthViewController.h"
-#import "DUserManager.h"
+#import "DUserAPIManager.h"
 
 #define kOAuthAppKey        @"61c8eb646bea05c96445b2a26d23aa64b7605002243a030f561ac923a08d8497"
 #define kOAuthAppSecret        @"f43ac4f36ff9349ea366ef3b9f4714f231e51084282bd698e0ec8a6cb1397fb8"
@@ -123,7 +123,7 @@
 #pragma mark - pravite
 - (void)accessTokenWithCode:(NSString *)code{
     
-    DUserManager *manager = [DUserManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DOAuthParamModel *paramModel = [[DOAuthParamModel alloc] init];
     paramModel.client_id = kOAuthAppKey;
     paramModel.client_secret = kOAuthAppSecret;

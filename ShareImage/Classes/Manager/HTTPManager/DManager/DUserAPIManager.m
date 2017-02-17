@@ -1,15 +1,15 @@
 //
-//  DUserManager.m
+//  DUserAPIManager.m
 //  DFrame
 //
 //  Created by DaiSuke on 16/9/27.
 //  Copyright © 2016年 DaiSuke. All rights reserved.
 //
 
-#import "DUserManager.h"
+#import "DUserAPIManager.h"
 #import "DUserService.h"
 
-@implementation DUserManager
+@implementation DUserAPIManager
 
 - (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel{
     [self addLoadingView];

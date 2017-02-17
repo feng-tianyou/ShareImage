@@ -10,9 +10,11 @@
 
 // network
 #import "DUserNetwork.h"
+#import "DPhotosNetwork.h"
 
 // service
 #import "DUserService.h"
+#import "DPhotosService.h"
 
 @implementation DNetworkFactory
 
@@ -23,6 +25,8 @@
     
     if([serviceClass isSubclassOfClass:[DUserService class]]){
         network = [DUserNetwork shareEngine];
+    } else if ([serviceClass isSubclassOfClass:[DPhotosService class]]){
+        network = [DPhotosNetwork shareEngine];
     }
     
     if(!network){

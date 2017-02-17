@@ -11,6 +11,11 @@
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
 		7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */; };
+		7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */; };
+		7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4AD1E56AEFE00BBA972 /* DPhotosService.m */; };
+		7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */; };
+		7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */; };
+		7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */; };
 		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
 		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
 		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
@@ -48,7 +53,7 @@
 		7ED810F71E55550100954DAF /* DError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FC61E55550100954DAF /* DError.m */; };
 		7ED810F81E55550100954DAF /* DErrorRespone.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FC81E55550100954DAF /* DErrorRespone.m */; };
 		7ED810F91E55550100954DAF /* DLocalError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCA1E55550100954DAF /* DLocalError.m */; };
-		7ED810FB1E55550100954DAF /* DUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCF1E55550100954DAF /* DUserManager.m */; };
+		7ED810FB1E55550100954DAF /* DUserAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FCF1E55550100954DAF /* DUserAPIManager.m */; };
 		7ED810FC1E55550100954DAF /* DBaseNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD21E55550100954DAF /* DBaseNetwork.m */; };
 		7ED810FE1E55550100954DAF /* DNetworkFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD61E55550100954DAF /* DNetworkFactory.m */; };
 		7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FD81E55550100954DAF /* DUserNetwork.m */; };
@@ -219,6 +224,17 @@
 		7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountModel.m; sourceTree = "<group>"; };
 		7E78737B1E55ACE100213B1B /* DOAuthAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthAccountTool.h; sourceTree = "<group>"; };
 		7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountTool.m; sourceTree = "<group>"; };
+		7EAFD4A91E56AED900BBA972 /* DPhotosNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosNetwork.h; sourceTree = "<group>"; };
+		7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosNetwork.m; sourceTree = "<group>"; };
+		7EAFD4AC1E56AEFE00BBA972 /* DPhotosService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosService.h; sourceTree = "<group>"; };
+		7EAFD4AD1E56AEFE00BBA972 /* DPhotosService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosService.m; sourceTree = "<group>"; };
+		7EAFD4AF1E56B00E00BBA972 /* DPhotosAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosAPIManager.h; sourceTree = "<group>"; };
+		7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosAPIManager.m; sourceTree = "<group>"; };
+		7EAFD4B21E56B1CE00BBA972 /* DPhotosParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosParamModel.h; sourceTree = "<group>"; };
+		7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosParamModel.m; sourceTree = "<group>"; };
+		7EAFD4B61E56B29400BBA972 /* DPhotosParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosParamProtocol.h; sourceTree = "<group>"; };
+		7EAFD4B81E56D7BE00BBA972 /* DPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosModel.h; sourceTree = "<group>"; };
+		7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosModel.m; sourceTree = "<group>"; };
 		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -296,8 +312,8 @@
 		7ED80FC81E55550100954DAF /* DErrorRespone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DErrorRespone.m; sourceTree = "<group>"; };
 		7ED80FC91E55550100954DAF /* DLocalError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLocalError.h; sourceTree = "<group>"; };
 		7ED80FCA1E55550100954DAF /* DLocalError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLocalError.m; sourceTree = "<group>"; };
-		7ED80FCE1E55550100954DAF /* DUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserManager.h; sourceTree = "<group>"; };
-		7ED80FCF1E55550100954DAF /* DUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserManager.m; sourceTree = "<group>"; };
+		7ED80FCE1E55550100954DAF /* DUserAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserAPIManager.h; sourceTree = "<group>"; };
+		7ED80FCF1E55550100954DAF /* DUserAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserAPIManager.m; sourceTree = "<group>"; };
 		7ED80FD11E55550100954DAF /* DBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBaseNetwork.h; sourceTree = "<group>"; };
 		7ED80FD21E55550100954DAF /* DBaseNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBaseNetwork.m; sourceTree = "<group>"; };
 		7ED80FD51E55550100954DAF /* DNetworkFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNetworkFactory.h; sourceTree = "<group>"; };
@@ -593,6 +609,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7EAFD4B71E56D7A700BBA972 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7EAFD4B81E56D7BE00BBA972 /* DPhotosModel.h */,
+				7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		7ED80F3A1E554D8000954DAF = {
 			isa = PBXGroup;
 			children = (
@@ -867,8 +892,10 @@
 		7ED80FCB1E55550100954DAF /* DManager */ = {
 			isa = PBXGroup;
 			children = (
-				7ED80FCE1E55550100954DAF /* DUserManager.h */,
-				7ED80FCF1E55550100954DAF /* DUserManager.m */,
+				7ED80FCE1E55550100954DAF /* DUserAPIManager.h */,
+				7ED80FCF1E55550100954DAF /* DUserAPIManager.m */,
+				7EAFD4AF1E56B00E00BBA972 /* DPhotosAPIManager.h */,
+				7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */,
 			);
 			path = DManager;
 			sourceTree = "<group>";
@@ -882,6 +909,8 @@
 				7ED80FD61E55550100954DAF /* DNetworkFactory.m */,
 				7ED80FD71E55550100954DAF /* DUserNetwork.h */,
 				7ED80FD81E55550100954DAF /* DUserNetwork.m */,
+				7EAFD4A91E56AED900BBA972 /* DPhotosNetwork.h */,
+				7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -901,6 +930,8 @@
 			children = (
 				7E7873731E559DF700213B1B /* DOAuthParamModel.h */,
 				7E7873741E559DF700213B1B /* DOAuthParamModel.m */,
+				7EAFD4B21E56B1CE00BBA972 /* DPhotosParamModel.h */,
+				7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */,
 			);
 			path = ParamModel;
 			sourceTree = "<group>";
@@ -908,6 +939,7 @@
 		7ED80FDD1E55550100954DAF /* ParamProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				7EAFD4B61E56B29400BBA972 /* DPhotosParamProtocol.h */,
 				7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */,
 			);
 			path = ParamProtocol;
@@ -929,6 +961,8 @@
 				7ED80FE81E55550100954DAF /* DServiceFactory.m */,
 				7ED80FE91E55550100954DAF /* DUserService.h */,
 				7ED80FEA1E55550100954DAF /* DUserService.m */,
+				7EAFD4AC1E56AEFE00BBA972 /* DPhotosService.h */,
+				7EAFD4AD1E56AEFE00BBA972 /* DPhotosService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -954,6 +988,7 @@
 		7ED80FF11E55550100954DAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7EAFD4B71E56D7A700BBA972 /* Home */,
 				7ED80FF21E55550100954DAF /* DJsonModel.h */,
 				7ED80FF31E55550100954DAF /* DJsonModel.m */,
 				7ED80FF41E55550100954DAF /* User */,
@@ -1798,6 +1833,7 @@
 				7ED811331E55550100954DAF /* LOTShapeCircle.m in Sources */,
 				7ED810EC1E55550100954DAF /* DEmotionManager.m in Sources */,
 				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
+				7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */,
 				7ED8110A1E55550100954DAF /* DWebViewController.m in Sources */,
 				7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */,
 				7ED810E51E55550100954DAF /* DTabBarButton.m in Sources */,
@@ -1826,6 +1862,7 @@
 				7ED8112C1E55550100954DAF /* CALayer+Compat.m in Sources */,
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
+				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
 				7ED810E31E55550100954DAF /* DTabBar.m in Sources */,
 				7ED810E21E55550100954DAF /* UIViewController+DNetwork.m in Sources */,
 				7ED810EE1E55550100954DAF /* DFileManager.m in Sources */,
@@ -1847,6 +1884,7 @@
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
 				7ED8112B1E55550100954DAF /* CADisplayLink.m in Sources */,
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
+				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,
 				7ED810DF1E55550100954DAF /* DBaseViewController.m in Sources */,
 				7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */,
@@ -1860,6 +1898,8 @@
 				7ED811321E55550100954DAF /* LOTMask.m in Sources */,
 				7ED8110B1E55550100954DAF /* DScanQRCodeViewController.m in Sources */,
 				7ED80F481E554D8100954DAF /* main.m in Sources */,
+				7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */,
+				7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */,
 				7ED8113D1E55550100954DAF /* OpenUDID.m in Sources */,
 				7ED8110C1E55550100954DAF /* DDiscoverViewController.m in Sources */,
 				7ED811541E55550100954DAF /* DAlertView.m in Sources */,
@@ -1890,7 +1930,7 @@
 				7ED811561E55550100954DAF /* DImageTextButton.m in Sources */,
 				7ED8114B1E55550100954DAF /* UILabel+DAttributed.m in Sources */,
 				7ED811451E55550100954DAF /* NSDate+DDate.m in Sources */,
-				7ED810FB1E55550100954DAF /* DUserManager.m in Sources */,
+				7ED810FB1E55550100954DAF /* DUserAPIManager.m in Sources */,
 				7ED811811E55573300954DAF /* DTestTableViewCell.m in Sources */,
 				7ED811291E55550100954DAF /* CGGeometryAdditions.m in Sources */,
 				7ED8114C1E55550100954DAF /* UIScrollView+DControl.m in Sources */,

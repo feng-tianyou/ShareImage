@@ -8,19 +8,44 @@
 
 #import "DJsonModel.h"
 
-@interface DUserModel : DJsonModel
+@interface DUserLinksModel : DJsonModel
 
-@property (nonatomic, assign) long long uid;//用户id
-@property (nonatomic, copy) NSString *thirdUid;//第三方用户id
-@property (nonatomic, copy) NSString *iconurl;//头像地址
-@property (nonatomic, copy) NSString *job;//职位
-@property (nonatomic, copy) NSString *name;//真实姓名
-@property (nonatomic, copy) NSString *company;//公司全称
-@property (nonatomic, copy) NSString *qq;//qq号码
-@property (nonatomic, copy) NSString *email;//邮箱
-@property (nonatomic, copy) NSString *address;//地址
-@property (nonatomic, copy) NSString *sex;//性别
-@property (nonatomic, copy) NSString *mobile;//手机号码
-@property (nonatomic, copy) NSString *birthday;//生日
+@property (nonatomic, copy) NSString *followers;
+@property (nonatomic, copy) NSString *following;
+@property (nonatomic, copy) NSString *html;
+@property (nonatomic, copy) NSString *likes;
+@property (nonatomic, copy) NSString *photos;
+@property (nonatomic, copy) NSString *portfolio;
+// self
+@property (nonatomic, copy) NSString *selfLinks;
+
+@end
+
+@interface DUserProfileImageModel : DJsonModel
+
+@property (nonatomic, copy) NSString *large;
+@property (nonatomic, copy) NSString *medium;
+@property (nonatomic, copy) NSString *small;
+
+@end
+
+@interface DUserModel : DJsonModel
+// id
+@property (nonatomic, copy) NSString *uid;//用户id
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *portfolio_url;
+@property (nonatomic, copy) NSString *bio;
+@property (nonatomic, copy) NSString *Instagram;
+@property (nonatomic, copy) NSString *first_name;
+@property (nonatomic, copy) NSString *last_name;
+@property (nonatomic, copy) NSString *location;
+@property (nonatomic, assign) NSInteger total_collections;
+@property (nonatomic, assign) NSInteger total_likes;
+@property (nonatomic, assign) NSInteger total_photos;
+
+@property (nonatomic, strong) DUserLinksModel *links;
+@property (nonatomic, strong) DUserProfileImageModel *profile_image;
+
 
 @end

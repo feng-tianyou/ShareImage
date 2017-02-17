@@ -16,7 +16,7 @@
 
 
 - (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
-                     onSucceeded:(NSObjectBlock)succeededBlock
+                     onSucceeded:(NSDictionaryBlock)succeededBlock
                          onError:(ErrorBlock)errorBlock;
 
 /**

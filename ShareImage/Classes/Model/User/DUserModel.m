@@ -8,22 +8,31 @@
 
 #import "DUserModel.h"
 
+@implementation DUserLinksModel
+
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper{
+    return @{@"selfLinks":@"self"};
+}
+
+@end
+
+
+@implementation DUserProfileImageModel
+
+
+
+@end
+
 @implementation DUserModel
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if([key isEqualToString:@"n"]){
-        _name = value;
-    }
-    else if([key isEqualToString:@"c"]){
-        _company = value;
-    }
-    else if([key isEqualToString:@"m"]){
-        _mobile = value;
-    }
-    else{
-        DLog(@"TGUserModel Undefined Key: %@", key);
-    }
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper{
+    return @{@"uid":@"id"};
 }
+
++ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass{
+    return @{@"profile_image":[DUserProfileImageModel class],
+             @"links":[DUserLinksModel class]};
+}
+
 
 @end

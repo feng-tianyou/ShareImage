@@ -76,7 +76,7 @@
     self.nameLabel = nameLabel;
     [self.view addSubview:nameLabel];
     
-    [self.iconView setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.iconurl] placeholder:nil];
+//    [self.iconView setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.iconurl] placeholder:nil];
     [self.nameLabel setText:KGLOBALINFOMANAGER.accountInfo.name];
     
     
@@ -105,7 +105,7 @@
 }
 
 - (void)requestServiceSucceedByUserInfo:(NSDictionary *)userInfo{
-    [self.iconView setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.iconurl] placeholder:nil];
+//    [self.iconView setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.iconurl] placeholder:nil];
     [self.nameLabel setText:KGLOBALINFOMANAGER.accountInfo.name];
 }
 

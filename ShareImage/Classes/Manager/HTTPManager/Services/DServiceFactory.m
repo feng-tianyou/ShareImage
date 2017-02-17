@@ -10,9 +10,11 @@
 
 // service
 #import "DUserService.h"
+#import "DPhotosService.h"
 
 // manager
-#import "DUserManager.h"
+#import "DUserAPIManager.h"
+#import "DPhotosAPIManager.h"
 
 
 @implementation DServiceFactory
@@ -22,8 +24,10 @@
     
     Class managerClass = [manager class];
     
-    if([managerClass isSubclassOfClass:[DUserManager class]]){
+    if([managerClass isSubclassOfClass:[DUserAPIManager class]]){
         service = [DUserService getServiceByInfo:manager.info];
+    } else if ([managerClass isSubclassOfClass:[DPhotosAPIManager class]]){
+        service = [DPhotosService getServiceByInfo:manager.info];
     }
 
     if(!service){
