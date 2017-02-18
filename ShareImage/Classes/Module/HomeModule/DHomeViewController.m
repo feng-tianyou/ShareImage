@@ -11,6 +11,7 @@
 #import "DPhotosAPIManager.h"
 
 #import "DPhotosParamModel.h"
+#import "DPhotosModel.h"
 
 #import <MJRefresh/MJRefresh.h>
 
@@ -29,15 +30,17 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    // 获取数据
+    [self getPhotosData];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.page = 1;
     
-    
+    // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];
     
 }
@@ -45,6 +48,7 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
+    // 布局子视图
     [self setupSubViewsAutoLayout];
 }
 
@@ -58,6 +62,14 @@
     .rightSpaceToView(self.view, 0);
 }
 
+- (void)getPhotosData{
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+    paramModel.page = self.page;
+    paramModel.per_page = 20;
+    [manager fetchPhotosByParamModel:paramModel];
+}
+
 
 /**
  设置上下拉刷新
@@ -67,25 +79,16 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             @strongify(self);
-            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-            paramModel.page = 1;
-            paramModel.per_page = 20;
-            [manager fetchPhotosByParamModel:paramModel];
-            
+            self.page = 1;
+            [self getPhotosData];
         });
     }];
-    [self.tableView.mj_header beginRefreshing];
     
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             @strongify(self);
-            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-            paramModel.page = self.page;
-            paramModel.per_page = 20;
-            [manager fetchPhotosByParamModel:paramModel];
+            [self getPhotosData];
         });
     }];
 }
@@ -115,6 +118,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    DPhotosModel *model = self.photos[indexPath.row];
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+    paramModel.pid = model.pid;
+    [manager fetchPhotoDetailsByParamModel:paramModel];
     
 }
 

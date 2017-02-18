@@ -35,7 +35,7 @@
  @param succeededBlock 成功回调
  @param errorBlock 失败回调
  */
-- (void)getPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+- (void)getPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel
                    onSucceeded:(NSDictionaryBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock;
 

@@ -10,6 +10,7 @@
 #import "DPhotosParamProtocol.h"
 
 @interface DPhotosParamModel : NSObject<DPhotosParamProtocol>
+
 // 页数，默认1
 @property (nonatomic, assign) NSInteger page;
 // 每页多少条，默认10

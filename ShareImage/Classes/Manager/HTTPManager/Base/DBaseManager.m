@@ -48,7 +48,7 @@
 
 - (BOOL)needExecuteClearAndHasNoDataOperationByStart:(NSInteger)start
                                              arrData:(NSArray *)arrData{
-    if(start == 0){
+    if(start == 1){
         DelegateHasMethorAndDoOrLog(self.delegate, clearData, [self.delegate clearData];)
         [self removeLoadingView];
     }

@@ -30,8 +30,8 @@
  @param succeededBlock 成功回调
  @param errorBlock 失败回调
  */
-- (void)fetchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
-                   onSucceeded:(JsonModelBlock)succeededBlock
+- (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel
+                          onSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock;
 
 @end

@@ -44,7 +44,7 @@
  @param succeededBlock 成功回调
  @param errorBlock 失败回调
  */
-- (void)fetchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+- (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel
                    onSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock{
     NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoByParamModel:paramModel];
@@ -52,11 +52,11 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getPhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
-        
-    } onError:^(DError *error) {
-        
-    }];
+    [self.network getPhotoDetailsByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotosModel *photo = [DPhotosModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:photo];
+    } onError:errorBlock];
 }
 
 
