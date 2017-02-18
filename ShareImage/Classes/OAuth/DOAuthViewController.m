@@ -191,6 +191,7 @@
     
     // 授权成功
     DLog(@"授权成功");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

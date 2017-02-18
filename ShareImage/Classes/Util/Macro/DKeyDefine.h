@@ -31,6 +31,7 @@
 // 用户退出通知的关键字
 #define KLOGOUT_TYPE            @"logout_type"
 #define KNOTIF_LOGOUT_KEY       @"logout_key"
+#define KVIEW_KEY_LOGOUT        @"logout_cache_key" // 缓存退出key
 
 // 控制显示器相关
 // 是否需要显示加载

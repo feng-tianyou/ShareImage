@@ -145,6 +145,11 @@
     [self.tableView reloadData];
 }
 
+- (void)unlockUI{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+
 
 
 #pragma mark - getter & setter

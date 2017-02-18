@@ -69,10 +69,7 @@ typedef NS_ENUM(NSInteger,DeviceType) {
 
 typedef NS_ENUM(NSInteger,LogoutType) {
     LogoutTypeForNoValid = 1,
-    LogoutTypeForChangeDevice,
-    LogoutTypeForNoVerifyCode,
-    LogoutTypeForNormal,
-    LogoutTypeForEditPassword,
+    LogoutTypeForNoOAuth,  // 没有授权
     LogoutTypeForOther,
 };
 

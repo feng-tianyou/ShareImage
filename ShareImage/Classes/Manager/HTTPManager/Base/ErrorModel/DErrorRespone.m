@@ -173,64 +173,12 @@
     localError.isAlertFor2Second = isAlertFor2Second;
     localError.errCode = errorCode;
     switch (errorCode) {
-        case 1:
-        case 10003:
-        case 10009:{
-            LogoutType type = 0;
-            switch (errorCode) {
-                case 10003:{
-                    type = LogoutTypeForNoVerifyCode;
-                    break;
-                }
-                case 1:
-                case 10009:{
-                    type = LogoutTypeForNoValid;
-                    break;
-                }
-            }
-            if(type > 0){
-//                [TGCacheManager setTGObjectByData:nil forKey:ZKBVIEW_KEY_LOGOUT];
-                [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_LOGOUT_KEY object:nil userInfo:@{KLOGOUT_TYPE:@(type)}];
-            }
-            return;
-        }
-        case 2:{
-            if([engineError.errorDescription hasPrefix:@"手机号码格式错误"]){
-                localError.alertText = @"您输入的手机号码格式错误，请检查并重新输入";
-            }
-            else{
-                localError.alertText = [DErrorRespone errorResponseByError:engineError];
-            }
-            break;
-        }
-        case -1001:{
-            localError.alertText = @"网络不给力，请求超时。";
-            localError.errCode = -1001;
-            break;
-        }
-        case -1003:{
-            localError.alertText = @"出现异常，请稍后重新尝试";
-            break;
-        }
-        case -1004:
-        case -1005:
-        case -1009:{
-            if(!isAlertFor2Second){
-                localError.alertText = @"网络连接失败，请检查您的网络设置";
-            }
-            else{
-                localError.alertText = @"无法连接到网络";
-            }
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_NONETWORK_KEY object:nil];
-            if([userInfo objectForKey:KNOTNETWORKALERT] && ![[userInfo objectForKey:KNOTNETWORKALERT] boolValue]){
-                return;
-            }
-            break;
-        }
         case -1011:{
-            localError.alertText = @"服务器错误！";
+            [DCacheManager setCacheObjectByData:nil forKey:KVIEW_KEY_LOGOUT];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_LOGOUT_KEY object:nil userInfo:@{KLOGOUT_TYPE:@(LogoutTypeForNoOAuth)}];
+            return;
+            }
             break;
-        }
         default:{
             localError.alertText = [DErrorRespone errorResponseByError:engineError];
             break;
@@ -242,8 +190,6 @@
     else{
         DLog(@"未实现localError:UserInfo:方法");
     }
-    
-    
 }
 
 

@@ -570,62 +570,7 @@
 -(void)reFreshTokenOnSucceeded:(NSDictionaryBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock
 {
-    DLog(@"refresh token");
-    KGLOBALINFOMANAGER.isGetRefreshToken = YES;
-    NSString *refreshToken = @"";
-    [self clearUserToken];
-    if(self.refreshToken && self.refreshToken.length > 0){
-        refreshToken = self.refreshToken;
-    }
-    NSDictionary *dicParam = @{kParamRefreshToken:refreshToken};
-    if(KGLOBALINFOMANAGER.deviceToken && KGLOBALINFOMANAGER.deviceToken.length > 0){
-        dicParam = @{kParamRefreshToken:refreshToken,kParamDeviceToken:KGLOBALINFOMANAGER.deviceToken};
-    }
-    [self opGetWithUrlPath:kPathToken
-                    params:dicParam
-                  needUUID:YES
-                 needToken:NO
-               onSucceeded:^(NSDictionary *dic) {
-                   NSDictionary *dicData = [dic objectForKey:@"data"];
-                   [self setUserDefaultByDicData:dicData];
-                   ExistActionDo(succeededBlock, succeededBlock(dic));
-                   _dicRefreshToken = dic;
-                   _error = nil;
-                   KGLOBALINFOMANAGER.isGetRefreshToken = NO;
-                   
-               } onError:^(DError *error) {
-                   ExistActionDo(errorBlock, errorBlock(error));
-                   int errorCode = [DErrorRespone getErrorCodeByError:error];
-                   switch (errorCode) {
-                       case 1:
-                       case 10003:
-                       case 10009:{
-                           LogoutType type = 0;
-                           switch (errorCode) {
-                               case 10003:{
-                                   type = LogoutTypeForNoVerifyCode;
-                                   break;
-                               }
-                               case 1:
-                               case 10009:{
-                                   type = LogoutTypeForNoValid;
-                                   break;
-                               }
-                           }
-                           if(type > 0){
-                               [_arrSucceedBlock removeAllObjects];
-                               [_arrErrorBlock removeAllObjects];
-//                               [TGCacheManager setTGObjectByData:nil forKey:ZKBVIEW_KEY_LOGOUT];
-                           }
-                           KGLOBALINFOMANAGER.isGetRefreshToken = NO;
-                           return;
-                       }
-                   }
-                   
-                   _error = error;
-                   _dicRefreshToken = nil;
-                   KGLOBALINFOMANAGER.isGetRefreshToken = NO;
-               }];
+    
 }
 
 
