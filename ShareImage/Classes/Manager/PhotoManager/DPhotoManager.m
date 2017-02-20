@@ -385,6 +385,7 @@
     if([mediaType isEqualToString:@"public.image"])
     {
         [SVProgressHUD showWithStatus:@"正在处理..."];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         UIImageWriteToSavedPhotosAlbum(originalImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }

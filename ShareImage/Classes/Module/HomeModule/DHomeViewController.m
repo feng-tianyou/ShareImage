@@ -14,6 +14,7 @@
 #import "DPhotosModel.h"
 
 #import <MJRefresh/MJRefresh.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -31,7 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     // 获取数据
-    [self getPhotosData];
+//    [self getPhotosData];
 }
 
 
@@ -44,6 +45,12 @@
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    // 获取数据
+//    [self getPhotosData];
 }
 
 - (void)viewWillLayoutSubviews{
@@ -85,6 +92,7 @@
         });
     }];
     
+    [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -125,30 +133,33 @@
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
     paramModel.pid = model.pid;
     
-//    [manager fetchPhotoDetailsByParamModel:paramModel];
+    [manager fetchPhotoDetailsByParamModel:paramModel];
 //    [manager fetchPhotoStatsByParamModel:paramModel];
-    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
+//    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
+    
+    
     
     
 }
 
 #pragma mark - 导航栏点击事件
-- (void)baseViewControllerDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-//        NSLog(@"点击了左按钮");
-//        [self localShowSuccess:@"点击了左按钮"];
+        //        NSLog(@"点击了左按钮");
+        //        [self localShowSuccess:@"点击了左按钮"];
         
         // 随机获取单张照片
-        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-        [manager fetchRandomPhotoByParamModel:paramModel];
+        //        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        //        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+        //        [manager fetchRandomPhotoByParamModel:paramModel];
+//        [SVProgressHUD showWithStatus:@"hahahhahah"];
+        [self getPhotosData];
         
     } else {
         NSLog(@"点击了右按钮");
         [self localShowSuccess:@"点击了右按钮"];
     }
 }
-
 
 
 

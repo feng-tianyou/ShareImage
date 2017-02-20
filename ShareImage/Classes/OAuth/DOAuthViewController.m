@@ -12,8 +12,7 @@
 #define kOAuthAppKey        @"61c8eb646bea05c96445b2a26d23aa64b7605002243a030f561ac923a08d8497"
 #define kOAuthAppSecret        @"f43ac4f36ff9349ea366ef3b9f4714f231e51084282bd698e0ec8a6cb1397fb8"
 #define kOAuthRedirectUrl        @"http://daisuke.cn"
-#define kOAuthWebUrl        @"https://unsplash.com/oauth/authorize?client_id=%@&redirect_uri=%@&response_type=code"
-
+#define kOAuthWebUrl        @"https://unsplash.com/oauth/authorize?client_id=%@&redirect_uri=%@&response_type=code&scope=public+read_user+write_user+read_photos+write_photos+write_likes+write_followers+read_collections+write_collections"
 
 
 @interface DOAuthViewController ()<UIWebViewDelegate>
@@ -30,23 +29,22 @@
     
     self.navLeftItemType = DNavigationItemTypeBack;
     
-    [self.view addSubview:self.progressView];
+//    [self.view addSubview:self.progressView];
     [self.view addSubview:self.webView];
     
-    self.progressView.sd_layout
+//    self.progressView.sd_layout
+//    .topSpaceToView(self.view, self.navBarHeight)
+//    .leftSpaceToView(self.view, 0)
+//    .rightSpaceToView(self.view, 0)
+//    .heightIs(3);
+//    
+    self.webView.sd_layout
     .topSpaceToView(self.view, 0)
     .leftSpaceToView(self.view, 0)
     .rightSpaceToView(self.view, 0)
-    .heightIs(3);
+    .bottomSpaceToView(self.view, 0);
     
-    CGFloat webH = self.view.height - 3;
-    self.webView.sd_layout
-    .topSpaceToView(self.progressView, 0)
-    .leftSpaceToView(self.view, 0)
-    .rightSpaceToView(self.view, 0)
-    .heightIs(webH);
-    
-    
+    // 开始加载
     [self startLoad];
     
     
@@ -147,42 +145,42 @@
      点击刷新
      */
 - (void)pressNoNetworkBtnToRefresh
-    {
-        [self removeNoNetworkAlertView];
-        [self removeNetworkErrorReloadView];
-        [self startLoad];
-    }
-    
-    
-    /**
-     计算webView进度条
-     */
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
-        CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
-        if (newprogress == 1) {
-            self.progressView.hidden = YES;
-            [self.progressView setProgress:0 animated:NO];
-            [UIView animateWithDuration:0.2 animations:^{
-                CGRect rect = self.webView.frame;
-                rect.origin.y = 0;
-                self.webView.frame = rect;
-            }];
-        }else {
-            self.progressView.hidden = NO;
-            [self.progressView setProgress:newprogress animated:YES];
-            [UIView animateWithDuration:0.2 animations:^{
-                CGRect rect = self.webView.frame;
-                rect.origin.y = 2.5;
-                self.webView.frame = rect;
-            }];
-        }
-    }
+{
+    [self removeNoNetworkAlertView];
+    [self removeNetworkErrorReloadView];
+    [self startLoad];
 }
     
+    
+//    /**
+//     计算webView进度条
+//     */
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
+//        CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
+//        if (newprogress == 1) {
+//            self.progressView.hidden = YES;
+//            [self.progressView setProgress:0 animated:NO];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                CGRect rect = self.webView.frame;
+//                rect.origin.y = 0;
+//                self.webView.frame = rect;
+//            }];
+//        }else {
+//            self.progressView.hidden = NO;
+//            [self.progressView setProgress:newprogress animated:YES];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                CGRect rect = self.webView.frame;
+//                rect.origin.y = 2.5;
+//                self.webView.frame = rect;
+//            }];
+//        }
+//    }
+//}
+
     // 取消监听
 - (void)dealloc {
-    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+//    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 
@@ -200,7 +198,7 @@
     if (!_webView) {
         _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
-        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+//        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
         // 适应设定的尺寸
         [_webView sizeToFit];
     }

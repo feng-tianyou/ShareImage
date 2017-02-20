@@ -160,8 +160,10 @@
                         break;
                 }
                 [SVProgressHUD showErrorWithStatus:message];
+                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             }else{
                 [SVProgressHUD showSuccessWithStatus:@"分享成功！"];
+                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
             }
         }];
         
@@ -197,6 +199,7 @@
     // 设置分享平台
     [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatTimeLine messageObject:messageObject currentViewController:parentController completion:^(id result, NSError *error) {
         DLog(@"%@-%@",result,error);
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         if (error) {
             UMSocialLogInfo(@"************Share fail with error %@*********",error);
             switch (error.code) {

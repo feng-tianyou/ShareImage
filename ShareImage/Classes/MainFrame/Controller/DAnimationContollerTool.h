@@ -1,5 +1,5 @@
 //
-//  DAnimationContoller.h
+//  DAnimationContollerTool.h
 //  DFrame
 //
 //  Created by DaiSuke on 2017/2/9.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DAnimationContoller : NSObject<UIViewControllerAnimatedTransitioning>
+@interface DAnimationContollerTool : NSObject<UIViewControllerAnimatedTransitioning>
 
 + (instancetype)AnimationControllerWithOperation:(UINavigationControllerOperation)operation;
 + (instancetype)AnimationControllerWithOperation:(UINavigationControllerOperation)operation NavigationController:(UINavigationController *)navigationController;

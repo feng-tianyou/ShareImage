@@ -7,7 +7,7 @@
 //
 
 #import "DNavigationViewController.h"
-#include "DAnimationContoller.h"
+#include "DAnimationContollerTool.h"
 
 @interface DNavigationViewController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>
 
@@ -17,7 +17,7 @@
 @property (strong,nonatomic) UIView * coverView;
 @property (strong,nonatomic) NSMutableArray * screenshotImgs;
 @property (nonatomic,strong) UIImage * nextVCScreenShotImg;
-@property (nonatomic,strong) DAnimationContoller * animationController;
+@property (nonatomic,strong) DAnimationContollerTool * animationController;
 
 @end
 
@@ -144,10 +144,10 @@
 }
 
 
-- (DAnimationContoller *)animationController
+- (DAnimationContollerTool *)animationController
 {
     if (_animationController == nil) {
-        _animationController = [[DAnimationContoller alloc]init];
+        _animationController = [[DAnimationContollerTool alloc]init];
         
     }
     return _animationController;

@@ -184,7 +184,13 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     [self removeNetworkLoadingView];
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//        });
+        DLog(@"start");
         [SVProgressHUD showWithStatus:strText];
+        
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     }
 }
 
@@ -275,6 +281,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     }
     if (isAlertFor2Second) {
         [SVProgressHUD showErrorWithStatus:alertText];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         return;
     }
     DAlertView *alert = [[DAlertView alloc] initWithTitle:@"" andMessage:alertText];
@@ -290,6 +297,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  */
 - (void)localShowSuccess:(NSString *)strText{
     [SVProgressHUD showSuccessWithStatus:strText];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 

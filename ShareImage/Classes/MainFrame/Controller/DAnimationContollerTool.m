@@ -1,14 +1,14 @@
 //
-//  DAnimationContoller.m
+//  DAnimationContollerTool.m
 //  DFrame
 //
 //  Created by DaiSuke on 2017/2/9.
 //  Copyright © 2017年 DaiSuke. All rights reserved.
 //
 
-#import "DAnimationContoller.h"
+#import "DAnimationContollerTool.h"
 
-@interface DAnimationContoller ()
+@interface DAnimationContollerTool ()
 @property(nonatomic,strong)NSMutableArray * screenShotArray;
 /**
  所属的导航栏有没有TabBarController
@@ -16,17 +16,17 @@
 @property (nonatomic,assign)BOOL isTabbarExist;
 @end
 
-@implementation DAnimationContoller
+@implementation DAnimationContollerTool
 + (instancetype)AnimationControllerWithOperation:(UINavigationControllerOperation)operation NavigationController:(UINavigationController *)navigationController
 {
-    DAnimationContoller * ac = [[DAnimationContoller alloc]init];
+    DAnimationContollerTool * ac = [[DAnimationContollerTool alloc]init];
     ac.navigationController = navigationController;
     ac.navigationOperation = operation;
     return ac;
 }
 + (instancetype)AnimationControllerWithOperation:(UINavigationControllerOperation)operation
 {
-    DAnimationContoller * ac = [[DAnimationContoller alloc]init];
+    DAnimationContollerTool * ac = [[DAnimationContollerTool alloc]init];
     ac.navigationOperation = operation;
     return ac;
 }
