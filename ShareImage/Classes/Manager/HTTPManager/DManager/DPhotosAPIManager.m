@@ -14,13 +14,6 @@
 /**
  获取首页图片集合
  
- 参数模型：DPhotosParamModel
- page：页数（Optional; default: 1）
- per_page：每页多少条（Optional; default: 10）
- order_by：排序（Valid values: latest, oldest, popular; default: latest）
- 
- 回调：requestServiceSucceedBackArray:
- 
  @param paramModel 参数模型
  */
 - (void)fetchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -46,14 +39,6 @@
 /**
  获取单张图片详情
  
- 参数模型：DPhotosParamModel
- pid：图片id
- w：图片宽度
- h：图片高度
- rect:裁剪矩形
- 
- 回调：requestServiceSucceedWithModel:
- 
  @param paramModel 参数模型
  */
 - (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -72,6 +57,19 @@
  */
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self.service fetchRandomPhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+/**
+ 获取图片的统计信息
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self.service fetchPhotoStatsByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
         [self proccessNetwordError:error];

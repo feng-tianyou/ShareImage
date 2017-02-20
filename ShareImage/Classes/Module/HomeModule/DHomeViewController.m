@@ -124,7 +124,9 @@
     DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
     paramModel.pid = model.pid;
-    [manager fetchPhotoDetailsByParamModel:paramModel];
+    
+//    [manager fetchPhotoDetailsByParamModel:paramModel];
+    [manager fetchPhotoStatsByParamModel:paramModel];
     
 }
 

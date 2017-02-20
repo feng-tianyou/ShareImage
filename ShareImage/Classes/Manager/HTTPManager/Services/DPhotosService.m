@@ -70,7 +70,35 @@
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
                          onSucceeded:(JsonModelBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
     [self.network getRandomPhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotosModel *photoModel = [DPhotosModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:photoModel];
+    } onError:errorBlock];
+}
+
+
+/**
+ 获取图片的统计信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel
+                        onSucceeded:(JsonModelBlock)succeededBlock
+                            onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoStatsByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getPhotoStatsByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
         DLog(@"%@", dic);
         DPhotosModel *photoModel = [DPhotosModel modelWithJSON:dic];
         [DBlockTool executeModelBlock:succeededBlock model:photoModel];

@@ -63,5 +63,18 @@
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
+/**
+ 获取图片的统计信息
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id（必须）
+ 
+ 回调：requestServiceSucceedWithModel:
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
+
 
 @end

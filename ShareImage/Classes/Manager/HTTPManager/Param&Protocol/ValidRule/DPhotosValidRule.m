@@ -18,4 +18,11 @@
     return @"";
 }
 
++ (NSString *)checkParamIsValidForGetPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    if (paramModel.pid.length == 0) {
+        return @"图片的ID必须有";
+    }
+    return @"";
+}
+
 @end

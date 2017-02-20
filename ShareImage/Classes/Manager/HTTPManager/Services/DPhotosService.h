@@ -45,4 +45,16 @@
                        onSucceeded:(JsonModelBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock;
 
+
+/**
+ 获取图片的统计信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel
+                      onSucceeded:(JsonModelBlock)succeededBlock
+                          onError:(ErrorBlock)errorBlock;
+
 @end

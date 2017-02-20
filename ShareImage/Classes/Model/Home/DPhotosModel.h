@@ -147,5 +147,10 @@
 /// 图片的标题
 @property (nonatomic, copy) NSString *title;
 
+// ----- 图片统计信息新增
+/// 图片的浏览数
+@property (nonatomic, assign) NSInteger views;
+
+
 
 @end

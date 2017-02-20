@@ -13,4 +13,6 @@
 
 + (NSString *)checkParamIsValidForGetPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
++ (NSString *)checkParamIsValidForGetPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
 @end
