@@ -126,4 +126,18 @@
     }];
 }
 
+/**
+ 取消喜欢图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)unLikePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service unLikePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

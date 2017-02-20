@@ -127,4 +127,16 @@
  */
 - (void)likePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
+/**
+ 取消喜欢图片
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id（必须）
+ 
+ 回调：requestServiceSucceedWithModel:
+ 
+ @param paramModel 参数模型
+ */
+- (void)unLikePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
 @end

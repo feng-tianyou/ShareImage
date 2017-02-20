@@ -94,7 +94,16 @@
                       onSucceeded:(JsonModelBlock)succeededBlock
                           onError:(ErrorBlock)errorBlock;
 
-
+/**
+ 取消喜欢图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)unLikePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                          onSucceeded:(JsonModelBlock)succeededBlock
+                        onError:(ErrorBlock)errorBlock;
 
 
 
