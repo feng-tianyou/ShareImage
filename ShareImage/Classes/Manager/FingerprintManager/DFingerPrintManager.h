@@ -25,8 +25,8 @@ typedef void (^PolicyBlock)(BOOL success, NSError *error);
 /**
  加载指纹验证
 
- @param localizedFallbackTitle 按钮文字，默认：忘记密码
- @param localizedReason 提示文字（副标题），默认：请按住Home键完成验证
+  localizedFallbackTitle 按钮文字，默认：忘记密码
+  localizedReason 提示文字（副标题），默认：请按住Home键完成验证
  @param policyBlock 回调
  */
 + (void)loadAuthenticationWithPolicyBlock:(PolicyBlock)policyBlock;

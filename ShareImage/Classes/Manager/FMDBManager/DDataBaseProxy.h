@@ -29,7 +29,7 @@ typedef void (^completedBlock)(BOOL isSuccess, id result);
  判断表格是否存在
 
  @param tableName 表名
- @return
+ @return bool
  */
 - (BOOL)isExistInTableWithName:(NSString *)tableName;
 

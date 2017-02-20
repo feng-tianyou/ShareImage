@@ -122,7 +122,7 @@
 /**
  *  账号异常时让用户退出并重新登录，跳转至登陆页面
  */
-- (void)logoutByType:(LogoutType)type;
+//- (void)logoutByType:(LogoutType)type;
 
 
 #pragma mark - 重写方法

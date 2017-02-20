@@ -127,7 +127,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     return codeSize;
 }
 
-/*!
+/*
  * @function createQRFromAddress:
  *
  * @abstract
@@ -144,7 +144,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     return qrFilter.outputImage;
 }
 
-/*!
+/*
  * @function createNonInterpolatedImageFromCIImage: size:
  *
  * @abstract
@@ -174,7 +174,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     return [UIImage imageWithCGImage: scaledImage];
 }
 
-/*!
+/*
  * @function imageFillBlackColorToTransparent: red: green: blue:
  *
  * @abstract
@@ -206,7 +206,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     return resultImage;
 }
 
-/*!
+/*
  * @function fillWhiteToTransparentOnPixel: pixelNum: red: green: blue:
  *
  * @abstract
@@ -230,7 +230,7 @@ void ProviderReleaseData(void * info, const void * data, size_t size) {
     }
 }
 
-/*!
+/*
  * @function imageInsertedImage: insertImage:
  *
  * @abstract

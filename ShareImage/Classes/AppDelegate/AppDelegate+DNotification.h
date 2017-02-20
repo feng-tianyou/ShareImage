@@ -27,7 +27,6 @@
 /**
  注册远程推送，并且设置第三方设备ID
 
- @param deviceToken
  */
 + (void)registerDeviceToken:(NSData *)deviceToken;
 

@@ -184,7 +184,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     [self removeNetworkLoadingView];
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
-        [SVProgressHUD showWithStatus:strText maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:strText];
     }
 }
 
@@ -274,7 +274,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
         return;
     }
     if (isAlertFor2Second) {
-        [SVProgressHUD showErrorWithStatus:alertText maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showErrorWithStatus:alertText];
         return;
     }
     DAlertView *alert = [[DAlertView alloc] initWithTitle:@"" andMessage:alertText];
@@ -289,7 +289,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  @param strText 内容
  */
 - (void)localShowSuccess:(NSString *)strText{
-    [SVProgressHUD showSuccessWithStatus:strText maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showSuccessWithStatus:strText];
 }
 
 

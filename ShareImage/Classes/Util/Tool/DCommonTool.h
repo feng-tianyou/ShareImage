@@ -21,7 +21,7 @@
 /**
  *  NSData类型转Int
  *
- *  @param aNumber NSData 二进制数据
+ *  @param data NSData 二进制数据
  *
  *  @return int类型数字
  */

@@ -105,7 +105,7 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  格式化成日期
  *
- *  @param dateString 日期格式，etg：@"yyyy-MM-dd HH:mm:ss"
+ *  @param dateFormat 日期格式，etg：@"yyyy-MM-dd HH:mm:ss"
  *
  *  @return 日期
  */
@@ -142,7 +142,7 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  格式化成日期字符串
  *
- *  @param dateString 日期格式，例 @"yyyy-MM-dd HH:mm:ss"
+ *  @param dateFormat 日期格式，例 @"yyyy-MM-dd HH:mm:ss"
  *
  *  @return 日期字符串
  */
@@ -182,7 +182,7 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  两个日期相差的天数
  *
- *  @param dateString 日期格式，例 @"yyyy-MM-dd HH:mm:ss"
+ *  @param dateFormat 日期格式，例 @"yyyy-MM-dd HH:mm:ss"
  *
  *  @return 相差的天数
  */
@@ -404,7 +404,8 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 
  @param format “0.000”
  @param numberValue 需要转的值
- @return
+ @return 字符串
+ 
  */
 + (NSString *)decimalwithFormat:(NSString *)format numberValue:(NSNumber *)numberValue{
     float value = [numberValue floatValue];
@@ -448,8 +449,7 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  判断字符串中是否含有某个字符串
  *
- *  @param string1 字符串1
- *  @param string2 字符串2
+ *  @param string 字符串1
  *
  *  @return 是否含有
  */
@@ -467,7 +467,6 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  判断是否只包含字母和数字,并且是6-20位数
  *
- *  @param content 字符串
  *
  *  @return NO代表不符合条件，YES代表符合条件
  */
@@ -531,7 +530,6 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 /**
  *  判断字符串是否全部为数字
  *
- *  @param string 字符串
  *
  *  @return 是否
  */

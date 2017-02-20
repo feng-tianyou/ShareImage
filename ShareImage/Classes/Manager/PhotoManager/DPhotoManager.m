@@ -347,7 +347,7 @@
     
     // 设置已选的
     if (self.selectedAssets.count > 0) {
-        self.imagecontroller.selectedAssets = self.selectedAssets;
+        self.imagecontroller.selectedAssets = [NSMutableArray arrayWithArray:self.selectedAssets];
     } 
     
     [self.currentViewController presentViewController:self.imagecontroller animated:YES completion:nil];
@@ -384,7 +384,7 @@
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     if([mediaType isEqualToString:@"public.image"])
     {
-        [SVProgressHUD showWithStatus:@"正在处理..." maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showWithStatus:@"正在处理..."];
         UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         UIImageWriteToSavedPhotosAlbum(originalImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }

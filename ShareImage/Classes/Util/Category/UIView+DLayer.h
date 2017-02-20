@@ -14,8 +14,8 @@
  添加渐变颜色，在layer层渲染
  
  @param colors 颜色数组
- @param locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
- @param horizontal 横向渐变（默认YES）
+  locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
+  horizontal 横向渐变（默认YES）
  @param size 图层大小（如果没有设置默认使用frame.size,但是调用前先设置frame）
  */
 - (void)addSubGradientLayerWithColors:(NSArray<UIColor *> *)colors size:(CGSize)size;
@@ -25,7 +25,7 @@
  
  @param colors 颜色数组
  @param locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
- @param horizontal 横向渐变（默认YES）
+  horizontal 横向渐变（默认YES）
  @param size 图层大小（如果没有设置默认使用frame.size,但是调用前先设置frame）
  */
 - (void)addSubGradientLayerWithColors:(NSArray<UIColor *> *)colors locations:(NSArray<NSNumber *> *)locations size:(CGSize)size;
@@ -54,8 +54,8 @@
  通过渐变颜色数组获取图片(调用前先设置frame)
  
  @param colors 颜色数组
- @param locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
- @param horizontal 横向渐变（默认YES）
+  locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
+  horizontal 横向渐变（默认YES）
  @param size 图层大小（如果没有设置默认使用frame.size,但是调用前先设置frame）
  @return 图片
  */
@@ -66,7 +66,7 @@
  
  @param colors 颜色数组
  @param locations 颜色分割线位置数组（默认是从0~1.0）eg:@[@0.0, @1.0]
- @param horizontal 横向渐变（默认YES）
+  horizontal 横向渐变（默认YES）
  @param size 图层大小（如果没有设置默认使用frame.size,但是调用前先设置frame）
  @return 图片
  */

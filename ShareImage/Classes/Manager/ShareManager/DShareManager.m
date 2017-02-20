@@ -159,9 +159,9 @@
                     }
                         break;
                 }
-                [SVProgressHUD showErrorWithStatus:message maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showErrorWithStatus:message];
             }else{
-                [SVProgressHUD showSuccessWithStatus:@"分享成功！" maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showSuccessWithStatus:@"分享成功！"];
             }
         }];
         
@@ -201,7 +201,7 @@
             UMSocialLogInfo(@"************Share fail with error %@*********",error);
             switch (error.code) {
                 case 2008:
-                    [SVProgressHUD showErrorWithStatus:@"没有安装微信，分享失败" maskType:SVProgressHUDMaskTypeBlack];
+                    [SVProgressHUD showErrorWithStatus:@"没有安装微信，分享失败"];
                     break;
                 case 2009:
                     // 取消分享
@@ -212,9 +212,9 @@
                     break;
             }
             
-            [SVProgressHUD showErrorWithStatus:@"分享失败，请重试！" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showErrorWithStatus:@"分享失败，请重试！"];
         }else{
-            [SVProgressHUD showSuccessWithStatus:@"分享成功！" maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showSuccessWithStatus:@"分享成功！"];
         }
     }];
 }
@@ -241,7 +241,7 @@
         messageVC.messageComposeDelegate = self;
         [parentController presentViewController:messageVC animated:YES completion:nil];
     } else {
-        [SVProgressHUD showErrorWithStatus:@"设备没有短信功能" maskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showErrorWithStatus:@"设备没有短信功能"];
     }
 }
 
@@ -255,7 +255,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [NSThread sleepForTimeInterval:0.5];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showSuccessWithStatus:@"发送成功！" maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showSuccessWithStatus:@"发送成功！"];
             });
         });
     } else if (result == MessageComposeResultCancelled){
@@ -264,7 +264,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [NSThread sleepForTimeInterval:0.5];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showErrorWithStatus:@"发送失败" maskType:SVProgressHUDMaskTypeBlack];
+                [SVProgressHUD showErrorWithStatus:@"发送失败"];
             });
         });
     }

@@ -76,7 +76,6 @@
  *  @param keywords     高亮部分内容(数组)
  *  @param color        高亮的颜色
  *  @param keyWordFont  高亮内容字体
- *  @param lineSpace    行距
  *
  */
 - (void)addKeyWords:(NSArray *)keywords
