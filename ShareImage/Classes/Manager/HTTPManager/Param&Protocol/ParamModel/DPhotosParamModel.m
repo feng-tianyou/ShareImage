@@ -21,7 +21,18 @@
     return @{@"id":ExistStringGet(self.pid),
              @"w":@(self.width),
              @"h":@(self.height),
-             @"rect":ExistStringGet(self.rect),};
+             @"rect":ExistStringGet(self.rect)};
+}
+
+- (NSDictionary *)getParamDicForGetRandomPhoto{
+    return @{@"collections":ExistStringGet(self.collections),
+             @"featured":ExistStringGet(self.featured),
+             @"username":ExistStringGet(self.username),
+             @"collections":ExistStringGet(self.orientation),
+             @"w":@(self.width),
+             @"h":@(self.height),
+             @"query":@(self.query),
+             @"count":@(self.count)};
 }
 
 @end

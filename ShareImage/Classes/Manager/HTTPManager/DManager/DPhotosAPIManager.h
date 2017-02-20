@@ -31,7 +31,7 @@
  获取单张图片详情
  
  参数模型：DPhotosParamModel
- pid：图片id
+ pid：图片id（必须）
  w：图片宽度
  h：图片高度
  rect:裁剪矩形
@@ -45,6 +45,18 @@
 
 /**
  随机获取一张图片
+ 
+ 参数模型：DPhotosParamModel
+ 根据分类id，collections;
+ 根据特色，featured;
+ 根据昵称，username;
+ 根据匹配，query;
+ w	Image width in pixels.
+ h	Image height in pixels.
+ 根据方向，orientation;
+ 获取张数 (Default: 1; max: 30)，count;（暂时不开放）
+ 
+ 回调：requestServiceSucceedWithModel:
  
  @param paramModel 参数模型
  */

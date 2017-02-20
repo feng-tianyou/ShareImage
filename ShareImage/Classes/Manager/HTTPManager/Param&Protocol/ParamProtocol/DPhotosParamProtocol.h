@@ -49,4 +49,6 @@
 
 - (NSDictionary *)getParamDicForGetPhoto;
 
+- (NSDictionary *)getParamDicForGetRandomPhoto;
+
 @end

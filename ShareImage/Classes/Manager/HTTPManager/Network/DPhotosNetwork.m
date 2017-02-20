@@ -68,8 +68,12 @@
 - (void)getRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
                        onSucceeded:(NSDictionaryBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock{
-    [self opGetWithUrlPath:@"/photos/random" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    NSDictionary *dicParam = [paramModel getParamDicForGetRandomPhoto];
+    
+    [self opGetWithUrlPath:@"/photos/random" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        }
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
