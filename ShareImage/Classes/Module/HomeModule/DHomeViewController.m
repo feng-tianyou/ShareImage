@@ -39,6 +39,7 @@
     [super viewDidLoad];
     
     self.page = 1;
+    self.navLeftItemType = DNavigationItemTypeRightAdd;
     
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];
@@ -130,8 +131,14 @@
 #pragma mark - 导航栏点击事件
 - (void)baseViewControllerDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-        NSLog(@"点击了左按钮");
-        [self localShowSuccess:@"点击了左按钮"];
+//        NSLog(@"点击了左按钮");
+//        [self localShowSuccess:@"点击了左按钮"];
+        
+        // 随机获取单张照片
+        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+        [manager fetchRandomPhotoByParamModel:paramModel];
+        
     } else {
         NSLog(@"点击了右按钮");
         [self localShowSuccess:@"点击了右按钮"];

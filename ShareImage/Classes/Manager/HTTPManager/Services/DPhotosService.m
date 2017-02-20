@@ -54,8 +54,26 @@
     }
     [self.network getPhotoDetailsByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
         DLog(@"%@", dic);
-        DPhotosModel *photo = [DPhotosModel modelWithJSON:dic];
-        [DBlockTool executeModelBlock:succeededBlock model:photo];
+        DPhotosModel *photoModel = [DPhotosModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:photoModel];
+    } onError:errorBlock];
+}
+
+
+/**
+ 随机获取一张图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                         onSucceeded:(JsonModelBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    [self.network getRandomPhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotosModel *photoModel = [DPhotosModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:photoModel];
     } onError:errorBlock];
 }
 

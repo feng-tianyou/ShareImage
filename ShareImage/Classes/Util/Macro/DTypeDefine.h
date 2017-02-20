@@ -24,7 +24,7 @@ typedef void (^NSArrayBlock)(NSArray *arr);
 typedef void (^UIImageBlock)(UIImage *img);
 typedef void (^SqliteArrayBlock)(BOOL isSuccess, NSArray *modelArray);
 typedef void (^ErrorBlockWithSendData)(NSString *idNum);
-typedef void (^JsonModelBlock)(DJsonModel *model);
+typedef void (^JsonModelBlock)(__kindof DJsonModel *model);
 typedef void (^ErrorBlock)(DError *error);
 
 typedef NS_ENUM(NSInteger, DAppBgType) {

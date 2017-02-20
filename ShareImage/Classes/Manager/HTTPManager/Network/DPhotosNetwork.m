@@ -57,4 +57,22 @@
     }];
 }
 
+
+/**
+ 随机获取一张图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                       onSucceeded:(NSDictionaryBlock)succeededBlock
+                           onError:(ErrorBlock)errorBlock{
+    [self opGetWithUrlPath:@"/photos/random" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
 @end

@@ -9,6 +9,29 @@
 #import "DJsonModel.h"
 @class DUserModel;
 
+/**
+ 图片分类模型
+ */
+@interface DPhotosCategoriesLinksModel : DJsonModel
+@property (nonatomic, copy) NSString *photos;
+@property (nonatomic, copy) NSString *selfCategoriesLinksUrl;
+@end
+
+
+/**
+ 图片分类模型
+ */
+@interface DPhotosCategoriesModel : DJsonModel
+@property (nonatomic, assign) long cid;
+@property (nonatomic, strong) DPhotosCategoriesLinksModel *links;
+@property (nonatomic, assign) long photo_count;
+@property (nonatomic, copy) NSString *title;
+@end
+
+
+/**
+ 图片下载路径模型
+ */
 @interface DPhotosLinksModel : DJsonModel
 /// 下载地址
 @property (nonatomic, copy) NSString *download;
@@ -17,11 +40,13 @@
 /// 图片HTML
 @property (nonatomic, copy) NSString *html;
 /// self，图片当前路径
-@property (nonatomic, copy) NSString *selfUrl;
+@property (nonatomic, copy) NSString *selfPhotosLinksUrl;
 
 @end
 
-
+/**
+ 图片的大小图路径模型
+ */
 @interface DPhotosUrlsModel : DJsonModel
 /// 全图
 @property (nonatomic, copy) NSString *full;
@@ -83,6 +108,9 @@
 @end
 
 
+/**
+ 图片总模型
+ */
 @interface DPhotosModel : DJsonModel
 /// 图片id
 @property (nonatomic, copy) NSString *pid;
@@ -90,7 +118,7 @@
 @property (nonatomic, assign) NSInteger liked_by_user;
 /// 喜欢图片的个数
 @property (nonatomic, assign) NSInteger likes;
-/// 分类
+/// 分类 --DPhotosCategoriesModel
 @property (nonatomic, strong) NSArray *categories;
 /// 颜色
 @property (nonatomic, copy) NSString *color;

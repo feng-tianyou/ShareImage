@@ -63,7 +63,19 @@
     } onError:^(DError *error) {
         [self proccessNetwordError:error];
     }];
-    
+}
+
+/**
+ 随机获取一张图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self.service fetchRandomPhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
 }
 
 @end

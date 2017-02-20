@@ -43,7 +43,12 @@
 - (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
-
+/**
+ 随机获取一张图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
 
