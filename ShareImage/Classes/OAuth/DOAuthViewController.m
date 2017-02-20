@@ -25,19 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navLeftItemType = DNavigationItemTypeBack;
     
-//    [self.view addSubview:self.progressView];
     [self.view addSubview:self.webView];
     
-//    self.progressView.sd_layout
-//    .topSpaceToView(self.view, self.navBarHeight)
-//    .leftSpaceToView(self.view, 0)
-//    .rightSpaceToView(self.view, 0)
-//    .heightIs(3);
-//    
     self.webView.sd_layout
     .topSpaceToView(self.view, 0)
     .leftSpaceToView(self.view, 0)
@@ -56,7 +48,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-- (void)baseViewControllerDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -150,38 +142,6 @@
     [self removeNetworkErrorReloadView];
     [self startLoad];
 }
-    
-    
-//    /**
-//     计算webView进度条
-//     */
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//    if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
-//        CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
-//        if (newprogress == 1) {
-//            self.progressView.hidden = YES;
-//            [self.progressView setProgress:0 animated:NO];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                CGRect rect = self.webView.frame;
-//                rect.origin.y = 0;
-//                self.webView.frame = rect;
-//            }];
-//        }else {
-//            self.progressView.hidden = NO;
-//            [self.progressView setProgress:newprogress animated:YES];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                CGRect rect = self.webView.frame;
-//                rect.origin.y = 2.5;
-//                self.webView.frame = rect;
-//            }];
-//        }
-//    }
-//}
-
-    // 取消监听
-- (void)dealloc {
-//    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-}
 
 
 #pragma mark - request
@@ -198,21 +158,11 @@
     if (!_webView) {
         _webView = [[UIWebView alloc] init];
         _webView.delegate = self;
-//        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
         // 适应设定的尺寸
         [_webView sizeToFit];
     }
     return _webView;
 }
-    
-- (UIProgressView *)progressView{
-    if (!_progressView) {
-        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        // 设置进度条颜色
-        [_progressView setTrackTintColor:[UIColor whiteColor]];
-        _progressView.progressTintColor = [UIColor setHexColor:@"#76EE00"];
-    }
-    return _progressView;
-}
+
     
 @end

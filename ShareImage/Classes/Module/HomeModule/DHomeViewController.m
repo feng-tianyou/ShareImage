@@ -31,8 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    // 获取数据
-//    [self getPhotosData];
+    
 }
 
 
@@ -49,8 +48,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    // 获取数据
-//    [self getPhotosData];
+    
 }
 
 - (void)viewWillLayoutSubviews{
@@ -64,7 +62,7 @@
 - (void)setupSubViewsAutoLayout{
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
-    .topSpaceToView(self.view, 0)
+    .topSpaceToView(self.view, self.navBarHeight)
     .bottomSpaceToView(self.view,0)
     .leftSpaceToView(self.view, 0)
     .rightSpaceToView(self.view, 0);
