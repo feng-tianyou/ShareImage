@@ -56,6 +56,7 @@
  @param paramModel 参数模型
  */
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
     [self.service fetchRandomPhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
@@ -69,6 +70,7 @@
  @param paramModel 参数模型
  */
 - (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
     [self.service fetchPhotoStatsByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
@@ -87,6 +89,7 @@
  @param paramModel 参数模型
  */
 - (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
     [self.service fetchPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
         [self requestServiceSucceedBackString:str];
     } onError:^(DError *error) {
@@ -101,7 +104,22 @@
  @param paramModel 参数模型
  */
 - (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
     [self.service updatePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+/**
+ 喜欢图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)likePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service likePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
         [self proccessNetwordError:error];

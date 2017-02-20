@@ -150,4 +150,45 @@
 }
 
 
+
+
+/**
+ 喜欢图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)likePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                  onSucceeded:(JsonModelBlock)succeededBlock
+                      onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network postLikePhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        NSDictionary *photoDic = [dic objectForKey:@"photo"];
+        DPhotosModel *photoModel = [DPhotosModel modelWithJSON:photoDic];
+        NSDictionary *userDic = [dic objectForKey:@"user"];
+        DUserModel *userModel = [DUserModel modelWithJSON:userDic];
+        photoModel.user = userModel;
+        
+        [DBlockTool executeModelBlock:succeededBlock model:photoModel];
+    } onError:errorBlock];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

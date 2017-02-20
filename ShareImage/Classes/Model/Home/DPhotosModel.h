@@ -114,8 +114,8 @@
 @interface DPhotosModel : DJsonModel
 /// 图片id
 @property (nonatomic, copy) NSString *pid;
-/// 喜欢你的用户个数
-@property (nonatomic, assign) NSInteger liked_by_user;
+/// 是否被用户喜欢
+@property (nonatomic, assign) BOOL liked_by_user;
 /// 喜欢图片的个数
 @property (nonatomic, assign) NSInteger likes;
 /// 分类 --DPhotosCategoriesModel
