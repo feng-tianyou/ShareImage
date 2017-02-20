@@ -90,7 +90,7 @@
 
 
 /**
- 更新图片
+ 更新图片（没有权限）
  
  参数模型：DPhotosParamModel
  pid：图片id（必须）
