@@ -126,7 +126,8 @@
     paramModel.pid = model.pid;
     
 //    [manager fetchPhotoDetailsByParamModel:paramModel];
-    [manager fetchPhotoStatsByParamModel:paramModel];
+//    [manager fetchPhotoStatsByParamModel:paramModel];
+    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
     
 }
 

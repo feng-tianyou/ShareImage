@@ -76,5 +76,16 @@
 - (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
+/**
+ 获取图片的下载地址
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id（必须）
+ 
+ 回调：requestServiceSucceedWithModel:
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 @end

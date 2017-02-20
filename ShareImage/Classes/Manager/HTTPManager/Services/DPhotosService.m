@@ -106,4 +106,26 @@
 }
 
 
+/**
+ 获取图片的下载地址
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel
+                             onSucceeded:(NSStringBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoStatsByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        [DBlockTool executeStrBlock:succeededBlock result:[dic objectForKey:@"url"]];
+    } onError:errorBlock];
+}
+
+
 @end
