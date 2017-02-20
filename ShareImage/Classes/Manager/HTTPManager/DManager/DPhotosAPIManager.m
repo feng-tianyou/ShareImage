@@ -94,4 +94,18 @@
     }];
 }
 
+
+/**
+ 更新图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self.service updatePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

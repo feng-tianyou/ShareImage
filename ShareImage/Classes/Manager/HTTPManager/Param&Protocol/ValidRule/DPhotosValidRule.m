@@ -11,14 +11,7 @@
 
 @implementation DPhotosValidRule
 
-+ (NSString *)checkParamIsValidForGetPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
-    if (paramModel.pid.length == 0) {
-        return @"图片的ID必须有";
-    }
-    return @"";
-}
-
-+ (NSString *)checkParamIsValidForGetPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel{
++ (NSString *)checkPhotoIDByParamModel:(id<DPhotosParamProtocol>)paramModel{
     if (paramModel.pid.length == 0) {
         return @"图片的ID必须有";
     }

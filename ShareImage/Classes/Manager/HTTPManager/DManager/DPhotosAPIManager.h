@@ -82,10 +82,36 @@
  参数模型：DPhotosParamModel
  pid：图片id（必须）
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedBackString:
  
  @param paramModel 参数模型
  */
 - (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
+
+/**
+ 更新图片
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id（必须）
+ 
+ 纬度,latitude;
+ 经度,longitude;
+ 城市,city;
+ 国家,country;
+ 城市名称,name;
+ confidential;
+ 光圈,perture_value;
+ 曝光,exposure_time;
+ 焦距,focal_length;
+ iso,iso_speed_ratings;
+ 相机名称,make;
+ 相机型号,model;
+ 
+ 回调：requestServiceSucceedWithModel:
+ 
+ @param paramModel 参数模型
+ */
+//- (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 @end

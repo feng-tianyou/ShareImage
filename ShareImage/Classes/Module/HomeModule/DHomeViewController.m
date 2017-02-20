@@ -127,7 +127,8 @@
     
 //    [manager fetchPhotoDetailsByParamModel:paramModel];
 //    [manager fetchPhotoStatsByParamModel:paramModel];
-    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
+//    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
+    
     
 }
 

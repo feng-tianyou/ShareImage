@@ -45,4 +45,34 @@
 // 获取张数 (Default: 1; max: 30)
 @property (nonatomic, assign) NSInteger count;
 
+
+
+// -----更新图片
+/// 纬度
+@property (nonatomic, copy) NSString *latitude;
+/// 经度
+@property (nonatomic, copy) NSString *longitude;
+/// 城市
+@property (nonatomic, copy) NSString *city;
+/// 国家
+@property (nonatomic, copy) NSString *country;
+/// 城市名称
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *confidential;
+// 光圈
+@property (nonatomic, copy) NSString *aperture_value;
+// 曝光
+@property (nonatomic, copy) NSString *exposure_time;
+// 焦距
+@property (nonatomic, assign) NSInteger focal_length;
+// iso
+@property (nonatomic, assign) NSInteger iso_speed_ratings;
+// 相机名称
+@property (nonatomic, copy) NSString *make;
+// 相机型号
+@property (nonatomic, copy) NSString *model;
+
+
+
+
 @end

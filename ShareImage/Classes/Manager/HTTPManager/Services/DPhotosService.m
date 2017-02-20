@@ -47,7 +47,7 @@
 - (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel
                    onSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock{
-    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoByParamModel:paramModel];
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
     if (strAlert.length > 0) {
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
@@ -70,7 +70,7 @@
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
                          onSucceeded:(JsonModelBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock{
-    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoByParamModel:paramModel];
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
     if (strAlert.length > 0) {
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
@@ -93,7 +93,7 @@
 - (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel
                         onSucceeded:(JsonModelBlock)succeededBlock
                             onError:(ErrorBlock)errorBlock{
-    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoStatsByParamModel:paramModel];
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
     if (strAlert.length > 0) {
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
@@ -116,7 +116,7 @@
 - (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel
                              onSucceeded:(NSStringBlock)succeededBlock
                                  onError:(ErrorBlock)errorBlock{
-    NSString *strAlert = [DPhotosValidRule checkParamIsValidForGetPhotoStatsByParamModel:paramModel];
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
     if (strAlert.length > 0) {
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
@@ -124,6 +124,28 @@
     [self.network getPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
         DLog(@"%@", dic);
         [DBlockTool executeStrBlock:succeededBlock result:[dic objectForKey:@"url"]];
+    } onError:errorBlock];
+}
+
+/**
+ 更新图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                    onSucceeded:(JsonModelBlock)succeededBlock
+                        onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkPhotoIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network putUpdatePhotoByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotosModel *photoModel = [DPhotosModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:photoModel];
     } onError:errorBlock];
 }
 

@@ -68,4 +68,16 @@
                              onSucceeded:(NSStringBlock)succeededBlock
                                  onError:(ErrorBlock)errorBlock;
 
+
+/**
+ 更新图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel
+                       onSucceeded:(JsonModelBlock)succeededBlock
+                        onError:(ErrorBlock)errorBlock;
+
 @end
