@@ -11,6 +11,8 @@
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
+		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
+		07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -225,6 +227,10 @@
 		07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotosModel.m; sourceTree = "<group>"; };
 		07DF55611E5C17F3004EC4A7 /* DSearchPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotoController.h; sourceTree = "<group>"; };
 		07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotoController.m; sourceTree = "<group>"; };
+		07DF55641E5C38D3004EC4A7 /* DCollectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsModel.h; sourceTree = "<group>"; };
+		07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsModel.m; sourceTree = "<group>"; };
+		07DF55671E5C3ABD004EC4A7 /* DSearchCollectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchCollectionsModel.h; sourceTree = "<group>"; };
+		07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchCollectionsModel.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -623,6 +629,10 @@
 				7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */,
 				07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */,
 				07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */,
+				07DF55641E5C38D3004EC4A7 /* DCollectionsModel.h */,
+				07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */,
+				07DF55671E5C3ABD004EC4A7 /* DSearchCollectionsModel.h */,
+				07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1861,6 +1871,7 @@
 				7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */,
 				7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */,
 				7ED811801E55573300954DAF /* DTestPhotoViewController.m in Sources */,
+				07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */,
 				7ED8115C1E55550100954DAF /* DNotificationTool.m in Sources */,
 				7ED8112C1E55550100954DAF /* CALayer+Compat.m in Sources */,
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
@@ -1936,6 +1947,7 @@
 				0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */,
 				7ED8114B1E55550100954DAF /* UILabel+DAttributed.m in Sources */,
 				7ED811451E55550100954DAF /* NSDate+DDate.m in Sources */,
+				07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */,
 				7ED810FB1E55550100954DAF /* DUserAPIManager.m in Sources */,
 				7ED811811E55573300954DAF /* DTestTableViewCell.m in Sources */,
 				7ED811291E55550100954DAF /* CGGeometryAdditions.m in Sources */,

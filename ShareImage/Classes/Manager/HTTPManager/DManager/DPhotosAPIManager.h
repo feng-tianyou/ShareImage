@@ -19,7 +19,7 @@
  per_page：每页多少条（Optional; default: 10）
  order_by：排序（Valid values: latest, oldest, popular; default: latest）
  
- 回调：requestServiceSucceedBackArray:
+ 回调：requestServiceSucceedBackArray:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -36,7 +36,7 @@
  h：图片高度
  rect:裁剪矩形
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
 
  @param paramModel 参数模型
  */
@@ -56,7 +56,7 @@
  根据方向，orientation;
  获取张数 (Default: 1; max: 30)，count;（暂时不开放）
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -69,7 +69,7 @@
  参数模型：DPhotosParamModel
  pid：图片id（必须）
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -82,7 +82,7 @@
  参数模型：DPhotosParamModel
  pid：图片id（必须）
  
- 回调：requestServiceSucceedBackString:
+ 回调：requestServiceSucceedBackString:(NSString)
  
  @param paramModel 参数模型
  */
@@ -121,7 +121,7 @@
  参数模型：DPhotosParamModel
  pid：图片id（必须）
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -133,7 +133,7 @@
  参数模型：DPhotosParamModel
  pid：图片id（必须）
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -144,15 +144,29 @@
  
  参数模型：DPhotosParamModel
  query：关键字（必须）
+ page: 页数
+ per_page: 每页多少条
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedWithModel:(DSearchPhotosModel)
  
  @param paramModel 参数模型
  */
 - (void)fetchSearchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
-
+/**
+ 搜索分类
+ 
+ 参数模型：DPhotosParamModel
+ query：关键字（必须）
+ page: 页数
+ per_page: 每页多少条
+ 
+ 回调：requestServiceSucceedWithModel:(DSearchCollectionsModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
 

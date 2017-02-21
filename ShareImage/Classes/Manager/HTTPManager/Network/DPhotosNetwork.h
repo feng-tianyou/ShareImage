@@ -126,6 +126,15 @@
 
 
 
-
+/**
+ 搜索分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getSearchCollectionsByParamModel:(id<DPhotosParamProtocol>)paramModel
+                        onSucceeded:(NSDictionaryBlock)succeededBlock
+                            onError:(ErrorBlock)errorBlock;
 
 @end

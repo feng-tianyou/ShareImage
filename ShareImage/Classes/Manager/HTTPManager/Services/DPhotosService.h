@@ -119,6 +119,17 @@
                             onError:(ErrorBlock)errorBlock;
 
 
+/**
+ 搜索分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel
+                             onSucceeded:(JsonModelBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock;
+
 
 
 @end

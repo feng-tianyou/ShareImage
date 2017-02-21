@@ -156,7 +156,8 @@
         paramModel.query = @"London";
 //        paramModel.page = 1;
 //        paramModel.per_page = 20;
-        [manager fetchSearchPhotosByParamModel:paramModel];
+//        [manager fetchSearchPhotosByParamModel:paramModel];
+        [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
     }
 }
 
