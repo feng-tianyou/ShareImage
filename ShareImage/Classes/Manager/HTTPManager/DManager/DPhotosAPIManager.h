@@ -169,7 +169,19 @@
 - (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
-
+/**
+ 搜索用户
+ 
+ 参数模型：DPhotosParamModel
+ query：关键字（必须）
+ page: 页数
+ per_page: 每页多少条
+ 
+ 回调：requestServiceSucceedWithModel:(DSearchUsersModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchSearchUsersByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
 

@@ -10,6 +10,7 @@
 #import "DPhotosService.h"
 #import "DSearchPhotosModel.h"
 #import "DSearchCollectionsModel.h"
+#import "DSearchUsersModel.h"
 
 @implementation DPhotosAPIManager
 
@@ -200,6 +201,33 @@
     }];
 }
 
+
+/**
+ 搜索用户
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchSearchUsersByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchSearchUsersByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        DSearchUsersModel *photoModel = model;
+        
+        //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
+        if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:photoModel.users]){
+            return;
+        }
+        
+        if (paramModel.page >= photoModel.total_pages) {
+            [self hasNotMoreData];
+            [self requestServiceSucceedWithModel:model];
+            return;
+        }
+        
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 @end

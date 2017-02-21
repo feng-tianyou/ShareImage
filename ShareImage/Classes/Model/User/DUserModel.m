@@ -7,6 +7,7 @@
 //
 
 #import "DUserModel.h"
+#import "DPhotosModel.h"
 
 @implementation DUserLinksModel
 
@@ -26,12 +27,14 @@
 @implementation DUserModel
 
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper{
-    return @{@"uid":@"id"};
+    return @{@"uid":@"id",
+             @"u_photos":@"photos"};
 }
 
 + (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass{
     return @{@"profile_image":[DUserProfileImageModel class],
-             @"links":[DUserLinksModel class]};
+             @"links":[DUserLinksModel class],
+             @"u_photos":[DPhotosModel class]};
 }
 
 

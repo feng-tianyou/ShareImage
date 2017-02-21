@@ -12,6 +12,7 @@
 #import "DPhotosModel.h"
 #import "DSearchPhotosModel.h"
 #import "DSearchCollectionsModel.h"
+#import "DSearchUsersModel.h"
 
 #import "DPhotosValidRule.h"
 
@@ -255,6 +256,43 @@
         [DBlockTool executeModelBlock:succeededBlock model:model];
     } onError:errorBlock];
 }
+
+
+
+/**
+ 搜索用户
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchSearchUsersByParamModel:(id<DPhotosParamProtocol>)paramModel
+                         onSucceeded:(JsonModelBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DPhotosValidRule checkSearchPhotoByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getSearchUsersByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DSearchUsersModel *model = [DSearchUsersModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

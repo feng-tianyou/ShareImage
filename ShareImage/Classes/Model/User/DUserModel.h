@@ -66,4 +66,8 @@
 /// 个人头像的图片地址
 @property (nonatomic, strong) DUserProfileImageModel *profile_image;
 
+/// 用户的照片集合
+@property (nonatomic, strong) NSArray *u_photos;
+
+
 @end

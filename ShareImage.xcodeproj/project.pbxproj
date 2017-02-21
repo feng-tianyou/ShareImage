@@ -13,6 +13,7 @@
 		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
 		07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */; };
+		07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -231,6 +232,8 @@
 		07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsModel.m; sourceTree = "<group>"; };
 		07DF55671E5C3ABD004EC4A7 /* DSearchCollectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchCollectionsModel.h; sourceTree = "<group>"; };
 		07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchCollectionsModel.m; sourceTree = "<group>"; };
+		07DF556A1E5C3FC4004EC4A7 /* DSearchUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchUsersModel.h; sourceTree = "<group>"; };
+		07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchUsersModel.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -633,6 +636,8 @@
 				07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */,
 				07DF55671E5C3ABD004EC4A7 /* DSearchCollectionsModel.h */,
 				07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */,
+				07DF556A1E5C3FC4004EC4A7 /* DSearchUsersModel.h */,
+				07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1870,6 +1875,7 @@
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
 				7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */,
 				7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */,
+				07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */,
 				7ED811801E55573300954DAF /* DTestPhotoViewController.m in Sources */,
 				07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */,
 				7ED8115C1E55550100954DAF /* DNotificationTool.m in Sources */,
