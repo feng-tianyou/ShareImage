@@ -7,7 +7,6 @@
 //
 
 #import "DLoginViewController.h"
-#import "DFingerPrintManager.h"
 #import "DTestViewController.h"
 
 @interface DLoginViewController ()<UITextFieldDelegate>

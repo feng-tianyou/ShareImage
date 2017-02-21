@@ -56,7 +56,6 @@ static NSString * const cellID = @"cell";
     // Do any additional setup after loading the view.
     
     self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightAdd;
     
     self.photoManager = [DPhotoManager manager];
     

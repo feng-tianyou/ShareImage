@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     self.page = 1;
-    self.navLeftItemType = DNavigationItemTypeRightAdd;
+    self.navLeftItemType = DNavigationItemTypeRightMenu;
     
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];

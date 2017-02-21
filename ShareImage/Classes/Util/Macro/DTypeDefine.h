@@ -41,10 +41,8 @@ typedef NS_ENUM(NSInteger, DNavigationItemType) {
     DNavigationItemTypeBack,
     
     // ========== 图片 ============ //
-    DNavigationItemTypeRightQuestion,//右边 ?
-    DNavigationItemTypeRightShare,//右边 分享图标
-    DNavigationItemTypeRightAdd,//右边 加号
-    DNavigationItemTypeRightPoint,//右边 ...
+    DNavigationItemTypeRightSearch,//右边 ?
+    DNavigationItemTypeRightMenu,//右边 菜单
     
     // ========== 文字 ============ //
     DNavigationItemTypeBackHome,//返回 首页

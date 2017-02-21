@@ -43,11 +43,8 @@
 		7ED810E91E55550100954DAF /* DJsonCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA01E55550100954DAF /* DJsonCache.m */; };
 		7ED810EA1E55550100954DAF /* DPlistCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA21E55550100954DAF /* DPlistCache.m */; };
 		7ED810EB1E55550100954DAF /* DCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA41E55550100954DAF /* DCacheManager.m */; };
-		7ED810EC1E55550100954DAF /* DEmotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA71E55550100954DAF /* DEmotionManager.m */; };
-		7ED810ED1E55550100954DAF /* DEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA91E55550100954DAF /* DEmotionView.m */; };
 		7ED810EE1E55550100954DAF /* DFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FAC1E55550100954DAF /* DFileManager.m */; };
 		7ED810EF1E55550100954DAF /* DPlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FAE1E55550100954DAF /* DPlistManager.m */; };
-		7ED810F01E55550100954DAF /* DFingerPrintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB11E55550100954DAF /* DFingerPrintManager.m */; };
 		7ED810F11E55550100954DAF /* DDataBaseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB41E55550100954DAF /* DDataBaseProxy.m */; };
 		7ED810F21E55550100954DAF /* DDBSqlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB61E55550100954DAF /* DDBSqlTool.m */; };
 		7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB81E55550100954DAF /* DTestUserProxy.m */; };
@@ -76,7 +73,6 @@
 		7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810091E55550100954DAF /* DMeViewController.m */; };
 		7ED811101E55550100954DAF /* DMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8100C1E55550100954DAF /* DMessagesViewController.m */; };
 		7ED811111E55550100954DAF /* DData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8100E1E55550100954DAF /* DData.bundle */; };
-		7ED811121E55550100954DAF /* Emotion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8100F1E55550100954DAF /* Emotion.bundle */; };
 		7ED811131E55550100954DAF /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810131E55550100954DAF /* EGOCache.m */; };
 		7ED811141E55550100954DAF /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 7ED810161E55550100954DAF /* .gitkeep */; };
 		7ED811151E55550100954DAF /* MotionCorpse-Jrcanest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7ED810171E55550100954DAF /* MotionCorpse-Jrcanest.json */; };
@@ -294,16 +290,10 @@
 		7ED80FA21E55550100954DAF /* DPlistCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPlistCache.m; sourceTree = "<group>"; };
 		7ED80FA31E55550100954DAF /* DCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCacheManager.h; sourceTree = "<group>"; };
 		7ED80FA41E55550100954DAF /* DCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCacheManager.m; sourceTree = "<group>"; };
-		7ED80FA61E55550100954DAF /* DEmotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEmotionManager.h; sourceTree = "<group>"; };
-		7ED80FA71E55550100954DAF /* DEmotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEmotionManager.m; sourceTree = "<group>"; };
-		7ED80FA81E55550100954DAF /* DEmotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEmotionView.h; sourceTree = "<group>"; };
-		7ED80FA91E55550100954DAF /* DEmotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEmotionView.m; sourceTree = "<group>"; };
 		7ED80FAB1E55550100954DAF /* DFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFileManager.h; sourceTree = "<group>"; };
 		7ED80FAC1E55550100954DAF /* DFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFileManager.m; sourceTree = "<group>"; };
 		7ED80FAD1E55550100954DAF /* DPlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPlistManager.h; sourceTree = "<group>"; };
 		7ED80FAE1E55550100954DAF /* DPlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPlistManager.m; sourceTree = "<group>"; };
-		7ED80FB01E55550100954DAF /* DFingerPrintManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFingerPrintManager.h; sourceTree = "<group>"; };
-		7ED80FB11E55550100954DAF /* DFingerPrintManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFingerPrintManager.m; sourceTree = "<group>"; };
 		7ED80FB31E55550100954DAF /* DDataBaseProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDataBaseProxy.h; sourceTree = "<group>"; };
 		7ED80FB41E55550100954DAF /* DDataBaseProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDataBaseProxy.m; sourceTree = "<group>"; };
 		7ED80FB51E55550100954DAF /* DDBSqlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBSqlTool.h; sourceTree = "<group>"; };
@@ -361,7 +351,6 @@
 		7ED8100B1E55550100954DAF /* DMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMessagesViewController.h; sourceTree = "<group>"; };
 		7ED8100C1E55550100954DAF /* DMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMessagesViewController.m; sourceTree = "<group>"; };
 		7ED8100E1E55550100954DAF /* DData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DData.bundle; sourceTree = "<group>"; };
-		7ED8100F1E55550100954DAF /* Emotion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emotion.bundle; sourceTree = "<group>"; };
 		7ED810121E55550100954DAF /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		7ED810131E55550100954DAF /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		7ED810161E55550100954DAF /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -783,9 +772,7 @@
 			isa = PBXGroup;
 			children = (
 				7ED80F971E55550100954DAF /* CacheManager */,
-				7ED80FA51E55550100954DAF /* EmotionManager */,
 				7ED80FAA1E55550100954DAF /* FileManager */,
-				7ED80FAF1E55550100954DAF /* FingerprintManager */,
 				7ED80FB21E55550100954DAF /* FMDBManager */,
 				7ED80FB91E55550100954DAF /* GlobalInfoManager */,
 				7ED80FBC1E55550100954DAF /* HTTPManager */,
@@ -822,17 +809,6 @@
 			path = CacheHandle;
 			sourceTree = "<group>";
 		};
-		7ED80FA51E55550100954DAF /* EmotionManager */ = {
-			isa = PBXGroup;
-			children = (
-				7ED80FA61E55550100954DAF /* DEmotionManager.h */,
-				7ED80FA71E55550100954DAF /* DEmotionManager.m */,
-				7ED80FA81E55550100954DAF /* DEmotionView.h */,
-				7ED80FA91E55550100954DAF /* DEmotionView.m */,
-			);
-			path = EmotionManager;
-			sourceTree = "<group>";
-		};
 		7ED80FAA1E55550100954DAF /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,15 +818,6 @@
 				7ED80FAE1E55550100954DAF /* DPlistManager.m */,
 			);
 			path = FileManager;
-			sourceTree = "<group>";
-		};
-		7ED80FAF1E55550100954DAF /* FingerprintManager */ = {
-			isa = PBXGroup;
-			children = (
-				7ED80FB01E55550100954DAF /* DFingerPrintManager.h */,
-				7ED80FB11E55550100954DAF /* DFingerPrintManager.m */,
-			);
-			path = FingerprintManager;
 			sourceTree = "<group>";
 		};
 		7ED80FB21E55550100954DAF /* FMDBManager */ = {
@@ -1116,7 +1083,6 @@
 			isa = PBXGroup;
 			children = (
 				7ED8100E1E55550100954DAF /* DData.bundle */,
-				7ED8100F1E55550100954DAF /* Emotion.bundle */,
 				7ED810101E55550100954DAF /* ThirtPart */,
 			);
 			path = Resources;
@@ -1755,7 +1721,6 @@
 				7ED811141E55550100954DAF /* .gitkeep in Resources */,
 				7ED811601E55552300954DAF /* DKColorTable.txt in Resources */,
 				7ED811611E55552300954DAF /* main.js in Resources */,
-				7ED811121E55550100954DAF /* Emotion.bundle in Resources */,
 				7ED811181E55550100954DAF /* .gitkeep in Resources */,
 				7ED811171E55550100954DAF /* vcTransition2.json in Resources */,
 				7ED811401E55550100954DAF /* zbar-help.html in Resources */,
@@ -1859,7 +1824,6 @@
 				7ED811521E55550100954DAF /* DAlert.m in Sources */,
 				7ED811361E55550100954DAF /* LOTShapePath.m in Sources */,
 				7ED811331E55550100954DAF /* LOTShapeCircle.m in Sources */,
-				7ED810EC1E55550100954DAF /* DEmotionManager.m in Sources */,
 				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
 				7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */,
 				7ED8110A1E55550100954DAF /* DWebViewController.m in Sources */,
@@ -1904,7 +1868,6 @@
 				7ED811381E55550100954DAF /* LOTShapeStroke.m in Sources */,
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
-				7ED810ED1E55550100954DAF /* DEmotionView.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
@@ -1965,7 +1928,6 @@
 				7ED811811E55573300954DAF /* DTestTableViewCell.m in Sources */,
 				7ED811291E55550100954DAF /* CGGeometryAdditions.m in Sources */,
 				7ED8114C1E55550100954DAF /* UIScrollView+DControl.m in Sources */,
-				7ED810F01E55550100954DAF /* DFingerPrintManager.m in Sources */,
 				7ED8112D1E55550100954DAF /* NSValue+Compat.m in Sources */,
 				7ED8113C1E55550100954DAF /* LOTAnimationView.m in Sources */,
 				7ED811481E55550100954DAF /* UIImage+DEffect.m in Sources */,

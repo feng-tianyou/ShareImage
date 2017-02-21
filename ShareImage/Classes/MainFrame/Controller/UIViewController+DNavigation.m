@@ -84,15 +84,13 @@ static char* const navRighItemType_KEY = "navRighItemType";
         case DNavigationItemTypeRightSave:
         case DNavigationItemTypeRightClear:
         case DNavigationItemTypeRightNext:
-        case DNavigationItemTypeRightPublic:
+        case DNavigationItemTypeRightPublic: 
         case DNavigationItemTypeRightCancel:
         case DNavigationItemTypeRightFinish:
         case DNavigationItemTypeRightFeedback:
-        case DNavigationItemTypeRightShare:
         case DNavigationItemTypeRightSetting:
-        case DNavigationItemTypeRightQuestion:
-        case DNavigationItemTypeRightPoint:
-        case DNavigationItemTypeRightAdd:{
+        case DNavigationItemTypeRightMenu:
+        case DNavigationItemTypeRightSearch:{
             
             NSString *strTitle = [DNavigationTool getNavigationBarRightTitleByType:type];
             UIImage *img = [DNavigationTool getNavigationBarRightImgByType:type];

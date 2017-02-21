@@ -26,7 +26,7 @@
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController{
     self = [super initWithRootViewController:rootViewController];
     if (self) {
-        self.navigationBar.dk_barTintColorPicker = DKColorPickerWithKey(BAR);
+        self.navigationBar.barTintColor = [UIColor whiteColor];
         
     }
     return self;
@@ -121,7 +121,7 @@
     
     // 设置标题属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
     textAttrs[NSFontAttributeName] = [UIFont boldSystemFontOfSize:19];
     [navBar setTitleTextAttributes:textAttrs];
     

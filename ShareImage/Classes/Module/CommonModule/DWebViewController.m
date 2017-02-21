@@ -190,7 +190,7 @@
  */
 - (void)setupNav{
     
-    self.navRighItemType = DNavigationItemTypeRightPoint;
+    self.navRighItemType = DNavigationItemTypeRightMenu;
     
     UIImage *image = [UIImage getImageWithName:@"navigationbar_btn_left"];
     UIButton *backBtn = [[UIButton alloc] init];

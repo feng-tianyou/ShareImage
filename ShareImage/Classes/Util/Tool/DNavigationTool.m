@@ -10,11 +10,8 @@
 
 #define D_NAVIGATION_BAR_LEFT_BACK_BG_IMAGE_NAME        @"navigationbar_btn_left"
 
-#define D_NAVIGATION_BAR_RIGHT_SHARE_BG_IMAGE_NAME        @"navigationbar_btn_right_share"
-#define D_NAVIGATION_BAR_RIGHT_QUESTION_BG_IMAGE_NAME        @"navigationbar_btn_right_question"
-#define D_NAVIGATION_BAR_RIGHT_ADD_BG_IMAGE_NAME          @"navigationbar_btn_right_add"
-#define D_NAVIGATION_BAR_RIGHT_ADD_FRIEND_BG_IMAGE_NAME   @"navigationbar_btn_right_add_friend"
-#define D_NAVIGATION_BAR_RIGHT_POINT_IMAGE_NAME   @"navigationbar_btn_right_point"
+#define D_NAVIGATION_BAR_RIGHT_MENU_BG_IMAGE_NAME        @"navigationbar_btn_right_menu"
+#define D_NAVIGATION_BAR_RIGHT_SHEARCH_BG_IMAGE_NAME        @"navigationbar_btn_right_search"
 
 
 #define D_NAVIGATION_BAR_TEXT_LEFT_BACK           @"返回"
@@ -94,20 +91,12 @@
             img = [UIImage getImageWithName:D_NAVIGATION_BAR_LEFT_BACK_BG_IMAGE_NAME];
             break;
         }
-        case DNavigationItemTypeRightQuestion:{
-            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_QUESTION_BG_IMAGE_NAME];
+        case DNavigationItemTypeRightMenu:{
+            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_MENU_BG_IMAGE_NAME];
             break;
         }
-        case DNavigationItemTypeRightAdd:{
-            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_ADD_BG_IMAGE_NAME];
-            break;
-        }
-        case DNavigationItemTypeRightShare:{
-            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_SHARE_BG_IMAGE_NAME];
-            break;
-        }
-        case DNavigationItemTypeRightPoint:{
-            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_POINT_IMAGE_NAME];
+        case DNavigationItemTypeRightSearch:{
+            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_SHEARCH_BG_IMAGE_NAME];
             break;
         }
         default:{

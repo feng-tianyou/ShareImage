@@ -54,7 +54,7 @@
     
     self.title = @"扫一扫";
     self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightPoint;
+    self.navRighItemType = DNavigationItemTypeRightMenu;
     
     // 初始化子控家
     [self setupSubViews];

@@ -18,7 +18,7 @@
 #pragma mark - 父类方法
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:KNOTIF_LOGOUT_KEY object:nil];
@@ -77,9 +77,9 @@
  重写preferredStatusBarStyle，改变状态栏
  
  */
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle{
+//    return UIStatusBarStyleLightContent;
+//}
 
 
 #pragma mark - setter & getter
