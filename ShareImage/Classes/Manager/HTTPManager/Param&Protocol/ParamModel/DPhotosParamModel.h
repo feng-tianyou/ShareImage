@@ -36,8 +36,8 @@
 @property (nonatomic, copy) NSString *featured;
 // 根据昵称
 @property (nonatomic, copy) NSString *username;
-// 根据匹配
-@property (nonatomic, assign) NSInteger query;
+// 根据关键字
+@property (nonatomic, copy) NSString *query;
 //w	Image width in pixels.
 //h	Image height in pixels.
 // 根据方向

@@ -174,9 +174,21 @@
     localError.errCode = errorCode;
     switch (errorCode) {
         case -1011:{
-            [DCacheManager setCacheObjectByData:nil forKey:KVIEW_KEY_LOGOUT];
-            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_LOGOUT_KEY object:nil userInfo:@{KLOGOUT_TYPE:@(LogoutTypeForNoOAuth)}];
-            return;
+            if ([engineError.errorDescription isContainsString:@"401"]) {
+                [DCacheManager setCacheObjectByData:nil forKey:KVIEW_KEY_LOGOUT];
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_LOGOUT_KEY object:nil userInfo:@{KLOGOUT_TYPE:@(LogoutTypeForNoOAuth)}];
+                return;
+            }
+            
+            if ([engineError.errorDescription isContainsString:@"403"]) {
+                localError.alertText = @"没有权限访问";
+            }
+            
+            if ([engineError.errorDescription isContainsString:@"500"]) {
+                localError.alertText = @"服务器错误";
+            }
+            
+            
             }
             break;
         default:{

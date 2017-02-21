@@ -14,4 +14,6 @@
 + (NSString *)checkPhotoIDByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
 
++ (NSString *)checkSearchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
 @end

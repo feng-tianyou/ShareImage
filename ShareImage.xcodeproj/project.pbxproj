@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
+		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
+		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -219,6 +221,10 @@
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
 		0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAnimationContollerTool.m; sourceTree = "<group>"; };
+		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
+		07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotosModel.m; sourceTree = "<group>"; };
+		07DF55611E5C17F3004EC4A7 /* DSearchPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotoController.h; sourceTree = "<group>"; };
+		07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotoController.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -615,6 +621,8 @@
 			children = (
 				7EAFD4B81E56D7BE00BBA972 /* DPhotosModel.h */,
 				7EAFD4B91E56D7BE00BBA972 /* DPhotosModel.m */,
+				07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */,
+				07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1048,6 +1056,8 @@
 				7EAFD4BB1E56DFE600BBA972 /* View */,
 				7ED810021E55550100954DAF /* DHomeViewController.h */,
 				7ED810031E55550100954DAF /* DHomeViewController.m */,
+				07DF55611E5C17F3004EC4A7 /* DSearchPhotoController.h */,
+				07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -1881,6 +1891,7 @@
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,
 				7ED810DF1E55550100954DAF /* DBaseViewController.m in Sources */,
+				07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */,
 				7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */,
 				7ED8111F1E55550100954DAF /* LOTShapeLayerView.m in Sources */,
 				7ED810F81E55550100954DAF /* DErrorRespone.m in Sources */,
@@ -1892,6 +1903,7 @@
 				7ED811321E55550100954DAF /* LOTMask.m in Sources */,
 				7ED8110B1E55550100954DAF /* DScanQRCodeViewController.m in Sources */,
 				7ED80F481E554D8100954DAF /* main.m in Sources */,
+				07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */,
 				7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */,
 				7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */,
 				7ED8113D1E55550100954DAF /* OpenUDID.m in Sources */,

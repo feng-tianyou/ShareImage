@@ -139,4 +139,20 @@
  */
 - (void)unLikePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
+/**
+ 搜索图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchSearchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
+
+
+
+
+
+
+
+
+
 @end

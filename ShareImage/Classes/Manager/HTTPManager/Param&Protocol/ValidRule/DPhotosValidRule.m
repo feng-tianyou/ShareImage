@@ -18,4 +18,11 @@
     return @"";
 }
 
++ (NSString *)checkSearchPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    if (paramModel.query.length == 0) {
+        return @"请输入关键字";
+    }
+    return @"";
+}
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "DHomeViewController.h"
+#import "DSearchPhotoController.h"
+
 #import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
 
@@ -40,6 +42,7 @@
     
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeRightMenu;
+    self.navRighItemType = DNavigationItemTypeRightSearch;
     
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];
@@ -144,19 +147,16 @@
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-        //        NSLog(@"点击了左按钮");
-        //        [self localShowSuccess:@"点击了左按钮"];
         
-        // 随机获取单张照片
-        //        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        //        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-        //        [manager fetchRandomPhotoByParamModel:paramModel];
-//        [SVProgressHUD showWithStatus:@"hahahhahah"];
-        [self getPhotosData];
         
     } else {
-        NSLog(@"点击了右按钮");
-        [self localShowSuccess:@"点击了右按钮"];
+//        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];
+        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+        paramModel.query = @"London";
+//        paramModel.page = 1;
+//        paramModel.per_page = 20;
+        [manager fetchSearchPhotosByParamModel:paramModel];
     }
 }
 

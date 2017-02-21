@@ -31,8 +31,16 @@
              @"collections":ExistStringGet(self.orientation),
              @"w":@(self.width),
              @"h":@(self.height),
-             @"query":@(self.query),
+             @"query":ExistStringGet(self.query),
              @"count":@(self.count)};
+}
+
+- (NSDictionary *)getParamDicForGetSearchPhotos{
+    self.page = self.page > 0 ? self.page : 1;
+    self.per_page = self.per_page > 0 ? self.per_page : 20;
+    return @{@"page":@(self.page),
+             @"per_page":@(self.per_page),
+             @"query":ExistStringGet(self.query)};
 }
 
 @end
