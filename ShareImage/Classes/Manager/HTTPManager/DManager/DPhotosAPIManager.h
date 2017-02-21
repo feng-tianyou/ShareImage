@@ -142,6 +142,11 @@
 /**
  搜索图片
  
+ 参数模型：DPhotosParamModel
+ query：关键字（必须）
+ 
+ 回调：requestServiceSucceedWithModel:
+ 
  @param paramModel 参数模型
  */
 - (void)fetchSearchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel;
