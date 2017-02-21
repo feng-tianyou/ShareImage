@@ -144,13 +144,13 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
  *
  *  @param dateFormat 日期格式，例 @"yyyy-MM-dd HH:mm:ss"
  *
- *  @return 日期字符串
+ *  @return 日期字符串2017-02-19T17:48:42-05:00
  */
 - (NSString *)formatToDateString:(NSString *)dateFormat
 {
     NSString *strDate = self;
     if(strDate.length > 23){
-        strDate = [strDate substringToIndex:23];
+        strDate = [strDate substringToIndex:19];
     }
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];

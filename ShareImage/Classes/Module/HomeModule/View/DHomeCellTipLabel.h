@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface DHomeCellTipLabel : UIView
-@property (nonatomic, copy) NSString *numberStr;
-@property (nonatomic, copy) NSString *describeStr;
 
+@property (nonatomic, copy) NSString *iconName;
+@property (nonatomic, copy) NSString *describe;
+
+@property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UILabel *describeLabel;
 
 @end

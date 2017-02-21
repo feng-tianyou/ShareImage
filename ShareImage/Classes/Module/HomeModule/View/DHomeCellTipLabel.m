@@ -10,8 +10,7 @@
 
 @interface DHomeCellTipLabel ()
 
-@property (nonatomic, strong) UILabel *numberLabel;
-@property (nonatomic, strong) UILabel *describeLabel;
+
 
 @end
 
@@ -20,6 +19,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         [self setupSubViews];
     }
     return self;
@@ -27,32 +27,29 @@
 
 
 - (void)setupSubViews{
-    [self addSubview:self.numberLabel];
+    [self addSubview:self.iconView];
     [self addSubview:self.describeLabel];
     
-    self.numberLabel.sd_layout
-    .topEqualToView(self)
+    self.iconView.sd_layout
+    .centerYEqualToView(self)
     .leftEqualToView(self)
-    .rightEqualToView(self)
-    .heightIs(20);
+    .widthIs(10)
+    .heightIs(10);
     
     self.describeLabel.sd_layout
-    .topSpaceToView(self.numberLabel, 5)
-    .leftEqualToView(self)
+    .topEqualToView(self)
+    .leftSpaceToView(self.iconView,3)
     .rightEqualToView(self)
     .bottomEqualToView(self);
 }
 
 
 #pragma mark - getter & setter
-- (UILabel *)numberLabel{
-    if (!_numberLabel) {
-        _numberLabel = [[UILabel alloc] init];
-        _numberLabel.textColor = [UIColor blackColor];
-        _numberLabel.font = DSystemFontTitleBold;
-        _numberLabel.backgroundColor = [UIColor clearColor];
+- (UIImageView *)iconView{
+    if (!_iconView) {
+        _iconView = [[UIImageView alloc] init];
     }
-    return _numberLabel;
+    return _iconView;
 }
 
 
@@ -60,20 +57,21 @@
     if (!_describeLabel) {
         _describeLabel = [[UILabel alloc] init];
         _describeLabel.textColor = DSystemColorGray;
-        _describeLabel.font = DSystemFontContent;
+        _describeLabel.font = DSystemFontDate;
         _describeLabel.backgroundColor = [UIColor clearColor];
+        _describeLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _describeLabel;
 }
 
-- (void)setNumberStr:(NSString *)numberStr{
-    _numberStr = [numberStr copy];
-    self.numberLabel.text = numberStr;
+- (void)setIconName:(NSString *)iconName{
+    _iconName = [iconName copy];
+    self.iconView.image = [UIImage getImageWithName:iconName];
 }
 
-- (void)setDescribeStr:(NSString *)describeStr{
-    _describeStr = [describeStr copy];
-    self.describeLabel.text = describeStr;
+- (void)setDescribe:(NSString *)describe{
+    _describe = [describe copy];
+    self.describeLabel.text = describe;
 }
 
 @end

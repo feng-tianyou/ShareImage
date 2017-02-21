@@ -8,6 +8,7 @@
 
 #import "DHomeTableViewCell.h"
 #import "DPhotosModel.h"
+#import "DHomeCellTipLabel.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -19,7 +20,9 @@ static NSString *const cellID = @"homeCell";
 @property (nonatomic, strong) UIView *iconBgView;
 @property (nonatomic, strong) UIButton *iconView;
 @property (nonatomic, strong) UILabel *nameLabel;
-
+@property (nonatomic, strong) DHomeCellTipLabel *addressLabel;
+@property (nonatomic, strong) DHomeCellTipLabel *timeLabel;
+@property (nonatomic, strong) DHomeCellTipLabel *likeLabel;
 @end
 
 @implementation DHomeTableViewCell
@@ -50,6 +53,9 @@ static NSString *const cellID = @"homeCell";
     [self.contentView addSubview:self.iconBgView];
     [self.iconBgView addSubview:self.iconView];
     [self.contentView addSubview:self.nameLabel];
+    [self.photoView addSubview:self.likeLabel];
+    [self.contentView addSubview:self.addressLabel];
+    [self.contentView addSubview:self.timeLabel];
     
     // layout
     self.photoView.sd_layout
@@ -75,6 +81,24 @@ static NSString *const cellID = @"homeCell";
     .leftSpaceToView(self.iconBgView, 10)
     .rightSpaceToView(self.contentView, 10)
     .heightIs(20);
+    
+    self.likeLabel.sd_layout
+    .topSpaceToView(self.photoView, 10)
+    .rightSpaceToView(self.photoView, 1)
+    .widthIs(40)
+    .heightIs(20);
+    
+    self.addressLabel.sd_layout
+    .topSpaceToView(self.nameLabel, 0)
+    .leftEqualToView(self.nameLabel)
+    .rightSpaceToView(self.contentView,10)
+    .heightIs(20);
+    
+//    self.timeLabel.sd_layout
+//    .topSpaceToView(self.addressLabel, 0)
+//    .leftEqualToView(self.nameLabel)
+//    .rightSpaceToView(self.contentView,10)
+//    .heightIs(20);
 }
 
 - (void)clickIcon{
@@ -115,10 +139,36 @@ static NSString *const cellID = @"homeCell";
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textColor = [UIColor blackColor];
-        _nameLabel.font = DSystemFontText;
+        _nameLabel.font = DSystemFontTitle;
     }
     return _nameLabel;
 }
+
+- (DHomeCellTipLabel *)likeLabel{
+    if (!_likeLabel) {
+        _likeLabel = [[DHomeCellTipLabel alloc] init];
+        _likeLabel.iconName = @"common_btn_like_hight";
+        _likeLabel.describeLabel.textColor = [UIColor whiteColor];
+        
+    }
+    return _likeLabel;
+}
+
+- (DHomeCellTipLabel *)addressLabel{
+    if (!_addressLabel) {
+        _addressLabel = [[DHomeCellTipLabel alloc] init];
+        _addressLabel.iconName = @"common_btn_address_normal";
+    }
+    return _addressLabel;
+}
+
+//- (DHomeCellTipLabel *)timeLabel{
+//    if (!_timeLabel) {
+//        _timeLabel = [[DHomeCellTipLabel alloc] init];
+//        _timeLabel.iconName = @"common_btn_time";
+//    }
+//    return _timeLabel;
+//}
 
 - (void)setPhotosModel:(DPhotosModel *)photosModel{
     _photosModel = photosModel;
@@ -127,8 +177,27 @@ static NSString *const cellID = @"homeCell";
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.medium] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
     self.nameLabel.text = photosModel.user.name;
     
-    // 设置最低端的距离
-    [self setupAutoHeightWithBottomView:_iconBgView bottomMargin:10];
+    if (photosModel.likes > 0) {
+        self.likeLabel.hidden = NO;
+        self.likeLabel.describe = [NSString stringWithFormat:@"%@", @(photosModel.likes)];
+    } else {
+        self.likeLabel.hidden = YES;
+    }
+    
+    if (photosModel.user.location.length > 0) {
+        self.addressLabel.hidden = NO;
+        self.addressLabel.describe = photosModel.user.location;
+        // 设置最低端的距离
+        [self setupAutoHeightWithBottomView:self.addressLabel bottomMargin:10];
+    } else {
+        self.addressLabel.hidden = YES;
+        // 设置最低端的距离
+        [self setupAutoHeightWithBottomView:self.iconBgView bottomMargin:10];
+    }
+    
+    
+    
+    
 }
 
 @end
