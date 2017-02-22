@@ -167,7 +167,8 @@
         paramModel.page = 1;
         paramModel.per_page = 2;
 //        [manager fetchCollectionsByParamModel:paramModel];
-        [manager fetchFeaturedCollectionsByParamModel:paramModel];
+//        [manager fetchFeaturedCollectionsByParamModel:paramModel];
+        [manager fetchCuratedCollectionsByParamModel:paramModel];
         
     }
 }
