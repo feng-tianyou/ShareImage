@@ -242,7 +242,23 @@
 }
 
 
-
+/**
+ 删除分类的图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)deletePhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                onSucceeded:(NSDictionaryBlock)succeededBlock
+                                    onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForPostPhotoToCollection];
+    [self opDeleteWithUrlPath:[NSString stringWithFormat:@"/collections/%@/remove", @(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
 
 
 

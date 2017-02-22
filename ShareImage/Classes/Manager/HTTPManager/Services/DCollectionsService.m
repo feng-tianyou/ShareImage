@@ -298,6 +298,27 @@
     } onError:errorBlock];
 }
 
+/**
+ 删除分类的图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)removePhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                onSucceeded:(JsonModelBlock)succeededBlock
+                                    onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkAddPhotoToCollectionByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network deletePhotoToCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotoCollectionModel *model = [DPhotoCollectionModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
 
 
 

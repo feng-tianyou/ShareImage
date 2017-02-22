@@ -185,7 +185,8 @@
 //        [manager updateCollectionByParamModel:paramModel];
 //        [manager removeCollectionByParamModel:paramModel];
         paramModel.photo_id = @"gBCSuoZ3spE";
-        [manager addPhotoToCollectionByParamModel:paramModel];
+//        [manager addPhotoToCollectionByParamModel:paramModel];
+        [manager removePhotoToCollectionByParamModel:paramModel];
     }
 }
 

@@ -262,7 +262,22 @@
 }
 
 
-
+/**
+ 删除分类的图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)removePhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self);
+    [self.service removePhotoToCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 

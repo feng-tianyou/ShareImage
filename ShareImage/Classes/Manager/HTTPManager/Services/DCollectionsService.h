@@ -158,4 +158,17 @@
                               onSucceeded:(JsonModelBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock;
 
+
+/**
+ 删除分类的图片
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)removePhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                onSucceeded:(JsonModelBlock)succeededBlock
+                                    onError:(ErrorBlock)errorBlock;
+
+
 @end

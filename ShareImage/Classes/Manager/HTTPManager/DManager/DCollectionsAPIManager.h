@@ -176,7 +176,17 @@
 - (void)addPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
 
-
+/**
+ 删除分类的图片
+ 
+ collection_id:分类id (Required)
+ photo_id:图片（Required）
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotoCollectionModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)removePhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
 
 
