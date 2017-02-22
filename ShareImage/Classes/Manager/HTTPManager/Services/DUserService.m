@@ -28,12 +28,18 @@
     _userNetwork.userInfoForCancelTask = _dicUserInfo;
     return _userNetwork;
 }
-
+/**
+ 授权
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 - (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
                      onSucceeded:(JsonModelBlock)succeededBlock
                          onError:(ErrorBlock)errorBlock{
     
-    [self.network oauthAccountByParamModel:paramModel onSucceeded:^(id responseObject) {
+    [self.network postOauthAccountByParamModel:paramModel onSucceeded:^(id responseObject) {
         DLog(@"%@",responseObject);
         DOAuthAccountModel *model = [DOAuthAccountModel modelWithJSON:responseObject];
         
@@ -54,14 +60,12 @@
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
  */
--(void)getAccountByOnSucceeded:(JsonModelBlock)succeededBlock
+-(void)fetchAccountByOnSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock{
     [self.network getAccountNeedCache:YES onSucceeded:^(NSDictionary *dic) {
-        if (RESPONSESUCCESS) {
-            NSDictionary *dicData = [dic objectForKey:kParamData];
-            DUserModel *userModel = [[DUserModel alloc] initWithDictionary:dicData];
-            [DBlockTool executeModelBlock:succeededBlock model:userModel];
-        }
+        DLog(@"%@", dic);
+        DUserModel *userModel = [DUserModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:userModel];
     } onError:errorBlock];
 }
 
@@ -71,13 +75,11 @@
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
  */
--(void)getAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock{
+-(void)fetchAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock{
     [self.network getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
-        if (RESPONSESUCCESS) {
-            NSDictionary *dicData = [dic objectForKey:kParamData];
-            DUserModel *userModel = [[DUserModel alloc] initWithDictionary:dicData];
-            [DBlockTool executeModelBlock:succeededBlock model:userModel];
-        }
+        DLog(@"%@", dic);
+        DUserModel *userModel = [DUserModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:userModel];
     } onError:errorBlock];
 }
 

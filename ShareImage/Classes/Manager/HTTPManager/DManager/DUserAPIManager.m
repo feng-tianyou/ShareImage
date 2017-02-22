@@ -10,28 +10,32 @@
 #import "DUserService.h"
 
 @implementation DUserAPIManager
-
-- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel{
+/**
+ 授权
+ 
+ @param paramModel 参数模型
+ */
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel{
     [self addLoadingView];
-    
+    @weakify(self)
     [self.service oauthAccountByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
 
-
 /**
  *  获取用户信息
  
- *  callbackMethor <- requestServiceSucceedWithModel -> 回调方法
- *  callbackModel  <- TGUserModel -> 回调Model
+ 回调：requestServiceSucceedWithModel:(DUserModel)
+ *
  */
--(void)getAccount{
-    [self addLoadingView];
+-(void)fetchAccountProfile{
     @weakify(self)
-    [self.service getAccountByOnSucceeded:^(DJsonModel *model) {
+    [self.service fetchAccountByOnSucceeded:^(__kindof DJsonModel *model) {
         @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
@@ -43,13 +47,13 @@
 /**
  *  获取用户信息(不使用缓存)
  
- *  callbackMethor <- requestServiceSucceedWithModel -> 回调方法
- *  callbackModel  <- TGUserModel -> 回调Model
+ 回调：requestServiceSucceedWithModel:(DUserModel)
+ *
  */
--(void)getAccountWithNotCache{
+-(void)fetchAccountProfileWithNotCache{
     [self addLoadingView];
     @weakify(self)
-    [self.service getAccountWithNotCacheByOnSucceeded:^(DJsonModel *model) {
+    [self.service fetchAccountWithNotCacheByOnSucceeded:^(__kindof DJsonModel *model) {
         @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {

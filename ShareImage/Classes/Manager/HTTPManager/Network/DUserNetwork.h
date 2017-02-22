@@ -15,7 +15,14 @@
 + (DUserNetwork *)shareEngine;
 
 
-- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+/**
+ 授权
+
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)postOauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
                      onSucceeded:(NSDictionaryBlock)succeededBlock
                          onError:(ErrorBlock)errorBlock;
 
@@ -29,5 +36,7 @@
 - (void)getAccountNeedCache:(BOOL)isNeedCache
                onSucceeded:(NSDictionaryBlock)succeededBlock
                    onError:(ErrorBlock)errorBlock;
+
+
 
 @end

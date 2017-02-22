@@ -12,6 +12,7 @@
 #import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
 #import "DCollectionsAPIManager.h"
+#import "DUserAPIManager.h"
 
 #import "DPhotosParamModel.h"
 #import "DCollectionsParamModel.h"
@@ -149,13 +150,18 @@
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
-        paramModel.collection_id = 137;
-//        [manager fetchCuratedCollectionByParamModel:paramModel];
-        paramModel.page = 1;
-        paramModel.per_page = 5;
-        [manager fetchCuratedCollectionPhotosByParamModel:paramModel];
+//        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+//        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
+//        paramModel.collection_id = 137;
+////        [manager fetchCuratedCollectionByParamModel:paramModel];
+//        paramModel.page = 1;
+//        paramModel.per_page = 5;
+//        [manager fetchCuratedCollectionPhotosByParamModel:paramModel];
+        
+        
+        DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        [manager fetchAccountProfileWithNotCache];
+        
         
     } else {
 //        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];

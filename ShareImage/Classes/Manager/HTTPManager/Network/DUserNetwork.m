@@ -22,7 +22,14 @@
     return _engine;
 }
 
-- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
+/**
+ 授权
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)postOauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
                      onSucceeded:(NSDictionaryBlock)succeededBlock
                          onError:(ErrorBlock)errorBlock{
     NSDictionary *dicParam = [paramModel getParamDicForOAuthAccount];
@@ -58,13 +65,11 @@
         }
     }
     
-    [self opGetWithUrlPath:kPathAccount params:nil needUUID:NO needToken:YES onSucceeded:^(NSDictionary *dic) {
-        if(HTTPSTATECODESUCCESS){
-            [KGLOBALINFOMANAGER clearAccountInfo];
-            NSData *dataUser = [NSJSONSerialization dataWithJSONObject:dic options:kNilOptions error:nil];
-            [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
-        }
-        ExistActionDo(succeededBlock, succeededBlock(dic));
+    [self opGetWithUrlPath:@"me" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        [KGLOBALINFOMANAGER clearAccountInfo];
+        NSData *dataUser = [NSJSONSerialization dataWithJSONObject:responseObject options:kNilOptions error:nil];
+        [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];

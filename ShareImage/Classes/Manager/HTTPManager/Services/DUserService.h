@@ -10,7 +10,13 @@
 #import "DOAuthParamProtocol.h"
 
 @interface DUserService : DBaseService
-
+/**
+ 授权
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
 - (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel
                      onSucceeded:(JsonModelBlock)succeededBlock
                          onError:(ErrorBlock)errorBlock;
@@ -21,7 +27,7 @@
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
  */
--(void)getAccountByOnSucceeded:(JsonModelBlock)succeededBlock
+-(void)fetchAccountByOnSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock;
 
 /**
@@ -30,6 +36,6 @@
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
  */
--(void)getAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock;
+-(void)fetchAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock;
 
 @end

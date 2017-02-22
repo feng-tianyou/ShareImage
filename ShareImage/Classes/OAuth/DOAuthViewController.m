@@ -121,7 +121,7 @@
     paramModel.grant_type = @"authorization_code";
     paramModel.code = code;
     
-    [manager oauthAccountByModel:paramModel];
+    [manager oauthAccountByParamModel:paramModel];
     
 }
 

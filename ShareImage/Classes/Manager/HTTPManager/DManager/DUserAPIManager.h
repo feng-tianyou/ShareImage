@@ -12,23 +12,37 @@
 
 @interface DUserAPIManager : DBaseManager
 
-- (void)oauthAccountByModel:(id<DOAuthParamProtocol>)paramModel;
-
+/**
+ 授权
+ 
+ 参数模型：DOAuthParamModel
+ client_id：AppKey(Required)
+ client_secret：秘钥;(Required)
+ redirect_uri：回调地址;(Required)
+ grant_type：授权类型 @"authorization_code";(Required)
+ code：固定 code; (Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DOAuthAccountModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel;
 
 /**
  *  获取用户信息
  
- *  callbackMethor <- requestServiceSucceedWithModel -> 回调方法
- *  callbackModel  <- TGUserModel -> 回调Model
+  回调：requestServiceSucceedWithModel:(DUserModel)
+ *
  */
--(void)getAccount;
+-(void)fetchAccountProfile;
 
 /**
  *  获取用户信息(不使用缓存)
  
- *  callbackMethor <- requestServiceSucceedWithModel -> 回调方法
- *  callbackModel  <- TGUserModel -> 回调Model
+  回调：requestServiceSucceedWithModel:(DUserModel)
+ *
  */
--(void)getAccountWithNotCache;
+-(void)fetchAccountProfileWithNotCache;
+
 
 @end
