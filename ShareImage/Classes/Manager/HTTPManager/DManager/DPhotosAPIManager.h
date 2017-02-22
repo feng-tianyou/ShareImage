@@ -144,8 +144,8 @@
  
  参数模型：DPhotosParamModel
  query：关键字（必须）
- page: 页数
- per_page: 每页多少条
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
  
  回调：requestServiceSucceedWithModel:(DSearchPhotosModel)
  
@@ -159,8 +159,8 @@
  
  参数模型：DPhotosParamModel
  query：关键字（必须）
- page: 页数
- per_page: 每页多少条
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
  
  回调：requestServiceSucceedWithModel:(DSearchCollectionsModel)
  
@@ -174,8 +174,8 @@
  
  参数模型：DPhotosParamModel
  query：关键字（必须）
- page: 页数
- per_page: 每页多少条
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
  
  回调：requestServiceSucceedWithModel:(DSearchUsersModel)
  
