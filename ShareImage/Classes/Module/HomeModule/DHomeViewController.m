@@ -179,8 +179,10 @@
 //        [manager fetchCollectionByParamModel:paramModel];
 //        [manager fetchCollectionPhotosByParamModel:paramModel];
 //        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
-        paramModel.title = @"yunNan";
-        [manager createCollectionByParamModel:paramModel];
+        paramModel.title = @"yunNan1";
+        paramModel.collection_id = 572546;
+//        [manager createCollectionByParamModel:paramModel];
+        [manager updateCollectionByParamModel:paramModel];
     }
 }
 

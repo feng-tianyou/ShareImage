@@ -31,7 +31,7 @@
  获取单张图片详情
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  w：图片宽度
  h：图片高度
  rect:裁剪矩形
@@ -67,7 +67,7 @@
  获取图片的统计信息
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  
  回调：requestServiceSucceedWithModel:(DPhotosModel)
  
@@ -80,7 +80,7 @@
  获取图片的下载地址
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  
  回调：requestServiceSucceedBackString:(NSString)
  
@@ -119,7 +119,7 @@
  喜欢图片
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  
  回调：requestServiceSucceedWithModel:(DPhotosModel)
  
@@ -131,7 +131,7 @@
  取消喜欢图片
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  
  回调：requestServiceSucceedWithModel:(DPhotosModel)
  
@@ -143,7 +143,7 @@
  搜索图片
  
  参数模型：DPhotosParamModel
- query：关键字（必须）
+ query：关键字 (Required)
  page: 页数（Optional; default: 1）
  per_page: 每页多少条（Optional; default: 10）
  
@@ -158,7 +158,7 @@
  搜索分类
  
  参数模型：DPhotosParamModel
- query：关键字（必须）
+ query：关键字 (Required)
  page: 页数（Optional; default: 1）
  per_page: 每页多少条（Optional; default: 10）
  
@@ -173,7 +173,7 @@
  搜索用户
  
  参数模型：DPhotosParamModel
- query：关键字（必须）
+ query：关键字 (Required)
  page: 页数（Optional; default: 1）
  per_page: 每页多少条（Optional; default: 10）
  

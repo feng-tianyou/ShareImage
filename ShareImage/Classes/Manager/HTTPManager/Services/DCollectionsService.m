@@ -230,4 +230,36 @@
 }
 
 
+/**
+ 更新分类的信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)updateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                         onSucceeded:(JsonModelBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCollectionIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network putCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
+
+
+
+
+
+
+
+
+
+
 @end

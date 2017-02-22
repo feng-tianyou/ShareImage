@@ -187,6 +187,19 @@
     }];
 }
 
+/**
+ 更新分类的信息
+ 
+ @param paramModel 参数模型
+ */
+- (void)updateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service updateCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 @end
