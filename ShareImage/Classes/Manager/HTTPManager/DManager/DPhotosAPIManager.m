@@ -24,9 +24,9 @@
     if (paramModel.page == 1) {
         [self addLoadingView];
     }
-    
+    @weakify(self);
     [self.service fetchPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
         if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]){
             return;
@@ -35,6 +35,7 @@
         [self requestServiceSucceedBackArray:arr];
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -46,9 +47,12 @@
  */
 - (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchPhotoDetailsByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -60,9 +64,12 @@
  */
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchRandomPhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -74,9 +81,12 @@
  */
 - (void)fetchPhotoStatsByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchPhotoStatsByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -93,9 +103,12 @@
  */
 - (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
+        @strongify(self)
         [self requestServiceSucceedBackString:str];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -108,9 +121,12 @@
  */
 - (void)updatePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service updatePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -122,9 +138,12 @@
  */
 - (void)likePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service likePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -136,9 +155,12 @@
  */
 - (void)unLikePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service unLikePhotoByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -151,8 +173,9 @@
  */
 - (void)fetchSearchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchSearchPhotosByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
-        
+        @strongify(self)
         DSearchPhotosModel *photoModel = model;
         
         //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
@@ -169,6 +192,7 @@
         [self requestServiceSucceedWithModel:model];
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -181,7 +205,9 @@
  */
 - (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchSearchCollectionsPhotosByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         DSearchCollectionsModel *photoModel = model;
         
         //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
@@ -197,6 +223,7 @@
         
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -209,7 +236,9 @@
  */
 - (void)fetchSearchUsersByParamModel:(id<DPhotosParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchSearchUsersByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         DSearchUsersModel *photoModel = model;
         
         //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
@@ -225,6 +254,7 @@
         
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }

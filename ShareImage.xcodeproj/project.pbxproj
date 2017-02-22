@@ -12,6 +12,7 @@
 		070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */; };
 		070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */; };
 		070A8B351E5D378700CE41E2 /* DCollectionsVaildRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */; };
+		070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
@@ -236,6 +237,8 @@
 		070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsParamModel.m; sourceTree = "<group>"; };
 		070A8B331E5D378700CE41E2 /* DCollectionsVaildRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsVaildRule.h; sourceTree = "<group>"; };
 		070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsVaildRule.m; sourceTree = "<group>"; };
+		070A8B361E5D7D4300CE41E2 /* DPhotoCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotoCollectionModel.h; sourceTree = "<group>"; };
+		070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotoCollectionModel.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -654,6 +657,8 @@
 				07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */,
 				07DF556A1E5C3FC4004EC4A7 /* DSearchUsersModel.h */,
 				07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */,
+				070A8B361E5D7D4300CE41E2 /* DPhotoCollectionModel.h */,
+				070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1911,6 +1916,7 @@
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
 				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
+				070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */,
 				7ED810E31E55550100954DAF /* DTabBar.m in Sources */,
 				7ED810E21E55550100954DAF /* UIViewController+DNetwork.m in Sources */,
 				7ED810EE1E55550100954DAF /* DFileManager.m in Sources */,

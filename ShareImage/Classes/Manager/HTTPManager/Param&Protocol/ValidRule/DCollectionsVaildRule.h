@@ -15,4 +15,6 @@
 
 + (NSString *)checkCreateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
++ (NSString *)checkAddPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
 @end

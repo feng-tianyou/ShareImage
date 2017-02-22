@@ -17,8 +17,9 @@
  */
 - (void)fetchCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -28,6 +29,7 @@
         
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -40,8 +42,9 @@
  */
 - (void)fetchFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchFeaturedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -51,6 +54,7 @@
         
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -62,8 +66,9 @@
  */
 - (void)fetchCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCuratedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -73,6 +78,7 @@
         
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -84,9 +90,12 @@
  */
 - (void)fetchCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -99,9 +108,12 @@
  */
 - (void)fetchCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCuratedCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -114,8 +126,9 @@
  */
 - (void)fetchCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -124,6 +137,7 @@
         [self requestServiceSucceedBackArray:arr];
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -136,8 +150,9 @@
  */
 - (void)fetchCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -146,6 +161,7 @@
         [self requestServiceSucceedBackArray:arr];
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -158,8 +174,9 @@
  */
 - (void)fetchCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service fetchCollectionRelatedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
-        
+        @strongify(self)
         // 分页处理
         if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
             return ;
@@ -168,6 +185,7 @@
         [self requestServiceSucceedBackArray:arr];
         
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -180,9 +198,12 @@
  */
 - (void)createCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service createCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -194,9 +215,12 @@
  */
 - (void)updateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service updateCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
         [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
@@ -209,15 +233,33 @@
  */
 - (void)removeCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
     [self addLoadingView];
+    @weakify(self);
     [self.service removeCollectionByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
+        @strongify(self)
         [self requestServiceSucceedBackBool:isTrue];
     } onError:^(DError *error) {
+        @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
 
 
-
+/**
+ 添加图片到分类
+ 
+ @param paramModel 参数模型
+ */
+- (void)addPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self);
+    [self.service addPhotoToCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 

@@ -180,10 +180,12 @@
 //        [manager fetchCollectionPhotosByParamModel:paramModel];
 //        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
 //        paramModel.title = @"yunNan1";
-        paramModel.collection_id = 572620;
+        paramModel.collection_id = 572643;
 //        [manager createCollectionByParamModel:paramModel];
 //        [manager updateCollectionByParamModel:paramModel];
-        [manager removeCollectionByParamModel:paramModel];
+//        [manager removeCollectionByParamModel:paramModel];
+        paramModel.photo_id = @"gBCSuoZ3spE";
+        [manager addPhotoToCollectionByParamModel:paramModel];
     }
 }
 

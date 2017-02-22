@@ -25,4 +25,9 @@
              @"private":@(self.isPrivate)};
 }
 
+- (NSDictionary *)getParamDicForPostPhotoToCollection{
+    return @{@"collection_id":@(self.collection_id),
+             @"photo_id":ExistStringGet(self.photo_id)};
+}
+
 @end

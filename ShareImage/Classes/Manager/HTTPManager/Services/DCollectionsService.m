@@ -11,6 +11,7 @@
 
 #import "DCollectionsModel.h"
 #import "DPhotosModel.h"
+#import "DPhotoCollectionModel.h"
 
 #import "DCollectionsVaildRule.h"
 
@@ -275,7 +276,27 @@
 }
 
 
-
+/**
+ 添加图片到分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)addPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                             onSucceeded:(JsonModelBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkAddPhotoToCollectionByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network postPhotoToCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DPhotoCollectionModel *model = [DPhotoCollectionModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
 
 
 

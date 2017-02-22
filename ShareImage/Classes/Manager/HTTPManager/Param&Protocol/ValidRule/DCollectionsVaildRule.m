@@ -22,4 +22,13 @@
     }
     return @"";
 }
+
++ (NSString *)checkAddPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    if (paramModel.collection_id == 0) {
+        return @"分类的ID必须有";
+    } else if (paramModel.photo_id.length == 0) {
+        return @"图片的ID必须有";
+    }
+    return @"";
+}
 @end

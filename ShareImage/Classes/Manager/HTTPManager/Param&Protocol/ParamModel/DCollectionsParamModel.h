@@ -12,6 +12,10 @@
 @interface DCollectionsParamModel : NSObject<DCollectionParamProtocol>
 /// 分类id
 @property (nonatomic, assign) long long collection_id;
+/// 图片id
+@property (nonatomic, copy) NSString *photo_id;
+
+
 
 /// 页数，默认1
 @property (nonatomic, assign) NSInteger page;

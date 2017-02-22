@@ -147,6 +147,15 @@
                              onError:(ErrorBlock)errorBlock;
 
 
-
+/**
+ 添加图片到分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)addPhotoToCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                              onSucceeded:(JsonModelBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock;
 
 @end
