@@ -207,5 +207,27 @@
     } onError:errorBlock];
 }
 
+/**
+ 创建分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)createCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                         onSucceeded:(JsonModelBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCreateCollectionByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network postCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
 
 @end

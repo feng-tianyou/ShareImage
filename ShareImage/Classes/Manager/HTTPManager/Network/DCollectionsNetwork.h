@@ -112,7 +112,16 @@
 
 
 
-
+/**
+ 创建分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)postCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                        onSucceeded:(NSDictionaryBlock)succeededBlock
+                                            onError:(ErrorBlock)errorBlock;
 
 
 

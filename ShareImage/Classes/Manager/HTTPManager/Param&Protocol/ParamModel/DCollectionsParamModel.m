@@ -18,4 +18,11 @@
              @"per_page":@(self.per_page)};
 }
 
+
+- (NSDictionary *)getParamDicForPostCollection{
+    return @{@"title":ExistStringGet(self.title),
+             @"description":ExistStringGet(self.description_c),
+             @"private":@(self.isPrivate)};
+}
+
 @end

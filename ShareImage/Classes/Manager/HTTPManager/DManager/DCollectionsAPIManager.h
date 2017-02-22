@@ -118,4 +118,45 @@
  */
 - (void)fetchCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
+
+
+/**
+ 创建分类
+ 
+ title:标题（必须）
+ description_c：描述（Optional）
+ isPrivate：是否公开（Optional）
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
+ @param paramModel 参数模型;
+ */
+- (void)createCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

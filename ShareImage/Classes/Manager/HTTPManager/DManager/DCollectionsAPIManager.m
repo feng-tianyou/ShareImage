@@ -172,4 +172,21 @@
     }];
 }
 
+
+/**
+ 创建分类
+ 
+ @param paramModel 参数模型;
+ */
+- (void)createCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service createCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+
 @end

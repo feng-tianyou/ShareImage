@@ -13,4 +13,6 @@
 
 + (NSString *)checkCollectionIDByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
++ (NSString *)checkCreateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
 @end

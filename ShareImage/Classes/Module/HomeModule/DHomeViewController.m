@@ -175,10 +175,12 @@
 //        [manager fetchCollectionsByParamModel:paramModel];
 //        [manager fetchFeaturedCollectionsByParamModel:paramModel];
 //        [manager fetchCuratedCollectionsByParamModel:paramModel];
-        paramModel.collection_id = 572323;
+//        paramModel.collection_id = 572323;
 //        [manager fetchCollectionByParamModel:paramModel];
 //        [manager fetchCollectionPhotosByParamModel:paramModel];
-        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
+//        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
+        paramModel.title = @"yunNan";
+        [manager createCollectionByParamModel:paramModel];
     }
 }
 

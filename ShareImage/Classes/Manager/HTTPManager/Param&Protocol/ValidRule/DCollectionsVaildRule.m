@@ -15,4 +15,11 @@
     }
     return @"";
 }
+
++ (NSString *)checkCreateCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    if (paramModel.title.length == 0) {
+        return @"分类的标题必须有";
+    }
+    return @"";
+}
 @end
