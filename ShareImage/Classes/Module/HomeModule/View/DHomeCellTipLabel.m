@@ -33,7 +33,7 @@
     self.iconView.sd_layout
     .centerYEqualToView(self)
     .leftEqualToView(self)
-    .widthIs(10)
+    .widthIs(12)
     .heightIs(10);
     
     self.describeLabel.sd_layout

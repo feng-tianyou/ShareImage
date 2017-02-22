@@ -11,7 +11,7 @@
 #define D_NAVIGATION_BAR_LEFT_BACK_BG_IMAGE_NAME        @"navigationbar_btn_left"
 
 #define D_NAVIGATION_BAR_RIGHT_MENU_BG_IMAGE_NAME        @"navigationbar_btn_right_menu"
-#define D_NAVIGATION_BAR_RIGHT_SHEARCH_BG_IMAGE_NAME        @"navigationbar_btn_right_search"
+#define D_NAVIGATION_BAR_RIGHT_SHEARCH_BG_IMAGE_NAME        @"navigationbar_btn_left_search"
 
 
 #define D_NAVIGATION_BAR_TEXT_LEFT_BACK           @"返回"
