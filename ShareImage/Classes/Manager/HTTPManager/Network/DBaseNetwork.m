@@ -381,12 +381,11 @@
     
 //    [self saveCookies];
     if(responseObject){
-        //返回字符串结果
+        //返回结果
         ExistActionDo(succeededBlock, succeededBlock(responseObject));
-    }
-    else{
-        DError *customError=[[DError alloc] initWithCode:10005 description:nil];
-        ExistActionDo(errorBlock, errorBlock(customError));
+    } else {
+        //返回结果
+        ExistActionDo(succeededBlock, succeededBlock(@{@"success":@(YES)}));
     }
 }
 

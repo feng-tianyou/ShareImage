@@ -135,7 +135,16 @@
                        onSucceeded:(NSDictionaryBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock;
 
-
+/**
+ 删除分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)deleteCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                      onSucceeded:(NSDictionaryBlock)succeededBlock
+                          onError:(ErrorBlock)errorBlock;
 
 
 @end

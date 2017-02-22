@@ -205,7 +205,22 @@
     }];
 }
 
-
+/**
+ 删除分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)deleteCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                         onSucceeded:(NSDictionaryBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    [self opDeleteWithUrlPath:[NSString stringWithFormat:@"/collections/%@", @(paramModel.collection_id)] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
 
 
 

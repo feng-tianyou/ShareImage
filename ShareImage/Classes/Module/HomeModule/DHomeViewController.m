@@ -179,10 +179,11 @@
 //        [manager fetchCollectionByParamModel:paramModel];
 //        [manager fetchCollectionPhotosByParamModel:paramModel];
 //        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
-        paramModel.title = @"yunNan1";
-        paramModel.collection_id = 572546;
+//        paramModel.title = @"yunNan1";
+        paramModel.collection_id = 572620;
 //        [manager createCollectionByParamModel:paramModel];
-        [manager updateCollectionByParamModel:paramModel];
+//        [manager updateCollectionByParamModel:paramModel];
+        [manager removeCollectionByParamModel:paramModel];
     }
 }
 

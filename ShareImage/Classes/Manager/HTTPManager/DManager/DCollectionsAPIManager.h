@@ -151,7 +151,16 @@
 
 
 
-
+/**
+ 删除分类
+ 
+ collection_id:分类id (Required)
+ 
+ 回调：requestServiceSucceedBackBool:(BOOL)
+ 
+ @param paramModel 参数模型
+ */
+- (void)removeCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
 
 

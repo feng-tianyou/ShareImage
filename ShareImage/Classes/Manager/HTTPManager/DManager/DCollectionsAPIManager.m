@@ -202,4 +202,31 @@
 }
 
 
+/**
+ 删除分类
+ 
+ @param paramModel 参数模型
+ */
+- (void)removeCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service removeCollectionByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
+        [self requestServiceSucceedBackBool:isTrue];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
