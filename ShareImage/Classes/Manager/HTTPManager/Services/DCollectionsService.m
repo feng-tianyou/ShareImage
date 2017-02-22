@@ -10,6 +10,7 @@
 #import "DCollectionsNetwork.h"
 
 #import "DCollectionsModel.h"
+#import "DPhotosModel.h"
 
 #import "DCollectionsVaildRule.h"
 
@@ -127,7 +128,58 @@
 }
 
 
+/**
+ 获取分类的图片集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
+                              onSucceeded:(NSArrayBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCollectionIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        DLog(@"%@", arr);
+        NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
+        [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            DPhotosModel *model = [DPhotosModel modelWithJSON:dic];
+            [tmpArr addObject:model];
+        }];
+        [DBlockTool executeArrBlock:succeededBlock arrResult:[tmpArr copy]];
+    } onError:errorBlock];
+}
 
+
+/**
+ 获取策划分类的图片集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                     onSucceeded:(NSArrayBlock)succeededBlock
+                                         onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCollectionIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        DLog(@"%@", arr);
+        NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
+        [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            DPhotosModel *model = [DPhotosModel modelWithJSON:dic];
+            [tmpArr addObject:model];
+        }];
+        [DBlockTool executeArrBlock:succeededBlock arrResult:[tmpArr copy]];
+    } onError:errorBlock];
+}
 
 
 

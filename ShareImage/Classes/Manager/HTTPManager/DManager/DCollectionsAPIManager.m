@@ -106,4 +106,48 @@
     }];
 }
 
+
+/**
+ 获取分类的图片集合
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        
+        // 分页处理
+        if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
+            return ;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+        
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+/**
+ 获取策划分类的图片集合
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        
+        // 分页处理
+        if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
+            return ;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+        
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

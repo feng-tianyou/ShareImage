@@ -152,7 +152,10 @@
         DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
         DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
         paramModel.collection_id = 137;
-        [manager fetchCuratedCollectionByParamModel:paramModel];
+//        [manager fetchCuratedCollectionByParamModel:paramModel];
+        paramModel.page = 1;
+        paramModel.per_page = 5;
+        [manager fetchCuratedCollectionPhotosByParamModel:paramModel];
         
     } else {
 //        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];
@@ -173,8 +176,8 @@
 //        [manager fetchFeaturedCollectionsByParamModel:paramModel];
 //        [manager fetchCuratedCollectionsByParamModel:paramModel];
         paramModel.collection_id = 572323;
-        [manager fetchCollectionByParamModel:paramModel];
-        
+//        [manager fetchCollectionByParamModel:paramModel];
+        [manager fetchCollectionPhotosByParamModel:paramModel];
     }
 }
 

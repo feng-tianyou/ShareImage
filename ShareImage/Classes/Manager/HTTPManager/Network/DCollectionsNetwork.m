@@ -113,5 +113,43 @@
 }
 
 
+/**
+ 获取分类的图片集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
+                            onSucceeded:(NSArrayBlock)succeededBlock
+                                onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
+    [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/%@/photos",@(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
+/**
+ 获取策划分类的图片集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                   onSucceeded:(NSArrayBlock)succeededBlock
+                                       onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
+    [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/curated/%@/photos", @(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
 
 @end
