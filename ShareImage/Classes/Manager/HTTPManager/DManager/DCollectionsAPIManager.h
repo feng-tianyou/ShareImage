@@ -106,4 +106,16 @@
  */
 - (void)fetchCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
+
+/**
+ 获取分类相关的分类集合
+ 
+ collection_id:分类id
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
 @end

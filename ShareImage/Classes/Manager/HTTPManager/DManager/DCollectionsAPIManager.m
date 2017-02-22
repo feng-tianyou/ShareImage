@@ -150,4 +150,26 @@
     }];
 }
 
+
+/**
+ 获取分类相关的分类集合
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchCollectionRelatedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        
+        // 分页处理
+        if ([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]) {
+            return ;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+        
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

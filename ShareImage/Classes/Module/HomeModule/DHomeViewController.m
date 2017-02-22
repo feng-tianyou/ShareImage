@@ -177,7 +177,8 @@
 //        [manager fetchCuratedCollectionsByParamModel:paramModel];
         paramModel.collection_id = 572323;
 //        [manager fetchCollectionByParamModel:paramModel];
-        [manager fetchCollectionPhotosByParamModel:paramModel];
+//        [manager fetchCollectionPhotosByParamModel:paramModel];
+        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
     }
 }
 
