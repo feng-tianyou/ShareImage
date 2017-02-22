@@ -11,6 +11,8 @@
 
 #import "DCollectionsModel.h"
 
+#import "DCollectionsVaildRule.h"
+
 @implementation DCollectionsService
 
 /**
@@ -77,5 +79,57 @@
         [DBlockTool executeArrBlock:succeededBlock arrResult:[tmpArr copy]];
     } onError:errorBlock];
 }
+
+
+/**
+ 获取单个分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                        onSucceeded:(JsonModelBlock)succeededBlock
+                            onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCollectionIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
+
+/**
+ 获取单个策划分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                               onSucceeded:(JsonModelBlock)succeededBlock
+                                   onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DCollectionsVaildRule checkCollectionIDByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getCuratedCollectionByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
+
+
+
+
+
 
 @end

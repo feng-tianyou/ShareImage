@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @protocol DCollectionParamProtocol <NSObject>
+/// 分类id
+@property (nonatomic, assign) long long collection_id;
 
 // 页数，默认1
 @property (nonatomic, assign) NSInteger page;

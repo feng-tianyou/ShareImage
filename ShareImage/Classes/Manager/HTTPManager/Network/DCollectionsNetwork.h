@@ -48,4 +48,32 @@
                                    onError:(ErrorBlock)errorBlock;
 
 
+/**
+ 获取单个分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                             onSucceeded:(NSDictionaryBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock;
+
+
+/**
+ 获取单个策划分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                              onSucceeded:(NSDictionaryBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock;
+
+
+
+
+
+
 @end

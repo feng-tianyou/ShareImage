@@ -11,6 +11,7 @@
 		070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */; };
 		070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */; };
 		070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */; };
+		070A8B351E5D378700CE41E2 /* DCollectionsVaildRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
@@ -233,6 +234,8 @@
 		070A8B2F1E5D2AEE00CE41E2 /* DCollectionParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionParamProtocol.h; sourceTree = "<group>"; };
 		070A8B301E5D2B0C00CE41E2 /* DCollectionsParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsParamModel.h; sourceTree = "<group>"; };
 		070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsParamModel.m; sourceTree = "<group>"; };
+		070A8B331E5D378700CE41E2 /* DCollectionsVaildRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsVaildRule.h; sourceTree = "<group>"; };
+		070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsVaildRule.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 			children = (
 				7EAFD4C21E56FF1900BBA972 /* DPhotosValidRule.h */,
 				7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */,
+				070A8B331E5D378700CE41E2 /* DCollectionsVaildRule.h */,
+				070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */,
 			);
 			path = ValidRule;
 			sourceTree = "<group>";
@@ -1861,6 +1866,7 @@
 				7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */,
 				7ED810E91E55550100954DAF /* DJsonCache.m in Sources */,
 				7ED8111A1E55550100954DAF /* LOTEllipseShapeLayer.m in Sources */,
+				070A8B351E5D378700CE41E2 /* DCollectionsVaildRule.m in Sources */,
 				7ED810DA1E55550100954DAF /* AppDelegate+DCommon.m in Sources */,
 				7ED8110D1E55550100954DAF /* DHomeViewController.m in Sources */,
 				7ED8112E1E55550100954DAF /* UIBezierPath.m in Sources */,

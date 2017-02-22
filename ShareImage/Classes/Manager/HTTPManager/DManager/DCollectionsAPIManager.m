@@ -77,4 +77,33 @@
     }];
 }
 
+/**
+ 获取单个分类
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+/**
+ 获取单个策划分类
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel{
+    [self addLoadingView];
+    [self.service fetchCuratedCollectionByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

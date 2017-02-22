@@ -149,7 +149,10 @@
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-        
+        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
+        paramModel.collection_id = 137;
+        [manager fetchCuratedCollectionByParamModel:paramModel];
         
     } else {
 //        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];
@@ -164,11 +167,13 @@
         
         DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
         DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
-        paramModel.page = 1;
-        paramModel.per_page = 2;
+//        paramModel.page = 1;
+//        paramModel.per_page = 2;
 //        [manager fetchCollectionsByParamModel:paramModel];
 //        [manager fetchFeaturedCollectionsByParamModel:paramModel];
-        [manager fetchCuratedCollectionsByParamModel:paramModel];
+//        [manager fetchCuratedCollectionsByParamModel:paramModel];
+        paramModel.collection_id = 572323;
+        [manager fetchCollectionByParamModel:paramModel];
         
     }
 }

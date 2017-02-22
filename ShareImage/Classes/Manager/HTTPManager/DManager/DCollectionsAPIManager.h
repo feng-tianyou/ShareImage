@@ -51,4 +51,30 @@
  */
 - (void)fetchCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
+
+/**
+ 获取单个分类
+ 
+ 参数模型：DCollectionsParamModel
+ collection_id:分类id
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
+
+/**
+ 获取单个策划分类
+ 
+ 参数模型：DCollectionsParamModel
+ collection_id:分类id(策划id)
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
+ @param paramModel 参数模型;
+ */
+- (void)fetchCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
 @end

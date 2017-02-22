@@ -10,10 +10,12 @@
 #import "DCollectionParamProtocol.h"
 
 @interface DCollectionsParamModel : NSObject<DCollectionParamProtocol>
+/// 分类id
+@property (nonatomic, assign) long long collection_id;
 
-// 页数，默认1
+/// 页数，默认1
 @property (nonatomic, assign) NSInteger page;
-// 每页多少条，默认10
+/// 每页多少条，默认10
 @property (nonatomic, assign) NSInteger per_page;
 
 @end

@@ -48,4 +48,27 @@
 
 
 
+/**
+ 获取单个分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                      onSucceeded:(JsonModelBlock)succeededBlock
+                          onError:(ErrorBlock)errorBlock;
+
+
+/**
+ 获取单个策划分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                             onSucceeded:(JsonModelBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock;
+
 @end

@@ -77,4 +77,41 @@
 }
 
 
+/**
+ 获取单个分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                      onSucceeded:(NSDictionaryBlock)succeededBlock
+                          onError:(ErrorBlock)errorBlock{
+    [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/%@",@(paramModel.collection_id)] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
+/**
+ 获取单个策划分类
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getCuratedCollectionByParamModel:(id<DCollectionParamProtocol>)paramModel
+                             onSucceeded:(NSDictionaryBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock{
+    [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/curated/%@", @(paramModel.collection_id)] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
+
 @end
