@@ -10,16 +10,25 @@
 #import "DPhotosModel.h"
 
 @interface DCollectionsModel : DJsonModel
-
+/// 分类id
 @property (nonatomic, assign) long c_id;
+/// 分类标题
 @property (nonatomic, copy) NSString *title;
+/// 分类描述
 @property (nonatomic, copy) NSString *c_description;
+/// 发布时间
 @property (nonatomic, copy) NSString *published_at;
+///
 @property (nonatomic, assign) BOOL curated;
+///
 @property (nonatomic, assign) BOOL featured;
+/// 总图片
 @property (nonatomic, assign) NSInteger total_photos;
+/// 是否私人
 @property (nonatomic, assign) BOOL c_private;
+///
 @property (nonatomic, copy) NSString *share_key;
+/// 图片
 @property (nonatomic, strong) DPhotosModel *cover_photo;
 
 
