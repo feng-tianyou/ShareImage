@@ -71,13 +71,16 @@
 
 
 #pragma mark - 获取参数
-
+#pragma mark - photos
 - (NSDictionary *)getParamDicForGetPhotos;
 
 - (NSDictionary *)getParamDicForGetPhoto;
 
 - (NSDictionary *)getParamDicForGetRandomPhoto;
 
+#pragma mark - search
 - (NSDictionary *)getParamDicForGetSearchPhotos;
+
+
 
 @end

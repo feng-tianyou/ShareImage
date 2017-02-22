@@ -11,7 +11,10 @@
 @implementation DPhotosParamModel
 
 #pragma mark - 获取参数
+#pragma mark - photos
 - (NSDictionary *)getParamDicForGetPhotos{
+    self.page = self.page > 0 ? self.page : 1;
+    self.per_page = self.per_page > 0 ? self.per_page : 10;
     return @{@"page":@(self.page),
              @"per_page":@(self.per_page),
              @"order_by":ExistStringGet(self.order_by)};
@@ -35,12 +38,16 @@
              @"count":@(self.count)};
 }
 
+#pragma mark - search
 - (NSDictionary *)getParamDicForGetSearchPhotos{
     self.page = self.page > 0 ? self.page : 1;
-    self.per_page = self.per_page > 0 ? self.per_page : 20;
+    self.per_page = self.per_page > 0 ? self.per_page : 10;
     return @{@"page":@(self.page),
              @"per_page":@(self.per_page),
              @"query":ExistStringGet(self.query)};
 }
+
+
+
 
 @end

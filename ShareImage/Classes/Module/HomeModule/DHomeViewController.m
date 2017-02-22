@@ -11,8 +11,10 @@
 
 #import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
+#import "DCollectionsAPIManager.h"
 
 #import "DPhotosParamModel.h"
+#import "DCollectionsParamModel.h"
 #import "DPhotosModel.h"
 
 #import <MJRefresh/MJRefresh.h>
@@ -151,14 +153,21 @@
         
     } else {
 //        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];
-        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-        paramModel.query = @"London";
-//        paramModel.page = 1;
-//        paramModel.per_page = 20;
-//        [manager fetchSearchPhotosByParamModel:paramModel];
-//        [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
-        [manager fetchSearchUsersByParamModel:paramModel];
+//        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+//        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+//        paramModel.query = @"London";
+////        paramModel.page = 1;
+////        paramModel.per_page = 20;
+////        [manager fetchSearchPhotosByParamModel:paramModel];
+////        [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
+//        [manager fetchSearchUsersByParamModel:paramModel];
+        
+        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
+        paramModel.page = 1;
+        paramModel.per_page = 2;
+        [manager fetchCollectionsByParamModel:paramModel];
+        
     }
 }
 

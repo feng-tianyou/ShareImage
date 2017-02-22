@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */; };
+		070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */; };
+		070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */; };
+		070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
@@ -220,6 +224,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070A8B261E5D221900CE41E2 /* DCollectionsAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsAPIManager.h; sourceTree = "<group>"; };
+		070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsAPIManager.m; sourceTree = "<group>"; };
+		070A8B291E5D223C00CE41E2 /* DCollectionsNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsNetwork.h; sourceTree = "<group>"; };
+		070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsNetwork.m; sourceTree = "<group>"; };
+		070A8B2C1E5D225000CE41E2 /* DCollectionsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsService.h; sourceTree = "<group>"; };
+		070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsService.m; sourceTree = "<group>"; };
+		070A8B2F1E5D2AEE00CE41E2 /* DCollectionParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionParamProtocol.h; sourceTree = "<group>"; };
+		070A8B301E5D2B0C00CE41E2 /* DCollectionsParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsParamModel.h; sourceTree = "<group>"; };
+		070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsParamModel.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -911,6 +924,8 @@
 				7ED80FCF1E55550100954DAF /* DUserAPIManager.m */,
 				7EAFD4AF1E56B00E00BBA972 /* DPhotosAPIManager.h */,
 				7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */,
+				070A8B261E5D221900CE41E2 /* DCollectionsAPIManager.h */,
+				070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */,
 			);
 			path = DManager;
 			sourceTree = "<group>";
@@ -926,6 +941,8 @@
 				7ED80FD81E55550100954DAF /* DUserNetwork.m */,
 				7EAFD4A91E56AED900BBA972 /* DPhotosNetwork.h */,
 				7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */,
+				070A8B291E5D223C00CE41E2 /* DCollectionsNetwork.h */,
+				070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -947,6 +964,8 @@
 				7E7873741E559DF700213B1B /* DOAuthParamModel.m */,
 				7EAFD4B21E56B1CE00BBA972 /* DPhotosParamModel.h */,
 				7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */,
+				070A8B301E5D2B0C00CE41E2 /* DCollectionsParamModel.h */,
+				070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */,
 			);
 			path = ParamModel;
 			sourceTree = "<group>";
@@ -956,6 +975,7 @@
 			children = (
 				7EAFD4B61E56B29400BBA972 /* DPhotosParamProtocol.h */,
 				7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */,
+				070A8B2F1E5D2AEE00CE41E2 /* DCollectionParamProtocol.h */,
 			);
 			path = ParamProtocol;
 			sourceTree = "<group>";
@@ -980,6 +1000,8 @@
 				7ED80FEA1E55550100954DAF /* DUserService.m */,
 				7EAFD4AC1E56AEFE00BBA972 /* DPhotosService.h */,
 				7EAFD4AD1E56AEFE00BBA972 /* DPhotosService.m */,
+				070A8B2C1E5D225000CE41E2 /* DCollectionsService.h */,
+				070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1896,6 +1918,7 @@
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
+				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
 				7ED811241E55550100954DAF /* LOTAnimatablePointValue.m in Sources */,
@@ -1922,6 +1945,7 @@
 				7ED80F481E554D8100954DAF /* main.m in Sources */,
 				07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */,
 				7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */,
+				070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */,
 				7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */,
 				7ED8113D1E55550100954DAF /* OpenUDID.m in Sources */,
 				7ED8110C1E55550100954DAF /* DDiscoverViewController.m in Sources */,
@@ -1946,6 +1970,7 @@
 				7ED810E61E55550100954DAF /* DAudioCache.m in Sources */,
 				7ED811371E55550100954DAF /* LOTShapeRectangle.m in Sources */,
 				7ED8115A1E55550100954DAF /* DHttpTool.m in Sources */,
+				070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */,
 				7ED810EF1E55550100954DAF /* DPlistManager.m in Sources */,
 				7ED810DD1E55550100954DAF /* AppDelegate.m in Sources */,
 				7ED811231E55550100954DAF /* LOTAnimatableNumberValue.m in Sources */,
@@ -1965,6 +1990,7 @@
 				078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */,
 				7ED811131E55550100954DAF /* EGOCache.m in Sources */,
 				7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */,
+				070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */,
 				7ED811511E55550100954DAF /* UIViewController+DLottieAnimated.m in Sources */,
 				7ED8110E1E55550100954DAF /* DLoginViewController.m in Sources */,
 				7ED811101E55550100954DAF /* DMessagesViewController.m in Sources */,

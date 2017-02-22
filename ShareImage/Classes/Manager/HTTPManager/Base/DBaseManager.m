@@ -54,7 +54,7 @@
     }
     
     if(arrData.count == 0){
-        if(start == 0){
+        if(start == 1){
             DelegateHasMethorAndDoOrLog(self.delegate, alertNoData, [self.delegate alertNoData];)
             return YES;
         }
