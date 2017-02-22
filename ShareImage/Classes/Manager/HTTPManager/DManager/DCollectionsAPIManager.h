@@ -17,12 +17,25 @@
  参数模型：DPhotosParamModel
  page：页数（Optional; default: 1）
  per_page：每页多少条（Optional; default: 10）
- order_by：排序（Valid values: latest, oldest, popular; default: latest）
  
  回调：requestServiceSucceedBackArray:(DCollectionsModel)
  
  @param paramModel 参数模型
  */
 - (void)fetchCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel;
+
+
+/**
+ 获取精选分类集合
+ 
+ 参数模型：DPhotosParamModel
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel;
 
 @end

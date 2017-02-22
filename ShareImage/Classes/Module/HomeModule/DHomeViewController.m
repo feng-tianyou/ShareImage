@@ -166,7 +166,8 @@
         DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
         paramModel.page = 1;
         paramModel.per_page = 2;
-        [manager fetchCollectionsByParamModel:paramModel];
+//        [manager fetchCollectionsByParamModel:paramModel];
+        [manager fetchFeaturedCollectionsByParamModel:paramModel];
         
     }
 }

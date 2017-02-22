@@ -25,5 +25,16 @@
                   onSucceeded:(NSArrayBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock;
 
+/**
+ 获取精选分类集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
+                       onSucceeded:(NSArrayBlock)succeededBlock
+                           onError:(ErrorBlock)errorBlock;
+
 
 @end

@@ -34,4 +34,26 @@
     } onError:errorBlock];
 }
 
+
+/**
+ 获取精选分类集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
+                                 onSucceeded:(NSArrayBlock)succeededBlock
+                                     onError:(ErrorBlock)errorBlock{
+    [self.network getFeaturedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        DLog(@"%@", arr);
+        NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
+        [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+            [tmpArr addObject:model];
+        }];
+        [DBlockTool executeArrBlock:succeededBlock arrResult:[tmpArr copy]];
+    } onError:errorBlock];
+}
+
 @end
