@@ -132,7 +132,7 @@
 @property (nonatomic, assign) NSInteger width;
 /// 图片的路径模型（高清、缩略等）
 @property (nonatomic, strong) DPhotosUrlsModel *urls;
-/// 图片的下载及介绍连接模型
+/// 图片的下载及介绍API模型
 @property (nonatomic, strong) DPhotosLinksModel *links;
 /// 图片的作者信息
 @property (nonatomic, strong) DUserModel *user;
