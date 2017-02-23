@@ -11,6 +11,9 @@
 #import "DSearchPhotosModel.h"
 #import "DSearchCollectionsModel.h"
 #import "DSearchUsersModel.h"
+#import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/SDWebImageOperation.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation DPhotosAPIManager
 
@@ -107,6 +110,38 @@
     [self.service fetchPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
         @strongify(self)
         [self requestServiceSucceedBackString:str];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
+static float progress = 0.0f;
+/**
+ 下载图片
+ 
+ @param paramModel 参数模型
+ */
+- (void)downloadPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self);
+    [self.service fetchPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
+        @strongify(self)
+        
+        [self removeLoadingView];
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:str] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            progress = receivedSize/(float)expectedSize;
+            DLog(@"%f", progress);
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showProgress:progress status:@"Loading..."];
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            DLog(@"%@--%@", image, @(finished));
+            if (finished) {
+                [SVProgressHUD dismiss];
+            }
+        }];
+        
     } onError:^(DError *error) {
         @strongify(self)
         [self proccessNetwordError:error];

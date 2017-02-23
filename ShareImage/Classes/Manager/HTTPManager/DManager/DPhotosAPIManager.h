@@ -88,6 +88,18 @@
  */
 - (void)fetchPhotoDownloadLinkByParamModel:(id<DPhotosParamProtocol>)paramModel;
 
+/**
+ 下载图片
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ 
+ 回调：requestServiceSucceedBackString:(NSString)
+ 
+ @param paramModel 参数模型
+ */
+- (void)downloadPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel;
+
 
 /**
  更新图片（没有权限）

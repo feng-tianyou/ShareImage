@@ -154,7 +154,8 @@
 //    [manager fetchPhotoStatsByParamModel:paramModel];
 //    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
 //    [manager likePhotoByParamModel:paramModel];
-    [manager unLikePhotoByParamModel:paramModel];
+//    [manager unLikePhotoByParamModel:paramModel];
+    [manager downloadPhotoByParamModel:paramModel];
     
     
     
