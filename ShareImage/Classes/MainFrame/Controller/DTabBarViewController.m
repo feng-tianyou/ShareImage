@@ -12,7 +12,7 @@
 //#import "<#header#>"
 
 static NSString *const DHomeViewControllerName = @"DHomeViewController";
-static NSString *const DMessagesViewControllerName = @"DMessagesViewController";
+static NSString *const DCollectionViewControllerName = @"DCollectionViewController";
 static NSString *const DDiscoverViewControllerName = @"DDiscoverViewController";
 static NSString *const DMeViewControllerName = @"DMeViewController";
 
@@ -84,7 +84,7 @@ static NSString *const DMeViewControllerName = @"DMeViewController";
     [self setupChildViewController:DHomeViewControllerName title: @"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_select"];
     
     // 消息
-    [self setupChildViewController:DMessagesViewControllerName title:@"联系人" imageName:@"tabbar_contract" selectedImageName:@"tabbar_contract_select"];
+    [self setupChildViewController:DCollectionViewControllerName title:@"Menu" imageName:@"tabbar_contract" selectedImageName:@"tabbar_contract_select"];
 
     // 广场
     [self setupChildViewController:DDiscoverViewControllerName title:@"聊天" imageName:@"tabbar_chat" selectedImageName:@"tabbar_chat_select"];
