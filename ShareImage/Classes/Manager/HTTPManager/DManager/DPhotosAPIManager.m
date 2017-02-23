@@ -139,6 +139,7 @@ static float progress = 0.0f;
             DLog(@"%@--%@", image, @(finished));
             if (finished) {
                 [SVProgressHUD dismiss];
+                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             }
         }];
         
@@ -147,6 +148,8 @@ static float progress = 0.0f;
         [self proccessNetwordError:error];
     }];
 }
+
+
 
 
 /**
@@ -292,6 +295,21 @@ static float progress = 0.0f;
         @strongify(self)
         [self proccessNetwordError:error];
     }];
+}
+
+
+#pragma mark - 私有方法
+/**
+ *  写入图片后执行的操作
+ *
+ *  @param image       写入的图片
+ *  @param error       错误信息
+ *  @param contextInfo UIImageWriteToSavedPhotosAlbum第三个参数
+ */
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error) {
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
 }
 
 
