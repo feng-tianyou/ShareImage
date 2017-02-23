@@ -125,7 +125,8 @@
             DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
             DUserParamModel *paramModel = [[DUserParamModel alloc] init];
             paramModel.username = userModel.username;
-            [manager fetchUserProfileByParamModel:paramModel];
+//            [manager fetchUserProfileByParamModel:paramModel];
+            [manager fetchUserProfileLinkByParamModel:paramModel];
         }];
     }
     

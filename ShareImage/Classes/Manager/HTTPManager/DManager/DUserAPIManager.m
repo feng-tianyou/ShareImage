@@ -96,4 +96,22 @@
     }];
 }
 
+
+/**
+ 获取用户介绍连接
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserProfileLinkByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service fetchUserProfileLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
+        @strongify(self)
+        [self requestServiceSucceedBackString:str];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

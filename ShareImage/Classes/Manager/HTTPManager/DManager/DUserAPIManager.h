@@ -74,5 +74,16 @@
  */
 - (void)fetchUserProfileByParamModel:(id<DUserParamProtocol>)paramModel;
 
+/**
+ 获取用户介绍连接
+ 
+ username 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackString:(NSSting)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserProfileLinkByParamModel:(id<DUserParamProtocol>)paramModel;
+
 
 @end

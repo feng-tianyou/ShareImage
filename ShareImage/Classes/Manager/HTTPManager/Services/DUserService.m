@@ -144,4 +144,25 @@
 }
 
 
+/**
+ 获取用户介绍连接
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchUserProfileLinkByParamModel:(id<DUserParamProtocol>)paramModel
+                             onSucceeded:(NSStringBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getUserProfileLinkByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        [DBlockTool executeStrBlock:succeededBlock result:[dic objectForKey:@"url"]];
+    } onError:errorBlock];
+}
+
 @end
