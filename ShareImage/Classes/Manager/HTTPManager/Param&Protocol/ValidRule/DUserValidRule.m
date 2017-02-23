@@ -11,7 +11,7 @@
 @implementation DUserValidRule
 
 + (NSString *)checkUpdateAccountByParamModel:(id<DUserParamProtocol>)paramModel{
-    if (![paramModel.email validateEmail]) {
+    if (![paramModel.email isEmailAddress]) {
         return @"邮箱格式不正确！";
     }
     return @"";
