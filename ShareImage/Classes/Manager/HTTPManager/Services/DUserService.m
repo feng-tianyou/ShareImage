@@ -121,4 +121,27 @@
 }
 
 
+/**
+ 获取用户信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchUserProfileByParamModel:(id<DUserParamProtocol>)paramModel
+                         onSucceeded:(JsonModelBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        DUserModel *model = [DUserModel modelWithJSON:dic];
+        [DBlockTool executeModelBlock:succeededBlock model:model];
+    } onError:errorBlock];
+}
+
+
 @end

@@ -79,4 +79,21 @@
     }];
 }
 
+/**
+ 获取用户信息
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserProfileByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service fetchUserProfileByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

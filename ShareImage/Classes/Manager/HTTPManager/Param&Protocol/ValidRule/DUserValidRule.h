@@ -13,4 +13,7 @@
 
 + (NSString *)checkUpdateAccountByParamModel:(id<DUserParamProtocol>)paramModel;
 
++ (NSString *)checkGetUserProfileByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
 @end

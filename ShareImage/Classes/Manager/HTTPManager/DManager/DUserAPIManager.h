@@ -47,7 +47,7 @@
 /**
  更改个人信息
  
- username 昵称(Optional)
+ username 用户名(Optional)
  first_name 姓(Optional)
  last_name 名(Optional)
  email email,格式必须正确(Optional)
@@ -56,9 +56,23 @@
  bio 简介(Optional)
  instagram_username instagram昵称
  
+ 回调：requestServiceSucceedWithModel:(DUserModel)
+ 
  @param paramModel 参数模型
  */
 - (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+/**
+ 获取用户信息
+ 
+ username 用户名(Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DUserModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserProfileByParamModel:(id<DUserParamProtocol>)paramModel;
 
 
 @end

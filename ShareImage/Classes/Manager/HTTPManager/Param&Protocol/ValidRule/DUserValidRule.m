@@ -17,4 +17,11 @@
     return @"";
 }
 
++ (NSString *)checkGetUserProfileByParamModel:(id<DUserParamProtocol>)paramModel{
+    if (paramModel.username.length == 0) {
+        return @"需要用户名！";
+    }
+    return @"";
+}
+
 @end

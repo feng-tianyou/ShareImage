@@ -115,12 +115,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DHomeTableViewCell *cell = [DHomeTableViewCell cellWithTableView:tableView];
-    [cell setClickIconBlock:^{
-        DLog(@"点击头像");
-    }];
+    
     if (self.photos.count > indexPath.row) {
-        cell.photosModel = self.photos[indexPath.row];
+        DPhotosModel *model = self.photos[indexPath.row];
+        cell.photosModel = model;
+        DUserModel *userModel = model.user;
+        [cell setClickIconBlock:^{
+            DLog(@"点击头像");
+            DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+            DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+            paramModel.username = userModel.username;
+            [manager fetchUserProfileByParamModel:paramModel];
+        }];
     }
+    
     return cell;
 }
 
