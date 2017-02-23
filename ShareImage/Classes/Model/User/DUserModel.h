@@ -39,6 +39,8 @@
 @interface DUserModel : DJsonModel
 /// 用户id
 @property (nonatomic, copy) NSString *uid;//用户id
+/// numberid
+@property (nonatomic, assign) long long numeric_id;
 /// 用户名称
 @property (nonatomic, copy) NSString *name;
 /// 用户昵称
@@ -49,13 +51,17 @@
 @property (nonatomic, copy) NSString *bio;
 /// Instagram
 @property (nonatomic, copy) NSString *Instagram;
+/// Instagram名称
+@property (nonatomic, copy) NSString *instagram_username;
+/// email
+@property (nonatomic, copy) NSString *email;
 /// 名字的前半部
 @property (nonatomic, copy) NSString *first_name;
 /// 名字的后半部
 @property (nonatomic, copy) NSString *last_name;
 /// 位置
 @property (nonatomic, copy) NSString *location;
-///
+/// 分类集合
 @property (nonatomic, assign) NSInteger total_collections;
 /// 总喜欢数
 @property (nonatomic, assign) NSInteger total_likes;
@@ -68,6 +74,22 @@
 
 /// 用户的照片集合
 @property (nonatomic, strong) NSArray *u_photos;
+/// 是否被用户喜欢
+@property (nonatomic, assign) BOOL followed_by_user;
+/// 关注数
+@property (nonatomic, assign) NSInteger following_count;
+/// 粉丝数
+@property (nonatomic, assign) NSInteger followers_count;
+/// 下载数
+@property (nonatomic, assign) NSInteger downloads;
+///
+@property (nonatomic, assign) BOOL completed_onboarding;
+/// 剩余上传图片数
+@property (nonatomic, assign) NSInteger uploads_remaining;
+/// 提醒数字
+@property (nonatomic, assign) NSInteger badge;
+
+
 
 
 @end

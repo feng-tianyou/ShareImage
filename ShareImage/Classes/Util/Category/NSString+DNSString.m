@@ -362,6 +362,15 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
     return [self stringByRemoveCharacterAtIndex:self.length - 1];
 }
 
+#pragma mark - 正则验证
+/// 验证邮箱是否合法
+- (BOOL)validateEmail
+{
+    NSString *regexp = @"[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z]{2,4}";
+    NSPredicate *validate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexp];
+    return [validate evaluateWithObject:self];
+}
+
 #pragma mark - 数据转换
 
 /**

@@ -62,4 +62,21 @@
     }];
 }
 
+/**
+ 更改用户信息
+ 
+ @param paramModel 参数模型
+ */
+- (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service updateAccountByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        @strongify(self)
+        [self requestServiceSucceedWithModel:model];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

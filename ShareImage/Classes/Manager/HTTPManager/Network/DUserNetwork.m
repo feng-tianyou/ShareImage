@@ -56,7 +56,6 @@
     NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
     DPlistManager *manager = [DPlistManager shareManager];
     if(isNeedCache){
-        
         NSData *data = [manager getBitDataByFileName:userInfoKey];
         if(data.length > 0){
             NSDictionary *dicUser = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -65,14 +64,43 @@
         }
     }
     
-    [self opGetWithUrlPath:@"me" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        [KGLOBALINFOMANAGER clearAccountInfo];
+    [self opGetWithUrlPath:@"/me" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        // 缓存用户信息
         NSData *dataUser = [NSJSONSerialization dataWithJSONObject:responseObject options:kNilOptions error:nil];
         [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
+        // 回调
         ExistActionDo(succeededBlock, succeededBlock(responseObject));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
 }
+
+
+/**
+ 更改用户信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)putAccountByParamModel:(id<DUserParamProtocol>)paramModel
+                   onSucceeded:(NSDictionaryBlock)succeededBlock
+                       onError:(ErrorBlock)errorBlock{
+    
+    NSDictionary *dicParam = [paramModel getParamDicForPostUser];
+    [self opPutWithUrlPath:@"/me" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        // 缓存用户信息
+        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
+        DPlistManager *manager = [DPlistManager shareManager];
+        NSData *dataUser = [NSJSONSerialization dataWithJSONObject:responseObject options:kNilOptions error:nil];
+        [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
+        // 回调
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
 
 @end

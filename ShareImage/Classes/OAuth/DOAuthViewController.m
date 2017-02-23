@@ -8,6 +8,7 @@
 
 #import "DOAuthViewController.h"
 #import "DUserAPIManager.h"
+#import "DOAuthParamModel.h"
 
 #define kOAuthAppKey        @"61c8eb646bea05c96445b2a26d23aa64b7605002243a030f561ac923a08d8497"
 #define kOAuthAppSecret        @"f43ac4f36ff9349ea366ef3b9f4714f231e51084282bd698e0ec8a6cb1397fb8"

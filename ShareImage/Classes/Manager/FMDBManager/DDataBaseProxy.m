@@ -48,7 +48,7 @@
 - (FMDatabaseQueue *)dbQueue{
     if (!_dbQueue) {
         // 用户表路径
-        NSString *dbPath = [self.dbBasePath stringByAppendingPathComponent:[NSString stringWithFormat:@"DF%@.db", @(KGLOBALINFOMANAGER.uid)]];
+        NSString *dbPath = [self.dbBasePath stringByAppendingPathComponent:[NSString stringWithFormat:@"DF%@.db", KGLOBALINFOMANAGER.uid]];
         DLog(@"user_db_path:%@", dbPath);
         _dbQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];
     }

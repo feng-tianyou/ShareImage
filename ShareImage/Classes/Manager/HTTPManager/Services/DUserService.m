@@ -11,6 +11,9 @@
 // network
 #import "DUserNetwork.h"
 
+// vaildRule
+#import "DUserValidRule.h"
+
 @interface DUserService ()
 {
     NSMutableDictionary *_dicUserInfo;
@@ -78,9 +81,44 @@
 -(void)fetchAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock{
     [self.network getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
         DLog(@"%@", dic);
+        // 清除用户信息
+        [KGLOBALINFOMANAGER clearAccountInfo];
+        [KGLOBALINFOMANAGER clearUid];
+        
         DUserModel *userModel = [DUserModel modelWithJSON:dic];
+        KGLOBALINFOMANAGER.uid = userModel.uid;
+        KGLOBALINFOMANAGER.accountInfo = userModel;
         [DBlockTool executeModelBlock:succeededBlock model:userModel];
     } onError:errorBlock];
 }
+
+/**
+ 更改用户信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel
+                      onSucceeded:(JsonModelBlock)succeededBlock
+                          onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkUpdateAccountByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network putAccountByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+        DLog(@"%@", dic);
+        // 清除用户信息
+        [KGLOBALINFOMANAGER clearAccountInfo];
+        [KGLOBALINFOMANAGER clearUid];
+        
+        DUserModel *userModel = [DUserModel modelWithJSON:dic];
+        KGLOBALINFOMANAGER.uid = userModel.uid;
+        KGLOBALINFOMANAGER.accountInfo = userModel;
+        [DBlockTool executeModelBlock:succeededBlock model:userModel];
+    } onError:errorBlock];
+}
+
 
 @end

@@ -520,7 +520,7 @@
 -(void)setUserDefaultByDicData:(NSDictionary *)dicData
 {
     if([dicData objectForKey:kParamUid] && [dicData objectForKey:kParamUid] != kNull){
-        [KGLOBALINFOMANAGER setUid:[[dicData objectForKey:kParamUid] longLongValue]];
+        [KGLOBALINFOMANAGER setUid:[dicData objectForKey:kParamUid]];
     }
     if([dicData objectForKey:kParamAccessToken] && [dicData objectForKey:kParamAccessToken] != kNull){
         [KGLOBALINFOMANAGER setAccessToken:[dicData objectForKey:kParamAccessToken]];
@@ -587,7 +587,7 @@
 
 -(NSString *)userId
 {
-    return [NSString stringWithFormat:@"%@",@(KGLOBALINFOMANAGER.uid)];
+    return KGLOBALINFOMANAGER.uid;
 }
 
 -(NSString *)UDID

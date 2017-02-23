@@ -17,6 +17,7 @@
 #import "DPhotosParamModel.h"
 #import "DCollectionsParamModel.h"
 #import "DPhotosModel.h"
+#import "DUserParamModel.h"
 
 #import <MJRefresh/MJRefresh.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -160,7 +161,10 @@
         
         
         DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        [manager fetchAccountProfileWithNotCache];
+//        [manager fetchAccountProfileWithNotCache];
+        DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+        paramModel.email = @"feng.daisuke@gmail.com";
+        [manager updateAccountByParamModel:paramModel];
         
         
     } else {

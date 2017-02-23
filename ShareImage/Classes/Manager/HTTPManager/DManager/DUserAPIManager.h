@@ -8,7 +8,7 @@
 
 #import "DBaseManager.h"
 #import "DOAuthParamProtocol.h"
-#import "DOAuthParamModel.h"
+#import "DUserParamProtocol.h"
 
 @interface DUserAPIManager : DBaseManager
 
@@ -43,6 +43,22 @@
  *
  */
 -(void)fetchAccountProfileWithNotCache;
+
+/**
+ 更改用户信息
+ 
+ username 昵称(Optional)
+ first_name 姓(Optional)
+ last_name 名(Optional)
+ email email,格式必须正确(Optional)
+ url 个人简介地址(Optional)
+ location 地址(Optional)
+ bio 简介(Optional)
+ instagram_username instagram昵称
+ 
+ @param paramModel 参数模型
+ */
+- (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DBaseService.h"
 #import "DOAuthParamProtocol.h"
+#import "DUserParamProtocol.h"
 
 @interface DUserService : DBaseService
 /**
@@ -37,5 +38,17 @@
  *  @param errorBlock     失败回调
  */
 -(void)fetchAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock;
+
+
+/**
+ 更改用户信息
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel
+                   onSucceeded:(JsonModelBlock)succeededBlock
+                       onError:(ErrorBlock)errorBlock;
 
 @end

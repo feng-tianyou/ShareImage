@@ -109,6 +109,10 @@
  */
 - (NSString *)stringByRemoveLastCharacter;
 
+#pragma mark - 正则验证
+/// 验证邮箱是否合法
+- (BOOL)validateEmail;
+
 
 #pragma mark - 数据转换
 /**

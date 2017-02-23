@@ -13,6 +13,8 @@
 		070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */; };
 		070A8B351E5D378700CE41E2 /* DCollectionsVaildRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */; };
 		070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */; };
+		070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */; };
+		0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B74F1E5E7D9E005784CE /* DUserValidRule.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
@@ -239,6 +241,11 @@
 		070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsVaildRule.m; sourceTree = "<group>"; };
 		070A8B361E5D7D4300CE41E2 /* DPhotoCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotoCollectionModel.h; sourceTree = "<group>"; };
 		070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotoCollectionModel.m; sourceTree = "<group>"; };
+		070A8B391E5D925400CE41E2 /* DUserParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserParamProtocol.h; sourceTree = "<group>"; };
+		070A8B3A1E5D927500CE41E2 /* DUserParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserParamModel.h; sourceTree = "<group>"; };
+		070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserParamModel.m; sourceTree = "<group>"; };
+		0733B74E1E5E7D9E005784CE /* DUserValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserValidRule.h; sourceTree = "<group>"; };
+		0733B74F1E5E7D9E005784CE /* DUserValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserValidRule.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -974,6 +981,8 @@
 				7EAFD4B31E56B1CE00BBA972 /* DPhotosParamModel.m */,
 				070A8B301E5D2B0C00CE41E2 /* DCollectionsParamModel.h */,
 				070A8B311E5D2B0C00CE41E2 /* DCollectionsParamModel.m */,
+				070A8B3A1E5D927500CE41E2 /* DUserParamModel.h */,
+				070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */,
 			);
 			path = ParamModel;
 			sourceTree = "<group>";
@@ -984,6 +993,7 @@
 				7EAFD4B61E56B29400BBA972 /* DPhotosParamProtocol.h */,
 				7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */,
 				070A8B2F1E5D2AEE00CE41E2 /* DCollectionParamProtocol.h */,
+				070A8B391E5D925400CE41E2 /* DUserParamProtocol.h */,
 			);
 			path = ParamProtocol;
 			sourceTree = "<group>";
@@ -995,6 +1005,8 @@
 				7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */,
 				070A8B331E5D378700CE41E2 /* DCollectionsVaildRule.h */,
 				070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */,
+				0733B74E1E5E7D9E005784CE /* DUserValidRule.h */,
+				0733B74F1E5E7D9E005784CE /* DUserValidRule.m */,
 			);
 			path = ValidRule;
 			sourceTree = "<group>";
@@ -1902,6 +1914,7 @@
 				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				7ED8117F1E55573300954DAF /* DLottieViewController.m in Sources */,
+				0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */,
 				7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */,
 				7ED811221E55550100954DAF /* LOTAnimatableColorValue.m in Sources */,
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
@@ -1933,6 +1946,7 @@
 				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
+				070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */,
 				7ED811241E55550100954DAF /* LOTAnimatablePointValue.m in Sources */,
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,
 				7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */,

@@ -304,7 +304,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
 - (void)logout{
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:@(NO) forKey:[NSString stringWithFormat:kCacheIsLoginByUid,@(KGLOBALINFOMANAGER.uid)]];
+    [userDefault setObject:@(NO) forKey:[NSString stringWithFormat:kCacheIsLoginByUid,KGLOBALINFOMANAGER.uid]];
     [KGLOBALINFOMANAGER setIsAlertLogout:NO];
 //    if(kAppUseALiPush){
 //        //退出成功后解除绑定阿里云账号

@@ -111,7 +111,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
     if (accessToken.length > 0) {
         _accessToken = [NSString stringWithFormat:@"%@",[accessToken copy]];
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",@(KGLOBALINFOMANAGER.uid)];
+        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
         NSMutableDictionary *dicInfo = nil;
         NSDictionary *dicPlist = [plistManager getDataByFileName:plistName];
         if(dicPlist){
@@ -129,7 +129,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 {
     if (!_accessToken || _accessToken.length == 0) {
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",@(KGLOBALINFOMANAGER.uid)];
+        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
         NSDictionary *dicInfo = [plistManager getDataByFileName:plistName];
         if(dicInfo && [dicInfo objectForKey:kParamAccessToken] && [dicInfo objectForKey:kParamAccessToken] != kNull){
             _accessToken = [dicInfo objectForKey:kParamAccessToken];
@@ -155,7 +155,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
     if (refreshToken.length > 0) {
         _refreshToken = [NSString stringWithFormat:@"%@",[refreshToken copy]];
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",@(KGLOBALINFOMANAGER.uid)];
+        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
         NSMutableDictionary *dicInfo = nil;
         NSDictionary *dicPlist = [plistManager getDataByFileName:plistName];
         if(dicPlist){
@@ -173,7 +173,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 {
     if (!_refreshToken) {
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",@(KGLOBALINFOMANAGER.uid)];
+        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
         NSDictionary *dicInfo = [plistManager getDataByFileName:plistName];
         if(dicInfo && [dicInfo objectForKey:kParamRefreshToken] && [dicInfo objectForKey:kParamRefreshToken] != kNull){
             _refreshToken = [dicInfo objectForKey:kParamRefreshToken];
@@ -193,24 +193,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 }
 
 #pragma mark 用户id
-
-- (void)setUid:(long long)uid
-{
-    if (uid > 0) {
-        _uid = uid;
-        [DCacheManager setCacheObjectByData:@(_uid) forKey:kParamUid withTimeoutInterval:kCacheTimeForOneYear];
-        [[NSUserDefaults standardUserDefaults] setObject:@(_uid) forKey:kParamUid];
+- (void)setUid:(NSString *)uid{
+    if (uid.length > 0) {
+        _uid = [uid copy];
+        [DCacheManager setCacheObjectByData:_uid forKey:kParamUid withTimeoutInterval:kCacheTimeForOneYear];
+        [[NSUserDefaults standardUserDefaults] setObject:_uid forKey:kParamUid];
     }
 }
 
-- (long long)uid
-{
-    if (_uid <= 0) {
-        NSNumber *uid = (NSNumber *)[DCacheManager getCacheObjectForKey:kParamUid];
-        _uid = [uid longLongValue];
-        if(_uid == 0){
-            uid = [[NSUserDefaults standardUserDefaults] valueForKey:kParamUid];
-            _uid = [uid longLongValue];
+- (NSString *)uid{
+    if (_uid.length == 0) {
+        _uid = (NSString *)[DCacheManager getCacheObjectForKey:kParamUid];
+        if (_uid.length == 0) {
+            _uid = [[NSUserDefaults standardUserDefaults] valueForKey:kParamUid];
         }
     }
     return _uid;
@@ -218,9 +213,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (void)clearUid
 {
-    _uid = 0;
-    [DCacheManager setCacheObjectByData:@(_uid) forKey:kParamUid withTimeoutInterval:kCacheTimeForOneYear];
-    [[NSUserDefaults standardUserDefaults] setObject:@(_uid) forKey:kParamUid];
+    _uid = @"";
+    [DCacheManager setCacheObjectByData:_uid forKey:kParamUid withTimeoutInterval:kCacheTimeForOneYear];
+    [[NSUserDefaults standardUserDefaults] setObject:_uid forKey:kParamUid];
 }
 
 
@@ -228,7 +223,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
     if (thirdUid.length > 0) {
         _thirdUid = thirdUid;
         [DCacheManager setCacheObjectByData:thirdUid forKey:kParamThirdUid withTimeoutInterval:kCacheTimeForOneYear];
-        [[NSUserDefaults standardUserDefaults] setObject:@(_uid) forKey:kParamThirdUid];
+        [[NSUserDefaults standardUserDefaults] setObject:_uid forKey:kParamThirdUid];
     }
 }
 - (NSString *)thirdUid{
@@ -259,7 +254,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 // 重新请求加载用户信息
 - (void)reloadUserInfo{
-    [DCacheManager clearUserImgCacheByUid:self.uid];
+//    [DCacheManager clearUserImgCacheByUid:self.uid];
     [self reloadAccountInfoForNotCache];
 }
 
@@ -267,7 +262,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (DUserModel *)accountInfo{
     if(_accountInfo == nil){
-        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,@(KGLOBALINFOMANAGER.uid)];
+        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,KGLOBALINFOMANAGER.uid];
         DPlistManager *manager = [DPlistManager shareManager];
         NSData *data = [manager getBitDataByFileName:userInfoKey];
         
@@ -275,14 +270,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             NSDictionary *dicUser = [dic objectForKey:kParamData];
             _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
-//            _accountInfo.uid = KGLOBALINFOMANAGER.uid;
+            _accountInfo.uid = KGLOBALINFOMANAGER.uid;
         }
         else{
             [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
                 if(RESPONSESUCCESS){
                     NSDictionary *dicUser = [dic objectForKey:kParamData];
                     _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
-//                    _accountInfo.uid = KGLOBALINFOMANAGER.uid;
+                    _accountInfo.uid = KGLOBALINFOMANAGER.uid;
                 }
             } onError:^(DError *error) {
             }];
@@ -297,7 +292,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
             DLog(@"refresh userInfo");
             NSDictionary *dicUser = [dic objectForKey:kParamData];
             _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
-//            _accountInfo.uid = KGLOBALINFOMANAGER.uid;
+            _accountInfo.uid = KGLOBALINFOMANAGER.uid;
         }
     } onError:^(DError *error) {
     }];
@@ -314,11 +309,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 #pragma mark 是否已登录
 
 - (BOOL)isLogin{
-    if(KGLOBALINFOMANAGER.uid <= 0){
+    if(KGLOBALINFOMANAGER.uid.length <= 0){
         return NO;
     }
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *strKey = [NSString stringWithFormat:kCacheIsLoginByUid,@(KGLOBALINFOMANAGER.uid)];
+    NSString *strKey = [NSString stringWithFormat:kCacheIsLoginByUid,KGLOBALINFOMANAGER.uid];
     if([userDefault objectForKey:strKey] && [[userDefault objectForKey:strKey] boolValue]){
         return YES;
     }
@@ -330,12 +325,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (void)setNotify_sound:(NSNumber *)notify_sound{
     _notify_sound = notify_sound;
-    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_SOUND_BYUID,@(KGLOBALINFOMANAGER.uid)];
+    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_SOUND_BYUID,KGLOBALINFOMANAGER.uid];
     [DCacheManager setCacheObjectByData:notify_sound forKey:strKey withTimeoutInterval:kCacheTimeForOneYear];
 }
 
 - (NSNumber *)notify_sound{
-    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_SOUND_BYUID,@(KGLOBALINFOMANAGER.uid)];
+    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_SOUND_BYUID,KGLOBALINFOMANAGER.uid];
     id notify_sound = [DCacheManager getCacheObjectForKey:strKey];
     if(notify_sound != nil){
         return notify_sound;
@@ -347,12 +342,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (void)setNotify_quake:(NSNumber *)notify_quake{
     _notify_quake = notify_quake;
-    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_QUAKE_BYUID,@(KGLOBALINFOMANAGER.uid)];
+    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_QUAKE_BYUID,KGLOBALINFOMANAGER.uid];
     [DCacheManager setCacheObjectByData:notify_quake forKey:strKey withTimeoutInterval:kCacheTimeForOneYear];
 }
 
 - (NSNumber *)notify_quake{
-    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_QUAKE_BYUID,@(KGLOBALINFOMANAGER.uid)];
+    NSString *strKey = [NSString stringWithFormat:GLOBAL_KEY_SYSTEM_QUAKE_BYUID,KGLOBALINFOMANAGER.uid];
     id notify_quake = [DCacheManager getCacheObjectForKey:strKey];
     if(notify_quake != nil){
         return notify_quake;
