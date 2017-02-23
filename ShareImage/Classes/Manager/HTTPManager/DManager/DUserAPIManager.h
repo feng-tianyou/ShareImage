@@ -47,6 +47,7 @@
 /**
  更改个人信息
  
+ 参数模型：DUserParamModel
  username 用户名(Optional)
  first_name 姓(Optional)
  last_name 名(Optional)
@@ -66,6 +67,7 @@
 /**
  获取用户信息
  
+ 参数模型：DUserParamModel
  username 用户名(Required)
  
  回调：requestServiceSucceedWithModel:(DUserModel)
@@ -77,6 +79,7 @@
 /**
  获取用户介绍连接
  
+ 参数模型：DUserParamModel
  username 用户名(Required)
  
  回调：requestServiceSucceedBackString:(NSSting)
@@ -84,6 +87,28 @@
  @param paramModel 参数模型
  */
 - (void)fetchUserProfileLinkByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+/**
+ 获取用户的图片集合
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ order_by：排序（Valid values: latest, oldest, popular; default: latest）
+ 
+ 回调：requestServiceSucceedBackArray:(DPhotosModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserPhotosByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+
+
+
+
 
 
 @end

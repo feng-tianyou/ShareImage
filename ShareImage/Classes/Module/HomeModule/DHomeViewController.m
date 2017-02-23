@@ -126,7 +126,8 @@
             DUserParamModel *paramModel = [[DUserParamModel alloc] init];
             paramModel.username = userModel.username;
 //            [manager fetchUserProfileByParamModel:paramModel];
-            [manager fetchUserProfileLinkByParamModel:paramModel];
+//            [manager fetchUserProfileLinkByParamModel:paramModel];
+            [manager fetchUserPhotosByParamModel:paramModel];
         }];
     }
     

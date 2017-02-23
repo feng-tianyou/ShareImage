@@ -42,4 +42,14 @@
 }
 
 
+- (NSDictionary *)getParamDicForGetUserPhotos{
+    self.page = self.page > 0 ? self.page : 1;
+    self.per_page = self.per_page > 0 ? self.per_page : 10;
+    self.order_by = self.order_by.length > 0 ? self.order_by : @"latest";
+    return @{@"username":ExistStringGet(self.username),
+             @"page":@(self.page),
+             @"per_page":@(self.per_page),
+             @"order_by":ExistStringGet(self.order_by)};
+}
+
 @end
