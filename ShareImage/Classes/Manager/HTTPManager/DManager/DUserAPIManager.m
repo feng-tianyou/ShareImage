@@ -138,4 +138,27 @@
 }
 
 
+/**
+ 获取用户喜欢的图片集合
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserLikePhotosByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service fetchUserLikePhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        @strongify(self)
+        //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
+        if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]){
+            return;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
+
 @end

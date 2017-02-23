@@ -127,7 +127,8 @@
             paramModel.username = userModel.username;
 //            [manager fetchUserProfileByParamModel:paramModel];
 //            [manager fetchUserProfileLinkByParamModel:paramModel];
-            [manager fetchUserPhotosByParamModel:paramModel];
+//            [manager fetchUserPhotosByParamModel:paramModel];
+            [manager fetchUserLikePhotosByParamModel:paramModel];
         }];
     }
     
