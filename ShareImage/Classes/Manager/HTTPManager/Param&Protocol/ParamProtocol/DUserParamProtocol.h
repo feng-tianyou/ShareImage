@@ -38,4 +38,6 @@
 
 - (NSDictionary *)getParamDicForGetUserPhotos;
 
+- (NSDictionary *)getParamDicForGetUserCollections;
+
 @end

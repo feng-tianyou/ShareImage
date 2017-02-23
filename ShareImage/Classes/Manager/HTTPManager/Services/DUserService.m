@@ -16,6 +16,7 @@
 
 // model
 #import "DPhotosModel.h"
+#import "DCollectionsModel.h"
 
 @interface DUserService ()
 {
@@ -223,7 +224,31 @@
 
 
 
-
+/**
+ 获取用户分类集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel
+                             onSucceeded:(NSArrayBlock)succeededBlock
+                                 onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network getUserCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        DLog(@"%@", arr);
+        NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
+        [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
+            [tmpArr addObject:model];
+        }];
+        [DBlockTool executeArrBlock:succeededBlock arrResult:[tmpArr copy]];
+    } onError:errorBlock];
+}
 
 
 

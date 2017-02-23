@@ -128,7 +128,8 @@
 //            [manager fetchUserProfileByParamModel:paramModel];
 //            [manager fetchUserProfileLinkByParamModel:paramModel];
 //            [manager fetchUserPhotosByParamModel:paramModel];
-            [manager fetchUserLikePhotosByParamModel:paramModel];
+//            [manager fetchUserLikePhotosByParamModel:paramModel];
+            [manager fetchUserCollectionsByParamModel:paramModel];
         }];
     }
     

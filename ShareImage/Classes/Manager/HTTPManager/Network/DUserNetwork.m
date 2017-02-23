@@ -172,4 +172,23 @@
     }];
 }
 
+
+/**
+ 获取用户分类集合
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)getUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel
+                           onSucceeded:(NSArrayBlock)succeededBlock
+                               onError:(ErrorBlock)errorBlock{
+    NSDictionary *dicParam = [paramModel getParamDicForGetUserCollections];
+    [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@/collections", paramModel.username] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
 @end

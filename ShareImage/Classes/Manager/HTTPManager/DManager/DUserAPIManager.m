@@ -161,4 +161,26 @@
 }
 
 
+/**
+ 获取用户分类集合
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service fetchUserCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        @strongify(self)
+        //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
+        if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]){
+            return;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
 @end

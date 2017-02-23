@@ -140,7 +140,7 @@
 - (void)proccessNetwordError:(DError *)error{
     
     DelegateHasMethorAndDoOrLog(self.delegate, unlockUI, [self.delegate unlockUI];)
-    [self removeLoadingView];
+    
     
     if(error.isLocalError){
         if(error.localError.alertText.length == 0){
@@ -150,6 +150,7 @@
         return;
     }
     [DErrorRespone proccessError:error delegate:self.delegate isAlertFor2Second:NO UserInfo:self.info];
+    [self removeLoadingView];
     
 }
 

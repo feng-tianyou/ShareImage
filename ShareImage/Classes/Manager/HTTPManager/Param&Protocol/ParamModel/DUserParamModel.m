@@ -52,4 +52,12 @@
              @"order_by":ExistStringGet(self.order_by)};
 }
 
+- (NSDictionary *)getParamDicForGetUserCollections{
+    self.page = self.page > 0 ? self.page : 1;
+    self.per_page = self.per_page > 0 ? self.per_page : 10;
+    return @{@"username":ExistStringGet(self.username),
+             @"page":@(self.page),
+             @"per_page":@(self.per_page)};
+}
+
 @end
