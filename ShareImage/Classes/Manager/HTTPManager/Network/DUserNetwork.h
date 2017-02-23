@@ -28,7 +28,7 @@
                          onError:(ErrorBlock)errorBlock;
 
 /**
- *  获取用户信息
+ *  获取个人信息
  *
  *  @param isNeedCache    是否需要调用缓存
  *  @param succeededBlock 成功回调
@@ -41,7 +41,7 @@
 
 
 /**
- 更改用户信息
+ 更改个人信息
  
  @param paramModel 参数模型
  @param succeededBlock 成功回调

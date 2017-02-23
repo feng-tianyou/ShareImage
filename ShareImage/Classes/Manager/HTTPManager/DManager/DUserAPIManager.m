@@ -28,7 +28,7 @@
 }
 
 /**
- *  获取用户信息
+ *  获取个人信息
  
  回调：requestServiceSucceedWithModel:(DUserModel)
  *
@@ -45,7 +45,7 @@
 }
 
 /**
- *  获取用户信息(不使用缓存)
+ *  获取个人信息(不使用缓存)
  
  回调：requestServiceSucceedWithModel:(DUserModel)
  *
@@ -63,7 +63,7 @@
 }
 
 /**
- 更改用户信息
+ 更改个人信息
  
  @param paramModel 参数模型
  */

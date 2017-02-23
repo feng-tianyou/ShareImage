@@ -29,7 +29,7 @@
 - (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel;
 
 /**
- *  获取用户信息
+ *  获取个人信息
  
   回调：requestServiceSucceedWithModel:(DUserModel)
  *
@@ -37,7 +37,7 @@
 -(void)fetchAccountProfile;
 
 /**
- *  获取用户信息(不使用缓存)
+ *  获取个人信息(不使用缓存)
  
   回调：requestServiceSucceedWithModel:(DUserModel)
  *
@@ -45,7 +45,7 @@
 -(void)fetchAccountProfileWithNotCache;
 
 /**
- 更改用户信息
+ 更改个人信息
  
  username 昵称(Optional)
  first_name 姓(Optional)

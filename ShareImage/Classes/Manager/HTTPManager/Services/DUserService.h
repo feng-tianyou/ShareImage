@@ -23,7 +23,7 @@
                          onError:(ErrorBlock)errorBlock;
 
 /**
- *  获取用户信息
+ *  获取个人信息
  *
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
@@ -32,7 +32,7 @@
                        onError:(ErrorBlock)errorBlock;
 
 /**
- *  获取用户信息(不使用缓存)
+ *  获取个人信息(不使用缓存)
  *
  *  @param succeededBlock 成功回调
  *  @param errorBlock     失败回调
@@ -41,7 +41,7 @@
 
 
 /**
- 更改用户信息
+ 更改个人信息
  
  @param paramModel 参数模型
  @param succeededBlock 成功回调
