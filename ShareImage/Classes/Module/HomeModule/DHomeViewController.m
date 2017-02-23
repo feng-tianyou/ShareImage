@@ -175,7 +175,7 @@
         DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
 //        [manager fetchAccountProfileWithNotCache];
         DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-        paramModel.email = @"feng.daisuke@gmail.com";
+        paramModel.email = @"feng.daisuke";
         [manager updateAccountByParamModel:paramModel];
         
         
@@ -230,6 +230,10 @@
 - (void)unlockUI{
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
+}
+
+- (void)clearData{
+    [self.photos removeAllObjects];
 }
 
 

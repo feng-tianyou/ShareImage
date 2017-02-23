@@ -141,7 +141,7 @@
     
     DelegateHasMethorAndDoOrLog(self.delegate, unlockUI, [self.delegate unlockUI];)
     
-    
+    [self removeLoadingView];
     if(error.isLocalError){
         if(error.localError.alertText.length == 0){
             return;
@@ -149,8 +149,9 @@
         DelegateHasMethorAndDoOrLog(self.delegate, localError:userInfo:, [self.delegate localError:error.localError userInfo:self.info];)
         return;
     }
+    
     [DErrorRespone proccessError:error delegate:self.delegate isAlertFor2Second:NO UserInfo:self.info];
-    [self removeLoadingView];
+    
     
 }
 

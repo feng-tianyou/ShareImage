@@ -9,6 +9,7 @@
 #import "UIViewController+DNetwork.h"
 #import <objc/runtime.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "Reachability.h"
 
 static char* const networkLoadingView_KEY = "networkLoadingView";
@@ -181,16 +182,17 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  *  @param strText 现在加载的文字提示
  */
 - (void)addNetworkLoadingViewByText:(NSString *)strText userInfo:(NSDictionary *)userInfo{
-    [self removeNetworkLoadingView];
+    
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            
-//        });
-        DLog(@"start");
-        [SVProgressHUD showWithStatus:strText];
-        
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.animationType = MBProgressHUDModeCustomView;
+        hud.activityIndicatorColor = [UIColor blackColor];
+        hud.color = [UIColor whiteColor];
+        hud.labelColor = [UIColor blackColor];
+        hud.labelText = strText;
+        hud.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.3];
     }
 }
 
@@ -198,10 +200,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  *  移除网络请求加载动画
  */
 - (void)removeNetworkLoadingView{
-    if ([SVProgressHUD isVisible]) {
-        [SVProgressHUD dismiss];
-    }
-    
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 /**
@@ -266,7 +265,6 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
         
         [alert show];
     }
-
 }
 
 /**
