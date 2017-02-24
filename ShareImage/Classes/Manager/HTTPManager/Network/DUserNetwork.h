@@ -35,7 +35,7 @@
  *  @param errorBlock     失败回调
  */
 - (void)getAccountNeedCache:(BOOL)isNeedCache
-               onSucceeded:(NSDictionaryBlock)succeededBlock
+               onSucceeded:(NSObjectForCacheBlock)succeededBlock
                    onError:(ErrorBlock)errorBlock;
 
 
@@ -61,7 +61,7 @@
  @param errorBlock 失败回调
  */
 - (void)getUserProfileByParamModel:(id<DUserParamProtocol>)paramModel
-                         onSucceeded:(NSDictionaryBlock)succeededBlock
+                         onSucceeded:(NSObjectForCacheBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock;
 
 
@@ -86,7 +86,7 @@
  @param errorBlock 失败回调
  */
 - (void)getUserPhotosByParamModel:(id<DUserParamProtocol>)paramModel
-                           onSucceeded:(NSArrayBlock)succeededBlock
+                           onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                onError:(ErrorBlock)errorBlock;
 
 
@@ -98,7 +98,7 @@
  @param errorBlock 失败回调
  */
 - (void)getUserLikePhotosByParamModel:(id<DUserParamProtocol>)paramModel
-                      onSucceeded:(NSArrayBlock)succeededBlock
+                      onSucceeded:(NSObjectForCacheBlock)succeededBlock
                           onError:(ErrorBlock)errorBlock;
 
 
@@ -110,7 +110,7 @@
  @param errorBlock 失败回调
  */
 - (void)getUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel
-                          onSucceeded:(NSArrayBlock)succeededBlock
+                          onSucceeded:(NSObjectForCacheBlock)succeededBlock
                               onError:(ErrorBlock)errorBlock;
 
 

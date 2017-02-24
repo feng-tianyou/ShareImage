@@ -7,6 +7,7 @@
 //
 
 #import "DPhotosNetwork.h"
+#import "DPlistManager.h"
 
 @implementation DPhotosNetwork
 
@@ -29,11 +30,25 @@
  @param errorBlock 失败回调
  */
 - (void)getPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel
-                  onSucceeded:(NSArrayBlock)succeededBlock
+                  onSucceeded:(NSObjectForCacheBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheHomePhotosByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
+    
+    // 请求
     NSDictionary *paramDic = [paramModel getParamDicForGetPhotos];
     [self opGetWithUrlPath:@"/photos" params:paramDic needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheHomePhotosByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        
+        // 回调
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];

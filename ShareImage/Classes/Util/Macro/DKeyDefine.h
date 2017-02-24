@@ -57,8 +57,19 @@
 #define kParamCacheData                 @"cache_data"
 
 
-#define kCacheIsLoginByUid              @"login-%@"
-#define kCacheAccountInfoByUid          @"accountInfo-%@"
+#define kCacheIsLoginByUid                      @"login-%@"
+#define kCacheAccountInfoByUid                  @"accountInfo-%@"
+#define kCacheUsersPhotosByUserName             @"userPhotos-%@"
+#define kCacheUsersProfileByUserName            @"userProfile-%@"
+#define kCacheUsersCollectionsByUserName        @"userCollections-%@"
+#define kCacheUsersLikePhotosByUserName         @"userLikePhotos-%@"
+#define kCacheHomePhotosByUid                   @"homePhotos-%@"
+#define kCacheCollectionsByUid                  @"collections-%@"
+#define kCacheFeaturedCollectionsByUid          @"featuredCollections-%@"
+#define kCacheCuratedCollectionsByUid           @"curatedCollections-%@"
+#define kCacheCollectionPhotosByUid             @"collectionPhotos-%@"
+#define kCacheCuratedCollectionPhotosByUid      @"CuratedCollectionPhotos-%@"
+#define kCacheCollectionRelatedCollectionsByUid         @"collectionRelatedCollections-%@"
 
 
 

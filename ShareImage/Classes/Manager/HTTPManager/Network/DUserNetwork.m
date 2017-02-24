@@ -51,25 +51,19 @@
  *  @param errorBlock     失败回调
  */
 - (void)getAccountNeedCache:(BOOL)isNeedCache
-                onSucceeded:(NSDictionaryBlock)succeededBlock
+                onSucceeded:(NSObjectForCacheBlock)succeededBlock
                     onError:(ErrorBlock)errorBlock{
     NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
-    DPlistManager *manager = [DPlistManager shareManager];
     if(isNeedCache){
-        NSData *data = [manager getBitDataByFileName:userInfoKey];
-        if(data.length > 0){
-            NSDictionary *dicUser = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            ExistActionDo(succeededBlock, succeededBlock(dicUser));
-            return;
-        }
+        [self readCacheDataWithCacheKey:userInfoKey succeededBlock:succeededBlock];
     }
     
     [self opGetWithUrlPath:@"/me" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         // 缓存用户信息
-        NSData *dataUser = [NSJSONSerialization dataWithJSONObject:responseObject options:kNilOptions error:nil];
-        [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
+        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
+        [self saveDataWithData:responseObject cacheKey:userInfoKey cacheTime:kCacheTimeForOneWeek];
         // 回调
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -91,9 +85,7 @@
     [self opPutWithUrlPath:@"/me" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         // 缓存用户信息
         NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
-        DPlistManager *manager = [DPlistManager shareManager];
-        NSData *dataUser = [NSJSONSerialization dataWithJSONObject:responseObject options:kNilOptions error:nil];
-        [manager writeDataToPlistByFileName:userInfoKey data:dataUser];
+        [self saveDataWithData:responseObject cacheKey:userInfoKey cacheTime:kCacheTimeForOneWeek];
         // 回调
         ExistActionDo(succeededBlock, succeededBlock(responseObject));
     } onError:^(DError *error) {
@@ -110,10 +102,17 @@
  @param errorBlock 失败回调
  */
 - (void)getUserProfileByParamModel:(id<DUserParamProtocol>)paramModel
-                       onSucceeded:(NSDictionaryBlock)succeededBlock
+                       onSucceeded:(NSObjectForCacheBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock{
+    // 读取缓存
+    NSString *cachekey = [NSString stringWithFormat:kCacheUsersProfileByUserName,paramModel.username];
+    [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@", paramModel.username] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        // 缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheUsersProfileByUserName,paramModel.username];
+        [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -144,11 +143,23 @@
  @param errorBlock 失败回调
  */
 - (void)getUserPhotosByParamModel:(id<DUserParamProtocol>)paramModel
-                      onSucceeded:(NSArrayBlock)succeededBlock
+                      onSucceeded:(NSObjectForCacheBlock)succeededBlock
                           onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheUsersPhotosByUserName,paramModel.username];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
+    
     NSDictionary *dicParam = [paramModel getParamDicForGetUserPhotos];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@/photos", paramModel.username] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheUsersPhotosByUserName,paramModel.username];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        // 回调
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -162,11 +173,21 @@
  @param errorBlock 失败回调
  */
 - (void)getUserLikePhotosByParamModel:(id<DUserParamProtocol>)paramModel
-                          onSucceeded:(NSArrayBlock)succeededBlock
+                          onSucceeded:(NSObjectForCacheBlock)succeededBlock
                               onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheUsersLikePhotosByUserName,paramModel.username];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetUserPhotos];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@/likes", paramModel.username] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheUsersLikePhotosByUserName,paramModel.username];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -181,12 +202,22 @@
  @param errorBlock 失败回调
  */
 - (void)getUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel
-                           onSucceeded:(NSArrayBlock)succeededBlock
+                           onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheUsersCollectionsByUserName,paramModel.username];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
+    
     NSDictionary *dicParam = [paramModel getParamDicForGetUserCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@/collections", paramModel.username] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheUsersCollectionsByUserName,paramModel.username];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];

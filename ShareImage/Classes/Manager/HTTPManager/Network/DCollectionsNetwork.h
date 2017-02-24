@@ -22,7 +22,7 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                  onSucceeded:(NSArrayBlock)succeededBlock
+                  onSucceeded:(NSObjectForCacheBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock;
 
 /**
@@ -33,7 +33,7 @@
  @param errorBlock 失败回调
  */
 - (void)getFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                       onSucceeded:(NSArrayBlock)succeededBlock
+                       onSucceeded:(NSObjectForCacheBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock;
 
 /**
@@ -44,7 +44,7 @@
  @param errorBlock 失败回调
  */
 - (void)getCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                               onSucceeded:(NSArrayBlock)succeededBlock
+                               onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                    onError:(ErrorBlock)errorBlock;
 
 
@@ -81,7 +81,7 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
-                      onSucceeded:(NSArrayBlock)succeededBlock
+                      onSucceeded:(NSObjectForCacheBlock)succeededBlock
                           onError:(ErrorBlock)errorBlock;
 
 
@@ -93,7 +93,7 @@
  @param errorBlock 失败回调
  */
 - (void)getCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
-                             onSucceeded:(NSArrayBlock)succeededBlock
+                             onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                  onError:(ErrorBlock)errorBlock;
 
 
@@ -106,7 +106,7 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                                   onSucceeded:(NSArrayBlock)succeededBlock
+                                   onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                        onError:(ErrorBlock)errorBlock;
 
 

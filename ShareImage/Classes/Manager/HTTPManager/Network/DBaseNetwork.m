@@ -9,6 +9,7 @@
 #import "DBaseNetwork.h"
 #import "OpenUDID.h"
 #import "AppDelegate.h"
+#import "DPlistManager.h"
 
 #define YWQ_NETWORK_KEY_FOR_SUCCEEDBLOCK    @"succeedBlock"
 #define YWQ_NETWORK_KEY_FOR_ERRORBLOCK      @"errorBlock"
@@ -570,6 +571,35 @@
                        onError:(ErrorBlock)errorBlock
 {
     
+}
+
+#pragma mark - 处理缓存
+/**
+ 获取缓存数据
+ 
+ @param cacheKey 缓存key
+ @param succeededBlock 回调
+ */
+- (void)readCacheDataWithCacheKey:(NSString *)cacheKey succeededBlock:(NSObjectForCacheBlock)succeededBlock{
+    DPlistManager *manager = [DPlistManager shareManager];
+    NSData *data = [manager getBitDataByFileName:cacheKey];
+    if(data.length > 0){
+        id cacheData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        ExistActionDo(succeededBlock, succeededBlock(cacheData, YES));
+    }
+}
+
+/**
+ 保存数据
+ 
+ @param data 数据
+ @param cacheKey 缓存key
+ @param cacheTime 时间
+ */
+- (void)saveDataWithData:(id)data cacheKey:(NSString *)cacheKey cacheTime:(NSTimeInterval)cacheTime{
+    DPlistManager *manager = [DPlistManager shareManager];
+    NSData *cacheData = [NSJSONSerialization dataWithJSONObject:data options:kNilOptions error:nil];
+    [manager writeDataToPlistByFileName:cacheKey data:cacheData];
 }
 
 

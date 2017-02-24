@@ -28,7 +28,8 @@
 - (void)fetchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel
                   onSucceeded:(NSArrayBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock{
-    [self.network getPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         DLog(@"%@", arr);
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         for (NSDictionary *dic in arr) {

@@ -40,6 +40,25 @@
                  onSucceeded:(NSObjectBlock) succeededBlock
                      onError:(ErrorBlock) errorBlock;
 
+#pragma mark - 处理缓存
+/**
+ 获取缓存数据
+
+ @param cacheKey 缓存key
+ @param succeededBlock 回调
+ */
+- (void)readCacheDataWithCacheKey:(NSString *)cacheKey succeededBlock:(NSObjectForCacheBlock)succeededBlock;
+
+/**
+ 保存数据
+
+ @param data 数据
+ @param cacheKey 缓存key
+ @param cacheTime 时间
+ */
+- (void)saveDataWithData:(id)data cacheKey:(NSString *)cacheKey cacheTime:(NSTimeInterval)cacheTime;
+
+
 #pragma mark - 请求方法
 /**
  GET请求

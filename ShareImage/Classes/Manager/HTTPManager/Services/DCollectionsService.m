@@ -27,8 +27,9 @@
 - (void)fetchCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
                          onSucceeded:(NSArrayBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock{
-    [self.network getCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
@@ -49,8 +50,9 @@
 - (void)fetchFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
                                  onSucceeded:(NSArrayBlock)succeededBlock
                                      onError:(ErrorBlock)errorBlock{
-    [self.network getFeaturedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getFeaturedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
@@ -71,8 +73,9 @@
 - (void)fetchCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
                                 onSucceeded:(NSArrayBlock)succeededBlock
                                     onError:(ErrorBlock)errorBlock{
-    [self.network getCuratedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getCuratedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];
@@ -144,8 +147,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DPhotosModel *model = [DPhotosModel modelWithJSON:dic];
@@ -171,8 +175,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DPhotosModel *model = [DPhotosModel modelWithJSON:dic];
@@ -197,8 +202,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getCollectionRelatedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getCollectionRelatedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DCollectionsModel *model = [DCollectionsModel modelWithJSON:dic];

@@ -93,6 +93,12 @@
 }
 
 
+#pragma mark - 导航栏
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.photos.count;

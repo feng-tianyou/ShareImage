@@ -69,8 +69,9 @@
  */
 -(void)fetchAccountByOnSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock{
-    [self.network getAccountNeedCache:YES onSucceeded:^(NSDictionary *dic) {
+    [self.network getAccountNeedCache:YES onSucceeded:^(NSDictionary *dic, BOOL isCache) {
         DLog(@"%@", dic);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         DUserModel *userModel = [DUserModel modelWithJSON:dic];
         [DBlockTool executeModelBlock:succeededBlock model:userModel];
     } onError:errorBlock];
@@ -83,8 +84,9 @@
  *  @param errorBlock     失败回调
  */
 -(void)fetchAccountWithNotCacheByOnSucceeded:(JsonModelBlock)succeededBlock onError:(ErrorBlock)errorBlock{
-    [self.network getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
+    [self.network getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
         DLog(@"%@", dic);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         // 清除用户信息
         [KGLOBALINFOMANAGER clearAccountInfo];
         [KGLOBALINFOMANAGER clearUid];
@@ -140,8 +142,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic) {
+    [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic, BOOL isCache) {
         DLog(@"%@", dic);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         DUserModel *model = [DUserModel modelWithJSON:dic];
         [DBlockTool executeModelBlock:succeededBlock model:model];
     } onError:errorBlock];
@@ -185,8 +188,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getUserPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getUserPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DPhotosModel *photo = [DPhotosModel modelWithJSON:dic];
@@ -211,8 +215,9 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getUserLikePhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getUserLikePhotosByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
         DLog(@"%@", arr);
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             DPhotosModel *photo = [DPhotosModel modelWithJSON:dic];
@@ -239,7 +244,8 @@
         [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
         return;
     }
-    [self.network getUserCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+    [self.network getUserCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr, BOOL isCache) {
+        [self.info setObject:@(isCache) forKey:kParamCacheData];
         DLog(@"%@", arr);
         NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arr.count];
         [arr enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {

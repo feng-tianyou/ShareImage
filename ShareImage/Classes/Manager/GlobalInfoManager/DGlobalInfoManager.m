@@ -246,7 +246,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
             _accountInfo.uid = KGLOBALINFOMANAGER.uid;
         }
         else{
-            [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
+            [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
                 _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
                 _accountInfo.uid = KGLOBALINFOMANAGER.uid;
             } onError:^(DError *error) {
@@ -257,7 +257,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 }
 
 - (void)reloadAccountInfoForNotCache{
-    [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
+    [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
         _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
         _accountInfo.uid = KGLOBALINFOMANAGER.uid;
     } onError:^(DError *error) {

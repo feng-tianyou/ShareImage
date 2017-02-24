@@ -15,8 +15,6 @@
 #pragma mark 单例实现初始化
 + (DPhotosNetwork *)shareEngine;
 
-
-
 /**
  获取首页图片集合
 
@@ -25,7 +23,7 @@
  @param errorBlock 失败回调
  */
 - (void)getPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel
-                  onSucceeded:(NSArrayBlock)succeededBlock
+                  onSucceeded:(NSObjectForCacheBlock)succeededBlock
                       onError:(ErrorBlock)errorBlock;
 
 /**

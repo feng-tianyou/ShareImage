@@ -28,11 +28,21 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                       onSucceeded:(NSArrayBlock)succeededBlock
+                       onSucceeded:(NSObjectForCacheBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheCollectionsByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:@"/collections" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheCollectionsByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -47,11 +57,21 @@
  @param errorBlock 失败回调
  */
 - (void)getFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                               onSucceeded:(NSArrayBlock)succeededBlock
+                               onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                    onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheFeaturedCollectionsByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:@"/collections/featured" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheFeaturedCollectionsByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -66,11 +86,21 @@
  @param errorBlock 失败回调
  */
 - (void)getCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                              onSucceeded:(NSArrayBlock)succeededBlock
+                              onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionsByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:@"/collections/curated" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionsByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -121,11 +151,21 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
-                            onSucceeded:(NSArrayBlock)succeededBlock
+                            onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                 onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/%@/photos",@(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -140,11 +180,21 @@
  @param errorBlock 失败回调
  */
 - (void)getCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel
-                                   onSucceeded:(NSArrayBlock)succeededBlock
+                                   onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                        onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/curated/%@/photos", @(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
@@ -158,10 +208,20 @@
  @param errorBlock 失败回调
  */
 - (void)getCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel
-                                        onSucceeded:(NSArrayBlock)succeededBlock
+                                        onSucceeded:(NSObjectForCacheBlock)succeededBlock
                                             onError:(ErrorBlock)errorBlock{
+    if (paramModel.page == 1) {
+        // 读取缓存
+        NSString *cachekey = [NSString stringWithFormat:kCacheCollectionRelatedCollectionsByUid,self.userId];
+        [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
+    }
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/%@/related", @(paramModel.collection_id)] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
-        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+        if (paramModel.page == 1) {
+            // 缓存
+            NSString *cachekey = [NSString stringWithFormat:kCacheCollectionRelatedCollectionsByUid,self.userId];
+            [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
+        }
+        ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));
     }];
