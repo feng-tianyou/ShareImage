@@ -21,6 +21,7 @@
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DA8F8F1E5FD3D6006D871B /* DCollectionDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F8E1E5FD3D6006D871B /* DCollectionDetailsController.m */; };
 		07DA8F921E5FD4D0006D871B /* DCollectionDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F911E5FD4D0006D871B /* DCollectionDetailsCell.m */; };
+		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -262,6 +263,8 @@
 		07DA8F8E1E5FD3D6006D871B /* DCollectionDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionDetailsController.m; sourceTree = "<group>"; };
 		07DA8F901E5FD4D0006D871B /* DCollectionDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionDetailsCell.h; sourceTree = "<group>"; };
 		07DA8F911E5FD4D0006D871B /* DCollectionDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionDetailsCell.m; sourceTree = "<group>"; };
+		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
+		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
 		07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotosModel.m; sourceTree = "<group>"; };
 		07DF55611E5C17F3004EC4A7 /* DSearchPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotoController.h; sourceTree = "<group>"; };
@@ -1163,6 +1166,8 @@
 			children = (
 				7ED810081E55550100954DAF /* DMeViewController.h */,
 				7ED810091E55550100954DAF /* DMeViewController.m */,
+				07DA8F931E60334F006D871B /* DUserProfileViewController.h */,
+				07DA8F941E60334F006D871B /* DUserProfileViewController.m */,
 			);
 			path = MeModule;
 			sourceTree = "<group>";
@@ -2044,6 +2049,7 @@
 				7ED8113C1E55550100954DAF /* LOTAnimationView.m in Sources */,
 				0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */,
 				7ED811481E55550100954DAF /* UIImage+DEffect.m in Sources */,
+				07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */,
 				7ED811091E55550100954DAF /* DUserModel.m in Sources */,
 				078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */,
 				7ED811131E55550100954DAF /* EGOCache.m in Sources */,
