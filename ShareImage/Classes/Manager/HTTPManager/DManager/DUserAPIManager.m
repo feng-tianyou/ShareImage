@@ -121,7 +121,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchUserPhotosByParamModel:(id<DUserParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self)
     [self.service fetchUserPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -144,7 +146,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchUserLikePhotosByParamModel:(id<DUserParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self)
     [self.service fetchUserLikePhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -167,7 +171,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self)
     [self.service fetchUserCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)

@@ -16,7 +16,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -67,7 +69,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchCuratedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchCuratedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -127,7 +131,9 @@
  @param paramModel 参数模型;
  */
 - (void)fetchCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -151,7 +157,9 @@
  @param paramModel 参数模型;
  */
 - (void)fetchCuratedCollectionPhotosByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchCuratedCollectionPhotosByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
@@ -175,7 +183,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchCollectionRelatedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchCollectionRelatedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)

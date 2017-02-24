@@ -210,7 +210,9 @@ static float progress = 0.0f;
  @param paramModel 参数模型
  */
 - (void)fetchSearchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchSearchPhotosByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         @strongify(self)
@@ -242,7 +244,9 @@ static float progress = 0.0f;
  @param paramModel 参数模型
  */
 - (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchSearchCollectionsPhotosByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         @strongify(self)
@@ -273,7 +277,9 @@ static float progress = 0.0f;
  @param paramModel 参数模型
  */
 - (void)fetchSearchUsersByParamModel:(id<DPhotosParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchSearchUsersByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
         @strongify(self)
