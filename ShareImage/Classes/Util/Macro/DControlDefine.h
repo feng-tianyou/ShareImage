@@ -131,11 +131,9 @@ CGRectInsetEdges(CGRect rect, UIEdgeInsets insets) {
 #define ARC_AUTORELEASE_POOL_END() }
 
 // if do else do
-#define HasMessageAndAlert(dic,doSomeThing) if(dic && [dic objectForKey:kMessage] != kNull){doSomeThing}
 
 #define DicHasKeyAndDo(dic,hasKey,doSomeThing) if([dic objectForKey:hasKey] && [dic objectForKey:hasKey] != kNull){doSomeThing}
 
-#define IfIsTrueAndDo(isTrue,doSomeThing) if((isTrue)){doSomeThing}
 
 
 //单例
@@ -216,11 +214,6 @@ return shared##className;\
 
 #define DelegateHasMethorAndDoOrLog(delegate,methor,callMethor) if(delegate && [delegate respondsToSelector:@selector(methor)]){ callMethor }else{DLog(@"未实现%@代理方法",NSStringFromSelector(@selector(methor)));}
 
-
-#define kSuccessHttp        @"0x00000000"
-#define kAccountCancel      @"0x00000001"
-#define HTTPSTATECODESUCCESS [[dic objectForKey:kStateCode] isEqualToString:kSuccessHttp]
-#define RESPONSESUCCESS [dic objectForKey:kParamData] && [dic objectForKey:kParamData] != kNull
 
 #define ExistActionDo(a,b) if((a)){b;}
 #define ExistStringGet(str) (str).length > 0?(str):@""

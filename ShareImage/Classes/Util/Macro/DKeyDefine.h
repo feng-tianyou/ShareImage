@@ -42,61 +42,24 @@
 #define ERRCODE0001 @"0x00000001"
 
 // 请求回调数据常用的关键字
-#define kStateCode          @"state_code"
-#define kMessage            @"message"
-#define kBody               @"body"
 #define kParamData          @"data"
 
 
 // 请求参数基本关键字
-#define kParamUserName      @"username"
-#define kParamPassword      @"password"
 #define kParamUUID          @"uuid"
-#define kParamThirdUid      @"thirdUid"
 #define kParamRefreshToken  @"refresh_token"
-#define kParamDeviceId      @"device_id"
-#define kParamDeviceToken   @"ios_token"
-#define kParamGrantToken    @"grant_token"
 
 #define kParamAccessToken   @"access_token"
-#define kParamExpiresIn     @"expires_in"
 #define kParamUid           @"uid"
-#define kParamDeviceChanged @"device_changed"//设备是否更换
-#define kParamAccount       @"account"
-
-#define kParamVersions      @"versions"
-#define kParamMobile        @"mobile"
-#define kParamType          @"type"
-#define kParamCode          @"code"
-#define kParamName          @"name"
-#define kParamCompany       @"company"
 
 
 //缓存key
 #define kParamCacheData                 @"cache_data"
 
-#define kCacheShortVersion              @"shortVersion"
-#define kCacheNewVersionByVersion       @"newVersion-%@"
-#define kCacheLocalCacheByVersion       @"localCache-%@"
-#define kCacheFirstLogin                @"firstLogin"
-#define kCacheIsConnectingByUid         @"connecting-%@"
+
 #define kCacheIsLoginByUid              @"login-%@"
 #define kCacheAccountInfoByUid          @"accountInfo-%@"
-#define kCacheUserInfoByUidAndMyUid     @"userInfo-%@-%@"
-#define kCacheUserImgByUid              @"userImg-%@"
-#define kCacheUserImgByUidAndCpid       @"userImg-%@-%@"
-#define kCacheUserBigImgByUid           @"userBigImg-%@"
-#define kCacheDiscussImgByDid           @"discussImg-%@"
-#define kCacheGroupImgByGid             @"groupImg-%@"
-#define kCacheGroupListByUid            @"groupList-%@"
-#define kCacheGroupSearchListByUid      @"groupSearchList-%@"
-#define kCacheGroupRecommendListByUidAndAreaNo   @"groupRecommendList-%@-%@"
-#define kCacheIsSeeIntroduceByUid       @"isSeeIntroduce-%@"
-#define kCacheArrFriendInfoByUid        @"arrFriendInfo-%@"
-#define kCacheRefreshCacheDataByUid     @"refreshCacheData-%@"
-#define kCacheGlobalAdImage             @"globalAdImage"
-#define kCacheGlobalAdInfoData          @"globalAdInfoData"
-#define kCacheGlobalAdImageIsShow       @"globalAdImageIsShow"
+
 
 
 // 缓存时间

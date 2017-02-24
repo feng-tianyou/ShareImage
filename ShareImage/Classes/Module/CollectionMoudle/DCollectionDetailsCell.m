@@ -141,9 +141,9 @@ static NSString *const cellID = @"homeCell";
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.medium] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
     
     self.nameLabel.text = photosModel.user.name;
-    if (photosModel.views > 0) {
+    if (photosModel.likes > 0) {
         self.viewersLabel.hidden = NO;
-        self.viewersLabel.text = [NSString stringWithFormat:@"%@ views", @(photosModel.views)];
+        self.viewersLabel.text = [NSString stringWithFormat:@"%@ likes", @(photosModel.likes)];
     } else {
         self.viewersLabel.hidden = YES;
     }

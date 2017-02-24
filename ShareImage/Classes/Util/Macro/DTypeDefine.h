@@ -101,11 +101,6 @@ typedef NS_ENUM(NSInteger,FileState)
 typedef NS_ENUM(NSInteger,ErrorType) {
     
     ErrorTypeForAlertResetPassword = 1,//提示跳转至忘记密码页面
-    ErrorTypeForPushToChangeDeviceView,//跳转至验证设备页面
-    ErrorTypeForPushToCheckUserInfoView,//跳转至确认资料页面
-    
-    ErrorTypeForAlertUserNoWasRegister,//提示该手机号码已被注册
-    ErrorTypeForAlertUserThirdLoginFail, // 第三方登录失败
     
     
 };

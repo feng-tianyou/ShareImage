@@ -41,7 +41,6 @@
 @synthesize accessToken = _accessToken;
 @synthesize refreshToken = _refreshToken;
 @synthesize uid = _uid;
-@synthesize thirdUid = _thirdUid;
 @synthesize deviceToken = _deviceToken;
 @synthesize notify_sound = _notify_sound;
 @synthesize notify_quake = _notify_quake;
@@ -219,32 +218,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 }
 
 
-- (void)setThirdUid:(NSString *)thirdUid{
-    if (thirdUid.length > 0) {
-        _thirdUid = thirdUid;
-        [DCacheManager setCacheObjectByData:thirdUid forKey:kParamThirdUid withTimeoutInterval:kCacheTimeForOneYear];
-        [[NSUserDefaults standardUserDefaults] setObject:_uid forKey:kParamThirdUid];
-    }
-}
-- (NSString *)thirdUid{
-    if (_thirdUid <= 0) {
-        NSString *uid = (NSString *)[DCacheManager getCacheObjectForKey:kParamThirdUid];
-        _thirdUid = uid;
-        if(_thirdUid == 0){
-            uid = [[NSUserDefaults standardUserDefaults] valueForKey:kParamThirdUid];
-            _thirdUid = uid;
-        }
-    }
-    return _thirdUid;
-}
-
-- (void)clearThirdUid{
-    _thirdUid = @"";
-    [DCacheManager setCacheObjectByData:_thirdUid forKey:kParamThirdUid withTimeoutInterval:kCacheTimeForOneYear];
-    [[NSUserDefaults standardUserDefaults] setObject:_thirdUid forKey:kParamThirdUid];
-}
-
-
 #pragma mark 登录成功之后更新用户信息
 //登录成功之后更新用户信息
 - (void)startUpdateUserInfo
@@ -274,11 +247,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
         }
         else{
             [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
-                if(RESPONSESUCCESS){
-                    NSDictionary *dicUser = [dic objectForKey:kParamData];
-                    _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
-                    _accountInfo.uid = KGLOBALINFOMANAGER.uid;
-                }
+                _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
+                _accountInfo.uid = KGLOBALINFOMANAGER.uid;
             } onError:^(DError *error) {
             }];
         }
@@ -288,12 +258,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (void)reloadAccountInfoForNotCache{
     [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic) {
-        if(RESPONSESUCCESS){
-            DLog(@"refresh userInfo");
-            NSDictionary *dicUser = [dic objectForKey:kParamData];
-            _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
-            _accountInfo.uid = KGLOBALINFOMANAGER.uid;
-        }
+        _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
+        _accountInfo.uid = KGLOBALINFOMANAGER.uid;
     } onError:^(DError *error) {
     }];
 }

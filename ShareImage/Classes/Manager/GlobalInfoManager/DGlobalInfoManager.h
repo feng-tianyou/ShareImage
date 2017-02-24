@@ -15,7 +15,6 @@
 @property (nonatomic, copy) NSString *accessToken;
 @property (nonatomic, copy) NSString *refreshToken;
 @property (nonatomic, copy) NSString *uid;
-@property (nonatomic, copy) NSString *thirdUid; // 第三方登录的UID
 
 @property (nonatomic, assign) BOOL isLogin;
 @property (nonatomic, assign) BOOL isLockForRefreshUI;

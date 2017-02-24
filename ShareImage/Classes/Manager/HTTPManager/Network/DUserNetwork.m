@@ -185,6 +185,7 @@
                                onError:(ErrorBlock)errorBlock{
     NSDictionary *dicParam = [paramModel getParamDicForGetUserCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/users/%@/collections", paramModel.username] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        
         ExistActionDo(succeededBlock, succeededBlock(responseObject));
     } onError:^(DError *error) {
         ExistActionDo(errorBlock, errorBlock(error));

@@ -26,19 +26,6 @@
 // iOS10
 #define IOS10 ([[UIDevice currentDevice].systemVersion doubleValue] >= 10.0)
 
-#pragma mark - 导航栏、状态栏、bar高度管理
-// navigationBar相关frame
-#define NavigationBarHeight 64
-
-
-#pragma mark - 屏幕旋转管理
-
-// 是否横竖屏
-// 用户界面横屏了才会返回YES
-#define IS_LANDSCAPE UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])
-// 无论支不支持横屏，只要设备横屏了，就会返回YES
-#define IS_DEVICE_LANDSCAPE UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])
-
 
 #pragma mark - 颜色管理
 // 取RGB颜色
