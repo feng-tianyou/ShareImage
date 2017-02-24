@@ -237,7 +237,9 @@
     [self.photos removeAllObjects];
 }
 
-
+- (void)hasNotMoreData{
+    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+}
 
 #pragma mark - getter & setter
 - (UITableView *)tableView{

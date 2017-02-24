@@ -16,8 +16,11 @@
 		070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */; };
 		0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B74F1E5E7D9E005784CE /* DUserValidRule.m */; };
 		0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7531E5EDE18005784CE /* DCollectionViewController.m */; };
+		0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7561E5EE365005784CE /* DCollectionViewCell.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
+		07DA8F8F1E5FD3D6006D871B /* DCollectionDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F8E1E5FD3D6006D871B /* DCollectionDetailsController.m */; };
+		07DA8F921E5FD4D0006D871B /* DCollectionDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F911E5FD4D0006D871B /* DCollectionDetailsCell.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -249,10 +252,16 @@
 		0733B74F1E5E7D9E005784CE /* DUserValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserValidRule.m; sourceTree = "<group>"; };
 		0733B7521E5EDE18005784CE /* DCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionViewController.h; sourceTree = "<group>"; };
 		0733B7531E5EDE18005784CE /* DCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionViewController.m; sourceTree = "<group>"; };
+		0733B7551E5EE365005784CE /* DCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionViewCell.h; sourceTree = "<group>"; };
+		0733B7561E5EE365005784CE /* DCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionViewCell.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
 		0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAnimationContollerTool.m; sourceTree = "<group>"; };
+		07DA8F8D1E5FD3D6006D871B /* DCollectionDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionDetailsController.h; sourceTree = "<group>"; };
+		07DA8F8E1E5FD3D6006D871B /* DCollectionDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionDetailsController.m; sourceTree = "<group>"; };
+		07DA8F901E5FD4D0006D871B /* DCollectionDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionDetailsCell.h; sourceTree = "<group>"; };
+		07DA8F911E5FD4D0006D871B /* DCollectionDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionDetailsCell.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
 		07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotosModel.m; sourceTree = "<group>"; };
 		07DF55611E5C17F3004EC4A7 /* DSearchPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotoController.h; sourceTree = "<group>"; };
@@ -659,6 +668,12 @@
 			children = (
 				0733B7521E5EDE18005784CE /* DCollectionViewController.h */,
 				0733B7531E5EDE18005784CE /* DCollectionViewController.m */,
+				0733B7551E5EE365005784CE /* DCollectionViewCell.h */,
+				0733B7561E5EE365005784CE /* DCollectionViewCell.m */,
+				07DA8F8D1E5FD3D6006D871B /* DCollectionDetailsController.h */,
+				07DA8F8E1E5FD3D6006D871B /* DCollectionDetailsController.m */,
+				07DA8F901E5FD4D0006D871B /* DCollectionDetailsCell.h */,
+				07DA8F911E5FD4D0006D871B /* DCollectionDetailsCell.m */,
 			);
 			path = CollectionMoudle;
 			sourceTree = "<group>";
@@ -1902,6 +1917,8 @@
 				7ED8112E1E55550100954DAF /* UIBezierPath.m in Sources */,
 				7ED8115B1E55550100954DAF /* DNavigationTool.m in Sources */,
 				7ED811531E55550100954DAF /* DAlertLoading.m in Sources */,
+				07DA8F921E5FD4D0006D871B /* DCollectionDetailsCell.m in Sources */,
+				07DA8F8F1E5FD3D6006D871B /* DCollectionDetailsController.m in Sources */,
 				7ED811591E55550100954DAF /* DCommonTool.m in Sources */,
 				7ED811461E55550100954DAF /* NSString+DNSString.m in Sources */,
 				7ED811521E55550100954DAF /* DAlert.m in Sources */,
@@ -1956,6 +1973,7 @@
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
+				0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */,
 				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,

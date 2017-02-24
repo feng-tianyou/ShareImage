@@ -11,7 +11,7 @@
 
 @interface DCollectionsModel : DJsonModel
 /// 分类id
-@property (nonatomic, assign) long c_id;
+@property (nonatomic, assign) long long c_id;
 /// 分类标题
 @property (nonatomic, copy) NSString *title;
 /// 分类描述

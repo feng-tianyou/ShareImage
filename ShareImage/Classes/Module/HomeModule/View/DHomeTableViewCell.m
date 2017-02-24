@@ -195,9 +195,6 @@ static NSString *const cellID = @"homeCell";
         [self setupAutoHeightWithBottomView:self.iconBgView bottomMargin:10];
     }
     
-    
-    
-    
 }
 
 @end

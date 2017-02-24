@@ -41,7 +41,9 @@
  @param paramModel 参数模型
  */
 - (void)fetchFeaturedCollectionsByParamModel:(id<DCollectionParamProtocol>)paramModel{
-    [self addLoadingView];
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
     @weakify(self);
     [self.service fetchFeaturedCollectionsByParamModel:paramModel onSucceeded:^(NSArray *arr) {
         @strongify(self)
