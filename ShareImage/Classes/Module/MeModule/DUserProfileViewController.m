@@ -41,12 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightSearch;
-    self.title = @"Profile";
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self setupNav];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -58,6 +53,11 @@
     paramModel.username = self.userName;
     [manager fetchUserProfileByParamModel:paramModel];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 }
 
 
@@ -122,6 +122,16 @@
 }
 
 #pragma mark - private
+- (void)setupNav{
+    self.navLeftItemType = DNavigationItemTypeBack;
+    self.navRighItemType = DNavigationItemTypeRightSearch;
+    self.title = @"Profile";
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
 - (void)clickChangeBgImageBtn{
     
 }
