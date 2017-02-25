@@ -8,6 +8,7 @@
 
 #import "DHomeViewController.h"
 #import "DSearchPhotoController.h"
+#import "DUserProfileViewController.h"
 
 #import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
@@ -122,14 +123,8 @@
         DUserModel *userModel = model.user;
         [cell setClickIconBlock:^{
             DLog(@"点击头像");
-            DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-            DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-            paramModel.username = userModel.username;
-//            [manager fetchUserProfileByParamModel:paramModel];
-//            [manager fetchUserProfileLinkByParamModel:paramModel];
-//            [manager fetchUserPhotosByParamModel:paramModel];
-//            [manager fetchUserLikePhotosByParamModel:paramModel];
-            [manager fetchUserCollectionsByParamModel:paramModel];
+            DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:userModel.username];
+            [self.navigationController pushViewController:userController animated:YES];
         }];
     }
     
@@ -145,18 +140,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    DPhotosModel *model = self.photos[indexPath.row];
-    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-    paramModel.pid = model.pid;
-    
-//    [manager fetchPhotoDetailsByParamModel:paramModel];
-//    [manager fetchPhotoStatsByParamModel:paramModel];
-//    [manager fetchPhotoDownloadLinkByParamModel:paramModel];
-//    [manager likePhotoByParamModel:paramModel];
-//    [manager unLikePhotoByParamModel:paramModel];
-    [manager downloadPhotoByParamModel:paramModel];
-    
     
     
 }
@@ -164,52 +147,11 @@
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-//        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-//        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
-//        paramModel.collection_id = 137;
-////        [manager fetchCuratedCollectionByParamModel:paramModel];
-//        paramModel.page = 1;
-//        paramModel.per_page = 5;
-//        [manager fetchCuratedCollectionPhotosByParamModel:paramModel];
         
-        
-        DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-//        [manager fetchAccountProfileWithNotCache];
-        DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-        paramModel.email = @"feng.daisuke";
-        [manager updateAccountByParamModel:paramModel];
         
         
     } else {
-//        [self.navigationController pushViewController:[[DSearchPhotoController alloc] init] animated:YES];
-//        DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-//        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-//        paramModel.query = @"London";
-////        paramModel.page = 1;
-////        paramModel.per_page = 20;
-////        [manager fetchSearchPhotosByParamModel:paramModel];
-////        [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
-//        [manager fetchSearchUsersByParamModel:paramModel];
         
-        DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-        DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
-//        paramModel.page = 1;
-//        paramModel.per_page = 2;
-//        [manager fetchCollectionsByParamModel:paramModel];
-//        [manager fetchFeaturedCollectionsByParamModel:paramModel];
-//        [manager fetchCuratedCollectionsByParamModel:paramModel];
-//        paramModel.collection_id = 572323;
-//        [manager fetchCollectionByParamModel:paramModel];
-//        [manager fetchCollectionPhotosByParamModel:paramModel];
-//        [manager fetchCollectionRelatedCollectionsByParamModel:paramModel];
-//        paramModel.title = @"yunNan1";
-        paramModel.collection_id = 572643;
-//        [manager createCollectionByParamModel:paramModel];
-//        [manager updateCollectionByParamModel:paramModel];
-//        [manager removeCollectionByParamModel:paramModel];
-        paramModel.photo_id = @"gBCSuoZ3spE";
-//        [manager addPhotoToCollectionByParamModel:paramModel];
-        [manager removePhotoToCollectionByParamModel:paramModel];
     }
 }
 
