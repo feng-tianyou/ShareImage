@@ -28,4 +28,12 @@
  */
 + (UIColor *)setHexColor:(NSString *)hexColor colorAlpha:(CGFloat)alpha;
 
+
+/**
+ 随机颜色
+
+ @return 颜色
+ */
++ (UIColor *)lightRandom;
+
 @end

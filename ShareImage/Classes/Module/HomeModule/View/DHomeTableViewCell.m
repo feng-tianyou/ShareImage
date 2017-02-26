@@ -111,6 +111,7 @@ static NSString *const cellID = @"homeCell";
 - (UIImageView *)photoView{
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
+        _photoView.backgroundColor = [UIColor lightRandom];
     }
     return _photoView;
 }
@@ -131,6 +132,7 @@ static NSString *const cellID = @"homeCell";
         [_iconView addTarget:self action:@selector(clickIcon) forControlEvents:UIControlEventTouchUpInside];
         [_iconView.layer setCornerRadius:31.0];
         [_iconView.layer setMasksToBounds:YES];
+        _iconView.backgroundColor = [UIColor lightRandom];
     }
     return _iconView;
 }

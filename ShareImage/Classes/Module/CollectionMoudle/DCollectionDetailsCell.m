@@ -92,6 +92,7 @@ static NSString *const cellID = @"homeCell";
 - (UIImageView *)photoView{
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
+        _photoView.backgroundColor = [UIColor lightRandom];
     }
     return _photoView;
 }
@@ -137,7 +138,7 @@ static NSString *const cellID = @"homeCell";
 - (void)setPhotosModel:(DPhotosModel *)photosModel{
     _photosModel = photosModel;
     
-    [self.photoView sd_setImageWithURL:[NSURL URLWithString:photosModel.urls.small] placeholderImage:[UIImage getImageWithName:@""]];
+    [self.photoView sd_setImageWithURL:[NSURL URLWithString:photosModel.urls.regular] placeholderImage:[UIImage getImageWithName:@""]];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.medium] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
     
     self.nameLabel.text = photosModel.user.name;

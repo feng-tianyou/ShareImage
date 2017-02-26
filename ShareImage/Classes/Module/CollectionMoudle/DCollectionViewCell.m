@@ -23,6 +23,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor lightRandom];
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describleLabel];
