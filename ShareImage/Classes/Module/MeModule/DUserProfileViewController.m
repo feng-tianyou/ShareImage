@@ -12,19 +12,24 @@
 #import "DUserParamModel.h"
 #import "DPhotosModel.h"
 
+#import "DNumberButton.h"
+
 @interface DUserProfileViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *bgImageView;
-@property (nonatomic, strong) UIButton *changeBgImageBtn;
 @property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UIButton *changeIconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *addressLabel;
 
 @property (nonatomic, strong) UIButton *followlingBtn;
+
+@property (nonatomic, strong) DNumberButton *photoNumBtn;
+@property (nonatomic, strong) DNumberButton *categoryNumBtn;
+@property (nonatomic, strong) DNumberButton *followerNumBtn;
+@property (nonatomic, strong) DNumberButton *followingNumBtn;
 
 @end
 
@@ -69,10 +74,15 @@
     [self.scrollView addSubview:self.iconView];
     [self.scrollView addSubview:self.nameLabel];
     [self.scrollView addSubview:self.addressLabel];
+    
+    
+    [self.scrollView addSubview:self.photoNumBtn];
+    [self.scrollView addSubview:self.categoryNumBtn];
+    [self.scrollView addSubview:self.followerNumBtn];
+    [self.scrollView addSubview:self.followingNumBtn];
+    
     [self.scrollView addSubview:self.followlingBtn];
     
-    [self.bgImageView addSubview:self.changeBgImageBtn];
-    [self.iconView addSubview:self.changeIconBtn];
     
     self.scrollView.contentSize = CGSizeMake(self.view.width, self.view.height+self.navBarHeight);
     
@@ -107,6 +117,32 @@
     .rightSpaceToView(self.scrollView,10)
     .heightIs(20);
     
+    CGFloat numBtnWidth = SCREEN_WIDTH/4;
+    self.photoNumBtn.sd_layout
+    .topSpaceToView(self.addressLabel, 20)
+    .leftSpaceToView(self.scrollView, 0)
+    .widthIs(numBtnWidth)
+    .heightIs(40);
+    
+    self.categoryNumBtn.sd_layout
+    .topSpaceToView(self.addressLabel, 20)
+    .leftSpaceToView(self.photoNumBtn, 0)
+    .widthIs(numBtnWidth)
+    .heightIs(40);
+    
+    self.followerNumBtn.sd_layout
+    .topSpaceToView(self.addressLabel, 20)
+    .leftSpaceToView(self.categoryNumBtn, 0)
+    .widthIs(numBtnWidth)
+    .heightIs(40);
+    
+    self.followingNumBtn.sd_layout
+    .topSpaceToView(self.addressLabel, 20)
+    .leftSpaceToView(self.followerNumBtn, 0)
+    .widthIs(numBtnWidth)
+    .heightIs(40);
+    
+    
     self.followlingBtn.sd_layout
     .leftSpaceToView(self.scrollView, 80)
     .rightSpaceToView(self.scrollView,80)
@@ -132,14 +168,24 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
-- (void)clickChangeBgImageBtn{
+
+- (void)clickFollowlingBtn{
     
 }
-- (void)clickChangeIconImageBtn{
+// -----------------------------------
+- (void)clickPhotoNumBtn{
     
 }
 
-- (void)clickFollowlingBtn{
+- (void)clickCategoryNumBtn{
+    
+}
+
+- (void)clickFollowerNumBtn{
+    
+}
+
+- (void)clickFollowingNumBtn{
     
 }
 
@@ -151,6 +197,15 @@
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
     self.nameLabel.text = userModel.username;
     self.addressLabel.text = userModel.location;
+    
+    
+    self.photoNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.total_photos)];
+    self.categoryNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.total_collections)];
+    self.followerNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.followers_count)];
+    self.followingNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.following_count)];
+    
+    
+    
 }
 
 
@@ -170,14 +225,6 @@
     return _bgImageView;
 }
 
-- (UIButton *)changeBgImageBtn{
-    if (!_changeBgImageBtn) {
-        _changeBgImageBtn = [[UIButton alloc] init];
-        [_changeBgImageBtn setImage:[UIImage getImageWithName:@""] forState:UIControlStateNormal];
-        [_changeBgImageBtn addTarget:self action:@selector(clickChangeBgImageBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _changeBgImageBtn;
-}
 
 - (UIImageView *)iconView{
     if (!_iconView) {
@@ -188,14 +235,6 @@
     return _iconView;
 }
 
-- (UIButton *)changeIconBtn{
-    if (!_changeIconBtn) {
-        _changeIconBtn = [[UIButton alloc] init];
-        [_changeIconBtn setImage:[UIImage getImageWithName:@""] forState:UIControlStateNormal];
-        [_changeIconBtn addTarget:self action:@selector(clickChangeIconImageBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _changeIconBtn;
-}
 
 - (UILabel *)nameLabel{
     if (!_nameLabel) {
@@ -230,6 +269,38 @@
         [_followlingBtn addTarget:self action:@selector(clickFollowlingBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _followlingBtn;
+}
+
+- (DNumberButton *)photoNumBtn{
+    if (!_photoNumBtn) {
+        _photoNumBtn = [[DNumberButton alloc] initWithDescrible:@"PHOTOS"];
+        [_photoNumBtn addTarget:self action:@selector(clickPhotoNumBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _photoNumBtn;
+}
+
+- (DNumberButton *)categoryNumBtn{
+    if (!_categoryNumBtn) {
+        _categoryNumBtn = [[DNumberButton alloc] initWithDescrible:@"CATEGORY"];
+        [_categoryNumBtn addTarget:self action:@selector(clickCategoryNumBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _categoryNumBtn;
+}
+
+- (DNumberButton *)followerNumBtn{
+    if (!_followerNumBtn) {
+        _followerNumBtn = [[DNumberButton alloc] initWithDescrible:@"FOLLOWERS"];
+        [_followerNumBtn addTarget:self action:@selector(clickFollowerNumBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _followerNumBtn;
+}
+
+- (DNumberButton *)followingNumBtn{
+    if (!_followingNumBtn) {
+        _followingNumBtn = [[DNumberButton alloc] initWithDescrible:@"FOLLOWING"];
+        [_followingNumBtn addTarget:self action:@selector(clickFollowingNumBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _followingNumBtn;
 }
 
 

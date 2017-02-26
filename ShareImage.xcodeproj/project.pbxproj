@@ -39,6 +39,7 @@
 		7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */; };
 		7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */; };
 		7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */; };
+		7EC0B1E31E62AE6100AF1318 /* DNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B1E21E62AE6100AF1318 /* DNumberButton.m */; };
 		7ED80F481E554D8100954DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80F471E554D8100954DAF /* main.m */; };
 		7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F521E554D8100954DAF /* Assets.xcassets */; };
 		7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */; };
@@ -301,6 +302,8 @@
 		7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeCellTipLabel.m; sourceTree = "<group>"; };
 		7EAFD4C21E56FF1900BBA972 /* DPhotosValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosValidRule.h; sourceTree = "<group>"; };
 		7EAFD4C31E56FF1900BBA972 /* DPhotosValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosValidRule.m; sourceTree = "<group>"; };
+		7EC0B1E11E62AE6100AF1318 /* DNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNumberButton.h; sourceTree = "<group>"; };
+		7EC0B1E21E62AE6100AF1318 /* DNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNumberButton.m; sourceTree = "<group>"; };
 		7ED80F431E554D8100954DAF /* ShareImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED80F471E554D8100954DAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ED80F521E554D8100954DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -709,6 +712,15 @@
 				7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7EC0B1E01E62AD2C00AF1318 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EC0B1E11E62AE6100AF1318 /* DNumberButton.h */,
+				7EC0B1E21E62AE6100AF1318 /* DNumberButton.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7ED80F3A1E554D8000954DAF = {
@@ -1164,6 +1176,7 @@
 		7ED810071E55550100954DAF /* MeModule */ = {
 			isa = PBXGroup;
 			children = (
+				7EC0B1E01E62AD2C00AF1318 /* Views */,
 				7ED810081E55550100954DAF /* DMeViewController.h */,
 				7ED810091E55550100954DAF /* DMeViewController.m */,
 				07DA8F931E60334F006D871B /* DUserProfileViewController.h */,
@@ -1929,6 +1942,7 @@
 				7ED811521E55550100954DAF /* DAlert.m in Sources */,
 				7ED811361E55550100954DAF /* LOTShapePath.m in Sources */,
 				7ED811331E55550100954DAF /* LOTShapeCircle.m in Sources */,
+				7EC0B1E31E62AE6100AF1318 /* DNumberButton.m in Sources */,
 				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
 				7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */,
 				7ED8110A1E55550100954DAF /* DWebViewController.m in Sources */,
