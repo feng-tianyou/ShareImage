@@ -21,6 +21,7 @@
 		0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719E1E63DA7500ADBC90 /* DWebViewController.m */; };
 		074671A21E63DA9C00ADBC90 /* DCommonPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A11E63DA9C00ADBC90 /* DCommonPhotosCell.m */; };
 		074671A61E6409B800ADBC90 /* DUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A51E6409B800ADBC90 /* DUserListViewController.m */; };
+		074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A81E64125400ADBC90 /* DUserListViewCell.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
@@ -265,6 +266,8 @@
 		074671A11E63DA9C00ADBC90 /* DCommonPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotosCell.m; sourceTree = "<group>"; };
 		074671A41E6409B800ADBC90 /* DUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserListViewController.h; sourceTree = "<group>"; };
 		074671A51E6409B800ADBC90 /* DUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserListViewController.m; sourceTree = "<group>"; };
+		074671A71E64125400ADBC90 /* DUserListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserListViewCell.h; sourceTree = "<group>"; };
+		074671A81E64125400ADBC90 /* DUserListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserListViewCell.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -708,6 +711,8 @@
 			children = (
 				074671A41E6409B800ADBC90 /* DUserListViewController.h */,
 				074671A51E6409B800ADBC90 /* DUserListViewController.m */,
+				074671A71E64125400ADBC90 /* DUserListViewCell.h */,
+				074671A81E64125400ADBC90 /* DUserListViewCell.m */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -1986,6 +1991,7 @@
 				7ED810FC1E55550100954DAF /* DBaseNetwork.m in Sources */,
 				7ED811251E55550100954DAF /* LOTAnimatableScaleValue.m in Sources */,
 				7ED8114F1E55550100954DAF /* UIView+DLayer.m in Sources */,
+				074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */,
 				7ED810F11E55550100954DAF /* DDataBaseProxy.m in Sources */,
 				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,

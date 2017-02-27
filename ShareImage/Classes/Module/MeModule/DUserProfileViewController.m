@@ -8,6 +8,7 @@
 
 #import "DUserProfileViewController.h"
 #import "DCommonPhotoController.h"
+#import "DUserListViewController.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DUserAPIManager.h"
@@ -188,11 +189,13 @@
 }
 
 - (void)clickFollowerNumBtn{
-    
+    DUserListViewController *userController = [[DUserListViewController alloc] initWithUserName:self.userName type:FollowersType];
+    [self.navigationController pushViewController:userController animated:YES];
 }
 
 - (void)clickFollowingNumBtn{
-    
+    DUserListViewController *userController = [[DUserListViewController alloc] initWithUserName:self.userName type:FollowingType];
+    [self.navigationController pushViewController:userController animated:YES];
 }
 
 
