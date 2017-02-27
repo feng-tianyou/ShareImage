@@ -9,8 +9,10 @@
 #import "DNavigationTool.h"
 
 #define D_NAVIGATION_BAR_LEFT_BACK_BG_IMAGE_NAME        @"navigationbar_btn_left"
+#define D_NAVIGATION_BAR_LEFT_WRITE_BACK_BG_IMAGE_NAME        @"navigationbar_btn_write_left"
 
 #define D_NAVIGATION_BAR_RIGHT_MENU_BG_IMAGE_NAME        @"navigationbar_btn_right_menu"
+#define D_NAVIGATION_BAR_RIGHT_WRITE_MENU_BG_IMAGE_NAME        @"navigationbar_btn_write_menu"
 #define D_NAVIGATION_BAR_RIGHT_SHEARCH_BG_IMAGE_NAME        @"navigationbar_btn_left_search"
 
 
@@ -93,6 +95,14 @@
         }
         case DNavigationItemTypeRightMenu:{
             img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_MENU_BG_IMAGE_NAME];
+            break;
+        }
+        case DNavigationItemTypeWriteBack:{
+            img = [UIImage getImageWithName:D_NAVIGATION_BAR_LEFT_WRITE_BACK_BG_IMAGE_NAME];
+            break;
+        }
+        case DNavigationItemTypeRightWriteMenu:{
+            img = [UIImage getImageWithName:D_NAVIGATION_BAR_RIGHT_WRITE_MENU_BG_IMAGE_NAME];
             break;
         }
         case DNavigationItemTypeRightSearch:{

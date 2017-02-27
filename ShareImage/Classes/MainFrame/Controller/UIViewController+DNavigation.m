@@ -78,6 +78,7 @@ static char* const navRighItemType_KEY = "navRighItemType";
             break;
         }
         case DNavigationItemTypeBack:
+        case DNavigationItemTypeWriteBack:
         case DNavigationItemTypeBackHome:
         case DNavigationItemTypeRightHome:
         case DNavigationItemTypeRightSend:
@@ -90,6 +91,7 @@ static char* const navRighItemType_KEY = "navRighItemType";
         case DNavigationItemTypeRightFeedback:
         case DNavigationItemTypeRightSetting:
         case DNavigationItemTypeRightMenu:
+        case DNavigationItemTypeRightWriteMenu:
         case DNavigationItemTypeRightSearch:{
             
             NSString *strTitle = [DNavigationTool getNavigationBarRightTitleByType:type];

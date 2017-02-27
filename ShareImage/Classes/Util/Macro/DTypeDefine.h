@@ -41,10 +41,12 @@ typedef NS_ENUM(NSInteger, DNavigationItemType) {
     // ========== NO ============ //
     DNavigationItemTypeNone,
     DNavigationItemTypeBack,
+    DNavigationItemTypeWriteBack,
     
     // ========== 图片 ============ //
     DNavigationItemTypeRightSearch,//右边 搜索
     DNavigationItemTypeRightMenu,//右边 菜单
+    DNavigationItemTypeRightWriteMenu,//右边 菜单
     
     // ========== 文字 ============ //
     DNavigationItemTypeBackHome,//返回 首页

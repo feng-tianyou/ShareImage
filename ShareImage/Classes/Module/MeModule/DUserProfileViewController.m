@@ -27,7 +27,6 @@
 @property (nonatomic, strong) UIButton *followlingBtn;
 
 @property (nonatomic, strong) DNumberButton *photoNumBtn;
-@property (nonatomic, strong) DNumberButton *categoryNumBtn;
 @property (nonatomic, strong) DNumberButton *followerNumBtn;
 @property (nonatomic, strong) DNumberButton *followingNumBtn;
 
@@ -69,6 +68,7 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
+    
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.bgImageView];
     [self.scrollView addSubview:self.iconView];
@@ -77,27 +77,28 @@
     
     
     [self.scrollView addSubview:self.photoNumBtn];
-    [self.scrollView addSubview:self.categoryNumBtn];
     [self.scrollView addSubview:self.followerNumBtn];
     [self.scrollView addSubview:self.followingNumBtn];
     
     [self.scrollView addSubview:self.followlingBtn];
     
     
-    self.scrollView.contentSize = CGSizeMake(self.view.width, self.view.height+self.navBarHeight);
+    [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
+    self.scrollView.contentSize = CGSizeMake(self.view.width, self.view.height+self.navBarHeight-300);
     
     // 布局
     self.scrollView.sd_layout
-    .topSpaceToView(self.view, -self.navBarHeight)
+    .topSpaceToView(self.view, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    self.bgImageView.sd_layout
-    .topEqualToView(self.scrollView)
-    .leftEqualToView(self.scrollView)
-    .rightEqualToView(self.scrollView)
-    .heightIs(300);
+//    self.bgImageView.sd_layout
+//    .topSpaceToView(self.scrollView, -300)
+//    .leftEqualToView(self.scrollView)
+//    .rightEqualToView(self.scrollView)
+//    .heightIs(300);
+    [self.bgImageView setFrame:0 y:-300 w:self.view.width h:300];
     
     self.iconView.sd_layout
     .topSpaceToView(self.bgImageView, -35)
@@ -117,22 +118,16 @@
     .rightSpaceToView(self.scrollView,10)
     .heightIs(20);
     
-    CGFloat numBtnWidth = SCREEN_WIDTH/4;
+    CGFloat numBtnWidth = SCREEN_WIDTH/3;
     self.photoNumBtn.sd_layout
     .topSpaceToView(self.addressLabel, 20)
     .leftSpaceToView(self.scrollView, 0)
     .widthIs(numBtnWidth)
     .heightIs(40);
     
-    self.categoryNumBtn.sd_layout
-    .topSpaceToView(self.addressLabel, 20)
-    .leftSpaceToView(self.photoNumBtn, 0)
-    .widthIs(numBtnWidth)
-    .heightIs(40);
-    
     self.followerNumBtn.sd_layout
     .topSpaceToView(self.addressLabel, 20)
-    .leftSpaceToView(self.categoryNumBtn, 0)
+    .leftSpaceToView(self.photoNumBtn, 0)
     .widthIs(numBtnWidth)
     .heightIs(40);
     
@@ -144,11 +139,10 @@
     
     
     self.followlingBtn.sd_layout
+    .topSpaceToView(self.followerNumBtn, 50)
     .leftSpaceToView(self.scrollView, 80)
     .rightSpaceToView(self.scrollView,80)
-    .bottomSpaceToView(self.scrollView, 30)
     .heightIs(50);
-    
     
 }
 
@@ -159,13 +153,26 @@
 
 #pragma mark - private
 - (void)setupNav{
-    self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightSearch;
+    self.navLeftItemType = DNavigationItemTypeWriteBack;
+    self.navRighItemType = DNavigationItemTypeRightWriteMenu;
     self.title = @"Profile";
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
+- (NSString *)changeThousandWithNumber:(NSUInteger)number{
+    if (number > 1000) {
+        float num = number/1000.0;
+        NSString *str = [NSString decimalwithFormat:@"0.0" numberValue:@(num)];
+        return [NSString stringWithFormat:@"%@K", str];
+    } else if (number > 10000) {
+        float num = number/10000.0;
+        NSString *str = [NSString decimalwithFormat:@"0.0" numberValue:@(num)];
+        return [NSString stringWithFormat:@"%@W", str];
+    }
+    return [NSString stringWithFormat:@"%@", @(number)];
 }
 
 
@@ -177,10 +184,6 @@
     
 }
 
-- (void)clickCategoryNumBtn{
-    
-}
-
 - (void)clickFollowerNumBtn{
     
 }
@@ -188,6 +191,23 @@
 - (void)clickFollowingNumBtn{
     
 }
+
+
+#pragma mark - delegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //通过滑动的便宜距离重新给图片设置大小
+    CGFloat yOffset = scrollView.contentOffset.y;
+    if(yOffset<-300)
+    {
+        CGRect f= self.bgImageView.frame;
+        f.origin.y= yOffset;
+        f.size.height = -yOffset;
+        self.bgImageView.frame = f;
+    }
+}
+
+
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
@@ -199,10 +219,9 @@
     self.addressLabel.text = userModel.location;
     
     
-    self.photoNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.total_photos)];
-    self.categoryNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.total_collections)];
-    self.followerNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.followers_count)];
-    self.followingNumBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(userModel.following_count)];
+    self.photoNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.total_photos];
+    self.followerNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.followers_count];
+    self.followingNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.following_count];
     
     
     
@@ -221,6 +240,7 @@
 - (UIImageView *)bgImageView{
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc] init];
+        _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _bgImageView;
 }
@@ -277,14 +297,6 @@
         [_photoNumBtn addTarget:self action:@selector(clickPhotoNumBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _photoNumBtn;
-}
-
-- (DNumberButton *)categoryNumBtn{
-    if (!_categoryNumBtn) {
-        _categoryNumBtn = [[DNumberButton alloc] initWithDescrible:@"CATEGORY"];
-        [_categoryNumBtn addTarget:self action:@selector(clickCategoryNumBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _categoryNumBtn;
 }
 
 - (DNumberButton *)followerNumBtn{
