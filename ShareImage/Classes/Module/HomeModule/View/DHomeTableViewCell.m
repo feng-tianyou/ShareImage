@@ -84,7 +84,7 @@ static NSString *const cellID = @"homeCell";
     
     self.likeLabel.sd_layout
     .topSpaceToView(self.photoView, 10)
-    .rightSpaceToView(self.photoView, 1)
+    .rightSpaceToView(self.photoView, 10)
     .widthIs(40)
     .heightIs(20);
     
@@ -151,7 +151,7 @@ static NSString *const cellID = @"homeCell";
         _likeLabel = [[DHomeCellTipLabel alloc] init];
         _likeLabel.iconName = @"common_btn_like_hight";
         _likeLabel.describeLabel.textColor = [UIColor whiteColor];
-        
+        _likeLabel.mode = HomeCellTipLabelRight;
     }
     return _likeLabel;
 }

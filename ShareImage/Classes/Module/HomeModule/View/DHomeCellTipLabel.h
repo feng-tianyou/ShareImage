@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, HomeCellTipLabelContentMode)
+{
+    HomeCellTipLabelLeft,
+    HomeCellTipLabelCenter,
+    HomeCellTipLabelRight
+};
+
 @interface DHomeCellTipLabel : UIView
 
 @property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, copy) NSString *describe;
-
+@property (nonatomic, assign) HomeCellTipLabelContentMode mode;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *describeLabel;
 

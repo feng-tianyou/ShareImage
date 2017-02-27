@@ -13,6 +13,7 @@
 #import "DPhotosModel.h"
 
 #import "DNumberButton.h"
+#import "DHomeCellTipLabel.h"
 
 @interface DUserProfileViewController ()<UIScrollViewDelegate>
 
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) UIImageView *bgImageView;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *addressLabel;
+@property (nonatomic, strong) DHomeCellTipLabel *addressLabel;
 
 @property (nonatomic, strong) UIButton *followlingBtn;
 
@@ -216,7 +217,7 @@
     [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.regular] placeholderImage:nil];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
     self.nameLabel.text = userModel.username;
-    self.addressLabel.text = userModel.location;
+    self.addressLabel.describe = userModel.location;
     
     
     self.photoNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.total_photos];
@@ -266,12 +267,13 @@
     return _nameLabel;
 }
 
-- (UILabel *)addressLabel{
+- (DHomeCellTipLabel *)addressLabel{
     if (!_addressLabel) {
-        _addressLabel = [[UILabel alloc] init];
-        _addressLabel.textColor = [UIColor blackColor];
-        _addressLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
-        _addressLabel.textAlignment = NSTextAlignmentCenter;
+        _addressLabel = [[DHomeCellTipLabel alloc] init];
+        _addressLabel.iconName = @"common_btn_address_hight";
+        _addressLabel.describeLabel.textColor = [UIColor blackColor];
+        _addressLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
+        _addressLabel.mode = HomeCellTipLabelCenter;
     }
     return _addressLabel;
 }

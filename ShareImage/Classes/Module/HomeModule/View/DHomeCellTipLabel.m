@@ -29,18 +29,18 @@
 - (void)setupSubViews{
     [self addSubview:self.iconView];
     [self addSubview:self.describeLabel];
-    
-    self.iconView.sd_layout
-    .centerYEqualToView(self)
-    .leftEqualToView(self)
-    .widthIs(12)
-    .heightIs(10);
-    
-    self.describeLabel.sd_layout
-    .topEqualToView(self)
-    .leftSpaceToView(self.iconView,3)
-    .rightEqualToView(self)
-    .bottomEqualToView(self);
+//    
+//    self.describeLabel.sd_layout
+//    .topEqualToView(self)
+//    .leftEqualToView(self)
+//    .rightEqualToView(self)
+//    .bottomEqualToView(self);
+//    
+//    self.iconView.sd_layout
+//    .centerYEqualToView(self)
+//    .rightSpaceToView(self.describeLabel, 5)
+//    .widthIs(12)
+//    .heightIs(10);
 }
 
 
@@ -59,7 +59,6 @@
         _describeLabel.textColor = DSystemColorGray;
         _describeLabel.font = DSystemFontDate;
         _describeLabel.backgroundColor = [UIColor clearColor];
-        _describeLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _describeLabel;
 }
@@ -72,6 +71,60 @@
 - (void)setDescribe:(NSString *)describe{
     _describe = [describe copy];
     self.describeLabel.text = describe;
+    
+    CGSize imgSize  = self.iconView.image.size;
+    CGSize descSize = [describe sizeWithFont:self.describeLabel.font maxWidth:MAXFLOAT];
+    switch (self.mode) {
+        case HomeCellTipLabelLeft:
+        {
+            self.iconView.sd_layout
+            .centerYEqualToView(self)
+            .leftEqualToView(self)
+            .widthIs(imgSize.width)
+            .heightIs(imgSize.height);
+            
+            self.describeLabel.sd_layout
+            .topEqualToView(self)
+            .leftSpaceToView(self.iconView, 5)
+            .bottomEqualToView(self)
+            .rightEqualToView(self);
+        }
+            break;
+        case HomeCellTipLabelCenter:
+        {
+            self.describeLabel.sd_layout
+            .centerXEqualToView(self)
+            .topEqualToView(self)
+            .bottomEqualToView(self)
+            .widthIs(descSize.width);
+            
+            self.iconView.sd_layout
+            .centerYEqualToView(self)
+            .rightSpaceToView(self.describeLabel, 5)
+            .widthIs(imgSize.width)
+            .heightIs(imgSize.height);
+        }
+            break;
+        case HomeCellTipLabelRight:
+        {
+            self.describeLabel.sd_layout
+            .topEqualToView(self)
+            .rightEqualToView(self)
+            .bottomEqualToView(self)
+            .widthIs(descSize.width);
+            
+            self.iconView.sd_layout
+            .centerYEqualToView(self)
+            .rightSpaceToView(self.describeLabel, 5)
+            .widthIs(imgSize.width)
+            .heightIs(imgSize.height);
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 @end
