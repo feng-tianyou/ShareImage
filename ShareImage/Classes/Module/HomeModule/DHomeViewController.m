@@ -9,6 +9,7 @@
 #import "DHomeViewController.h"
 #import "DSearchPhotoController.h"
 #import "DUserProfileViewController.h"
+#import "DPhotoDetailController.h"
 
 #import "DHomeTableViewCell.h"
 #import "DPhotosAPIManager.h"
@@ -139,9 +140,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    
-    
+    if (self.photos.count > indexPath.row) {
+        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.row]];
+        [self.navigationController pushViewController:detailController animated:YES];
+    }
 }
 
 #pragma mark - 导航栏点击事件

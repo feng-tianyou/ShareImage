@@ -19,9 +19,10 @@
 		0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7561E5EE365005784CE /* DCollectionViewCell.m */; };
 		0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */; };
 		0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719E1E63DA7500ADBC90 /* DWebViewController.m */; };
-		074671A21E63DA9C00ADBC90 /* DCommonPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A11E63DA9C00ADBC90 /* DCommonPhotosCell.m */; };
 		074671A61E6409B800ADBC90 /* DUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A51E6409B800ADBC90 /* DUserListViewController.m */; };
 		074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A81E64125400ADBC90 /* DUserListViewCell.m */; };
+		074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */; };
+		074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
@@ -262,12 +263,14 @@
 		0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotoController.m; sourceTree = "<group>"; };
 		0746719D1E63DA7500ADBC90 /* DWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebViewController.h; sourceTree = "<group>"; };
 		0746719E1E63DA7500ADBC90 /* DWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWebViewController.m; sourceTree = "<group>"; };
-		074671A01E63DA9C00ADBC90 /* DCommonPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonPhotosCell.h; sourceTree = "<group>"; };
-		074671A11E63DA9C00ADBC90 /* DCommonPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotosCell.m; sourceTree = "<group>"; };
 		074671A41E6409B800ADBC90 /* DUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserListViewController.h; sourceTree = "<group>"; };
 		074671A51E6409B800ADBC90 /* DUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserListViewController.m; sourceTree = "<group>"; };
 		074671A71E64125400ADBC90 /* DUserListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserListViewCell.h; sourceTree = "<group>"; };
 		074671A81E64125400ADBC90 /* DUserListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserListViewCell.m; sourceTree = "<group>"; };
+		074671AA1E641F6300ADBC90 /* DPhotoDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotoDetailController.h; sourceTree = "<group>"; };
+		074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotoDetailController.m; sourceTree = "<group>"; };
+		074671AE1E641F7A00ADBC90 /* DCommonPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonPhotosCell.h; sourceTree = "<group>"; };
+		074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotosCell.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -689,10 +692,11 @@
 		074671981E63DA6500ADBC90 /* ShowPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				074671AD1E641F7A00ADBC90 /* views */,
 				074671991E63DA6500ADBC90 /* DCommonPhotoController.h */,
 				0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */,
-				074671A01E63DA9C00ADBC90 /* DCommonPhotosCell.h */,
-				074671A11E63DA9C00ADBC90 /* DCommonPhotosCell.m */,
+				074671AA1E641F6300ADBC90 /* DPhotoDetailController.h */,
+				074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */,
 			);
 			path = ShowPhotos;
 			sourceTree = "<group>";
@@ -715,6 +719,15 @@
 				074671A81E64125400ADBC90 /* DUserListViewCell.m */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		074671AD1E641F7A00ADBC90 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				074671AE1E641F7A00ADBC90 /* DCommonPhotosCell.h */,
+				074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		7EAFD4B71E56D7A700BBA972 /* Home */ = {
@@ -1958,6 +1971,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
 				7ED811271E55550100954DAF /* LOTAnimationCache.m in Sources */,
 				7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */,
@@ -2003,7 +2017,6 @@
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
 				7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */,
 				7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */,
-				074671A21E63DA9C00ADBC90 /* DCommonPhotosCell.m in Sources */,
 				07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */,
 				7ED811801E55573300954DAF /* DTestPhotoViewController.m in Sources */,
 				07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */,
@@ -2028,6 +2041,7 @@
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
 				0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */,
 				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
+				074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,

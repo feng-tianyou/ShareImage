@@ -7,12 +7,16 @@
 //
 
 #import "DCommonPhotoController.h"
+#import "DPhotoDetailController.h"
 #import "DCommonPhotosCell.h"
 
 #import "DUserAPIManager.h"
 #import "DCollectionsAPIManager.h"
 #import "DUserParamModel.h"
 #import "DCollectionsParamModel.h"
+#import "DPhotosModel.h"
+
+#import "DPhotoManager.h"
 
 #import <MJRefresh/MJRefresh.h>
 
@@ -22,9 +26,10 @@ static NSString * const cellID = @"collectionPhotos";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *photoUrls;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) APIManagerType type;
-
+@property (nonatomic, strong) DPhotoManager *manager;
 
 @end
 
@@ -123,7 +128,10 @@ static NSString * const cellID = @"collectionPhotos";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.photos.count > indexPath.row) {
-        
+//        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.row]];
+//        [self.navigationController pushViewController:detailController animated:YES];
+        self.manager  = [DPhotoManager manager];
+        [self.manager photoPreviewWithPhotoUrls:self.photoUrls currentIndex:indexPath.row currentViewController:self];
     }
 }
 
@@ -133,6 +141,14 @@ static NSString * const cellID = @"collectionPhotos";
     [self.photos addObjectsFromArray:arrData];
     [self.collectionView.mj_footer endRefreshing];
     [self.collectionView reloadData];
+    
+    NSMutableArray *tmpArr = [NSMutableArray arrayWithCapacity:arrData.count];
+    [arrData enumerateObjectsUsingBlock:^(DPhotosModel *photoModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (photoModel.urls.small.length > 0) {
+            [tmpArr addObject:photoModel.urls.small];
+        }
+    }];
+    [self.photoUrls addObjectsFromArray:tmpArr];
 }
 
 - (void)hasNotMoreData{
@@ -141,6 +157,7 @@ static NSString * const cellID = @"collectionPhotos";
 
 - (void)clearData{
     [self.photos removeAllObjects];
+    [self.photoUrls removeAllObjects];
 }
 
 
@@ -171,6 +188,13 @@ static NSString * const cellID = @"collectionPhotos";
         _photos = [NSMutableArray array];
     }
     return _photos;
+}
+
+- (NSMutableArray *)photoUrls{
+    if (!_photoUrls) {
+        _photoUrls = [NSMutableArray array];
+    }
+    return _photoUrls;
 }
 
 
