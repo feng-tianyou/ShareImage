@@ -132,6 +132,13 @@
             return;
         }
         
+        //分页处理:当获取到的数据小于设置的limit条数时，告知页面没有更多数据了
+        if(arr.count < paramModel.per_page){
+            [self requestServiceSucceedBackArray:arr];
+            [self hasNotMoreData];
+            return;
+        }
+        
         [self requestServiceSucceedBackArray:arr];
     } onError:^(DError *error) {
         @strongify(self)

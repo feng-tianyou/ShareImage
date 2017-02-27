@@ -7,6 +7,8 @@
 //
 
 #import "DUserProfileViewController.h"
+#import "DCommonPhotoController.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -14,6 +16,7 @@
 
 #import "DNumberButton.h"
 #import "DHomeCellTipLabel.h"
+#import "UIView+DLayer.h"
 
 @interface DUserProfileViewController ()<UIScrollViewDelegate>
 
@@ -46,23 +49,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setupNav];
+    self.navLeftItemType = DNavigationItemTypeBack;
+    self.navRighItemType = DNavigationItemTypeRightMenu;
+    self.title = @"Profile";
+    
+    // 请求数据
+    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+    paramModel.username = self.userName;
+    [manager fetchUserProfileByParamModel:paramModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     
-    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-    paramModel.username = self.userName;
-    [manager fetchUserProfileByParamModel:paramModel];
+    
+   
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
 }
 
 
@@ -145,6 +153,7 @@
     .rightSpaceToView(self.scrollView,80)
     .heightIs(50);
     
+    [self.scrollView scrollToTop];
 }
 
 #pragma mark - navEvent
@@ -153,15 +162,6 @@
 }
 
 #pragma mark - private
-- (void)setupNav{
-    self.navLeftItemType = DNavigationItemTypeWriteBack;
-    self.navRighItemType = DNavigationItemTypeRightWriteMenu;
-    self.title = @"Profile";
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-}
 
 - (NSString *)changeThousandWithNumber:(NSUInteger)number{
     if (number > 1000) {
@@ -182,7 +182,9 @@
 }
 // -----------------------------------
 - (void)clickPhotoNumBtn{
-    
+    DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:self.userName type:UserAPIManagerType];
+    photoController.username = self.userName;
+    [self.navigationController pushViewController:photoController animated:YES];
 }
 
 - (void)clickFollowerNumBtn{

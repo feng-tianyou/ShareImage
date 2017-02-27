@@ -7,7 +7,7 @@
 //
 
 #import "DCollectionViewController.h"
-#import "DCollectionDetailsController.h"
+#import "DCommonPhotoController.h"
 #import "DCollectionViewCell.h"
 #import "DCollectionsAPIManager.h"
 #import "DCollectionsParamModel.h"
@@ -88,7 +88,8 @@ static NSString * const cellID = @"collection";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.collections.count > indexPath.row) {
         DCollectionsModel *model = self.collections[indexPath.row];
-        DCollectionDetailsController *detaildController = [[DCollectionDetailsController alloc] initWithCollectionId:model.c_id];
+        DCommonPhotoController *detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
+        detaildController.collectionId = model.c_id;
         [self.navigationController pushViewController:detaildController animated:YES];
     }
 }

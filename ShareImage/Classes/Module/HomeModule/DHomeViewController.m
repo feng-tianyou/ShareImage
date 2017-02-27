@@ -70,7 +70,7 @@
 - (void)setupSubViewsAutoLayout{
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
-    .topSpaceToView(self.view, self.navBarHeight)
+    .topSpaceToView(self.view, 0)
     .bottomSpaceToView(self.view,0)
     .leftSpaceToView(self.view, 0)
     .rightSpaceToView(self.view, 0);
