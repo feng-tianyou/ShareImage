@@ -164,6 +164,13 @@
             return;
         }
         
+        //分页处理:当获取到的数据小于设置的limit条数时，告知页面没有更多数据了
+        if(arr.count < paramModel.per_page){
+            [self requestServiceSucceedBackArray:arr];
+            [self hasNotMoreData];
+            return;
+        }
+        
         [self requestServiceSucceedBackArray:arr];
     } onError:^(DError *error) {
         @strongify(self)
@@ -189,11 +196,107 @@
             return;
         }
         
+        //分页处理:当获取到的数据小于设置的limit条数时，告知页面没有更多数据了
+        if(arr.count < paramModel.per_page){
+            [self requestServiceSucceedBackArray:arr];
+            [self hasNotMoreData];
+            return;
+        }
+        
         [self requestServiceSucceedBackArray:arr];
     } onError:^(DError *error) {
         @strongify(self)
         [self proccessNetwordError:error];
     }];
 }
+
+
+
+/**
+ 获取用户关注的人
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedBackArray:(DUserModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserFollowingByParamModel:(id<DUserParamProtocol>)paramModel{
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
+    @weakify(self)
+    [self.service fetchUserFollowingByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        @strongify(self)
+        //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
+        if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]){
+            return;
+        }
+        
+        //分页处理:当获取到的数据小于设置的limit条数时，告知页面没有更多数据了
+        if(arr.count < paramModel.per_page){
+            [self requestServiceSucceedBackArray:arr];
+            [self hasNotMoreData];
+            return;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+/**
+ 获取用户粉丝
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedBackArray:(DUserModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserFollowersByParamModel:(id<DUserParamProtocol>)paramModel{
+    if (paramModel.page == 1) {
+        [self addLoadingView];
+    }
+    @weakify(self)
+    [self.service fetchUserFollowersByParamModel:paramModel onSucceeded:^(NSArray *arr) {
+        @strongify(self)
+        //分页处理:当start为0时需要做clearData处理，当获取的arr数据为空时，调用相关方法告知页面没有数据
+        if([self needExecuteClearAndHasNoDataOperationByStart:paramModel.page arrData:arr]){
+            return;
+        }
+        
+        //分页处理:当获取到的数据小于设置的limit条数时，告知页面没有更多数据了
+        if(arr.count < paramModel.per_page){
+            [self requestServiceSucceedBackArray:arr];
+            [self hasNotMoreData];
+            return;
+        }
+        
+        [self requestServiceSucceedBackArray:arr];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
+
+
+
+
+
+
+
+
+
+
 
 @end

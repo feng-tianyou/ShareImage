@@ -113,7 +113,28 @@
 
 
 
+/**
+ 获取用户关注的人
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchUserFollowingByParamModel:(id<DUserParamProtocol>)paramModel
+                         onSucceeded:(NSArrayBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock;
 
+
+/**
+ 获取用户粉丝
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)fetchUserFollowersByParamModel:(id<DUserParamProtocol>)paramModel
+                         onSucceeded:(NSArrayBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock;
 
 
 

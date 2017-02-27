@@ -137,4 +137,34 @@
 - (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel;
 
 
+/**
+ 获取用户关注的人
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedBackArray:(DUserModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserFollowingByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+/**
+ 获取用户粉丝
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedBackArray:(DUserModel)
+ 
+ @param paramModel 参数模型
+ */
+- (void)fetchUserFollowersByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
 @end
