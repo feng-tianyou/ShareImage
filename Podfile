@@ -38,5 +38,6 @@ pod 'JSPatchPlatform'
 
 # 动画
 #pod 'lottie-ios'
+pod 'ZLSwipeableView'
 
 end

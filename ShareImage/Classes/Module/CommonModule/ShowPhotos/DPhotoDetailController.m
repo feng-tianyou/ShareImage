@@ -39,7 +39,6 @@ static float progress = 0.0f;
     
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.photoModel.urls.small] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         progress = receivedSize/(float)expectedSize;
-        DLog(@"%f", progress);
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         [SVProgressHUD showProgress:progress status:@"Loading..."];
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

@@ -31,6 +31,7 @@
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
 		07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */; };
 		07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */; };
+		07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -287,6 +288,8 @@
 		07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchCollectionsModel.m; sourceTree = "<group>"; };
 		07DF556A1E5C3FC4004EC4A7 /* DSearchUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchUsersModel.h; sourceTree = "<group>"; };
 		07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchUsersModel.m; sourceTree = "<group>"; };
+		07ECEBEB1E651A6100BCF52A /* DSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSwipeViewController.h; sourceTree = "<group>"; };
+		07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSwipeViewController.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -697,6 +700,8 @@
 				0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */,
 				074671AA1E641F6300ADBC90 /* DPhotoDetailController.h */,
 				074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */,
+				07ECEBEB1E651A6100BCF52A /* DSwipeViewController.h */,
+				07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */,
 			);
 			path = ShowPhotos;
 			sourceTree = "<group>";
@@ -2079,6 +2084,7 @@
 				7ED8113B1E55550100954DAF /* LOTAnimationTransitionController.m in Sources */,
 				7ED810EA1E55550100954DAF /* DPlistCache.m in Sources */,
 				7ED811581E55550100954DAF /* DBlockTool.m in Sources */,
+				07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */,
 				7ED811821E55573300954DAF /* DTestViewController.m in Sources */,
 				7ED811191E55550100954DAF /* LOTAnimatableLayer.m in Sources */,
 				7ED811471E55550100954DAF /* UIColor+DColor.m in Sources */,

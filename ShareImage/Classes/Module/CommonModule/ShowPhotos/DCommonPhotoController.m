@@ -9,6 +9,7 @@
 #import "DCommonPhotoController.h"
 #import "DPhotoDetailController.h"
 #import "DCommonPhotosCell.h"
+#import "DSwipeViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DCollectionsAPIManager.h"
@@ -31,6 +32,8 @@ static NSString * const cellID = @"collectionPhotos";
 @property (nonatomic, assign) APIManagerType type;
 @property (nonatomic, strong) DPhotoManager *manager;
 
+@property (nonatomic, copy) NSString *navTitle;
+
 @end
 
 @implementation DCommonPhotoController
@@ -40,6 +43,7 @@ static NSString * const cellID = @"collectionPhotos";
     if (self) {
         self.type = type;
         self.title = title;
+        self.navTitle = title;
     }
     return self;
 }
@@ -130,8 +134,11 @@ static NSString * const cellID = @"collectionPhotos";
     if (self.photos.count > indexPath.row) {
 //        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.row]];
 //        [self.navigationController pushViewController:detailController animated:YES];
-        self.manager  = [DPhotoManager manager];
-        [self.manager photoPreviewWithPhotoUrls:self.photoUrls currentIndex:indexPath.row currentViewController:self];
+//        self.manager  = [DPhotoManager manager];
+//        [self.manager photoPreviewWithPhotoUrls:self.photoUrls currentIndex:indexPath.row currentViewController:self];
+        
+        DSwipeViewController *swip = [[DSwipeViewController alloc] initWithTitle:self.navTitle photoModels:self.photos index:indexPath.row];
+        [self.navigationController pushViewController:swip animated:YES];
     }
 }
 
