@@ -12,6 +12,8 @@
 #import "DPhotoDetailController.h"
 
 #import "DHomeTableViewCell.h"
+#import "DHomeMenuView.h"
+
 #import "DPhotosAPIManager.h"
 #import "DCollectionsAPIManager.h"
 #import "DUserAPIManager.h"
@@ -26,7 +28,7 @@
 #import "LLSlideMenu.h"
 
 
-@interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource, DHomeMenuViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -201,6 +203,16 @@
     }
 }
 
+
+#pragma mark - DHomeMenuViewDelegate
+- (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
+    DLog(@"点击头部");
+}
+
+- (void)homeMenuView:(DHomeMenuView *)homeMenuView didSelectIndex:(NSInteger)selectIndex{
+    DLog(@"点击--%@", @(selectIndex));
+}
+
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
@@ -272,7 +284,7 @@
         _slideMenu.ll_menuWidth = 200.f;
         
         // 设置菜单背景色  background color
-        _slideMenu.ll_menuBackgroundColor = [UIColor redColor];
+        _slideMenu.ll_menuBackgroundColor = [UIColor colorWithWhite:0.2 alpha:0.7];
         
         // 设置菜单背景图片  background image
 //        _slideMenu.ll_menuBackgroundImage = [UIImage imageNamed:@"image"];
@@ -281,6 +293,13 @@
         _slideMenu.ll_springVelocity = 15;      // 速度
         _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
         _slideMenu.hidden = YES;
+        
+        DHomeMenuView *menuView = [[DHomeMenuView alloc] init];
+        [menuView setFrame:0 y:0 w:200 h:SCREEN_HEIGHT];
+        menuView.delegate = self;
+
+        [_slideMenu addSubview:menuView];
+        
         
     }
     return _slideMenu;

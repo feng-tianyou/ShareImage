@@ -37,6 +37,9 @@
 		07ECEBFC1E6555B700BCF52A /* LLDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF51E6555B700BCF52A /* LLDisplayLayer.m */; };
 		07ECEBFD1E6555B700BCF52A /* LLSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF71E6555B700BCF52A /* LLSlideMenu.m */; };
 		07ECEBFE1E6555B700BCF52A /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF91E6555B700BCF52A /* UIView+SetRect.m */; };
+		07ECEC051E65608E00BCF52A /* DHomeMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC041E65608E00BCF52A /* DHomeMenuView.m */; };
+		07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */; };
+		07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -305,6 +308,12 @@
 		07ECEBF71E6555B700BCF52A /* LLSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSlideMenu.m; sourceTree = "<group>"; };
 		07ECEBF81E6555B700BCF52A /* UIView+SetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SetRect.h"; sourceTree = "<group>"; };
 		07ECEBF91E6555B700BCF52A /* UIView+SetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SetRect.m"; sourceTree = "<group>"; };
+		07ECEC031E65608E00BCF52A /* DHomeMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeMenuView.h; sourceTree = "<group>"; };
+		07ECEC041E65608E00BCF52A /* DHomeMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuView.m; sourceTree = "<group>"; };
+		07ECEC061E6560A900BCF52A /* DHomeMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeMenuCell.h; sourceTree = "<group>"; };
+		07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuCell.m; sourceTree = "<group>"; };
+		07ECEC091E65776900BCF52A /* DHomeMenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeMenuHeader.h; sourceTree = "<group>"; };
+		07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuHeader.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -767,6 +776,19 @@
 			path = LLSlideMenu;
 			sourceTree = "<group>";
 		};
+		07ECEC021E65608E00BCF52A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				07ECEC031E65608E00BCF52A /* DHomeMenuView.h */,
+				07ECEC041E65608E00BCF52A /* DHomeMenuView.m */,
+				07ECEC061E6560A900BCF52A /* DHomeMenuCell.h */,
+				07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */,
+				07ECEC091E65776900BCF52A /* DHomeMenuHeader.h */,
+				07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		7EAFD4B71E56D7A700BBA972 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +811,7 @@
 		7EAFD4BB1E56DFE600BBA972 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07ECEC021E65608E00BCF52A /* Menu */,
 				7EAFD4BC1E56DFFC00BBA972 /* DHomeTableViewCell.h */,
 				7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */,
 				7EAFD4BF1E56EF8F00BBA972 /* DHomeCellTipLabel.h */,
@@ -2009,6 +2032,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */,
 				074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
 				7ED811271E55550100954DAF /* LOTAnimationCache.m in Sources */,
@@ -2080,10 +2104,12 @@
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
 				0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */,
+				07ECEC051E65608E00BCF52A /* DHomeMenuView.m in Sources */,
 				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
 				074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
+				07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
 				070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */,
 				7ED811241E55550100954DAF /* LOTAnimatablePointValue.m in Sources */,

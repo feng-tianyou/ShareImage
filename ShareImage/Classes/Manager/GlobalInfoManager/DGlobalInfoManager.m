@@ -241,13 +241,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
         
         if(data.length > 0){
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            NSDictionary *dicUser = [dic objectForKey:kParamData];
-            _accountInfo = [[DUserModel alloc] initWithDictionary:dicUser];
+            _accountInfo = [DUserModel modelWithJSON:dic];
             _accountInfo.uid = KGLOBALINFOMANAGER.uid;
         }
         else{
             [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
-                _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
+                _accountInfo = [DUserModel modelWithJSON:dic];
                 _accountInfo.uid = KGLOBALINFOMANAGER.uid;
             } onError:^(DError *error) {
             }];
@@ -258,7 +257,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (void)reloadAccountInfoForNotCache{
     [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
-        _accountInfo = [[DUserModel alloc] initWithDictionary:dic];
+        _accountInfo = [DUserModel modelWithJSON:dic];
         _accountInfo.uid = KGLOBALINFOMANAGER.uid;
     } onError:^(DError *error) {
     }];
