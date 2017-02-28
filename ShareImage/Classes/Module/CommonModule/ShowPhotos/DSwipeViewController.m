@@ -55,6 +55,7 @@ static float progress = 0.0f;
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
+    [self.swipeableView discardAllViews];
     [self.swipeableView loadViewsIfNeeded];
 }
 
@@ -82,10 +83,10 @@ static float progress = 0.0f;
         self.photoIndex = 0;
     }
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
     
     UIImageView *imageView = [[UIImageView alloc] init];
-    [imageView addGestureRecognizer:tap];
+//    [imageView addGestureRecognizer:tap];
     [imageView.layer setCornerRadius:10.0];
     [imageView.layer setMasksToBounds:YES];
     CGRect swipFrame = swipeableView.frame;
