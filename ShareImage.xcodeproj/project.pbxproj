@@ -32,6 +32,11 @@
 		07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */; };
 		07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */; };
 		07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */; };
+		07ECEBFA1E6555B700BCF52A /* LLAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF11E6555B700BCF52A /* LLAnimationManager.m */; };
+		07ECEBFB1E6555B700BCF52A /* LLCircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF31E6555B700BCF52A /* LLCircleLayer.m */; };
+		07ECEBFC1E6555B700BCF52A /* LLDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF51E6555B700BCF52A /* LLDisplayLayer.m */; };
+		07ECEBFD1E6555B700BCF52A /* LLSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF71E6555B700BCF52A /* LLSlideMenu.m */; };
+		07ECEBFE1E6555B700BCF52A /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF91E6555B700BCF52A /* UIView+SetRect.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -290,6 +295,16 @@
 		07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchUsersModel.m; sourceTree = "<group>"; };
 		07ECEBEB1E651A6100BCF52A /* DSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSwipeViewController.h; sourceTree = "<group>"; };
 		07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSwipeViewController.m; sourceTree = "<group>"; };
+		07ECEBF01E6555B700BCF52A /* LLAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAnimationManager.h; sourceTree = "<group>"; };
+		07ECEBF11E6555B700BCF52A /* LLAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAnimationManager.m; sourceTree = "<group>"; };
+		07ECEBF21E6555B700BCF52A /* LLCircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLCircleLayer.h; sourceTree = "<group>"; };
+		07ECEBF31E6555B700BCF52A /* LLCircleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLCircleLayer.m; sourceTree = "<group>"; };
+		07ECEBF41E6555B700BCF52A /* LLDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLDisplayLayer.h; sourceTree = "<group>"; };
+		07ECEBF51E6555B700BCF52A /* LLDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLDisplayLayer.m; sourceTree = "<group>"; };
+		07ECEBF61E6555B700BCF52A /* LLSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSlideMenu.h; sourceTree = "<group>"; };
+		07ECEBF71E6555B700BCF52A /* LLSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSlideMenu.m; sourceTree = "<group>"; };
+		07ECEBF81E6555B700BCF52A /* UIView+SetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SetRect.h"; sourceTree = "<group>"; };
+		07ECEBF91E6555B700BCF52A /* UIView+SetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SetRect.m"; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -733,6 +748,23 @@
 				074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		07ECEBEF1E6555B700BCF52A /* LLSlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				07ECEBF01E6555B700BCF52A /* LLAnimationManager.h */,
+				07ECEBF11E6555B700BCF52A /* LLAnimationManager.m */,
+				07ECEBF21E6555B700BCF52A /* LLCircleLayer.h */,
+				07ECEBF31E6555B700BCF52A /* LLCircleLayer.m */,
+				07ECEBF41E6555B700BCF52A /* LLDisplayLayer.h */,
+				07ECEBF51E6555B700BCF52A /* LLDisplayLayer.m */,
+				07ECEBF61E6555B700BCF52A /* LLSlideMenu.h */,
+				07ECEBF71E6555B700BCF52A /* LLSlideMenu.m */,
+				07ECEBF81E6555B700BCF52A /* UIView+SetRect.h */,
+				07ECEBF91E6555B700BCF52A /* UIView+SetRect.m */,
+			);
+			path = LLSlideMenu;
 			sourceTree = "<group>";
 		};
 		7EAFD4B71E56D7A700BBA972 /* Home */ = {
@@ -1258,6 +1290,7 @@
 		7ED810101E55550100954DAF /* ThirtPart */ = {
 			isa = PBXGroup;
 			children = (
+				07ECEBEF1E6555B700BCF52A /* LLSlideMenu */,
 				7ED810111E55550100954DAF /* EGOCache */,
 				7ED810141E55550100954DAF /* lottie-ios */,
 				7ED810731E55550100954DAF /* OpenUDID */,
@@ -2003,6 +2036,7 @@
 				7ED810E01E55550100954DAF /* DNavigationViewController.m in Sources */,
 				7ED811201E55550100954DAF /* LOTStrokeShapeLayer.m in Sources */,
 				7ED811831E55573300954DAF /* ViewController.m in Sources */,
+				07ECEBFB1E6555B700BCF52A /* LLCircleLayer.m in Sources */,
 				7ED811041E55550100954DAF /* DServiceFactory.m in Sources */,
 				7ED811071E55550100954DAF /* DShareManager.m in Sources */,
 				7ED811351E55550100954DAF /* LOTShapeGroup.m in Sources */,
@@ -2031,6 +2065,7 @@
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
 				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
 				070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */,
+				07ECEBFD1E6555B700BCF52A /* LLSlideMenu.m in Sources */,
 				7ED810E31E55550100954DAF /* DTabBar.m in Sources */,
 				7ED810E21E55550100954DAF /* UIViewController+DNetwork.m in Sources */,
 				7ED810EE1E55550100954DAF /* DFileManager.m in Sources */,
@@ -2055,11 +2090,13 @@
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,
 				7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */,
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
+				07ECEBFE1E6555B700BCF52A /* UIView+SetRect.m in Sources */,
 				7ED8112B1E55550100954DAF /* CADisplayLink.m in Sources */,
 				7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */,
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,
+				07ECEBFA1E6555B700BCF52A /* LLAnimationManager.m in Sources */,
 				7ED810DF1E55550100954DAF /* DBaseViewController.m in Sources */,
 				07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */,
 				7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */,
@@ -2104,6 +2141,7 @@
 				7ED8115A1E55550100954DAF /* DHttpTool.m in Sources */,
 				070A8B321E5D2B0C00CE41E2 /* DCollectionsParamModel.m in Sources */,
 				7ED810EF1E55550100954DAF /* DPlistManager.m in Sources */,
+				07ECEBFC1E6555B700BCF52A /* LLDisplayLayer.m in Sources */,
 				7ED810DD1E55550100954DAF /* AppDelegate.m in Sources */,
 				7ED811231E55550100954DAF /* LOTAnimatableNumberValue.m in Sources */,
 				7ED811561E55550100954DAF /* DImageTextButton.m in Sources */,

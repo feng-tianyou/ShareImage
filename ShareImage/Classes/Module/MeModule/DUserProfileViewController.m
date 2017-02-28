@@ -28,9 +28,7 @@
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) DHomeCellTipLabel *addressLabel;
-
-@property (nonatomic, strong) UIButton *followlingBtn;
-
+@property (nonatomic, strong) UILabel *bioLabel;
 @property (nonatomic, strong) DNumberButton *photoNumBtn;
 @property (nonatomic, strong) DNumberButton *followerNumBtn;
 @property (nonatomic, strong) DNumberButton *followingNumBtn;
@@ -90,7 +88,7 @@
     [self.scrollView addSubview:self.followerNumBtn];
     [self.scrollView addSubview:self.followingNumBtn];
     
-    [self.scrollView addSubview:self.followlingBtn];
+    [self.scrollView addSubview:self.bioLabel];
     
     
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
@@ -148,11 +146,11 @@
     .heightIs(40);
     
     
-    self.followlingBtn.sd_layout
-    .topSpaceToView(self.followerNumBtn, 50)
-    .leftSpaceToView(self.scrollView, 80)
-    .rightSpaceToView(self.scrollView,80)
-    .heightIs(50);
+    self.bioLabel.sd_layout
+    .topSpaceToView(self.followerNumBtn, 20)
+    .leftSpaceToView(self.scrollView, 10)
+    .rightSpaceToView(self.scrollView,10)
+    .autoHeightRatio(0);
     
     [self.scrollView scrollToTop];
 }
@@ -177,11 +175,6 @@
     return [NSString stringWithFormat:@"%@", @(number)];
 }
 
-
-- (void)clickFollowlingBtn{
-    
-}
-// -----------------------------------
 - (void)clickPhotoNumBtn{
     DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:self.userName type:UserAPIManagerType];
     photoController.username = self.userName;
@@ -229,6 +222,8 @@
     self.followerNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.followers_count];
     self.followingNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.following_count];
     
+    self.bioLabel.text = userModel.bio;
+    
     
     
 }
@@ -272,6 +267,16 @@
     return _nameLabel;
 }
 
+- (UILabel *)bioLabel{
+    if (!_bioLabel) {
+        _bioLabel = [[UILabel alloc] init];
+        _bioLabel.textColor = [UIColor blackColor];
+        _bioLabel.textAlignment = NSTextAlignmentLeft;
+        _bioLabel.numberOfLines = 0;
+    }
+    return _bioLabel;
+}
+
 - (DHomeCellTipLabel *)addressLabel{
     if (!_addressLabel) {
         _addressLabel = [[DHomeCellTipLabel alloc] init];
@@ -283,20 +288,6 @@
     return _addressLabel;
 }
 
-
-- (UIButton *)followlingBtn{
-    if (!_followlingBtn) {
-        _followlingBtn = [[UIButton alloc] init];
-        [_followlingBtn setTitle:@"Follwing" forState:UIControlStateNormal];
-        _followlingBtn.titleLabel.textColor = [UIColor whiteColor];
-        [_followlingBtn setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
-        _followlingBtn.titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:22.0];
-        [_followlingBtn.layer setCornerRadius:25.0];
-        [_followlingBtn.layer setMasksToBounds:YES];
-        [_followlingBtn addTarget:self action:@selector(clickFollowlingBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _followlingBtn;
-}
 
 - (DNumberButton *)photoNumBtn{
     if (!_photoNumBtn) {

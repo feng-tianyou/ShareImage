@@ -40,4 +40,5 @@ pod 'JSPatchPlatform'
 #pod 'lottie-ios'
 pod 'ZLSwipeableView'
 
+
 end
