@@ -7,6 +7,7 @@
 //
 
 #import "DSearchViewController.h"
+#import "DSearchSelectItemView.h"
 
 @interface DSearchViewController ()<UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource>
 
@@ -14,7 +15,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
-
+@property (nonatomic, strong) DSearchSelectItemView *selectItemView;
 
 @end
 
@@ -125,6 +126,13 @@
     return _dataArray;
 }
 
+
+- (DSearchSelectItemView *)selectItemView{
+    if (!_selectItemView) {
+        _selectItemView = [[DSearchSelectItemView alloc] init];
+    }
+    return _selectItemView;
+}
 
 
 @end
