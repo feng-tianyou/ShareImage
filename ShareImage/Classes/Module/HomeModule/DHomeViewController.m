@@ -50,6 +50,7 @@
     [super viewWillAppear:animated];
     
     [self.tabBarController.view addSubview:self.slideMenu];
+    [self.slideMenu ll_closeSlideMenu];
 }
 
 
@@ -136,15 +137,31 @@
 
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.photos.count;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0.1;
+    }
+    return 3;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DHomeTableViewCell *cell = [DHomeTableViewCell cellWithTableView:tableView];
     
-    if (self.photos.count > indexPath.row) {
-        DPhotosModel *model = self.photos[indexPath.row];
+    if (self.photos.count > indexPath.section) {
+        DPhotosModel *model = self.photos[indexPath.section];
         cell.photosModel = model;
         DUserModel *userModel = model.user;
         [cell setClickIconBlock:^{
@@ -158,15 +175,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.photos[indexPath.row];
+    id model = self.photos[indexPath.section];
     CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DHomeTableViewCell class] contentViewWidth:self.view.width];
     return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if (self.photos.count > indexPath.row) {
-        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.row]];
+    if (self.photos.count > indexPath.section) {
+        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.section]];
         [self.navigationController pushViewController:detailController animated:YES];
     }
 }
@@ -228,12 +245,12 @@
 #pragma mark - getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.dk_backgroundColorPicker = DKColorPickerWithKey(BG);
+        _tableView.backgroundColor = DSystemColorGray;
     }
     return _tableView;
 }
