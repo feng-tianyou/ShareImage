@@ -10,6 +10,7 @@
 #import "DSearchPhotoController.h"
 #import "DUserProfileViewController.h"
 #import "DPhotoDetailController.h"
+#import "DSearchViewController.h"
 
 #import "DHomeTableViewCell.h"
 #import "DHomeMenuView.h"
@@ -210,7 +211,8 @@
         
         
     } else {
-        
+        DSearchViewController *searchController = [[DSearchViewController alloc] init];
+        [self.navigationController pushViewController:searchController animated:YES];
     }
 }
 

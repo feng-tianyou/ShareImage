@@ -205,6 +205,8 @@
 		7ED811A71E5559D600954DAF /* message_project_alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A11E5559D600954DAF /* message_project_alert@2x.png */; };
 		7ED811A81E5559D600954DAF /* message_project_resource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A21E5559D600954DAF /* message_project_resource@2x.png */; };
 		7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED811AB1E5580D200954DAF /* DOAuthViewController.m */; };
+		7EE1018F1E66B42800D5576D /* DSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1018E1E66B42800D5576D /* DSearchViewController.m */; };
+		7EE101931E66BCB300D5576D /* DSearchSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -658,6 +660,10 @@
 		7ED811A21E5559D600954DAF /* message_project_resource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_project_resource@2x.png"; sourceTree = "<group>"; };
 		7ED811AA1E5580D200954DAF /* DOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthViewController.h; sourceTree = "<group>"; };
 		7ED811AB1E5580D200954DAF /* DOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthViewController.m; sourceTree = "<group>"; };
+		7EE1018D1E66B42800D5576D /* DSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchViewController.h; sourceTree = "<group>"; };
+		7EE1018E1E66B42800D5576D /* DSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchViewController.m; sourceTree = "<group>"; };
+		7EE101911E66BCB300D5576D /* DSearchSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchSelectItemView.h; sourceTree = "<group>"; };
+		7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchSelectItemView.m; sourceTree = "<group>"; };
 		BCCCCB4B3D0941142A77DFC7 /* Pods-ShareImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1233,6 +1239,7 @@
 		7ED80FF81E55550100954DAF /* CommonModule */ = {
 			isa = PBXGroup;
 			children = (
+				7EE1018C1E66B41800D5576D /* Search */,
 				074671A31E64099700ADBC90 /* UserList */,
 				0746719C1E63DA7500ADBC90 /* WebView */,
 				074671981E63DA6500ADBC90 /* ShowPhotos */,
@@ -1762,6 +1769,25 @@
 			path = OAuth;
 			sourceTree = "<group>";
 		};
+		7EE1018C1E66B41800D5576D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7EE101901E66BC9500D5576D /* Views */,
+				7EE1018D1E66B42800D5576D /* DSearchViewController.h */,
+				7EE1018E1E66B42800D5576D /* DSearchViewController.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		7EE101901E66BC9500D5576D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EE101911E66BCB300D5576D /* DSearchSelectItemView.h */,
+				7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C0D7BB80420A79B8748121B4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2157,6 +2183,7 @@
 				7ED8114D1E55550100954DAF /* UITextView+Placeholder.m in Sources */,
 				7ED811491E55550100954DAF /* UIImage+DQRCode.m in Sources */,
 				7ED811391E55550100954DAF /* LOTShapeTransform.m in Sources */,
+				7EE1018F1E66B42800D5576D /* DSearchViewController.m in Sources */,
 				0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */,
 				7ED811211E55550100954DAF /* LOTAnimatableBoundsValue.m in Sources */,
 				7ED811311E55550100954DAF /* LOTLayer.m in Sources */,
@@ -2192,6 +2219,7 @@
 				7ED811511E55550100954DAF /* UIViewController+DLottieAnimated.m in Sources */,
 				7ED8110E1E55550100954DAF /* DLoginViewController.m in Sources */,
 				7ED811101E55550100954DAF /* DMessagesViewController.m in Sources */,
+				7EE101931E66BCB300D5576D /* DSearchSelectItemView.m in Sources */,
 				7ED811551E55550100954DAF /* DCustomAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

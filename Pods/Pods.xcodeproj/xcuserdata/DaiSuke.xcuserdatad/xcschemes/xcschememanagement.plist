@@ -109,6 +109,11 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
+		<key>ZLSwipeableView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -182,6 +187,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6F3AA5F338A4DFA2A543CE678EAD401F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7BAAEC1386420288825150BB5315CA52</key>
 		<dict>
 			<key>primary</key>
@@ -202,7 +212,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9DEAC0B1804E7065FD5D8B3C157157B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A3B3CA69641375F94D39F255650BF877</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7D7922C87673F08B5CD14F80BFE9454</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -213,6 +233,11 @@
 			<true/>
 		</dict>
 		<key>B13574E17EED8AAA9A85CE67AD5B4570</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4774AAE4F6006E27E3C5C8D4E9C7E0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -242,6 +267,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E05767A079D69E688B015194DB4EE648</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E14A62900910444707A5504D25EC98DC</key>
 		<dict>
 			<key>primary</key>
@@ -258,6 +288,11 @@
 			<true/>
 		</dict>
 		<key>E7B6DECB28BCF36568D2D6CFDC4878D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F58D76248018B5CF34F5F6C178D107D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
