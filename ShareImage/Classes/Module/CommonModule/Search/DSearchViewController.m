@@ -9,6 +9,7 @@
 #import "DSearchViewController.h"
 #import "DSearchSelectItemView.h"
 
+
 @interface DSearchViewController ()<UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UISearchController *searchController;
@@ -40,13 +41,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"Search";
+    self.navLeftItemType = DNavigationItemTypeBack;
+
+    [self.view addSubview:self.tableView];
+    [self.tableView setTableHeaderView:self.searchController.searchBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     
 }
+
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
-    [self.view addSubview:self.tableView];
+    
+    
+    
     self.tableView.sd_layout
     .topEqualToView(self.view)
     .leftEqualToView(self.view)
@@ -54,7 +68,7 @@
     .bottomEqualToView(self.view);
     
     
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
 }
 
 #pragma mark - UISearchResultsUpdating
@@ -67,19 +81,27 @@
 //    });
 }
 
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    static NSString *cellId = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
     
-    
-    return nil;
+    return cell;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,13 +118,14 @@
 
 #pragma mark getter & setter
 
-- (UISearchController *)searchBarController{
+- (UISearchController *)searchController{
     if (!_searchController) {
         _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
         _searchController.searchResultsUpdater = self;
-        _searchController.dimsBackgroundDuringPresentation = false;
+        _searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+        _searchController.view.backgroundColor = [UIColor whiteColor];
         [_searchController.searchBar sizeToFit];
-        _searchController.searchBar.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
+        _searchController.searchBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     }
     return _searchController;
 }
