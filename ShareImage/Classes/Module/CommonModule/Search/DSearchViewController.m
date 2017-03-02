@@ -8,15 +8,17 @@
 
 #import "DSearchViewController.h"
 #import "DSearchSelectItemView.h"
+#import "DSearchBar.h"
 
 
-@interface DSearchViewController ()<UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource>
+@interface DSearchViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @property (nonatomic, strong) DSearchSelectItemView *selectItemView;
+
+@property (nonatomic, strong) DSearchBar *searchBar;
 
 @end
 
@@ -32,10 +34,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.searchController.active) {
-        self.searchController.active = NO;
-        [self.searchController.searchBar removeFromSuperview];
-    }
+
 }
 
 - (void)viewDidLoad {
@@ -45,7 +44,7 @@
     self.navLeftItemType = DNavigationItemTypeBack;
 
     [self.view addSubview:self.tableView];
-    [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.tableView setTableHeaderView:self.searchBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -71,18 +70,14 @@
     
 }
 
-#pragma mark - UISearchResultsUpdating
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-//    [self.filteredCities removeAllObjects];
-//    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@", self.searchController.searchBar.text];
-//    self.filteredCities = [[self.allCities filteredArrayUsingPredicate:searchPredicate] mutableCopy];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.tableView reloadData];
-//    });
-}
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - private
+- (void)clickClearText{
+    self.searchBar.searchTextField.text = @"";
 }
 
 
@@ -118,18 +113,6 @@
 
 #pragma mark getter & setter
 
-- (UISearchController *)searchController{
-    if (!_searchController) {
-        _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-        _searchController.searchResultsUpdater = self;
-        _searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        _searchController.view.backgroundColor = [UIColor whiteColor];
-        [_searchController.searchBar sizeToFit];
-        _searchController.searchBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
-    }
-    return _searchController;
-}
-
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -137,7 +120,6 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        _tableView.backgroundColor = DSystemColorGray;
     }
     return _tableView;
 }
@@ -155,6 +137,17 @@
         _selectItemView = [[DSearchSelectItemView alloc] init];
     }
     return _selectItemView;
+}
+
+- (DSearchBar *)searchBar{
+    if (!_searchBar) {
+        _searchBar = [[DSearchBar alloc] init];
+        [_searchBar setFrame:0 y:0 w:SCREEN_WIDTH h:55];
+        _searchBar.backgroundColor = [UIColor whiteColor];
+        _searchBar.searchTextField.placeholder = @"Search...";
+        [_searchBar.clearButton addTarget:self action:@selector(clickClearText) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _searchBar;
 }
 
 
