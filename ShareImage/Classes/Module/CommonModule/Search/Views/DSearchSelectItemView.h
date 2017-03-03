@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSearchSelectItemView : UIView
+@interface DSearchSelectItemView : UIControl
 
 @property (nonatomic, strong) UIButton *photoBtn;
 @property (nonatomic, strong) UIButton *userBtn;
 @property (nonatomic, strong) UIButton *collectionBtn;
+@property (nonatomic, strong) UIView *contentView;
+
+- (void)show;
+
+- (void)hide;
 
 @end

@@ -53,8 +53,8 @@
 - (UIView *)bgView{
     if (!_bgView) {
         _bgView = [[UIView alloc] init];
-        _bgView.backgroundColor = [UIColor setHexColor:@"#f5f5f5"];
-        [_bgView.layer setCornerRadius:22.0];
+        _bgView.backgroundColor = [UIColor setHexColor:@"#232627"];
+        [_bgView.layer setCornerRadius:20.0];
         [_bgView.layer setMasksToBounds:YES];
     }
     return _bgView;
@@ -63,7 +63,7 @@
 - (UIImageView *)searchIcon{
     if (!_searchIcon) {
         _searchIcon = [[UIImageView alloc] init];
-        _searchIcon.image = [UIImage getImageWithName:@"navigationbar_btn_left_search"];
+        _searchIcon.image = [UIImage getImageWithName:@"navigationbar_btn_write_search"];
     }
     return _searchIcon;
 }
@@ -78,8 +78,8 @@
 - (UIButton *)clearButton{
     if (!_clearButton) {
         _clearButton = [[UIButton alloc] init];
-        [_clearButton setImage:[UIImage getImageWithName:@"navigationbar_btn_close"] forState:UIControlStateNormal];
-        [_clearButton setImage:[UIImage getImageWithName:@"navigationbar_btn_close"] forState:UIControlStateHighlighted];
+        [_clearButton setImage:[UIImage getImageWithName:@"navigationbar_btn_write_close"] forState:UIControlStateNormal];
+        [_clearButton setImage:[UIImage getImageWithName:@"navigationbar_btn_write_close"] forState:UIControlStateHighlighted];
     }
     return _clearButton;
 }
