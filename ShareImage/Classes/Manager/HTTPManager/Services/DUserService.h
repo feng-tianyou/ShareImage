@@ -145,7 +145,7 @@
  @param errorBlock 失败回调
  */
 - (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel
-                       onSucceeded:(BoolBlock)succeededBlock
+                       onSucceeded:(JsonModelBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock;
 
 
@@ -159,7 +159,7 @@
  @param errorBlock 失败回调
  */
 - (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
-                         onSucceeded:(BoolBlock)succeededBlock
+                         onSucceeded:(JsonModelBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock;
 
 

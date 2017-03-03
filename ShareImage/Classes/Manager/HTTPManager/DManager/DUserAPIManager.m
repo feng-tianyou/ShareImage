@@ -351,15 +351,15 @@
  参数模型：DUserParamModel
  username: 用户名(Required)
  
- 回调：requestServiceSucceedBackBool:(BOOL)
+ 回调：requestServiceSucceedWithModel:(DUserModel)
  
  @param paramModel 参数模型
  */
 - (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel{
     [self addLoadingView];
     @weakify(self)
-    [self.service followUserByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
-        [self requestServiceSucceedBackBool:isTrue];
+    [self.service followUserByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
         @strongify(self)
         [self proccessNetwordError:error];
@@ -375,15 +375,15 @@
  参数模型：DUserParamModel
  username: 用户名(Required)
  
- 回调：requestServiceSucceedBackBool:(BOOL)
+ 回调：requestServiceSucceedWithModel:(DUserModel)
  
  @param paramModel 参数模型
  */
 - (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel{
     [self addLoadingView];
     @weakify(self)
-    [self.service cancelFollowUserByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
-        [self requestServiceSucceedBackBool:isTrue];
+    [self.service cancelFollowUserByParamModel:paramModel onSucceeded:^(__kindof DJsonModel *model) {
+        [self requestServiceSucceedWithModel:model];
     } onError:^(DError *error) {
         @strongify(self)
         [self proccessNetwordError:error];

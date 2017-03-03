@@ -19,6 +19,8 @@
 #import "DHomeCellTipLabel.h"
 #import "UIView+DLayer.h"
 
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @interface DUserProfileViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, copy) NSString *userName;
@@ -32,6 +34,10 @@
 @property (nonatomic, strong) DNumberButton *photoNumBtn;
 @property (nonatomic, strong) DNumberButton *followerNumBtn;
 @property (nonatomic, strong) DNumberButton *followingNumBtn;
+@property (nonatomic, strong) UIButton *followButton;
+
+// 数据
+@property (nonatomic, strong) DUserModel *userModel;
 
 @end
 
@@ -89,6 +95,7 @@
     [self.scrollView addSubview:self.followingNumBtn];
     
     [self.scrollView addSubview:self.bioLabel];
+    [self.scrollView addSubview:self.followButton];
     
     
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
@@ -152,6 +159,12 @@
     .rightSpaceToView(self.scrollView,10)
     .autoHeightRatio(0);
     
+    self.followButton.sd_layout
+    .topSpaceToView(self.bioLabel, 20)
+    .leftSpaceToView(self.scrollView, 80)
+    .rightSpaceToView(self.scrollView,80)
+    .heightIs(50);
+    
     [self.scrollView scrollToTop];
 }
 
@@ -191,6 +204,22 @@
     [self.navigationController pushViewController:userController animated:YES];
 }
 
+- (void)clickFollowButton{
+    DUserAPIManager *manager = nil;
+    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+    paramModel.username = self.userName;
+    if (self.userModel.followed_by_user) {
+//        [self.networkUserInfo setObject:@"cancel" forKey:@"follow"];
+        manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        [manager cancelFollowUserByParamModel:paramModel];
+    } else {
+//        [self.networkUserInfo setObject:@"follow" forKey:@"follow"];
+        manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        [manager followUserByParamModel:paramModel];
+    }
+    
+}
+
 
 #pragma mark - delegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -210,13 +239,20 @@
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    self.userModel = dataModel;
+    
     DUserModel *userModel = dataModel;
     DPhotosModel *photoModel = [userModel.u_photos firstObject];
     [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.regular] placeholderImage:nil];
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
     self.nameLabel.text = userModel.username;
-    self.addressLabel.describe = userModel.location;
     
+    if (userModel.location.length > 0) {
+        self.addressLabel.hidden = NO;
+        self.addressLabel.describe = userModel.location;
+    } else {
+        self.addressLabel.hidden = YES;
+    }
     
     self.photoNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.total_photos];
     self.followerNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.followers_count];
@@ -224,9 +260,28 @@
     
     self.bioLabel.text = userModel.bio;
     
-    
+    if (userModel.followed_by_user) {
+        [self.followButton setBackgroundColor:[UIColor blackColor]];
+    } else {
+        [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
+    }
     
 }
+
+//- (void)requestServiceSucceedBackBool:(BOOL)isTrue userInfo:(NSDictionary *)userInfo{
+//    [SVProgressHUD setMaximumDismissTimeInterval:2.0];
+//    if ([[userInfo objectForKey:@"follow"] isEqualToString:@"cancel"]) {
+//        if (isTrue) {
+//            [SVProgressHUD showSuccessWithStatus:@"UnFollow Success"];
+//            [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
+//        }
+//    } else {
+//        if (isTrue) {
+//            [SVProgressHUD showSuccessWithStatus:@"Follow Success"];
+//            [self.followButton setBackgroundColor:[UIColor blackColor]];
+//        }
+//    }
+//}
 
 
 #pragma mark - getter & setter
@@ -313,6 +368,20 @@
     return _followingNumBtn;
 }
 
+
+- (UIButton *)followButton{
+    if (!_followButton) {
+        _followButton = [[UIButton alloc] init];
+        [_followButton setTitle:@"Follwing" forState:UIControlStateNormal];
+        _followButton.titleLabel.textColor = [UIColor whiteColor];
+        [_followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
+        _followButton.titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:22.0];
+        [_followButton.layer setCornerRadius:25.0];
+        [_followButton.layer setMasksToBounds:YES];
+        [_followButton addTarget:self action:@selector(clickFollowButton) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _followButton;
+}
 
 
 @end

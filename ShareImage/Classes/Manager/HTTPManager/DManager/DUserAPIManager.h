@@ -175,7 +175,7 @@
  参数模型：DUserParamModel
  username: 用户名(Required)
  
- 回调：requestServiceSucceedBackBool:(BOOL)
+ 回调：requestServiceSucceedWithModel:(DUserModel)
  
  @param paramModel 参数模型
  */
@@ -190,7 +190,7 @@
  参数模型：DUserParamModel
  username: 用户名(Required)
  
- 回调：requestServiceSucceedBackBool:(BOOL)
+ 回调：requestServiceSucceedWithModel:(DUserModel)
  
  @param paramModel 参数模型
  */

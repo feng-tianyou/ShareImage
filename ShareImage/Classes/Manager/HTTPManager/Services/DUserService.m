@@ -318,7 +318,7 @@
  @param errorBlock 失败回调
  */
 - (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel
-                   onSucceeded:(BoolBlock)succeededBlock
+                   onSucceeded:(JsonModelBlock)succeededBlock
                        onError:(ErrorBlock)errorBlock{
     NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
     if (strAlert.length > 0) {
@@ -326,7 +326,18 @@
         return;
     }
     [self.network postFollowUserByParamModel:paramModel onSucceeded:^(id responseObject) {
-        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+//        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+        
+        [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic, BOOL isCache) {
+            DLog(@"%@", dic);
+            if (isCache) {
+                return ;
+            }
+            [self.info setObject:@(isCache) forKey:kParamCacheData];
+            DUserModel *model = [DUserModel modelWithJSON:dic];
+            [DBlockTool executeModelBlock:succeededBlock model:model];
+        } onError:errorBlock];
+        
     } onError:errorBlock];
 }
 
@@ -341,7 +352,7 @@
  @param errorBlock 失败回调
  */
 - (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
-                         onSucceeded:(BoolBlock)succeededBlock
+                         onSucceeded:(JsonModelBlock)succeededBlock
                              onError:(ErrorBlock)errorBlock{
     NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
     if (strAlert.length > 0) {
@@ -349,7 +360,16 @@
         return;
     }
     [self.network deleteFollowUserByParamModel:paramModel onSucceeded:^(id responseObject) {
-        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+//        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+        [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic, BOOL isCache) {
+            DLog(@"%@", dic);
+            if (isCache) {
+                return ;
+            }
+            [self.info setObject:@(isCache) forKey:kParamCacheData];
+            DUserModel *model = [DUserModel modelWithJSON:dic];
+            [DBlockTool executeModelBlock:succeededBlock model:model];
+        } onError:errorBlock];
     } onError:errorBlock];
 }
 
