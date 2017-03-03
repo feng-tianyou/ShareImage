@@ -13,6 +13,15 @@
 /**
  授权
  
+ 参数模型：DOAuthParamModel
+ client_id：AppKey(Required)
+ client_secret：秘钥;(Required)
+ redirect_uri：回调地址;(Required)
+ grant_type：授权类型 @"authorization_code";(Required)
+ code：固定 code; (Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DOAuthAccountModel)
+ 
  @param paramModel 参数模型
  */
 - (void)oauthAccountByParamModel:(id<DOAuthParamProtocol>)paramModel{
@@ -65,6 +74,18 @@
 /**
  更改个人信息
  
+ 参数模型：DUserParamModel
+ username 用户名(Optional)
+ first_name 姓(Optional)
+ last_name 名(Optional)
+ email email,格式必须正确(Optional)
+ url 个人简介地址(Optional)
+ location 地址(Optional)
+ bio 简介(Optional)
+ instagram_username instagram昵称
+ 
+ 回调：requestServiceSucceedWithModel:(DUserModel)
+ 
  @param paramModel 参数模型
  */
 - (void)updateAccountByParamModel:(id<DUserParamProtocol>)paramModel{
@@ -81,6 +102,11 @@
 
 /**
  获取用户信息
+ 
+ 参数模型：DUserParamModel
+ username 用户名(Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DUserModel)
  
  @param paramModel 参数模型
  */
@@ -100,6 +126,11 @@
 /**
  获取用户介绍连接
  
+ 参数模型：DUserParamModel
+ username 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackString:(NSSting)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchUserProfileLinkByParamModel:(id<DUserParamProtocol>)paramModel{
@@ -117,6 +148,14 @@
 
 /**
  获取用户的图片集合
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ order_by：排序（Valid values: latest, oldest, popular; default: latest）
+ 
+ 回调：requestServiceSucceedBackArray:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -150,6 +189,14 @@
 /**
  获取用户喜欢的图片集合
  
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ order_by：排序（Valid values: latest, oldest, popular; default: latest）
+ 
+ 回调：requestServiceSucceedBackArray:(DPhotosModel)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchUserLikePhotosByParamModel:(id<DUserParamProtocol>)paramModel{
@@ -182,9 +229,16 @@
 /**
  获取用户分类集合
  
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ order_by：排序（Valid values: latest, oldest, popular; default: latest）
+ 
+ 回调：requestServiceSucceedBackArray:(DCollectionsModel)
+ 
  @param paramModel 参数模型
- */
-- (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel{
+ */- (void)fetchUserCollectionsByParamModel:(id<DUserParamProtocol>)paramModel{
     if (paramModel.page == 1) {
         [self addLoadingView];
     }

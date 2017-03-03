@@ -20,6 +20,13 @@
 /**
  获取首页图片集合
  
+ 参数模型：DPhotosParamModel
+ page：页数（Optional; default: 1）
+ per_page：每页多少条（Optional; default: 10）
+ order_by：排序（Valid values: latest, oldest, popular; default: latest）
+ 
+ 回调：requestServiceSucceedBackArray:(DPhotosModel)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -46,6 +53,14 @@
 /**
  获取单张图片详情
  
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ w：图片宽度
+ h：图片高度
+ rect:裁剪矩形
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchPhotoDetailsByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -63,6 +78,18 @@
 /**
  随机获取一张图片
  
+ 参数模型：DPhotosParamModel
+ 根据分类id，collections;
+ 根据特色，featured;
+ 根据昵称，username;
+ 根据匹配，query;
+ w	Image width in pixels.
+ h	Image height in pixels.
+ 根据方向，orientation;
+ 获取张数 (Default: 1; max: 30)，count;（暂时不开放）
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchRandomPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -79,6 +106,11 @@
 
 /**
  获取图片的统计信息
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -98,9 +130,9 @@
  获取图片的下载地址
  
  参数模型：DPhotosParamModel
- pid：图片id（必须）
+ pid：图片id (Required)
  
- 回调：requestServiceSucceedWithModel:
+ 回调：requestServiceSucceedBackString:(NSString)
  
  @param paramModel 参数模型
  */
@@ -119,6 +151,11 @@
 static float progress = 0.0f;
 /**
  下载图片
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ 
+ 回调：requestServiceSucceedBackString:(NSString)
  
  @param paramModel 参数模型
  */
@@ -153,7 +190,25 @@ static float progress = 0.0f;
 
 
 /**
- 更新图片
+ 更新图片（没有权限）
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id（必须）
+ 
+ 纬度,latitude;
+ 经度,longitude;
+ 城市,city;
+ 国家,country;
+ 城市名称,name;
+ confidential;
+ 光圈,perture_value;
+ 曝光,exposure_time;
+ 焦距,focal_length;
+ iso,iso_speed_ratings;
+ 相机名称,make;
+ 相机型号,model;
+ 
+ 回调：requestServiceSucceedWithModel:
  
  @param paramModel 参数模型
  */
@@ -172,6 +227,11 @@ static float progress = 0.0f;
 /**
  喜欢图片
  
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
+ 
  @param paramModel 参数模型
  */
 - (void)likePhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -188,6 +248,11 @@ static float progress = 0.0f;
 
 /**
  取消喜欢图片
+ 
+ 参数模型：DPhotosParamModel
+ pid：图片id (Required)
+ 
+ 回调：requestServiceSucceedWithModel:(DPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -206,6 +271,13 @@ static float progress = 0.0f;
 
 /**
  搜索图片
+ 
+ 参数模型：DPhotosParamModel
+ query：关键字 (Required)
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedWithModel:(DSearchPhotosModel)
  
  @param paramModel 参数模型
  */
@@ -241,6 +313,13 @@ static float progress = 0.0f;
 /**
  搜索分类
  
+ 参数模型：DPhotosParamModel
+ query：关键字 (Required)
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedWithModel:(DSearchCollectionsModel)
+ 
  @param paramModel 参数模型
  */
 - (void)fetchSearchCollectionsPhotosByParamModel:(id<DPhotosParamProtocol>)paramModel{
@@ -273,6 +352,13 @@ static float progress = 0.0f;
 
 /**
  搜索用户
+ 
+ 参数模型：DPhotosParamModel
+ query：关键字 (Required)
+ page: 页数（Optional; default: 1）
+ per_page: 每页多少条（Optional; default: 10）
+ 
+ 回调：requestServiceSucceedWithModel:(DSearchUsersModel)
  
  @param paramModel 参数模型
  */
