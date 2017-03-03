@@ -345,7 +345,50 @@
 
 
 
+/**
+ 关注
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackBool:(BOOL)
+ 
+ @param paramModel 参数模型
+ */
+- (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service followUserByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
+        [self requestServiceSucceedBackBool:isTrue];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
 
+
+
+
+/**
+ 取消关注
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackBool:(BOOL)
+ 
+ @param paramModel 参数模型
+ */
+- (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel{
+    [self addLoadingView];
+    @weakify(self)
+    [self.service cancelFollowUserByParamModel:paramModel onSucceeded:^(BOOL isTrue) {
+        [self requestServiceSucceedBackBool:isTrue];
+    } onError:^(DError *error) {
+        @strongify(self)
+        [self proccessNetwordError:error];
+    }];
+}
 
 
 

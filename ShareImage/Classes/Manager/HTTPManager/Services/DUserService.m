@@ -310,7 +310,48 @@
 }
 
 
+/**
+ 关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel
+                   onSucceeded:(BoolBlock)succeededBlock
+                       onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network postFollowUserByParamModel:paramModel onSucceeded:^(id responseObject) {
+        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+    } onError:errorBlock];
+}
 
+
+
+
+/**
+ 取消关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
+                         onSucceeded:(BoolBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    NSString *strAlert = [DUserValidRule checkGetUserProfileByParamModel:paramModel];
+    if (strAlert.length > 0) {
+        [DBlockTool executeErrorBlock:errorBlock errorText:strAlert];
+        return;
+    }
+    [self.network deleteFollowUserByParamModel:paramModel onSucceeded:^(id responseObject) {
+        [DBlockTool executeBoolBlock:succeededBlock result:[responseObject valueForKey:@"success"]];
+    } onError:errorBlock];
+}
 
 
 

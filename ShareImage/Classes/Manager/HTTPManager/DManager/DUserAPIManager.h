@@ -167,4 +167,35 @@
 - (void)fetchUserFollowersByParamModel:(id<DUserParamProtocol>)paramModel;
 
 
+
+
+/**
+ 关注
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackBool:(BOOL)
+ 
+ @param paramModel 参数模型
+ */
+- (void)followUserByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+
+
+/**
+ 取消关注
+ 
+ 参数模型：DUserParamModel
+ username: 用户名(Required)
+ 
+ 回调：requestServiceSucceedBackBool:(BOOL)
+ 
+ @param paramModel 参数模型
+ */
+- (void)cancelFollowUserByParamModel:(id<DUserParamProtocol>)paramModel;
+
+
+
 @end

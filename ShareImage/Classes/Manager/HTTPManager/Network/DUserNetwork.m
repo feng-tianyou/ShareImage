@@ -263,4 +263,42 @@
 }
 
 
+/**
+ 关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)postFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
+                       onSucceeded:(NSObjectBlock)succeededBlock
+                           onError:(ErrorBlock)errorBlock{
+    [self opPostWithUrlPath:[NSString stringWithFormat:@"https://unsplash.com/napi/users/%@/follow", paramModel.username] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
+
+
+/**
+ 取消关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)deleteFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
+                         onSucceeded:(NSObjectBlock)succeededBlock
+                             onError:(ErrorBlock)errorBlock{
+    [self opDeleteWithUrlPath:[NSString stringWithFormat:@"https://unsplash.com/napi/users/%@/follow", paramModel.username] params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
+        ExistActionDo(succeededBlock, succeededBlock(responseObject));
+    } onError:^(DError *error) {
+        ExistActionDo(errorBlock, errorBlock(error));
+    }];
+}
+
+
 @end

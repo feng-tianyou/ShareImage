@@ -138,6 +138,29 @@
                        onSucceeded:(NSObjectBlock)succeededBlock
                            onError:(ErrorBlock)errorBlock;
 
+/**
+ 关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)postFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
+                       onSucceeded:(NSObjectBlock)succeededBlock
+                           onError:(ErrorBlock)errorBlock;
 
+
+
+
+/**
+ 取消关注
+ 
+ @param paramModel 参数模型
+ @param succeededBlock 成功回调
+ @param errorBlock 失败回调
+ */
+- (void)deleteFollowUserByParamModel:(id<DUserParamProtocol>)paramModel
+                       onSucceeded:(NSObjectBlock)succeededBlock
+                           onError:(ErrorBlock)errorBlock;
 
 @end
