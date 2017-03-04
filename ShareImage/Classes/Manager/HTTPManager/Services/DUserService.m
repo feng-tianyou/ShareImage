@@ -56,6 +56,13 @@
         // 归档
         [DOAuthAccountTool saveAccount:model];
         
+        [[DUserNetwork shareEngine] getAccountNeedCache:NO onSucceeded:^(NSDictionary *dic, BOOL isCache) {
+            DUserModel *userModel = [DUserModel modelWithJSON:dic];
+            KGLOBALINFOMANAGER.accountInfo = userModel;
+            KGLOBALINFOMANAGER.uid = userModel.uid;
+        } onError:^(DError *error) {
+        }];
+        
         [DBlockTool executeModelBlock:succeededBlock model:model];
     } onError:errorBlock];
 }

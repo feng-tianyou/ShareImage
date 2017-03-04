@@ -61,7 +61,7 @@
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
-        [_iconView sd_setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.profile_image.medium]];
+        [_iconView sd_setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.profile_image.large]];
         [_iconView.layer setCornerRadius:35.0];
         [_iconView.layer setMasksToBounds:YES];
     }

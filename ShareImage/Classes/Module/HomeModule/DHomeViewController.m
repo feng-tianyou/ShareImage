@@ -34,11 +34,7 @@
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, assign) NSInteger page;
 
-// =============  菜单部分 ============
 @property (nonatomic, strong) LLSlideMenu *slideMenu;
-// 全屏侧滑手势
-//@property (nonatomic, strong) UIPanGestureRecognizer *leftSwipe;
-//@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 
 
 @end
@@ -49,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.tabBarController.view addSubview:self.slideMenu];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.slideMenu];
     [self.slideMenu ll_closeSlideMenu];
 }
 
@@ -290,13 +286,5 @@
     }
     return _slideMenu;
 }
-
-//- (UIPanGestureRecognizer *)leftSwipe{
-//    if (!_leftSwipe) {
-//        _leftSwipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftHandle:)];
-//        _leftSwipe.maximumNumberOfTouches = 1;
-//    }
-//    return _leftSwipe;
-//}
 
 @end
