@@ -101,11 +101,8 @@
 		7ED811081E55550100954DAF /* DJsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FF31E55550100954DAF /* DJsonModel.m */; };
 		7ED811091E55550100954DAF /* DUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FF61E55550100954DAF /* DUserModel.m */; };
 		7ED8110B1E55550100954DAF /* DScanQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FFD1E55550100954DAF /* DScanQRCodeViewController.m */; };
-		7ED8110C1E55550100954DAF /* DDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810001E55550100954DAF /* DDiscoverViewController.m */; };
 		7ED8110D1E55550100954DAF /* DHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810031E55550100954DAF /* DHomeViewController.m */; };
-		7ED8110E1E55550100954DAF /* DLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810061E55550100954DAF /* DLoginViewController.m */; };
 		7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810091E55550100954DAF /* DMeViewController.m */; };
-		7ED811101E55550100954DAF /* DMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8100C1E55550100954DAF /* DMessagesViewController.m */; };
 		7ED811111E55550100954DAF /* DData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8100E1E55550100954DAF /* DData.bundle */; };
 		7ED811131E55550100954DAF /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810131E55550100954DAF /* EGOCache.m */; };
 		7ED811141E55550100954DAF /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 7ED810161E55550100954DAF /* .gitkeep */; };
@@ -446,16 +443,10 @@
 		7ED80FF61E55550100954DAF /* DUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserModel.m; sourceTree = "<group>"; };
 		7ED80FFC1E55550100954DAF /* DScanQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DScanQRCodeViewController.h; sourceTree = "<group>"; };
 		7ED80FFD1E55550100954DAF /* DScanQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DScanQRCodeViewController.m; sourceTree = "<group>"; };
-		7ED80FFF1E55550100954DAF /* DDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDiscoverViewController.h; sourceTree = "<group>"; };
-		7ED810001E55550100954DAF /* DDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDiscoverViewController.m; sourceTree = "<group>"; };
 		7ED810021E55550100954DAF /* DHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeViewController.h; sourceTree = "<group>"; };
 		7ED810031E55550100954DAF /* DHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeViewController.m; sourceTree = "<group>"; };
-		7ED810051E55550100954DAF /* DLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLoginViewController.h; sourceTree = "<group>"; };
-		7ED810061E55550100954DAF /* DLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLoginViewController.m; sourceTree = "<group>"; };
 		7ED810081E55550100954DAF /* DMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeViewController.h; sourceTree = "<group>"; };
 		7ED810091E55550100954DAF /* DMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeViewController.m; sourceTree = "<group>"; };
-		7ED8100B1E55550100954DAF /* DMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMessagesViewController.h; sourceTree = "<group>"; };
-		7ED8100C1E55550100954DAF /* DMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMessagesViewController.m; sourceTree = "<group>"; };
 		7ED8100E1E55550100954DAF /* DData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DData.bundle; sourceTree = "<group>"; };
 		7ED810121E55550100954DAF /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		7ED810131E55550100954DAF /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
@@ -1246,11 +1237,8 @@
 			children = (
 				0733B7511E5EDE05005784CE /* CollectionMoudle */,
 				7ED80FF81E55550100954DAF /* CommonModule */,
-				7ED80FFE1E55550100954DAF /* DiscoverModule */,
 				7ED810011E55550100954DAF /* HomeModule */,
-				7ED810041E55550100954DAF /* LoginModule */,
 				7ED810071E55550100954DAF /* MeModule */,
-				7ED8100A1E55550100954DAF /* MessageModule */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -1276,15 +1264,6 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
-		7ED80FFE1E55550100954DAF /* DiscoverModule */ = {
-			isa = PBXGroup;
-			children = (
-				7ED80FFF1E55550100954DAF /* DDiscoverViewController.h */,
-				7ED810001E55550100954DAF /* DDiscoverViewController.m */,
-			);
-			path = DiscoverModule;
-			sourceTree = "<group>";
-		};
 		7ED810011E55550100954DAF /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,15 +1272,6 @@
 				7ED810031E55550100954DAF /* DHomeViewController.m */,
 			);
 			path = HomeModule;
-			sourceTree = "<group>";
-		};
-		7ED810041E55550100954DAF /* LoginModule */ = {
-			isa = PBXGroup;
-			children = (
-				7ED810051E55550100954DAF /* DLoginViewController.h */,
-				7ED810061E55550100954DAF /* DLoginViewController.m */,
-			);
-			path = LoginModule;
 			sourceTree = "<group>";
 		};
 		7ED810071E55550100954DAF /* MeModule */ = {
@@ -1314,15 +1284,6 @@
 				07DA8F941E60334F006D871B /* DUserProfileViewController.m */,
 			);
 			path = MeModule;
-			sourceTree = "<group>";
-		};
-		7ED8100A1E55550100954DAF /* MessageModule */ = {
-			isa = PBXGroup;
-			children = (
-				7ED8100B1E55550100954DAF /* DMessagesViewController.h */,
-				7ED8100C1E55550100954DAF /* DMessagesViewController.m */,
-			);
-			path = MessageModule;
 			sourceTree = "<group>";
 		};
 		7ED8100D1E55550100954DAF /* Resources */ = {
@@ -2191,7 +2152,6 @@
 				070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */,
 				7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */,
 				7ED8113D1E55550100954DAF /* OpenUDID.m in Sources */,
-				7ED8110C1E55550100954DAF /* DDiscoverViewController.m in Sources */,
 				7ED811541E55550100954DAF /* DAlertView.m in Sources */,
 				7ED8112A1E55550100954DAF /* UIColor+Expanded.m in Sources */,
 				7ED8113B1E55550100954DAF /* LOTAnimationTransitionController.m in Sources */,
@@ -2243,8 +2203,6 @@
 				7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */,
 				070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */,
 				7ED811511E55550100954DAF /* UIViewController+DLottieAnimated.m in Sources */,
-				7ED8110E1E55550100954DAF /* DLoginViewController.m in Sources */,
-				7ED811101E55550100954DAF /* DMessagesViewController.m in Sources */,
 				7EE101931E66BCB300D5576D /* DSearchSelectItemView.m in Sources */,
 				7ED811551E55550100954DAF /* DCustomAlertView.m in Sources */,
 			);

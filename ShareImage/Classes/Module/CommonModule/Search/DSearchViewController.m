@@ -333,6 +333,7 @@
 
 - (void)alertNoData{
     self.tableView.hidden = NO;
+    [self clearData];
     DNoDataView *noDataView = [[DNoDataView alloc] init];
     noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
     [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];

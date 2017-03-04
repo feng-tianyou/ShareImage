@@ -16,7 +16,6 @@
 
 #import "DTestViewController.h"
 #import "DWebViewController.h"
-#import "DLoginViewController.h"
 
 
 #define kBAIDU_TONGJI_APP_KEY       @"39846ebc46" // 百度统计

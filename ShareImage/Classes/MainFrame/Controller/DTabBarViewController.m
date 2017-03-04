@@ -9,12 +9,11 @@
 #import "DTabBarViewController.h"
 #import "DNavigationViewController.h"
 #import "DTabBar.h"
-//#import "<#header#>"
 
 static NSString *const DHomeViewControllerName = @"DHomeViewController";
 static NSString *const DCollectionViewControllerName = @"DCollectionViewController";
-static NSString *const DDiscoverViewControllerName = @"DDiscoverViewController";
-static NSString *const DMeViewControllerName = @"DMeViewController";
+//static NSString *const DDiscoverViewControllerName = @"DDiscoverViewController";
+//static NSString *const DMeViewControllerName = @"DMeViewController";
 
 
 @interface DTabBarViewController ()<DTabBarDelegate>
@@ -87,10 +86,10 @@ static NSString *const DMeViewControllerName = @"DMeViewController";
     [self setupChildViewController:DCollectionViewControllerName title:@"Menu" imageName:@"tabbar_contract" selectedImageName:@"tabbar_contract_select"];
 
     // 广场
-    [self setupChildViewController:DDiscoverViewControllerName title:@"聊天" imageName:@"tabbar_chat" selectedImageName:@"tabbar_chat_select"];
-    
-    // 我
-    [self setupChildViewController:DMeViewControllerName title:@"我" imageName:@"tabbar_me" selectedImageName:@"tabbar_me_select"];
+//    [self setupChildViewController:DDiscoverViewControllerName title:@"聊天" imageName:@"tabbar_chat" selectedImageName:@"tabbar_chat_select"];
+//    
+//    // 我
+//    [self setupChildViewController:DMeViewControllerName title:@"我" imageName:@"tabbar_me" selectedImageName:@"tabbar_me_select"];
     
 }
 
