@@ -41,8 +41,8 @@
     pageControl.bounds = CGRectMake(0, 0, 100, 30);
     
     // 设置颜色
-//    pageControl.currentPageIndicatorTintColor = MEColor(253, 98, 42);
-//    pageControl.pageIndicatorTintColor = MEColor(189, 189, 189);
+    pageControl.currentPageIndicatorTintColor = DColor(253, 98, 42);
+    pageControl.pageIndicatorTintColor = DColor(189, 189, 189);
     
     [self.view addSubview:pageControl];
     self.pageControl = pageControl;
