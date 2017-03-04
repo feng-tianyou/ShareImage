@@ -9,8 +9,8 @@
 #import "DBaseViewController.h"
 
 typedef NS_ENUM(NSInteger, SearchType) {
-    UserSearchType,
     PhotoSearchType,
+    UserSearchType,
     CollectionSearchType,
     OtherSearchType
 };

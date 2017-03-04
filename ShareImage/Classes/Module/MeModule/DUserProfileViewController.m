@@ -189,18 +189,18 @@
 }
 
 - (void)clickPhotoNumBtn{
-    DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:self.userName type:UserAPIManagerType];
+    DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:@"PHOTOS" type:UserAPIManagerType];
     photoController.username = self.userName;
     [self.navigationController pushViewController:photoController animated:YES];
 }
 
 - (void)clickFollowerNumBtn{
-    DUserListViewController *userController = [[DUserListViewController alloc] initWithUserName:self.userName type:FollowersType];
+    DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWERS" userName:self.userName type:FollowersType];
     [self.navigationController pushViewController:userController animated:YES];
 }
 
 - (void)clickFollowingNumBtn{
-    DUserListViewController *userController = [[DUserListViewController alloc] initWithUserName:self.userName type:FollowingType];
+    DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWING" userName:self.userName type:FollowingType];
     [self.navigationController pushViewController:userController animated:YES];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "DHomeViewController.h"
-#import "DSearchPhotoController.h"
 #import "DUserProfileViewController.h"
 #import "DPhotoDetailController.h"
 #import "DSearchViewController.h"

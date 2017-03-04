@@ -15,6 +15,6 @@ typedef NS_ENUM(NSInteger, FollowType) {
 
 @interface DUserListViewController : DBaseViewController
 
-- (instancetype)initWithUserName:(NSString *)userName type:(FollowType)type;
+- (instancetype)initWithTitle:(NSString *)title userName:(NSString *)userName type:(FollowType)type;
 
 @end

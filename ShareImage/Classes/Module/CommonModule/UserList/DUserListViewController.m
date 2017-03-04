@@ -7,6 +7,7 @@
 //
 
 #import "DUserListViewController.h"
+#import "DSearchViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -25,10 +26,10 @@
 
 @implementation DUserListViewController
 
-- (instancetype)initWithUserName:(NSString *)userName type:(FollowType)type{
+- (instancetype)initWithTitle:(NSString *)title userName:(NSString *)userName type:(FollowType)type{
     self = [super init];
     if (self) {
-        self.title = userName;
+        self.title = title;
         self.username = userName;
         self.type = type;
     }
@@ -123,11 +124,10 @@
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
-        
-        
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        
+        DSearchViewController *searchController = [[DSearchViewController alloc] initWithSearchType:UserSearchType];
+        [self.navigationController pushViewController:searchController animated:YES];
     }
 }
 

@@ -15,6 +15,7 @@ static NSString *const cellID = @"UserListCell";
 
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *bioLabel;
 
 @end
 
@@ -34,6 +35,7 @@ static NSString *const cellID = @"UserListCell";
         self.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.nameLabel];
+        [self.contentView addSubview:self.bioLabel];
         
         self.iconView.sd_layout
         .centerYEqualToView(self.contentView)
@@ -44,6 +46,12 @@ static NSString *const cellID = @"UserListCell";
         self.nameLabel.sd_layout
         .centerYEqualToView(self.contentView)
         .leftSpaceToView(self.iconView, 15)
+        .widthIs(100)
+        .heightIs(20);
+        
+        self.bioLabel.sd_layout
+        .centerYEqualToView(self.contentView)
+        .leftSpaceToView(self.nameLabel, 15)
         .rightSpaceToView(self.contentView, 10)
         .heightIs(20);
         
@@ -66,15 +74,26 @@ static NSString *const cellID = @"UserListCell";
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textColor = [UIColor blackColor];
-        _nameLabel.font = DSystemFontText;
+        _nameLabel.font = DSystemFontNavigationBar;
     }
     return _nameLabel;
 }
+
+- (UILabel *)bioLabel{
+    if (!_bioLabel) {
+        _bioLabel = [[UILabel alloc] init];
+        _bioLabel.textColor = DSystemColorGray;
+        _bioLabel.font = DSystemFontText;
+    }
+    return _bioLabel;
+}
+
 
 - (void)setUserModel:(DUserModel *)userModel{
     _userModel = userModel;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
     self.nameLabel.text = userModel.username;
+    self.bioLabel.text = userModel.bio;
 }
 
 @end
