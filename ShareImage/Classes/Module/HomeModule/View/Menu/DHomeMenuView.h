@@ -21,5 +21,7 @@
 
 @property (nonatomic, weak) id<DHomeMenuViewDelegate> delegate;
 
+- (void)reloadData;
+
 
 @end

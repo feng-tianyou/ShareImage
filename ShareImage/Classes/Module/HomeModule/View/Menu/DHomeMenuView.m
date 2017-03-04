@@ -9,6 +9,7 @@
 #import "DHomeMenuView.h"
 #import "DHomeMenuCell.h"
 #import "DHomeMenuHeader.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DHomeMenuView()<UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +28,14 @@
         [self setupSubViewsAutoLayout];
     }
     return self;
+}
+
+- (void)reloadData{
+    [self.headerView.iconView sd_setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.profile_image.large]];
+    if (KGLOBALINFOMANAGER.accountInfo.location.length == 0) {
+        self.headerView.addressLabel.hidden = YES;
+    }
+    self.headerView.nameLabel.text = KGLOBALINFOMANAGER.accountInfo.username;
 }
 
 #pragma mark - 私有方法
@@ -61,9 +70,6 @@
     DHomeMenuCell *cell = [DHomeMenuCell cellWithTableView:tableView];
     cell.imageView.image = [UIImage getImageWithName:self.icons[indexPath.row]];
     cell.textLabel.text = self.titles[indexPath.row];
-    
-
-    
     return cell;
 }
 

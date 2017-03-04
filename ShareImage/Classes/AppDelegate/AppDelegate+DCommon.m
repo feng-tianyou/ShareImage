@@ -12,7 +12,7 @@
 #import <WXApi.h>
 #import <JSPatchPlatform/JSPatch.h>
 
-#import "DTabBarViewController.h"
+#import "DChooesRootViewControllerTool.h"
 
 #import "DTestViewController.h"
 #import "DWebViewController.h"
@@ -35,7 +35,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = [[DTabBarViewController alloc] init];
+//    self.window.rootViewController = [[DTabBarViewController alloc] init];
+    [DChooesRootViewControllerTool setupRootViewControllerWithWindow:self.window];
 }
 
 #pragma mark - 回调地址
@@ -219,9 +220,9 @@
     }
     
     if (viewController) {
-        DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
-        UINavigationController *navController = rootContoller.selectedViewController;
-        [navController pushViewController:viewController animated:YES];
+//        DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
+//        UINavigationController *navController = rootContoller.selectedViewController;
+//        [navController pushViewController:viewController animated:YES];
 
     }
 }
@@ -259,9 +260,9 @@
         }
         
         if (viewController) {
-            DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
-            UINavigationController *navController = rootContoller.selectedViewController;
-            [navController pushViewController:viewController animated:YES];
+//            DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
+//            UINavigationController *navController = rootContoller.selectedViewController;
+//            [navController pushViewController:viewController animated:YES];
             
         }
     }

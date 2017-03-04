@@ -27,6 +27,8 @@
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B001E6A5C9A000DC645 /* DNoDataView.m */; };
+		078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */; };
+		078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -291,6 +293,10 @@
 		0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAnimationContollerTool.m; sourceTree = "<group>"; };
 		078D1AFF1E6A5C9A000DC645 /* DNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNoDataView.h; sourceTree = "<group>"; };
 		078D1B001E6A5C9A000DC645 /* DNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNoDataView.m; sourceTree = "<group>"; };
+		078D1B021E6A9C40000DC645 /* DChooesRootViewControllerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DChooesRootViewControllerTool.h; sourceTree = "<group>"; };
+		078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DChooesRootViewControllerTool.m; sourceTree = "<group>"; };
+		078D1B061E6A9E2F000DC645 /* DNewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNewFeatureController.h; sourceTree = "<group>"; };
+		078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNewFeatureController.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -768,6 +774,15 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		078D1B051E6A9E1D000DC645 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				078D1B061E6A9E2F000DC645 /* DNewFeatureController.h */,
+				078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
 		07ECEBEF1E6555B700BCF52A /* LLSlideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -908,6 +923,7 @@
 		7ED80F791E55550100954DAF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				078D1B051E6A9E1D000DC645 /* NewFeature */,
 				7ED811A91E5580AD00954DAF /* OAuth */,
 				7ED80F7A1E55550100954DAF /* AppDelegate */,
 				7ED80F831E55550100954DAF /* MainFrame */,
@@ -1713,6 +1729,8 @@
 				7ED810D71E55550100954DAF /* DNotificationTool.m */,
 				7ED810D81E55550100954DAF /* DSandboxTool.h */,
 				7ED810D91E55550100954DAF /* DSandboxTool.m */,
+				078D1B021E6A9C40000DC645 /* DChooesRootViewControllerTool.h */,
+				078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -2211,10 +2229,12 @@
 				7ED810FB1E55550100954DAF /* DUserAPIManager.m in Sources */,
 				7ED811811E55573300954DAF /* DTestTableViewCell.m in Sources */,
 				7ED811291E55550100954DAF /* CGGeometryAdditions.m in Sources */,
+				078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */,
 				7ED8114C1E55550100954DAF /* UIScrollView+DControl.m in Sources */,
 				7ED8112D1E55550100954DAF /* NSValue+Compat.m in Sources */,
 				7ED8113C1E55550100954DAF /* LOTAnimationView.m in Sources */,
 				0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */,
+				078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */,
 				7ED811481E55550100954DAF /* UIImage+DEffect.m in Sources */,
 				07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */,
 				7ED811091E55550100954DAF /* DUserModel.m in Sources */,

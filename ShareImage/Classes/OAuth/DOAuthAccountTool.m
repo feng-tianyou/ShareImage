@@ -18,8 +18,8 @@
  @param account 对象
  */
 + (void)saveAccount:(DOAuthAccountModel *)account{
-//    NSDate *nowTime = [NSDate date];
-//    account.created_at = (long long)[nowTime dateByAddingTimeInterval:account.created_at];
+    NSDate *nowTime = [NSDate date];
+    account.expiresTime = [nowTime dateByAddingTimeInterval:account.created_at];
     [NSKeyedArchiver archiveRootObject:account toFile:kAccountUrl];
     
 }
@@ -30,8 +30,14 @@
  @return 对象
  */
 + (DOAuthAccountModel *)account{
-    DOAuthAccountModel *model = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountUrl];
-    return model;
+    DOAuthAccountModel *account = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountUrl];
+    NSDate *nowTime = [NSDate date];
+    if ([nowTime compare:account.expiresTime] == NSOrderedAscending) {
+        // 没过期
+        return account;
+    } else {
+        return nil;
+    }
 }
 
 @end

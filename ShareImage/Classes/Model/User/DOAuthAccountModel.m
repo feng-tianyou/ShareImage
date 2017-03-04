@@ -18,6 +18,7 @@
         self.refresh_token = [decoder decodeObjectForKey:@"refresh_token"];
         self.scope = [decoder decodeObjectForKey:@"scope"];
         self.token_type = [decoder decodeObjectForKey:@"token_type"];
+        self.expiresTime = [decoder decodeObjectForKey:@"expiresTime"];
     }
     return self;
 }
@@ -28,6 +29,7 @@
     [encoder encodeObject:self.refresh_token forKey:@"refresh_token"];
     [encoder encodeObject:self.scope forKey:@"scope"];
     [encoder encodeObject:self.token_type forKey:@"token_type"];
+    [encoder encodeObject:self.expiresTime forKey:@"expiresTime"];
 }
 
 @end

@@ -15,5 +15,6 @@
 @property (nonatomic, copy) NSString *refresh_token;
 @property (nonatomic, copy) NSString *token_type;
 @property (nonatomic, copy) NSString *scope;
+@property (nonatomic, strong) NSDate *expiresTime; // 过期时间
 
 @end

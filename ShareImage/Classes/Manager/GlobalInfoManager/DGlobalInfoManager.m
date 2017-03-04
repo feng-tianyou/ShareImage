@@ -110,7 +110,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
     if (accessToken.length > 0) {
         _accessToken = [NSString stringWithFormat:@"%@",[accessToken copy]];
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
+        NSString *plistName = @"UserInfo_accessToken";
         NSMutableDictionary *dicInfo = nil;
         NSDictionary *dicPlist = [plistManager getDataByFileName:plistName];
         if(dicPlist){
@@ -128,7 +128,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 {
     if (!_accessToken || _accessToken.length == 0) {
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
+        NSString *plistName = @"UserInfo_accessToken";
         NSDictionary *dicInfo = [plistManager getDataByFileName:plistName];
         if(dicInfo && [dicInfo objectForKey:kParamAccessToken] && [dicInfo objectForKey:kParamAccessToken] != kNull){
             _accessToken = [dicInfo objectForKey:kParamAccessToken];
@@ -154,7 +154,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
     if (refreshToken.length > 0) {
         _refreshToken = [NSString stringWithFormat:@"%@",[refreshToken copy]];
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
+        NSString *plistName = @"UserInfo_refreshToken";
         NSMutableDictionary *dicInfo = nil;
         NSDictionary *dicPlist = [plistManager getDataByFileName:plistName];
         if(dicPlist){
@@ -172,7 +172,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 {
     if (!_refreshToken) {
         DPlistManager *plistManager = [DPlistManager shareManager];
-        NSString *plistName = [NSString stringWithFormat:@"%@UserInfo",KGLOBALINFOMANAGER.uid];
+        NSString *plistName = @"UserInfo_refreshToken";
         NSDictionary *dicInfo = [plistManager getDataByFileName:plistName];
         if(dicInfo && [dicInfo objectForKey:kParamRefreshToken] && [dicInfo objectForKey:kParamRefreshToken] != kNull){
             _refreshToken = [dicInfo objectForKey:kParamRefreshToken];

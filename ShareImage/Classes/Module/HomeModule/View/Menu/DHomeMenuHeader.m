@@ -7,7 +7,6 @@
 //
 
 #import "DHomeMenuHeader.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DHomeMenuHeader ()
 
@@ -51,9 +50,7 @@
     .rightEqualToView(self)
     .heightIs(20);
     
-    if (KGLOBALINFOMANAGER.accountInfo.location.length == 0) {
-        self.addressLabel.hidden = YES;
-    }
+    
 }
 
 
@@ -61,7 +58,6 @@
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
-        [_iconView sd_setImageWithURL:[NSURL URLWithString:KGLOBALINFOMANAGER.accountInfo.profile_image.large]];
         [_iconView.layer setCornerRadius:35.0];
         [_iconView.layer setMasksToBounds:YES];
     }
@@ -72,7 +68,6 @@
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textColor = [UIColor whiteColor];
-        _nameLabel.text = KGLOBALINFOMANAGER.accountInfo.username;
         _nameLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -85,7 +80,6 @@
         _addressLabel.iconName = @"common_btn_address_hight";
         _addressLabel.describeLabel.textColor = [UIColor whiteColor];
         _addressLabel.mode = HomeCellTipLabelCenter;
-        _addressLabel.describe = KGLOBALINFOMANAGER.accountInfo.location;
     }
     return _addressLabel;
 }

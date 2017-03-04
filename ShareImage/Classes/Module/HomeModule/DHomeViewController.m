@@ -35,6 +35,7 @@
 @property (nonatomic, assign) NSInteger page;
 
 @property (nonatomic, strong) LLSlideMenu *slideMenu;
+@property (nonatomic, strong) DHomeMenuView *menuView;
 
 
 @end
@@ -202,6 +203,7 @@
             [self.slideMenu ll_closeSlideMenu];
         } else {
             [self.slideMenu ll_openSlideMenu];
+            [self.menuView reloadData];
         }
         
         
@@ -276,11 +278,11 @@
         _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
         _slideMenu.hidden = YES;
         
-        DHomeMenuView *menuView = [[DHomeMenuView alloc] init];
-        [menuView setFrame:0 y:0 w:200 h:SCREEN_HEIGHT];
-        menuView.delegate = self;
+        self.menuView = [[DHomeMenuView alloc] init];
+        [self.menuView setFrame:0 y:0 w:200 h:SCREEN_HEIGHT];
+        self.menuView.delegate = self;
 
-        [_slideMenu addSubview:menuView];
+        [_slideMenu addSubview:self.menuView];
         
         
     }

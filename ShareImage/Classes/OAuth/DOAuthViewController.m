@@ -9,6 +9,7 @@
 #import "DOAuthViewController.h"
 #import "DUserAPIManager.h"
 #import "DOAuthParamModel.h"
+#import "DChooesRootViewControllerTool.h"
 
 #define kOAuthAppKey        @"61c8eb646bea05c96445b2a26d23aa64b7605002243a030f561ac923a08d8497"
 #define kOAuthAppSecret        @"f43ac4f36ff9349ea366ef3b9f4714f231e51084282bd698e0ec8a6cb1397fb8"
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navLeftItemType = DNavigationItemTypeBack;
+//    self.navLeftItemType = DNavigationItemTypeBack;
     
     [self.view addSubview:self.webView];
     
@@ -49,9 +50,9 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
-- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
     
 #pragma mark - private
@@ -150,7 +151,8 @@
     
     // 授权成功
     DLog(@"授权成功");
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    [DChooesRootViewControllerTool choosedRootController];
 }
 
 
