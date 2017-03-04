@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UIButton *collectionBtn;
 @property (nonatomic, strong) UIView *contentView;
 
+- (void)didCilckButton:(UIButton *)button;
+
 - (void)show;
 
 - (void)hide;

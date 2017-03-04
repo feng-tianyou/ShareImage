@@ -26,6 +26,7 @@
 		077040C61E68221F000DEE50 /* DSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 077040C51E68221F000DEE50 /* DSearchBar.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
+		078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B001E6A5C9A000DC645 /* DNoDataView.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55631E5C17F3004EC4A7 /* DSearchPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55621E5C17F3004EC4A7 /* DSearchPhotoController.m */; };
@@ -289,6 +290,8 @@
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
 		0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAnimationContollerTool.m; sourceTree = "<group>"; };
+		078D1AFF1E6A5C9A000DC645 /* DNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNoDataView.h; sourceTree = "<group>"; };
+		078D1B001E6A5C9A000DC645 /* DNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNoDataView.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -1666,6 +1669,8 @@
 				7ED810C31E55550100954DAF /* DImageTextButton.m */,
 				7ED810C41E55550100954DAF /* DMenuAlertView.h */,
 				7ED810C51E55550100954DAF /* DMenuAlertView.m */,
+				078D1AFF1E6A5C9A000DC645 /* DNoDataView.h */,
+				078D1B001E6A5C9A000DC645 /* DNoDataView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2128,6 +2133,7 @@
 				7ED810FE1E55550100954DAF /* DNetworkFactory.m in Sources */,
 				7ED8112F1E55550100954DAF /* UIColor.m in Sources */,
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
+				078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */,
 				7ED8113A1E55550100954DAF /* LOTShapeTrimPath.m in Sources */,
 				7ED811061E55550100954DAF /* DPhotoManager.m in Sources */,
 				7ED811261E55550100954DAF /* LOTAnimatableShapeValue.m in Sources */,

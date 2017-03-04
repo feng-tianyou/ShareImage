@@ -48,6 +48,35 @@
     return self;
 }
 
+- (void)didCilckButton:(UIButton *)button{
+    switch (button.tag) {
+        case 1:
+        {
+            self.photoBtn.selected = !button.isSelected;
+            self.userBtn.selected = NO;
+            self.collectionBtn.selected = NO;
+        }
+            break;
+        case 2:
+        {
+            self.photoBtn.selected = NO;
+            self.userBtn.selected = !button.isSelected;
+            self.collectionBtn.selected = NO;
+        }
+            break;
+        case 3:
+        {
+            self.photoBtn.selected = NO;
+            self.userBtn.selected = NO;
+            self.collectionBtn.selected = !button.isSelected;
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 #pragma mark - getter & setter
 - (UIButton *)photoBtn{
@@ -56,6 +85,9 @@
         _photoBtn.backgroundColor = [UIColor whiteColor];
         [_photoBtn setTitle:@"PHOTOS" forState:UIControlStateNormal];
         [_photoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _photoBtn.tag = 1;
+        [_photoBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
+        _photoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _photoBtn;
 }
@@ -66,6 +98,9 @@
         _userBtn.backgroundColor = [UIColor whiteColor];
         [_userBtn setTitle:@"USERS" forState:UIControlStateNormal];
         [_userBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _userBtn.tag = 2;
+        [_userBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
+        _userBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _userBtn;
 }
@@ -76,6 +111,9 @@
         _collectionBtn.backgroundColor = [UIColor whiteColor];
         [_collectionBtn setTitle:@"COLLECTIONS" forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _collectionBtn.tag = 3;
+        [_collectionBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
+        _collectionBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _collectionBtn;
 }

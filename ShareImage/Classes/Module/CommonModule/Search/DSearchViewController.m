@@ -64,7 +64,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
@@ -72,8 +72,6 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
-    
     
     self.tableView.sd_layout
     .topSpaceToView(self.view, 55)
@@ -86,15 +84,17 @@
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
-    
 }
 
-
+#pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - private
+/**
+ 下拉刷新
+ */
 - (void)setupTableViewDownRefresh{
     @weakify(self)
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
@@ -105,73 +105,25 @@
     }];
 }
 
+/**
+ 获取更多数据
+ */
 - (void)getMoreData{
-    switch (_searchType) {
-        case PhotoSearchType:
-        {
-            [self getSearchPhotosDataWithPage:self.page];
-        }
-            break;
-        case UserSearchType:
-        {
-            [self getSearchUsersDataWithPage:self.page];
-        }
-            break;
-        case CollectionSearchType:
-        {
-            [self getSearchCollectionsDataWithPage:self.page];
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [self getCommonDataWithPage:self.page];
 }
 
+/**
+ 清除搜索数据
+ */
 - (void)clickClearText{
     self.searchBar.searchTextField.text = @"";
     [self.selectItemView hide];
     [self.searchBar.searchTextField resignFirstResponder];
 }
 
-- (void)clickSearchPhotos{
-    [self.selectItemView hide];
-    [self.searchBar.searchTextField resignFirstResponder];
-    
-    if (self.searchBar.searchTextField.text.length == 0) {
-        return;
-    }
-    
-    _searchType = PhotoSearchType;
-    [self getSearchPhotosDataWithPage:1];
-    
-}
-
-- (void)clickSearchUsers{
-    [self.selectItemView hide];
-    [self.searchBar.searchTextField resignFirstResponder];
-    
-    if (self.searchBar.searchTextField.text.length == 0) {
-        return;
-    }
-    
-    _searchType = UserSearchType;
-    [self getSearchUsersDataWithPage:1];
-    
-}
-
-- (void)clickSearchCollections{
-    [self.selectItemView hide];
-    [self.searchBar.searchTextField resignFirstResponder];
-    
-    if (self.searchBar.searchTextField.text.length == 0) {
-        return;
-    }
-    
-    _searchType = CollectionSearchType;
-    [self getSearchCollectionsDataWithPage:1];
-}
-
+/**
+ 请求图片数据
+ */
 - (void)getSearchPhotosDataWithPage:(NSInteger)page{
     DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
@@ -181,6 +133,9 @@
     [manager fetchSearchPhotosByParamModel:paramModel];
 }
 
+/**
+ 请求用户数据
+ */
 - (void)getSearchUsersDataWithPage:(NSInteger)page{
     DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
@@ -190,6 +145,9 @@
     [manager fetchSearchUsersByParamModel:paramModel];
 }
 
+/**
+ 请求分类数据
+ */
 - (void)getSearchCollectionsDataWithPage:(NSInteger)page{
     DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
@@ -199,13 +157,73 @@
     [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
 }
 
+/**
+ 获取数据
+
+ @param page 页数
+ */
+- (void)getCommonDataWithPage:(NSInteger)page{
+    switch (_searchType) {
+        case PhotoSearchType:
+        {
+            [self getSearchPhotosDataWithPage:page];
+        }
+            break;
+        case UserSearchType:
+        {
+            [self getSearchUsersDataWithPage:page];
+        }
+            break;
+        case CollectionSearchType:
+        {
+            [self getSearchCollectionsDataWithPage:page];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - 点击事件
+/**
+ 点击刷新
+ */
+- (void)clcikRefreshButton{
+    [self getCommonDataWithPage:1];
+}
+
+
+/**
+ 点击搜索图片
+ */
+- (void)clickSearchPhotos:(UIButton *)button{
+    [self.selectItemView didCilckButton:button];
+    _searchType = PhotoSearchType;
+}
+
+/**
+ 点击搜索用户
+ */
+- (void)clickSearchUsers:(UIButton *)button{
+    [self.selectItemView didCilckButton:button];
+    _searchType = UserSearchType;
+}
+
+/**
+ 点击搜索分类
+ */
+- (void)clickSearchCollections:(UIButton *)button{
+    [self.selectItemView didCilckButton:button];
+    _searchType = CollectionSearchType;
+}
+
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -238,7 +256,6 @@
         default:
             break;
     }
-    
     return cell;
 }
 
@@ -257,12 +274,11 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     DLog(@"textFieldShouldReturn---%@", textField.text);
     [textField resignFirstResponder];
-    [self clickSearchPhotos];
-    return YES;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    DLog(@"shouldChangeCharactersInRange---%@--%@", textField.text, string);
+    [self.selectItemView hide];
+    if (textField.text.length == 0) {
+        return YES;
+    }
+    [self getCommonDataWithPage:1];
     return YES;
 }
 
@@ -302,6 +318,7 @@
     [self.tableView.mj_footer endRefreshing];
     self.tableView.hidden = NO;
     [self.tableView reloadData];
+    [self.tableView setTableFooterView:[UIView new]];
     self.page++;
 }
 
@@ -314,9 +331,18 @@
     [self.dataArray removeAllObjects];
 }
 
+- (void)alertNoData{
+    self.tableView.hidden = NO;
+    DNoDataView *noDataView = [[DNoDataView alloc] init];
+    noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
+    [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
+    [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
+    [self.tableView setTableFooterView:noDataView];
+    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+}
+
 
 #pragma mark getter & setter
-
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -324,7 +350,6 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.hidden = YES;
-//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -336,14 +361,14 @@
     return _dataArray;
 }
 
-
 - (DSearchSelectItemView *)selectItemView{
     if (!_selectItemView) {
         _selectItemView = [[DSearchSelectItemView alloc] init];
         _selectItemView.hidden = YES;
-        [_selectItemView.photoBtn addTarget:self action:@selector(clickSearchPhotos) forControlEvents:UIControlEventTouchUpInside];
-        [_selectItemView.userBtn addTarget:self action:@selector(clickSearchUsers) forControlEvents:UIControlEventTouchUpInside];
-        [_selectItemView.collectionBtn addTarget:self action:@selector(clickSearchCollections) forControlEvents:UIControlEventTouchUpInside];
+        [_selectItemView.photoBtn addTarget:self action:@selector(clickSearchPhotos:) forControlEvents:UIControlEventTouchUpInside];
+        [_selectItemView.userBtn addTarget:self action:@selector(clickSearchUsers:) forControlEvents:UIControlEventTouchUpInside];
+        [_selectItemView.collectionBtn addTarget:self action:@selector(clickSearchCollections:) forControlEvents:UIControlEventTouchUpInside];
+        _selectItemView.photoBtn.selected = YES;
     }
     return _selectItemView;
 }
