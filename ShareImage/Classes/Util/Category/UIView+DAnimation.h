@@ -19,4 +19,9 @@
  */
 - (void)alertDismiss;
 
+/**
+ 添加旋转动画
+ */
+- (void)addRotate;
+
 @end

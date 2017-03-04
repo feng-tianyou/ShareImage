@@ -53,6 +53,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Search";
+    self.page = 1;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
     
     [self.view addSubview:self.searchBar];
@@ -340,6 +341,7 @@
     [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
     [self.tableView setTableFooterView:noDataView];
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    [self.tableView reloadData];
 }
 
 

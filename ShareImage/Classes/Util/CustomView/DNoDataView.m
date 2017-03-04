@@ -7,6 +7,7 @@
 //
 
 #import "DNoDataView.h"
+#import "UIView+DAnimation.h"
 
 @implementation DNoDataView
 
@@ -75,6 +76,7 @@
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
         _iconView.image = [UIImage getImageWithName:@"common_no_data_image"];
+        [_iconView addRotate];
     }
     return _iconView;
 }
