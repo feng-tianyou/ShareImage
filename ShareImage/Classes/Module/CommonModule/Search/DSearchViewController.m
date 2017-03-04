@@ -10,6 +10,8 @@
 #import "DSearchSelectItemView.h"
 #import "DSearchBar.h"
 
+#import "DSearchViewCell.h"
+
 #import "DPhotosAPIManager.h"
 #import "DPhotosParamModel.h"
 
@@ -201,6 +203,7 @@
 - (void)clickSearchPhotos:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     _searchType = PhotoSearchType;
+    self.title = @"PHOTOS";
 }
 
 /**
@@ -209,6 +212,7 @@
 - (void)clickSearchUsers:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     _searchType = UserSearchType;
+    self.title = @"USERS";
 }
 
 /**
@@ -217,6 +221,7 @@
 - (void)clickSearchCollections:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     _searchType = CollectionSearchType;
+    self.title = @"COLLECTIONS";
 }
 
 
@@ -228,29 +233,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    static NSString *cellId = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    }
+    DSearchViewCell *cell = [DSearchViewCell cellWithTableView:tableView];
     
     switch (_searchType) {
         case PhotoSearchType:
         {
-            DPhotosModel *photo = self.dataArray[indexPath.row];
-            cell.textLabel.text = photo.pid;
+            cell.searchType = PhotoSearchType;
+            if (self.dataArray.count > indexPath.row) {
+                cell.photoModel = self.dataArray[indexPath.row];
+            }
         }
             break;
         case UserSearchType:
         {
-            DUserModel *user = self.dataArray[indexPath.row];
-            cell.textLabel.text = user.username;
+            cell.searchType = UserSearchType;
+            if (self.dataArray.count > indexPath.row) {
+                cell.userModel = self.dataArray[indexPath.row];
+            }
         }
             break;
         case CollectionSearchType:
         {
-            DCollectionsModel *collection = self.dataArray[indexPath.row];
-            cell.textLabel.text = collection.title;
+            cell.searchType = CollectionSearchType;
+            if (self.dataArray.count > indexPath.row) {
+                cell.collectionModel = self.dataArray[indexPath.row];
+            }
         }
             break;
             
@@ -261,9 +268,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    id model = self.photos[indexPath.section];
-//    CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DHomeTableViewCell class] contentViewWidth:self.view.width];
-    return 40;
+    if (_searchType == PhotoSearchType) {
+        return 150;
+    }
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

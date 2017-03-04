@@ -101,6 +101,13 @@ typedef NS_ENUM(NSInteger,FileState)
     FileError
 };
 
+typedef NS_ENUM(NSInteger, SearchType) {
+    PhotoSearchType,
+    UserSearchType,
+    CollectionSearchType,
+    OtherSearchType
+};
+
 
 typedef NS_ENUM(NSInteger,ErrorType) {
     

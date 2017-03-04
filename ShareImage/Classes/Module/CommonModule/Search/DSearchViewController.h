@@ -8,12 +8,7 @@
 
 #import "DBaseViewController.h"
 
-typedef NS_ENUM(NSInteger, SearchType) {
-    PhotoSearchType,
-    UserSearchType,
-    CollectionSearchType,
-    OtherSearchType
-};
+
 
 @interface DSearchViewController : DBaseViewController
 

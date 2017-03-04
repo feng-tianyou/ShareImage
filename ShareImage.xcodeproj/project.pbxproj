@@ -29,6 +29,7 @@
 		078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B001E6A5C9A000DC645 /* DNoDataView.m */; };
 		078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */; };
 		078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */; };
+		078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -294,6 +295,8 @@
 		078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DChooesRootViewControllerTool.m; sourceTree = "<group>"; };
 		078D1B061E6A9E2F000DC645 /* DNewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNewFeatureController.h; sourceTree = "<group>"; };
 		078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNewFeatureController.m; sourceTree = "<group>"; };
+		078D1B091E6AB585000DC645 /* DSearchViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchViewCell.h; sourceTree = "<group>"; };
+		078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchViewCell.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -1768,6 +1771,8 @@
 				7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */,
 				077040C41E68221F000DEE50 /* DSearchBar.h */,
 				077040C51E68221F000DEE50 /* DSearchBar.m */,
+				078D1B091E6AB585000DC645 /* DSearchViewCell.h */,
+				078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2110,6 +2115,7 @@
 				078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */,
 				7ED8113A1E55550100954DAF /* LOTShapeTrimPath.m in Sources */,
 				7ED811061E55550100954DAF /* DPhotoManager.m in Sources */,
+				078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */,
 				7ED811261E55550100954DAF /* LOTAnimatableShapeValue.m in Sources */,
 				7ED811381E55550100954DAF /* LOTShapeStroke.m in Sources */,
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
