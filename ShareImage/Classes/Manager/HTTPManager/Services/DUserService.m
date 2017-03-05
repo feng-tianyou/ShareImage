@@ -153,6 +153,9 @@
     }
     [self.network getUserProfileByParamModel:paramModel onSucceeded:^(NSDictionary *dic, BOOL isCache) {
         DLog(@"%@", dic);
+        if (isCache) {
+            return ;
+        }
         [self.info setObject:@(isCache) forKey:kParamCacheData];
         DUserModel *model = [DUserModel modelWithJSON:dic];
         [DBlockTool executeModelBlock:succeededBlock model:model];

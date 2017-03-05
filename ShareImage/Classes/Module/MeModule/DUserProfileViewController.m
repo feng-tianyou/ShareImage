@@ -50,6 +50,24 @@
     self = [super init];
     if (self) {
         self.userName = userName;
+        [self.view addSubview:self.navigationView];
+        
+        [self.view addSubview:self.scrollView];
+        [self.scrollView addSubview:self.bgImageView];
+        [self.scrollView addSubview:self.iconView];
+        [self.scrollView addSubview:self.nameLabel];
+        [self.scrollView addSubview:self.addressLabel];
+        
+        
+        [self.scrollView addSubview:self.photoNumBtn];
+        [self.scrollView addSubview:self.followerNumBtn];
+        [self.scrollView addSubview:self.followingNumBtn];
+        
+        [self.scrollView addSubview:self.bioLabel];
+        [self.scrollView addSubview:self.followButton];
+        
+        
+        [self.view bringSubviewToFront:self.navigationView];
     }
     return self;
 }
@@ -81,36 +99,22 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.navigationController.navigationBar.hidden = NO;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    
 }
 
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
-    [self.view addSubview:self.navigationView];
-    
-    [self.view addSubview:self.scrollView];
-    [self.scrollView addSubview:self.bgImageView];
-    [self.scrollView addSubview:self.iconView];
-    [self.scrollView addSubview:self.nameLabel];
-    [self.scrollView addSubview:self.addressLabel];
-    
-    
-    [self.scrollView addSubview:self.photoNumBtn];
-    [self.scrollView addSubview:self.followerNumBtn];
-    [self.scrollView addSubview:self.followingNumBtn];
-    
-    [self.scrollView addSubview:self.bioLabel];
-    [self.scrollView addSubview:self.followButton];
-    
-    
-    [self.view bringSubviewToFront:self.navigationView];
-    
-    
-    [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
-    self.scrollView.contentSize = CGSizeMake(self.view.width, self.view.height+self.navBarHeight-300);
     
     // 布局
     self.navigationView.sd_layout
@@ -125,11 +129,6 @@
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-//    self.bgImageView.sd_layout
-//    .topSpaceToView(self.scrollView, -300)
-//    .leftEqualToView(self.scrollView)
-//    .rightEqualToView(self.scrollView)
-//    .heightIs(300);
     [self.bgImageView setFrame:0 y:-300 w:self.view.width h:300];
     
     self.iconView.sd_layout
@@ -181,6 +180,11 @@
     .leftSpaceToView(self.scrollView, 80)
     .rightSpaceToView(self.scrollView,80)
     .heightIs(50);
+    
+    
+    CGSize bioSize = [self.bioLabel.text sizeWithFont:DSystemFontText maxWidth:self.view.width - 20];
+    self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
+    [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
     
     [self.scrollView scrollToTop];
 }
@@ -285,6 +289,7 @@
     } else {
         [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
     }
+    [self.view setNeedsLayout];
     
 }
 
@@ -316,6 +321,7 @@
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc] init];
         _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _bgImageView.clipsToBounds = YES;
     }
     return _bgImageView;
 }
@@ -347,6 +353,7 @@
         _bioLabel.textColor = [UIColor blackColor];
         _bioLabel.textAlignment = NSTextAlignmentLeft;
         _bioLabel.numberOfLines = 0;
+        _bioLabel.font = DSystemFontText;
     }
     return _bioLabel;
 }
