@@ -58,6 +58,7 @@
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
+        _iconView.backgroundColor = [UIColor lightRandom];
         [_iconView.layer setCornerRadius:35.0];
         [_iconView.layer setMasksToBounds:YES];
     }

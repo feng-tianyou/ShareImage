@@ -53,15 +53,13 @@
 - (void)getAccountNeedCache:(BOOL)isNeedCache
                 onSucceeded:(NSObjectForCacheBlock)succeededBlock
                     onError:(ErrorBlock)errorBlock{
-    NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
     if(isNeedCache){
-        [self readCacheDataWithCacheKey:userInfoKey succeededBlock:succeededBlock];
+        [self readCacheDataWithCacheKey:kCacheAccountInfo succeededBlock:succeededBlock];
     }
     
     [self opGetWithUrlPath:@"/me" params:nil needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         // 缓存用户信息
-        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
-        [self saveDataWithData:responseObject cacheKey:userInfoKey cacheTime:kCacheTimeForOneWeek];
+        [self saveDataWithData:responseObject cacheKey:kCacheAccountInfo cacheTime:kCacheTimeForOneWeek];
         // 回调
         ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
     } onError:^(DError *error) {
@@ -84,8 +82,7 @@
     NSDictionary *dicParam = [paramModel getParamDicForPostUser];
     [self opPutWithUrlPath:@"/me" params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         // 缓存用户信息
-        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,self.userId];
-        [self saveDataWithData:responseObject cacheKey:userInfoKey cacheTime:kCacheTimeForOneWeek];
+        [self saveDataWithData:responseObject cacheKey:kCacheAccountInfo cacheTime:kCacheTimeForOneWeek];
         // 回调
         ExistActionDo(succeededBlock, succeededBlock(responseObject));
     } onError:^(DError *error) {

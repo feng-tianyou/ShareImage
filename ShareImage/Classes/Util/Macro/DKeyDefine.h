@@ -58,7 +58,7 @@
 
 
 #define kCacheIsLoginByUid                      @"login-%@"
-#define kCacheAccountInfoByUid                  @"accountInfo-%@"
+#define kCacheAccountInfo                       @"accountInfo"
 #define kCacheUsersPhotosByUserName             @"userPhotos-%@"
 #define kCacheUsersProfileByUserName            @"userProfile-%@"
 #define kCacheUsersCollectionsByUserName        @"userCollections-%@"

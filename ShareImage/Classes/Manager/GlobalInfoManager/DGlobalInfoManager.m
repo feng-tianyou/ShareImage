@@ -235,9 +235,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DGlobalInfoManager)
 
 - (DUserModel *)accountInfo{
     if(_accountInfo == nil){
-        NSString *userInfoKey = [NSString stringWithFormat:kCacheAccountInfoByUid,KGLOBALINFOMANAGER.uid];
         DPlistManager *manager = [DPlistManager shareManager];
-        NSData *data = [manager getBitDataByFileName:userInfoKey];
+        NSData *data = [manager getBitDataByFileName:kCacheAccountInfo];
         
         if(data.length > 0){
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
