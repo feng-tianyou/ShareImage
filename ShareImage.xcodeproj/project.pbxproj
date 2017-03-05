@@ -45,6 +45,7 @@
 		07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */; };
 		07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
+		7E5503EB1E6BFC4C00CB0D19 /* DCustomNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
 		7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */; };
@@ -327,6 +328,8 @@
 		07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuHeader.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
+		7E5503E91E6BFC4C00CB0D19 /* DCustomNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCustomNavigationView.h; sourceTree = "<group>"; };
+		7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCustomNavigationView.m; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
 		7E7873741E559DF700213B1B /* DOAuthParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthParamModel.m; sourceTree = "<group>"; };
 		7E7873771E559EE000213B1B /* DOAuthParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamProtocol.h; sourceTree = "<group>"; };
@@ -1646,6 +1649,8 @@
 				7ED810C51E55550100954DAF /* DMenuAlertView.m */,
 				078D1AFF1E6A5C9A000DC645 /* DNoDataView.h */,
 				078D1B001E6A5C9A000DC645 /* DNoDataView.m */,
+				7E5503E91E6BFC4C00CB0D19 /* DCustomNavigationView.h */,
+				7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2091,6 +2096,7 @@
 				0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */,
 				077040C61E68221F000DEE50 /* DSearchBar.m in Sources */,
 				7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */,
+				7E5503EB1E6BFC4C00CB0D19 /* DCustomNavigationView.m in Sources */,
 				7ED811221E55550100954DAF /* LOTAnimatableColorValue.m in Sources */,
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,

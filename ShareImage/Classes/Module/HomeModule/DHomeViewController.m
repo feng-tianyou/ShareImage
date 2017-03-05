@@ -57,6 +57,7 @@
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeRightMenu;
     self.navRighItemType = DNavigationItemTypeRightSearch;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];

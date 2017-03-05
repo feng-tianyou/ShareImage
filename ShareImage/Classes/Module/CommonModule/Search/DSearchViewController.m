@@ -77,13 +77,13 @@
     [super viewWillLayoutSubviews];
     
     self.tableView.sd_layout
-    .topSpaceToView(self.view, 55)
+    .topSpaceToView(self.searchBar, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
     self.selectItemView.sd_layout
-    .topSpaceToView(self.view, 55)
+    .topSpaceToView(self.searchBar, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
@@ -404,7 +404,7 @@
 - (DSearchBar *)searchBar{
     if (!_searchBar) {
         _searchBar = [[DSearchBar alloc] init];
-        [_searchBar setFrame:0 y:0 w:SCREEN_WIDTH h:55];
+        [_searchBar setFrame:0 y:self.navBarHeight w:SCREEN_WIDTH h:55];
         _searchBar.backgroundColor = [UIColor setHexColor:@"#141515"];
         NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"Search..." attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         _searchBar.searchTextField.attributedPlaceholder = attr;

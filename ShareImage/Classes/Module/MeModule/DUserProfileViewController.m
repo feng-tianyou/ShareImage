@@ -18,12 +18,15 @@
 #import "DNumberButton.h"
 #import "DHomeCellTipLabel.h"
 #import "UIView+DLayer.h"
+#import "DCustomNavigationView.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface DUserProfileViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, copy) NSString *userName;
+
+@property (nonatomic, strong) DCustomNavigationView *navigationView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *bgImageView;
@@ -54,34 +57,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightMenu;
-    self.title = @"Profile";
+//    self.navLeftItemType = DNavigationItemTypeBack;
+//    self.navRighItemType = DNavigationItemTypeRightMenu;
+//    self.title = @"Profile";
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     // 请求数据
     DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DUserParamModel *paramModel = [[DUserParamModel alloc] init];
     paramModel.username = self.userName;
     [manager fetchUserProfileByParamModel:paramModel];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    
-    
    
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
+    [self.view addSubview:self.navigationView];
     
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.bgImageView];
@@ -98,10 +106,19 @@
     [self.scrollView addSubview:self.followButton];
     
     
+    [self.view bringSubviewToFront:self.navigationView];
+    
+    
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
     self.scrollView.contentSize = CGSizeMake(self.view.width, self.view.height+self.navBarHeight-300);
     
     // 布局
+    self.navigationView.sd_layout
+    .topSpaceToView(self.view, 0)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(self.navBarHeight);
+    
     self.scrollView.sd_layout
     .topSpaceToView(self.view, 0)
     .leftEqualToView(self.view)
@@ -169,7 +186,11 @@
 }
 
 #pragma mark - navEvent
-- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+- (void)navigationBarDidClickNavigationRightBtn:(UIButton *)rightBtn{
+    
+}
+
+- (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -209,11 +230,9 @@
     DUserParamModel *paramModel = [[DUserParamModel alloc] init];
     paramModel.username = self.userName;
     if (self.userModel.followed_by_user) {
-//        [self.networkUserInfo setObject:@"cancel" forKey:@"follow"];
         manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
         [manager cancelFollowUserByParamModel:paramModel];
     } else {
-//        [self.networkUserInfo setObject:@"follow" forKey:@"follow"];
         manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
         [manager followUserByParamModel:paramModel];
     }
@@ -239,6 +258,7 @@
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    self.scrollView.hidden = NO;
     self.userModel = dataModel;
     
     DUserModel *userModel = dataModel;
@@ -268,27 +288,26 @@
     
 }
 
-//- (void)requestServiceSucceedBackBool:(BOOL)isTrue userInfo:(NSDictionary *)userInfo{
-//    [SVProgressHUD setMaximumDismissTimeInterval:2.0];
-//    if ([[userInfo objectForKey:@"follow"] isEqualToString:@"cancel"]) {
-//        if (isTrue) {
-//            [SVProgressHUD showSuccessWithStatus:@"UnFollow Success"];
-//            [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
-//        }
-//    } else {
-//        if (isTrue) {
-//            [SVProgressHUD showSuccessWithStatus:@"Follow Success"];
-//            [self.followButton setBackgroundColor:[UIColor blackColor]];
-//        }
-//    }
-//}
-
 
 #pragma mark - getter & setter
+- (DCustomNavigationView *)navigationView{
+    if (!_navigationView) {
+        _navigationView = [[DCustomNavigationView alloc] init];
+        _navigationView.navLeftItemType = DNavigationItemTypeWriteBack;
+        _navigationView.navRighItemType = DNavigationItemTypeRightWriteMenu;
+        _navigationView.title = @"Profile";
+        [_navigationView.navLeftItem addTarget:self action:@selector(navigationBarDidClickNavigationLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_navigationView.navRightItem addTarget:self action:@selector(navigationBarDidClickNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _navigationView;
+}
+
 - (UIScrollView *)scrollView{
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.delegate = self;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.hidden = YES;
     }
     return _scrollView;
 }
