@@ -185,7 +185,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tabBarController.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.animationType = MBProgressHUDModeCustomView;
         hud.activityIndicatorColor = [UIColor blackColor];
@@ -200,7 +200,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  *  移除网络请求加载动画
  */
 - (void)removeNetworkLoadingView{
-    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.tabBarController.view animated:YES];
 }
 
 /**

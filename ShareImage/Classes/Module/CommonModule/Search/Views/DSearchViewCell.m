@@ -68,6 +68,7 @@ static NSString *const cellID = @"UserListCell";
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
+        _iconView.backgroundColor = [UIColor lightRandom];
         [_iconView.layer setCornerRadius:20.0];
         [_iconView.layer setMasksToBounds:YES];
     }
@@ -77,6 +78,7 @@ static NSString *const cellID = @"UserListCell";
 - (UIImageView *)photoView{
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
+        _photoView.backgroundColor = [UIColor lightRandom];
     }
     return _photoView;
 }
