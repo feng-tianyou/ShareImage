@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.title = KGLOBALINFOMANAGER.accountInfo.username;
+    self.navLeftItemType = DNavigationItemTypeBack;
+    self.navRighItemType = DNavigationItemTypeRightMenu;
     
 }
 
