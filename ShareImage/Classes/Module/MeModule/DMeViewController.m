@@ -33,13 +33,8 @@
     
 }
 
-- (void)baseViewControllerDidClickNavigationLeftBtn:(UIButton *)leftBtn{
-    
-}
-
-- (void)baseViewControllerDidClickNavigationRightBtn:(UIButton *)rightBtn{
-    
-
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

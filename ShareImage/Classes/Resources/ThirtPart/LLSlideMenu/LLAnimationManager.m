@@ -56,10 +56,10 @@ static NSString *ANIM_ENDCIRCLE = @"endLLCircleAnimate";
     //====================================
     if (_layer.distance >= _layer.bgWidth) {
         // 关闭背景layer
-        CAKeyframeAnimation *animBase = [self createBaseAnima:@"distance" duration:.3f fromValue:@(_layer.bgWidth) toValue:@(0)];
+        CAKeyframeAnimation *animBase = [self createBaseAnima:@"distance" duration:.2f fromValue:@(_layer.bgWidth) toValue:@(0)];
         [_layer addAnimation:animBase forKey:ANIM_ENDBASE];
         // 关闭contentView
-        CAKeyframeAnimation *animCircle = [self createBaseAnima:@"radius" duration:.3f fromValue:@(_circleLayer.frame.size.width) toValue:@(0)];
+        CAKeyframeAnimation *animCircle = [self createBaseAnima:@"radius" duration:.2f fromValue:@(_circleLayer.frame.size.width) toValue:@(0)];
         [_circleLayer addAnimation:animCircle forKey:ANIM_ENDCIRCLE];
     }else {
         _layer.isAnimating = NO;

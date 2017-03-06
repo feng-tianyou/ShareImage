@@ -10,6 +10,9 @@
 #import "DUserProfileViewController.h"
 #import "DPhotoDetailController.h"
 #import "DSearchViewController.h"
+#import "DMeViewController.h"
+#import "DCommonPhotoController.h"
+#import "DUserCollectionsController.h"
 
 #import "DHomeTableViewCell.h"
 #import "DHomeMenuView.h"
@@ -47,7 +50,7 @@
     [super viewWillAppear:animated];
     
     [[UIApplication sharedApplication].keyWindow addSubview:self.slideMenu];
-    [self.slideMenu ll_closeSlideMenu];
+//    [self.slideMenu ll_closeSlideMenu];
 }
 
 
@@ -73,9 +76,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    self.slideMenu.hidden = YES;
+    self.menuView.hidden = YES;
+    if (self.slideMenu.ll_isOpen) {
+        [self.slideMenu ll_closeSlideMenu];
+    }
     if (self.slideMenu) {
         [self.slideMenu removeFromSuperview];
+        self.slideMenu = nil;
     }
 
 }
@@ -190,16 +198,45 @@
 #pragma mark - DHomeMenuViewDelegate
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
     DLog(@"点击头部");
+    
+    DMeViewController *meViewController = [[DMeViewController alloc] init];
+    [self.navigationController pushViewController:meViewController animated:YES];
+    
 }
 
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didSelectIndex:(NSInteger)selectIndex{
     DLog(@"点击--%@", @(selectIndex));
+//    self.slideMenu.hidden = YES;
+//    self.menuView.hidden = YES;
+//    if (self.slideMenu.ll_isOpen) {
+//        [self.slideMenu ll_closeSlideMenu];
+//    }
+    switch (selectIndex) {
+        case 0:
+        {
+            DCommonPhotoController *photoView = [[DCommonPhotoController alloc] initWithTitle:KGLOBALINFOMANAGER.accountInfo.username type:UserAPIManagerType];
+            photoView.username = KGLOBALINFOMANAGER.accountInfo.username;
+            [self.navigationController pushViewController:photoView animated:YES];
+        }
+            break;
+        case 1:
+        {
+            DUserCollectionsController *collectionView = [[DUserCollectionsController alloc] init];
+            [self.navigationController pushViewController:collectionView animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark - 导航栏点击事件
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (isLeft) {
         self.slideMenu.hidden = NO;
+        self.menuView.hidden = NO;
         if (self.slideMenu.ll_isOpen) {
             [self.slideMenu ll_closeSlideMenu];
         } else {
@@ -282,6 +319,7 @@
         self.menuView = [[DHomeMenuView alloc] init];
         [self.menuView setFrame:0 y:0 w:200 h:SCREEN_HEIGHT];
         self.menuView.delegate = self;
+        self.menuView.hidden = YES;
 
         [_slideMenu addSubview:self.menuView];
         
