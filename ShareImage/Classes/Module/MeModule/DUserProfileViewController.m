@@ -75,10 +75,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.navLeftItemType = DNavigationItemTypeBack;
-//    self.navRighItemType = DNavigationItemTypeRightMenu;
-//    self.title = @"Profile";
+    self.navLeftItemType = DNavigationItemTypeWriteBack;
+
     
+    // 请求数据
+    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+    paramModel.username = self.userName;
+    [manager fetchUserProfileByParamModel:paramModel];
     
 }
 
@@ -87,13 +91,6 @@
     
     self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    
-    // 请求数据
-    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-    paramModel.username = self.userName;
-    [manager fetchUserProfileByParamModel:paramModel];
-   
     
 }
 
@@ -143,7 +140,7 @@
     
     self.addressLabel.sd_layout
     .topSpaceToView(self.nameLabel, 0)
-    .leftSpaceToView(self.scrollView, 10)
+    .leftSpaceToView(self.scrollView, 20)
     .rightSpaceToView(self.scrollView,10)
     .heightIs(20);
     
@@ -181,7 +178,12 @@
     
     
     CGSize bioSize = [self.bioLabel.text sizeWithFont:DSystemFontText maxWidth:self.view.width - 20];
-    self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
+    if (bioSize.height > 20) {
+        self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 50 + bioSize.height);
+    } else {
+        self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
+    }
+    
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
     
     [self.scrollView scrollToTop];
@@ -318,6 +320,7 @@
 - (UIImageView *)bgImageView{
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc] init];
+        _bgImageView.backgroundColor = [UIColor lightRandom];
         _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
         _bgImageView.clipsToBounds = YES;
     }
@@ -328,6 +331,7 @@
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
+        _iconView.backgroundColor = [UIColor lightRandom];
         [_iconView.layer setCornerRadius:35.0];
         [_iconView.layer setMasksToBounds:YES];
     }

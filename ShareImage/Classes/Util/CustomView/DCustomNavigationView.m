@@ -26,14 +26,15 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    
     CGSize leftimgSize = self.navLeftItem.imageView.image.size;
-    [self.navLeftItem setFrame:8 y:(self.height - leftimgSize.height - 10) w:leftimgSize.width h:leftimgSize.height];
+    [self.navLeftItem setFrame:8 y:20 w:100 h:44];
+    self.navLeftItem.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width);
     
     CGSize rightimgSize = self.navRightItem.imageView.image.size;
-    [self.navRightItem setFrame:(self.width - rightimgSize.width - 10) y:self.navLeftItem.y w:rightimgSize.width h:rightimgSize.height];
+    [self.navRightItem setFrame:(self.width - 100 - 10) y:20 w:100 h:44];
+    self.navRightItem.imageEdgeInsets = UIEdgeInsetsMake(0, 100-rightimgSize.width, 0, 0);
     
-    [self.navTitleItem setFrame:self.navLeftItem.right y:(self.height - 30) w:(self.width - 8 - leftimgSize.width - 10 - rightimgSize.width) h:20];
+    [self.navTitleItem setFrame:self.navLeftItem.right y:20 w:(self.width - 8 - 100 - 10 - 100) h:44];
     
 }
 
@@ -42,6 +43,7 @@
 - (UIButton *)navLeftItem{
     if (!_navLeftItem) {
         _navLeftItem = [[UIButton alloc] init];
+        _navLeftItem.contentMode = UIViewContentModeLeft;
         _navLeftItem.titleLabel.textAlignment = NSTextAlignmentLeft;
         _navLeftItem.titleLabel.font = [UIFont systemFontOfSize:15];
     }
@@ -52,6 +54,7 @@
     if (!_navRightItem) {
         _navRightItem = [[UIButton alloc] init];
         _navRightItem.titleLabel.textAlignment = NSTextAlignmentRight;
+        _navRightItem.contentMode = UIViewContentModeRight;
         _navRightItem.titleLabel.font = [UIFont systemFontOfSize:15];
     }
     return _navRightItem;

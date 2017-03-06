@@ -8,6 +8,7 @@
 
 #import "DUserListViewController.h"
 #import "DSearchViewController.h"
+#import "DUserProfileViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -40,6 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.page = 1;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navLeftItemType = DNavigationItemTypeBack;
     self.navRighItemType = DNavigationItemTypeRightSearch;
     
@@ -108,16 +110,14 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    id model = self.photos[indexPath.row];
-//    CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DHomeTableViewCell class] contentViewWidth:self.view.width];
-//    return height;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    
+    if (self.users.count > indexPath.row) {
+        DUserModel *model = self.users[indexPath.row];
+        DUserProfileViewController *view = [[DUserProfileViewController alloc] initWithUserName:model.username];
+        [self.navigationController pushViewController:view animated:YES];
+    }
     
 }
 

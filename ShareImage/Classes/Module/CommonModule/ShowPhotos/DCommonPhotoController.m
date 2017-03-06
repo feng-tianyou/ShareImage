@@ -72,7 +72,7 @@ static NSString * const cellID = @"collectionPhotos";
     [self.view addSubview:self.collectionView];
     
     self.collectionView.sd_layout
-    .topSpaceToView(self.view, 0)
+    .topSpaceToView(self.view, self.navBarHeight)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
