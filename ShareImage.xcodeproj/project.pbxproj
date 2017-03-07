@@ -46,6 +46,8 @@
 		07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */; };
 		07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
+		7E2C89581E6EE8F400D90089 /* DMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */; };
+		7E2C895B1E6EEC0600D90089 /* DMeHeaderFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */; };
 		7E5503EB1E6BFC4C00CB0D19 /* DCustomNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -331,6 +333,10 @@
 		07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuHeader.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
+		7E2C89561E6EE8F400D90089 /* DMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeHeaderView.h; sourceTree = "<group>"; };
+		7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeHeaderView.m; sourceTree = "<group>"; };
+		7E2C89591E6EEC0600D90089 /* DMeHeaderFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeHeaderFunctionView.h; sourceTree = "<group>"; };
+		7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeHeaderFunctionView.m; sourceTree = "<group>"; };
 		7E5503E91E6BFC4C00CB0D19 /* DCustomNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCustomNavigationView.h; sourceTree = "<group>"; };
 		7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCustomNavigationView.m; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -849,6 +855,10 @@
 			children = (
 				7EC0B1E11E62AE6100AF1318 /* DNumberButton.h */,
 				7EC0B1E21E62AE6100AF1318 /* DNumberButton.m */,
+				7E2C89561E6EE8F400D90089 /* DMeHeaderView.h */,
+				7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */,
+				7E2C89591E6EEC0600D90089 /* DMeHeaderFunctionView.h */,
+				7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2147,6 +2157,7 @@
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
 				07ECEBFE1E6555B700BCF52A /* UIView+SetRect.m in Sources */,
 				7ED8112B1E55550100954DAF /* CADisplayLink.m in Sources */,
+				7E2C89581E6EE8F400D90089 /* DMeHeaderView.m in Sources */,
 				7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */,
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
@@ -2210,6 +2221,7 @@
 				078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */,
 				7ED8114C1E55550100954DAF /* UIScrollView+DControl.m in Sources */,
 				7ED8112D1E55550100954DAF /* NSValue+Compat.m in Sources */,
+				7E2C895B1E6EEC0600D90089 /* DMeHeaderFunctionView.m in Sources */,
 				7ED8113C1E55550100954DAF /* LOTAnimationView.m in Sources */,
 				0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */,
 				078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */,
