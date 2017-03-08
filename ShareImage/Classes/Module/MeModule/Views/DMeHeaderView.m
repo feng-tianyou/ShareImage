@@ -89,6 +89,67 @@
 }
 
 #pragma mark - setter & getter
-#warning lazy
+- (UIImageView *)bgImbageView{
+    if (!_bgImbageView) {
+        _bgImbageView = [[UIImageView alloc] init];
+    }
+    return _bgImbageView;
+}
+
+- (UILabel *)nameLabel{
+    if (!_nameLabel) {
+        _nameLabel = [[UILabel alloc] init];
+        _nameLabel.textColor = [UIColor whiteColor];
+        _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _nameLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:22.0];
+    }
+    return _nameLabel;
+}
+
+- (DHomeCellTipLabel *)addressLabel{
+    if (!_addressLabel) {
+        _addressLabel = [[DHomeCellTipLabel alloc] init];
+        _addressLabel.iconName = @"common_btn_address_hight";
+        _addressLabel.describeLabel.textColor = [UIColor blackColor];
+        _addressLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
+        _addressLabel.mode = HomeCellTipLabelCenter;
+    }
+    return _addressLabel;
+}
+
+
+- (DHomeCellTipLabel *)emailLabel{
+    if (!_emailLabel) {
+        _emailLabel = [[DHomeCellTipLabel alloc] init];
+        _emailLabel.iconName = @"common_btn_address_hight";
+        _emailLabel.describeLabel.textColor = [UIColor blackColor];
+        _emailLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
+        _emailLabel.mode = HomeCellTipLabelCenter;
+    }
+    return _emailLabel;
+}
+
+- (UILabel *)bioLabel{
+    if (!_bioLabel) {
+        _bioLabel = [[UILabel alloc] init];
+        _bioLabel.numberOfLines = 0;
+        _bioLabel.textColor = [UIColor whiteColor];
+        _bioLabel.textAlignment = NSTextAlignmentCenter;
+        _bioLabel.font = DSystemFontText;
+    }
+    return _bioLabel;
+}
+
+
+- (DMeHeaderFunctionView *)functionView{
+    if (!_functionView) {
+        _functionView = [[DMeHeaderFunctionView alloc] init];
+        _functionView.backgroundColor = [UIColor whiteColor];
+    }
+    return _functionView;
+}
+
+
+
 
 @end
