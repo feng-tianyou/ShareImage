@@ -7,13 +7,10 @@
 //
 
 #import "DMeHeaderFunctionView.h"
-#import "DNumberButton.h"
+
 
 @interface DMeHeaderFunctionView ()
 
-@property (nonatomic, strong) DNumberButton *photoBtn;
-@property (nonatomic, strong) DNumberButton *followersBtn;
-@property (nonatomic, strong) DNumberButton *followingBtn;
 
 @property (nonatomic, strong) UILabel *leftLine;
 @property (nonatomic, strong) UILabel *rightLine;

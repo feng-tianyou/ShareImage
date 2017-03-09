@@ -106,6 +106,25 @@
     [self setNeedsLayout];
 }
 
+#pragma mark - event
+- (void)clickPhotoBtn{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(meHeaderView:didSelectIndex:)]) {
+        [self.delegate meHeaderView:self didSelectIndex:0];
+    }
+}
+
+- (void)clickFollowersBtn{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(meHeaderView:didSelectIndex:)]) {
+        [self.delegate meHeaderView:self didSelectIndex:1];
+    }
+}
+
+- (void)clickFollowingBtn{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(meHeaderView:didSelectIndex:)]) {
+        [self.delegate meHeaderView:self didSelectIndex:2];
+    }
+}
+
 #pragma mark - setter & getter
 - (UIImageView *)bgImbageView{
     if (!_bgImbageView) {
@@ -166,6 +185,9 @@
     if (!_functionView) {
         _functionView = [[DMeHeaderFunctionView alloc] init];
         _functionView.backgroundColor = [UIColor whiteColor];
+        [_functionView.photoBtn addTarget:self action:@selector(clickPhotoBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_functionView.followersBtn addTarget:self action:@selector(clickFollowersBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_functionView.followingBtn addTarget:self action:@selector(clickFollowingBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _functionView;
 }

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DNumberButton.h"
 
 
 @interface DMeHeaderFunctionView : UIView
+
+@property (nonatomic, strong) DNumberButton *photoBtn;
+@property (nonatomic, strong) DNumberButton *followersBtn;
+@property (nonatomic, strong) DNumberButton *followingBtn;
 
 - (void)reloadData;
 

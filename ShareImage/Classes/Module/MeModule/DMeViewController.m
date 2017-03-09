@@ -7,6 +7,8 @@
 //
 
 #import "DMeViewController.h"
+#import "DCommonPhotoController.h"
+#import "DUserListViewController.h"
 
 #import "DMeHeaderView.h"
 #import "DCustomNavigationView.h"
@@ -14,7 +16,7 @@
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 
-@interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource, MeHeaderViewDelegate>
 
 @property (nonatomic, strong) DCustomNavigationView *navigationView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -37,14 +39,16 @@
     [self.tableView setTableHeaderView:self.headerView];
     [self.view addSubview:self.navigationView];
     [self.view bringSubviewToFront:self.navigationView];
+    
+    
+    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    [manager fetchAccountProfileWithNotCache];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    [manager fetchAccountProfileWithNotCache];
     
     self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
@@ -84,6 +88,34 @@
 
 - (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - MeHeaderViewDelegate
+- (void)meHeaderView:(DMeHeaderView *)meHeaderView didSelectIndex:(NSInteger)index{
+    switch (index) {
+        case 0:
+        {
+            DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:@"PHOTOS" type:UserAPIManagerType];
+            photoController.username = KGLOBALINFOMANAGER.accountInfo.username;
+            [self.navigationController pushViewController:photoController animated:YES];
+        }
+            break;
+        case 1:
+        {
+            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWERS" userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowersType];
+            [self.navigationController pushViewController:userController animated:YES];
+        }
+            break;
+        case 2:
+        {
+            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWING" userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowingType];
+            [self.navigationController pushViewController:userController animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
@@ -137,6 +169,7 @@
 - (DMeHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[DMeHeaderView alloc] init];
+        _headerView.delegate = self;
 //        _headerView.bgImbageView.autoresizingMask=UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 //        _headerView.bgImbageView.clipsToBounds=YES;
 //        _headerView.bgImbageView.contentMode=UIViewContentModeScaleAspectFill;
