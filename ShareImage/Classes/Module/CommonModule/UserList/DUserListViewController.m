@@ -94,6 +94,13 @@
         });
     }];
 }
+
+- (void)clcikRefreshButton{
+    self.page = 1;
+    [self getUsersData];
+}
+
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.users.count;
@@ -157,6 +164,17 @@
 
 - (void)hasNotMoreData{
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
+}
+
+- (void)alertNoData{
+    [self clearData];
+    DNoDataView *noDataView = [[DNoDataView alloc] init];
+    noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
+    [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
+    [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
+    [self.tableView setTableFooterView:noDataView];
+    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    [self.tableView reloadData];
 }
 
 #pragma mark - getter & setter
