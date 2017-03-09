@@ -9,12 +9,14 @@
 #import "DMeViewController.h"
 
 #import "DMeHeaderView.h"
+#import "DCustomNavigationView.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 
 @interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) DCustomNavigationView *navigationView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DMeHeaderView *headerView;
 
@@ -28,12 +30,13 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.title = KGLOBALINFOMANAGER.accountInfo.username;
-    self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightMenu;
+    self.navLeftItemType = DNavigationItemTypeWriteBack;
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.tableView];
-    [self.tableView addSubview:self.headerView];
-    
+    [self.tableView setTableHeaderView:self.headerView];
+    [self.view addSubview:self.navigationView];
+    [self.view bringSubviewToFront:self.navigationView];
 }
 
 
@@ -63,39 +66,26 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
-    [self.headerView setFrame:0 y:-300 w:self.view.width h:300];
+    self.navigationView.sd_layout
+    .topSpaceToView(self.view, 0)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(self.navBarHeight);
+    
+    [self.headerView setFrame:0 y:0 w:self.view.width h:320];
     [self.tableView setFrame:0 y:0 w:self.view.width h:self.view.height];
-//    [self.tableView setTableHeaderView:self.headerView];
 }
 
 
-- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+#pragma mark - navEvent
+- (void)navigationBarDidClickNavigationRightBtn:(UIButton *)rightBtn{
+    
+}
+
+- (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - sc
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat y = scrollView.contentOffset.y; //如果有导航控制器，这里应该加上导航控制器的高度64
-//    if (y< -300) {
-//        CGRect frame = self.headerView.frame;
-//        frame.origin.y = y;
-//        frame.size.height = -y;
-//        self.headerView.bgImbageView.frame = frame;
-//    }
-    
-    // 获取到tableView偏移量
-    CGFloat Offset_y = scrollView.contentOffset.y;
-    // 下拉 纵向偏移量变小 变成负的
-    if ( Offset_y < 0) {
-        // 拉伸后图片的高度
-        CGFloat totalOffset = 300 - Offset_y;
-        // 图片放大比例
-        CGFloat scale = totalOffset / 300;
-        CGFloat width = SCREEN_WIDTH;
-        // 拉伸后图片位置
-        self.headerView.bgImbageView.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);
-    }
-}
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -115,6 +105,7 @@
     UITableViewCell  *cell=[tableView dequeueReusableCellWithIdentifier:CellIdetifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdetifier];
+        cell.textLabel.text = @"asdasdas";
     }
     
     return cell;
@@ -124,18 +115,31 @@
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
-    DUserModel *userModel = dataModel;
+//    DUserModel *userModel = dataModel;
+    self.tableView.hidden = NO;
     [self.headerView reloadData];
 }
 
 
 #pragma mark - getter & setter
+- (DCustomNavigationView *)navigationView{
+    if (!_navigationView) {
+        _navigationView = [[DCustomNavigationView alloc] init];
+        _navigationView.navLeftItemType = DNavigationItemTypeWriteBack;
+        _navigationView.navRighItemType = DNavigationItemTypeRightSetting;
+        _navigationView.title = KGLOBALINFOMANAGER.accountInfo.username;
+        [_navigationView.navLeftItem addTarget:self action:@selector(navigationBarDidClickNavigationLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_navigationView.navRightItem addTarget:self action:@selector(navigationBarDidClickNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _navigationView;
+}
+
 - (DMeHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[DMeHeaderView alloc] init];
-        _headerView.bgImbageView.autoresizingMask=UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        _headerView.bgImbageView.clipsToBounds=YES;
-        _headerView.bgImbageView.contentMode=UIViewContentModeScaleAspectFill;
+//        _headerView.bgImbageView.autoresizingMask=UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//        _headerView.bgImbageView.clipsToBounds=YES;
+//        _headerView.bgImbageView.contentMode=UIViewContentModeScaleAspectFill;
     }
     return _headerView;
 }
@@ -147,8 +151,8 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.showsVerticalScrollIndicator=NO;
-        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        _tableView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
+        _tableView.hidden = YES;
+//        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     }
     return _tableView;
 }

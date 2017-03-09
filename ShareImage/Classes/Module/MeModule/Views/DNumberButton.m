@@ -26,10 +26,10 @@
         .topEqualToView(self)
         .leftEqualToView(self)
         .rightEqualToView(self)
-        .heightIs(20);
+        .heightIs(25);
         
         self.describleLabel.sd_layout
-        .topSpaceToView(self.numberLabel, 0)
+        .topSpaceToView(self.numberLabel, 5)
         .leftEqualToView(self)
         .rightEqualToView(self)
         .heightIs(20);
@@ -44,7 +44,7 @@
     if (!_numberLabel) {
         _numberLabel = [[UILabel alloc] init];
         _numberLabel.textColor = [UIColor blackColor];
-        _numberLabel.font = DSystemFontTitleBold;
+        _numberLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:25.0];
         _numberLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _numberLabel;
@@ -54,7 +54,7 @@
     if (!_describleLabel) {
         _describleLabel = [[UILabel alloc] init];
         _describleLabel.textColor = DSystemColorGray;
-        _describleLabel.font = [UIFont systemFontOfSize:12.0];
+        _describleLabel.font = [UIFont systemFontOfSize:14.0];
         _describleLabel.textAlignment = NSTextAlignmentCenter;
         _describleLabel.text = self.describle;
     }
