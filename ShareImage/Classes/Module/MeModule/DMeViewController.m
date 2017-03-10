@@ -12,6 +12,7 @@
 
 #import "DMeHeaderView.h"
 #import "DCustomNavigationView.h"
+#import "DMeTableViewCell.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DMeHeaderView *headerView;
 
-
+@property (nonatomic, strong) NSArray *usersPhotos;
 
 
 @end
@@ -121,35 +122,57 @@
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return self.usersPhotos.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger count = KGLOBALINFOMANAGER.accountInfo.u_photos.count;
-    if (count > 3) {
-        return 3;
-    }
-    return KGLOBALINFOMANAGER.accountInfo.u_photos.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdetifier = @"";
-    UITableViewCell  *cell=[tableView dequeueReusableCellWithIdentifier:CellIdetifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdetifier];
-        cell.textLabel.text = @"asdasdas";
+    DMeTableViewCell *cell = [DMeTableViewCell cellWithTableView:tableView];
+    if (self.usersPhotos.count > indexPath.section) {
+        cell.photosModel = self.usersPhotos[indexPath.section];
     }
-    
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    id model = self.usersPhotos[indexPath.section];
+    CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DMeTableViewCell class] contentViewWidth:self.view.width];
+    return height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        UILabel *label = [[UILabel alloc] init];
+        label.text = @"   Recent Photos";
+        label.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
+        label.font = DSystemFontText;
+        return label;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 40;
+    }
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
 
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
-//    DUserModel *userModel = dataModel;
+    DUserModel *userModel = dataModel;
     self.tableView.hidden = NO;
+    self.usersPhotos = userModel.u_photos;
     [self.headerView reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -170,24 +193,28 @@
     if (!_headerView) {
         _headerView = [[DMeHeaderView alloc] init];
         _headerView.delegate = self;
-//        _headerView.bgImbageView.autoresizingMask=UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//        _headerView.bgImbageView.clipsToBounds=YES;
-//        _headerView.bgImbageView.contentMode=UIViewContentModeScaleAspectFill;
     }
     return _headerView;
 }
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] init];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.showsVerticalScrollIndicator=NO;
         _tableView.hidden = YES;
-//        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
+}
+
+- (NSArray *)usersPhotos{
+    if (!_usersPhotos) {
+        _usersPhotos = [[NSArray alloc] init];
+    }
+    return _usersPhotos;
 }
 
 @end
