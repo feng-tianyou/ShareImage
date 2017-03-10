@@ -101,13 +101,7 @@
  下拉刷新
  */
 - (void)setupTableViewDownRefresh{
-    @weakify(self)
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getMoreData];
-        });
-    }];
+    self.tableView.mj_footer = self.footerView;
 }
 
 /**
@@ -191,13 +185,6 @@
 }
 
 #pragma mark - 点击事件
-/**
- 点击刷新
- */
-- (void)clcikRefreshButton{
-    [self getCommonDataWithPage:1];
-}
-
 
 /**
  点击搜索图片
@@ -224,6 +211,10 @@
     [self.selectItemView didCilckButton:button];
     _searchType = CollectionSearchType;
     self.title = @"COLLECTIONS";
+}
+
+- (void)pressNoDataBtnToRefresh{
+    [self getCommonDataWithPage:1];
 }
 
 
@@ -332,6 +323,7 @@
     [self.tableView reloadData];
     [self.tableView setTableFooterView:[UIView new]];
     self.page++;
+    [self removeNoDataView];
 }
 
 - (void)hasNotMoreData{
@@ -347,11 +339,9 @@
     self.tableView.hidden = NO;
     _footerView.stateLabel.hidden = YES;
     [self clearData];
-    DNoDataView *noDataView = [[DNoDataView alloc] init];
-    noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
-    [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
-    [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
-    [self.tableView setTableFooterView:noDataView];
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
+    [self addNoDataViewAddInView:self.tableView];
+    [self setNoNetworkDelegate:self];
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
     [self.tableView reloadData];
 }

@@ -93,7 +93,7 @@
     self.tableView.mj_footer = self.footerView;
 }
 
-- (void)clcikRefreshButton{
+- (void)pressNoDataBtnToRefresh{
     self.page = 1;
     [self getUsersData];
 }
@@ -149,6 +149,7 @@
     self.footerView.stateLabel.hidden = NO;
     [self.tableView.mj_footer endRefreshing];
     [self.tableView reloadData];
+    [self removeNoDataView];
 }
 
 - (void)unlockUI{
@@ -166,11 +167,9 @@
 - (void)alertNoData{
     [self clearData];
     self.footerView.stateLabel.hidden = YES;
-    DNoDataView *noDataView = [[DNoDataView alloc] init];
-    noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
-    [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
-    [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
-    [self.tableView setTableFooterView:noDataView];
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
+    [self addNoDataViewAddInView:self.tableView];
+    self.noNetworkDelegate = self;
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
     [self.tableView reloadData];
 }

@@ -20,7 +20,7 @@ static NSString * const cellID = @"userCollection";
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) DNoDataView *noDataView;
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
 @end
 
 @implementation DUserCollectionsController
@@ -55,13 +55,7 @@ static NSString * const cellID = @"userCollection";
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    @weakify(self)
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getCollectionsData];
-        });
-    }];
+    self.collectionView.mj_footer = self.footerView;
 }
 
 - (void)getCollectionsData{
@@ -73,7 +67,7 @@ static NSString * const cellID = @"userCollection";
     [manager fetchUserCollectionsByParamModel:paramModel];
 }
 
-- (void)clcikRefreshButton{
+- (void)pressNoDataBtnToRefresh{
     self.page = 1;
     [self getCollectionsData];
 }
@@ -111,17 +105,26 @@ static NSString * const cellID = @"userCollection";
     [self.collections addObjectsFromArray:arrData];
     [self.collectionView.mj_footer endRefreshing];
     [self.collectionView reloadData];
-    [self.noDataView removeFromSuperview];
+    
+    self.footerView.stateLabel.hidden = NO;
+    [self removeNoDataView];
+    
 }
 
 - (void)hasNotMoreData{
     [self.collectionView.mj_footer endRefreshingWithNoMoreData];
 }
 
+- (void)clearData{
+    [self.collections removeAllObjects];
+}
+
 - (void)alertNoData{
-    [self.noDataView setFrame:0 y:0 w:self.view.width h:self.view.height];
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Collections You Have";
     self.collectionView.hidden = YES;
-    [self.view addSubview:self.noDataView];
+    [self addNoDataViewAddInView:self.collectionView];
+    self.noNetworkDelegate = self;
+    self.footerView.stateLabel.hidden = YES;
 }
 
 
@@ -154,14 +157,20 @@ static NSString * const cellID = @"userCollection";
     return _collections;
 }
 
-- (DNoDataView *)noDataView{
-    if (!_noDataView) {
-        _noDataView = [[DNoDataView alloc] init];
-        _noDataView.titleLabel.text = @"Very Sorry\n No Collections You Have";
-        [_noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getCollectionsData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
     }
-    return _noDataView;
+    return _footerView;
 }
+
 
 
 @end

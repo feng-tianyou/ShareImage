@@ -82,6 +82,8 @@
 //}
 
 
+
+
 #pragma mark - setter & getter
 
 - (NSMutableDictionary *)networkUserInfo{
@@ -99,5 +101,7 @@
     CGRect rect = [[UIApplication sharedApplication] statusBarFrame];
     return self.navigationController.navigationBar.frame.size.height+rect.size.height;
 }
+
+
 
 @end

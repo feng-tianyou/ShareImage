@@ -21,6 +21,7 @@ static NSString * const cellID = @"collection";
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
 
 @end
 
@@ -32,7 +33,6 @@ static NSString * const cellID = @"collection";
     // Do any additional setup after loading the view.
     self.page = 1;
     [self getCollectionsData];
-    
 }
 
 - (void)viewWillLayoutSubviews{
@@ -51,13 +51,7 @@ static NSString * const cellID = @"collection";
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    @weakify(self)
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getCollectionsData];
-        });
-    }];
+    self.collectionView.mj_footer = self.footerView;
 }
 
 - (void)getCollectionsData{
@@ -66,6 +60,12 @@ static NSString * const cellID = @"collection";
     paramModel.page = self.page;
     paramModel.per_page = 20;
     [manager fetchFeaturedCollectionsByParamModel:paramModel];
+    
+}
+
+- (void)pressNoDataBtnToRefresh{
+    self.page = 1;
+    [self getCollectionsData];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -100,10 +100,27 @@ static NSString * const cellID = @"collection";
     [self.collections addObjectsFromArray:arrData];
     [self.collectionView.mj_footer endRefreshing];
     [self.collectionView reloadData];
+    self.footerView.stateLabel.hidden = NO;
+    [self removeNoDataView];
 }
 
 - (void)hasNotMoreData{
     [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    self.footerView.stateLabel.hidden = YES;
+}
+
+- (void)alertNoData{
+    [self clearData];
+    self.footerView.stateLabel.hidden = YES;
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
+    [self addNoDataViewAddInView:self.collectionView];
+    self.noNetworkDelegate = self;
+    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    [self.collectionView reloadData];
+}
+
+- (void)clearData{
+    [self.collections removeAllObjects];
 }
 
 
@@ -134,6 +151,20 @@ static NSString * const cellID = @"collection";
         _collections = [NSMutableArray array];
     }
     return _collections;
+}
+
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getCollectionsData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
+    }
+    return _footerView;
 }
 
 
