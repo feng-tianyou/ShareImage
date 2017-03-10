@@ -31,5 +31,11 @@
 /// 图片
 @property (nonatomic, strong) DPhotosModel *cover_photo;
 
+/// 图片连接
+@property (nonatomic, strong) DPhotosLinksModel *c_links;
+
+/// 用户
+@property (nonatomic, strong) DUserModel *c_user;
+
 
 @end
