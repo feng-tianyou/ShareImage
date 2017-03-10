@@ -298,7 +298,7 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor = DSystemColorGray;
+        _tableView.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
     }
     return _tableView;
 }
