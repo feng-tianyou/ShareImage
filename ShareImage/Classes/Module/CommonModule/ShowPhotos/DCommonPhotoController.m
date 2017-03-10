@@ -56,6 +56,7 @@ static NSString * const cellID = @"collectionPhotos";
     // Do any additional setup after loading the view.
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeBack;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self getPhotosData];
 }
 
@@ -75,7 +76,7 @@ static NSString * const cellID = @"collectionPhotos";
     [self.view addSubview:self.collectionView];
     
     self.collectionView.sd_layout
-    .topSpaceToView(self.view, self.navBarHeight)
+    .topSpaceToView(self.view, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
