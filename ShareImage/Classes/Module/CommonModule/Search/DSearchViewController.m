@@ -32,6 +32,8 @@
 @property (nonatomic, strong) DSearchSelectItemView *selectItemView;
 @property (nonatomic, strong) DSearchBar *searchBar;
 
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+
 @end
 
 @implementation DSearchViewController
@@ -326,6 +328,7 @@
     
     [self.tableView.mj_footer endRefreshing];
     self.tableView.hidden = NO;
+    _footerView.stateLabel.hidden = NO;
     [self.tableView reloadData];
     [self.tableView setTableFooterView:[UIView new]];
     self.page++;
@@ -342,6 +345,7 @@
 
 - (void)alertNoData{
     self.tableView.hidden = NO;
+    _footerView.stateLabel.hidden = YES;
     [self clearData];
     DNoDataView *noDataView = [[DNoDataView alloc] init];
     noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
@@ -416,5 +420,18 @@
     return _searchBar;
 }
 
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getMoreData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
+    }
+    return _footerView;
+}
 
 @end
