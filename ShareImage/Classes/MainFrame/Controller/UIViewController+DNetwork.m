@@ -223,7 +223,7 @@ static char* const noNoDataView_KEY = "DataView";
     
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.animationType = MBProgressHUDModeCustomView;
         hud.activityIndicatorColor = [UIColor blackColor];
@@ -231,7 +231,7 @@ static char* const noNoDataView_KEY = "DataView";
         hud.labelColor = [UIColor blackColor];
         hud.labelText = strText;
         hud.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.3];
-        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:hud];
+        [self.view bringSubviewToFront:hud];
     }
 }
 
@@ -239,7 +239,7 @@ static char* const noNoDataView_KEY = "DataView";
  *  移除网络请求加载动画
  */
 - (void)removeNetworkLoadingView{
-    [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 /**
