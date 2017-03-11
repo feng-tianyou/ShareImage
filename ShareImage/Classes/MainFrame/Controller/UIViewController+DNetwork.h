@@ -31,6 +31,7 @@
 @protocol NoNetworkButtonDelegate <NSObject>
 
 - (void)pressNoNetworkBtnToRefresh;
+- (void)pressNoDataBtnToRefresh;
 
 @end
 
@@ -41,6 +42,9 @@
 @property (nonatomic,strong) UIView *networkLoadingView;
 @property (nonatomic,strong) UIControl *networkErrorReloadView;
 @property (nonatomic,weak) id<NoNetworkButtonDelegate> noNetworkDelegate;
+
+@property (nonatomic, strong) DNoDataView *noDataView;
+
 
 #pragma mark - Methor
 
@@ -123,6 +127,10 @@
  *  账号异常时让用户退出并重新登录，跳转至登陆页面
  */
 //- (void)logoutByType:(LogoutType)type;
+
+- (void)addNoDataViewAddInView:(UIView *)inView;
+
+- (void)removeNoDataView;
 
 
 #pragma mark - 重写方法

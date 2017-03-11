@@ -23,6 +23,9 @@
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) FollowType type;
 @property (nonatomic, copy) NSString *username;
+
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+
 @end
 
 @implementation DUserListViewController
@@ -69,6 +72,7 @@
 }
 
 - (void)getUsersData{
+    
     DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DUserParamModel *paramModel = [[DUserParamModel alloc] init];
     paramModel.page = self.page;
@@ -86,16 +90,10 @@
  设置上下拉刷新
  */
 - (void)setupTableViewUpAndDowmLoad{
-    @weakify(self);
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getUsersData];
-        });
-    }];
+    self.tableView.mj_footer = self.footerView;
 }
 
-- (void)clcikRefreshButton{
+- (void)pressNoDataBtnToRefresh{
     self.page = 1;
     [self getUsersData];
 }
@@ -148,13 +146,13 @@
     self.page++;
     [self.users addObjectsFromArray:arrData];
     
-    [self.tableView.mj_header endRefreshing];
+    self.footerView.stateLabel.hidden = NO;
     [self.tableView.mj_footer endRefreshing];
     [self.tableView reloadData];
+    [self removeNoDataView];
 }
 
 - (void)unlockUI{
-    [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
 }
 
@@ -168,11 +166,10 @@
 
 - (void)alertNoData{
     [self clearData];
-    DNoDataView *noDataView = [[DNoDataView alloc] init];
-    noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
-    [noDataView.refreshButton addTarget:self action:@selector(clcikRefreshButton) forControlEvents:UIControlEventTouchUpInside];
-    [noDataView setFrame:0 y:55 w:self.view.width h:self.view.height - 55];
-    [self.tableView setTableFooterView:noDataView];
+    self.footerView.stateLabel.hidden = YES;
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
+    [self addNoDataViewAddInView:self.tableView];
+    self.noNetworkDelegate = self;
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
     [self.tableView reloadData];
 }
@@ -195,6 +192,20 @@
         _users = [NSMutableArray array];
     }
     return _users;
+}
+
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getUsersData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
+    }
+    return _footerView;
 }
 
 

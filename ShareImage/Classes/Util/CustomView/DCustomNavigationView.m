@@ -27,18 +27,18 @@
     [super layoutSubviews];
     
     CGSize leftimgSize = self.navLeftItem.imageView.image.size;
-    self.navLeftItem.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width);
+    self.navLeftItem.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width - 10);
     if (leftimgSize.width == 0) {
         leftimgSize = [self.navLeftItem.titleLabel.text sizeWithFont:DSystemFontText maxWidth:100];
-        self.navLeftItem.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width);
+        self.navLeftItem.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width - 10);
     }
     [self.navLeftItem setFrame:8 y:20 w:100 h:44];
     
     CGSize rightimgSize = self.navRightItem.imageView.image.size;
-    self.navRightItem.imageEdgeInsets = UIEdgeInsetsMake(0, 100-rightimgSize.width, 0, 0);
+    self.navRightItem.imageEdgeInsets = UIEdgeInsetsMake(0, 100-rightimgSize.width - 10, 0, 0);
     if (rightimgSize.width == 0) {
         rightimgSize = [self.navRightItem.titleLabel.text sizeWithFont:DSystemFontText maxWidth:100];
-        self.navRightItem.titleEdgeInsets = UIEdgeInsetsMake(0, 100-rightimgSize.width, 0, 0);
+        self.navRightItem.titleEdgeInsets = UIEdgeInsetsMake(0, 100-rightimgSize.width - 10, 0, 0);
     }
     [self.navRightItem setFrame:(self.width - 100 - 10) y:20 w:100 h:44];
     

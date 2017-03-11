@@ -16,6 +16,7 @@ static char* const networkLoadingView_KEY = "networkLoadingView";
 static char* const noNetworkAlertView_KEY = "noNetworkAlertView";
 static char* const networkErrorReloadView_KEY = "networkErrorReloadView";
 static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
+static char* const noNoDataView_KEY = "DataView";
 
 
 @implementation UIViewController (DNetwork)
@@ -53,6 +54,13 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     return objc_getAssociatedObject(self, noNetworkDelegate_KEY);
 }
 
+- (void)setNoDataView:(DNoDataView *)noDataView{
+    objc_setAssociatedObject(self, noNoDataView_KEY, noDataView, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (DNoDataView *)noDataView{
+    return objc_getAssociatedObject(self, noNoDataView_KEY);
+}
 
 #pragma mark - 暴露方法
 
@@ -110,10 +118,40 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     [inView addSubview:self.noNetworkAlertView];
     
 }
+
+
+- (void)addNoDataViewAddInView:(UIView *)inView{
+    [self removeNoDataView];
+    
+    self.noDataView = [[DNoDataView alloc] init];
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Datas You Want";
+    [self.noDataView.refreshButton addTarget:self action:@selector(clickRefreshButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.noDataView setFrame:0 y:55 w:SCREEN_WIDTH h:SCREEN_HEIGHT - 55];
+    [inView addSubview:self.noDataView];
+    [inView bringSubviewToFront:self.noDataView];
+}
+
+- (void)removeNoDataView{
+    if (self.noDataView) {
+        [self.noDataView removeFromSuperview];
+        self.noDataView = nil;
+    }
+}
+
+
+
 #pragma mark - 私有方法
 - (void)pressToRefresh{
     if (self.noNetworkDelegate && [self.noNetworkDelegate respondsToSelector:@selector(pressNoNetworkBtnToRefresh)]) {
         [self.noNetworkDelegate pressNoNetworkBtnToRefresh];
+    } else {
+        DLog(@"未实现代理NoNetworkButtonDelegate");
+    }
+}
+
+- (void)clickRefreshButton{
+    if (self.noNetworkDelegate && [self.noNetworkDelegate respondsToSelector:@selector(pressNoDataBtnToRefresh)]) {
+        [self.noNetworkDelegate pressNoDataBtnToRefresh];
     } else {
         DLog(@"未实现代理NoNetworkButtonDelegate");
     }
@@ -185,7 +223,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
     
     NSString *strClass = NSStringFromClass([self class]);
     if (userInfo && [[userInfo objectForKey:KVIEWNAME] isEqualToString:strClass]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.animationType = MBProgressHUDModeCustomView;
         hud.activityIndicatorColor = [UIColor blackColor];
@@ -193,6 +231,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
         hud.labelColor = [UIColor blackColor];
         hud.labelText = strText;
         hud.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.3];
+        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:hud];
     }
 }
 
@@ -200,7 +239,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
  *  移除网络请求加载动画
  */
 - (void)removeNetworkLoadingView{
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
 }
 
 /**
@@ -315,6 +354,7 @@ static char* const noNetworkDelegate_KEY = "noNetworkDelegate";
 //    [self.mainViewController initTabBar];
 //    [self.mainViewController setRootMainView:loginView];
 }
+
 
 #pragma mark - 子类重写的
 /**

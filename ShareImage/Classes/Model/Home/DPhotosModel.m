@@ -7,6 +7,7 @@
 //
 
 #import "DPhotosModel.h"
+#import "DCollectionsModel.h"
 /**
  图片分类模型
  */
@@ -94,7 +95,8 @@
     return @{@"user":[DUserModel class],
              @"urls":[DPhotosUrlsModel class],
              @"links":[DPhotosLinksModel class],
-             @"categories":[DPhotosCategoriesModel class]};
+             @"categories":[DPhotosCategoriesModel class],
+             @"current_user_collections":[DCollectionsModel class]};
 }
 
 

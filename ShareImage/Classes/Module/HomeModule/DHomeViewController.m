@@ -41,6 +41,9 @@
 @property (nonatomic, strong) DHomeMenuView *menuView;
 
 
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+
+
 @end
 
 @implementation DHomeViewController
@@ -133,12 +136,7 @@
     
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getPhotosData];
-        });
-    }];
+    self.tableView.mj_footer = self.footerView;
 }
 
 
@@ -264,6 +262,9 @@
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     [self.tableView reloadData];
+    self.footerView.stateLabel.hidden = NO;
+    [self.tableView setTableFooterView:[UIView new]];
+    [self removeNoDataView];
 }
 
 - (void)unlockUI{
@@ -279,6 +280,16 @@
     [self.tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
+- (void)alertNoData{
+    [self clearData];
+    self.footerView.stateLabel.hidden = YES;
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Photos You Want";
+    [self addNoDataViewAddInView:self.tableView];
+    [self setNoNetworkDelegate:self];
+    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    [self.tableView reloadData];
+}
+
 #pragma mark - getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -287,7 +298,7 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor = DSystemColorGray;
+        _tableView.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
     }
     return _tableView;
 }
@@ -327,5 +338,20 @@
     }
     return _slideMenu;
 }
+
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getPhotosData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
+    }
+    return _footerView;
+}
+
 
 @end

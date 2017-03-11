@@ -159,11 +159,11 @@ static char* const navRighItemType_KEY = "navRighItemType";
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     
     //创建UIBarButtonSystemItemFixedSpace
-    UIBarButtonItem * spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    //将宽度设为负值
-    spaceItem.width = -7;
+//    UIBarButtonItem * spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    //将宽度设为负值
+//    spaceItem.width = -5;
     
-    self.navigationItem.leftBarButtonItems = @[spaceItem, backButtonItem];
+    self.navigationItem.leftBarButtonItems = @[backButtonItem];
     
     objc_setAssociatedObject(self, navLeftItemType_KEY, @(navLeftItemType), OBJC_ASSOCIATION_RETAIN);
 }

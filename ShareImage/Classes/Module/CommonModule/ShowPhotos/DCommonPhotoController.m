@@ -34,6 +34,9 @@ static NSString * const cellID = @"collectionPhotos";
 
 @property (nonatomic, copy) NSString *navTitle;
 
+
+@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+
 @end
 
 @implementation DCommonPhotoController
@@ -53,6 +56,7 @@ static NSString * const cellID = @"collectionPhotos";
     // Do any additional setup after loading the view.
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeBack;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self getPhotosData];
 }
 
@@ -72,18 +76,12 @@ static NSString * const cellID = @"collectionPhotos";
     [self.view addSubview:self.collectionView];
     
     self.collectionView.sd_layout
-    .topSpaceToView(self.view, self.navBarHeight)
+    .topSpaceToView(self.view, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    @weakify(self)
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self getPhotosData];
-        });
-    }];
+    self.collectionView.mj_footer = self.footerView;
 }
 
 - (void)getPhotosData{
@@ -112,6 +110,11 @@ static NSString * const cellID = @"collectionPhotos";
         default:
             break;
     }
+}
+
+- (void)pressNoDataBtnToRefresh{
+    self.page = 1;
+    [self getPhotosData];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -156,6 +159,10 @@ static NSString * const cellID = @"collectionPhotos";
         }
     }];
     [self.photoUrls addObjectsFromArray:tmpArr];
+    
+    
+    self.footerView.stateLabel.hidden = NO;
+    [self removeNoDataView];
 }
 
 - (void)hasNotMoreData{
@@ -167,6 +174,16 @@ static NSString * const cellID = @"collectionPhotos";
     [self.photoUrls removeAllObjects];
 }
 
+- (void)alertNoData{
+    [self clearData];
+    self.footerView.stateLabel.hidden = YES;
+    self.noDataView.titleLabel.text = @"Very Sorry\n No Users You Have";
+    
+    [self addNoDataViewAddInView:self.collectionView];
+    self.noNetworkDelegate = self;
+    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    [self.collectionView reloadData];
+}
 
 
 #pragma mark - setter & getter
@@ -202,6 +219,20 @@ static NSString * const cellID = @"collectionPhotos";
         _photoUrls = [NSMutableArray array];
     }
     return _photoUrls;
+}
+
+- (MJRefreshAutoNormalFooter *)footerView{
+    if (!_footerView) {
+        @weakify(self);
+        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self getPhotosData];
+            });
+        }];
+        _footerView.stateLabel.hidden = YES;
+    }
+    return _footerView;
 }
 
 
