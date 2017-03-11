@@ -53,6 +53,8 @@
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
 		7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */; };
+		7E799AB31E742AB8001B5B70 /* DEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E799AB21E742AB8001B5B70 /* DEditProfileViewController.m */; };
+		7E799AB61E742D37001B5B70 /* DEditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E799AB51E742D37001B5B70 /* DEditProfileCell.m */; };
 		7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */; };
 		7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4AD1E56AEFE00BBA972 /* DPhotosService.m */; };
 		7EAFD4B11E56B00E00BBA972 /* DPhotosAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFD4B01E56B00E00BBA972 /* DPhotosAPIManager.m */; };
@@ -345,6 +347,10 @@
 		7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountModel.m; sourceTree = "<group>"; };
 		7E78737B1E55ACE100213B1B /* DOAuthAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthAccountTool.h; sourceTree = "<group>"; };
 		7E78737C1E55ACE100213B1B /* DOAuthAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthAccountTool.m; sourceTree = "<group>"; };
+		7E799AB11E742AB8001B5B70 /* DEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEditProfileViewController.h; sourceTree = "<group>"; };
+		7E799AB21E742AB8001B5B70 /* DEditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEditProfileViewController.m; sourceTree = "<group>"; };
+		7E799AB41E742D37001B5B70 /* DEditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEditProfileCell.h; sourceTree = "<group>"; };
+		7E799AB51E742D37001B5B70 /* DEditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEditProfileCell.m; sourceTree = "<group>"; };
 		7EAFD4A91E56AED900BBA972 /* DPhotosNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosNetwork.h; sourceTree = "<group>"; };
 		7EAFD4AA1E56AED900BBA972 /* DPhotosNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotosNetwork.m; sourceTree = "<group>"; };
 		7EAFD4AC1E56AEFE00BBA972 /* DPhotosService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotosService.h; sourceTree = "<group>"; };
@@ -853,6 +859,8 @@
 				7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */,
 				079E30B21E729E1800FF7C6C /* DMeTableViewCell.h */,
 				079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */,
+				7E799AB41E742D37001B5B70 /* DEditProfileCell.h */,
+				7E799AB51E742D37001B5B70 /* DEditProfileCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1282,6 +1290,8 @@
 				07DA8F941E60334F006D871B /* DUserProfileViewController.m */,
 				074A02961E6D5CB100CA1E2B /* DUserCollectionsController.h */,
 				074A02971E6D5CB100CA1E2B /* DUserCollectionsController.m */,
+				7E799AB11E742AB8001B5B70 /* DEditProfileViewController.h */,
+				7E799AB21E742AB8001B5B70 /* DEditProfileViewController.m */,
 			);
 			path = MeModule;
 			sourceTree = "<group>";
@@ -2097,6 +2107,7 @@
 				074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
 				7ED811271E55550100954DAF /* LOTAnimationCache.m in Sources */,
+				7E799AB31E742AB8001B5B70 /* DEditProfileViewController.m in Sources */,
 				7E78737D1E55ACE100213B1B /* DOAuthAccountTool.m in Sources */,
 				7ED810E91E55550100954DAF /* DJsonCache.m in Sources */,
 				7ED8111A1E55550100954DAF /* LOTEllipseShapeLayer.m in Sources */,
@@ -2172,6 +2183,7 @@
 				074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */,
 				7ED8111C1E55550100954DAF /* LOTLayerView.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
+				7E799AB61E742D37001B5B70 /* DEditProfileCell.m in Sources */,
 				07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
 				070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */,

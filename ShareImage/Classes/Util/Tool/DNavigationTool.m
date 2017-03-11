@@ -77,6 +77,9 @@
         case DNavigationItemTypeRightSetting:{
             strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_SETTING;
             break;
+        }case DNavigationItemTypeRightEdit:{
+            strTitle = @"Edit";
+            break;
         }
         default:{
             

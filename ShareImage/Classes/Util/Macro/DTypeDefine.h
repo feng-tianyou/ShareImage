@@ -60,6 +60,7 @@ typedef NS_ENUM(NSInteger, DNavigationItemType) {
     DNavigationItemTypeRightFinish,//右边 完成
     DNavigationItemTypeRightFeedback,//右边 意见反馈
     DNavigationItemTypeRightSetting, // 右边 设置
+    DNavigationItemTypeRightEdit, // 右边 编辑
     
 };
 

@@ -107,6 +107,7 @@
         case DNavigationItemTypeRightFinish:
         case DNavigationItemTypeRightFeedback:
         case DNavigationItemTypeRightSetting:
+        case DNavigationItemTypeRightEdit:
         case DNavigationItemTypeRightMenu:
         case DNavigationItemTypeRightWriteMenu:
         case DNavigationItemTypeRightSearch:{

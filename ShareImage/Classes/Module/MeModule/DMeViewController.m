@@ -9,6 +9,7 @@
 #import "DMeViewController.h"
 #import "DCommonPhotoController.h"
 #import "DUserListViewController.h"
+#import "DEditProfileViewController.h"
 
 #import "DMeHeaderView.h"
 #import "DCustomNavigationView.h"
@@ -84,7 +85,8 @@
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationRightBtn:(UIButton *)rightBtn{
-    
+    DEditProfileViewController *view = [[DEditProfileViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 - (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
@@ -181,7 +183,7 @@
     if (!_navigationView) {
         _navigationView = [[DCustomNavigationView alloc] init];
         _navigationView.navLeftItemType = DNavigationItemTypeWriteBack;
-        _navigationView.navRighItemType = DNavigationItemTypeRightSetting;
+        _navigationView.navRighItemType = DNavigationItemTypeRightEdit;
         _navigationView.title = KGLOBALINFOMANAGER.accountInfo.username;
         [_navigationView.navLeftItem addTarget:self action:@selector(navigationBarDidClickNavigationLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
         [_navigationView.navRightItem addTarget:self action:@selector(navigationBarDidClickNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
