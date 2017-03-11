@@ -7,10 +7,8 @@
 //
 
 #import "AppDelegate+DCommon.h"
-#import <BaiduMobStat.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import <WXApi.h>
-#import <JSPatchPlatform/JSPatch.h>
 
 #import "DChooesRootViewControllerTool.h"
 
@@ -102,68 +100,6 @@
 //-(void)onResp:(BaseResp*)resp{
 //
 //}
-
-#pragma mark - 百度统计
-/**
- 初始化百度统计
- */
-+ (void)setupBaiduTongJi{
-    [[BaiduMobStat defaultStat] startWithAppId:kBAIDU_TONGJI_APP_KEY];
-}
-
-
-#pragma mark - JSPatch热更新
-/**
- 初始化热更新
- */
-+ (void)setupJSPatch{
-    [JSPatch setupLogger:^(NSString *msg) {
-        //msg 是 JSPatch log 字符串，用你自定义的logger打出
-        DLog(@"%@", msg);
-    }];
-    
-    [JSPatch startWithAppKey:kJSPATCH_APP_KEY];
-    
-    
-    // 执行过程中的事件回调
-    [JSPatch setupCallback:^(JPCallbackType type, NSDictionary *data, NSError *error) {
-        switch (type) {
-            case JPCallbackTypeRunScript: {
-                DLog(@"执行脚本 %@ %@", data, error);
-//                [JSPatch showDebugView];
-                break;
-            }
-            case JPCallbackTypeUpdate: {
-                DLog(@"脚本有更新 %@ %@", data, error);
-                break;
-            }
-            case JPCallbackTypeUpdateDone: {
-                DLog(@"已拉取新脚本 %@ %@", data, error);
-                break;
-            }
-            case JPCallbackTypeCondition: {
-                DLog(@"条件下发 %@ %@", data, error);
-                break;
-            }
-            case JPCallbackTypeGray: {
-                DLog(@"灰度下发 %@ %@", data, error);
-                break;
-            }
-            default:
-                break;
-        }
-    }];
-    
-    
-    
-    // JSPatch同步操作
-    [JSPatch sync];
-    
-    
-    // 用于发布前测试脚本，调用后，会在当前项目的 bundle 里寻找 main.js 文件执行。注意不能同时调用 +startWithAppKey: 方法，测试完成后需要删除
-//    [JSPatch testScriptInBundle];
-}
-
 
 
 

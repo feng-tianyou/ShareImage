@@ -40,9 +40,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    // 初始化热更新
-    [AppDelegate setupJSPatch];
-    
     // 初始化跟控制器
     [self setupRootViewController];
     
@@ -56,8 +53,6 @@
     // 初始化分享功能
     [AppDelegate setupShareManager];
     
-    // 初始化百度统计
-    [AppDelegate setupBaiduTongJi];
     
     // 初始化3DTouch
     [AppDelegate setupShortcutIcon:application launchOptions:launchOptions];

@@ -86,9 +86,6 @@
 		7ED810EB1E55550100954DAF /* DCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FA41E55550100954DAF /* DCacheManager.m */; };
 		7ED810EE1E55550100954DAF /* DFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FAC1E55550100954DAF /* DFileManager.m */; };
 		7ED810EF1E55550100954DAF /* DPlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FAE1E55550100954DAF /* DPlistManager.m */; };
-		7ED810F11E55550100954DAF /* DDataBaseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB41E55550100954DAF /* DDataBaseProxy.m */; };
-		7ED810F21E55550100954DAF /* DDBSqlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB61E55550100954DAF /* DDBSqlTool.m */; };
-		7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FB81E55550100954DAF /* DTestUserProxy.m */; };
 		7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FBB1E55550100954DAF /* DGlobalInfoManager.m */; };
 		7ED810F51E55550100954DAF /* DBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FBF1E55550100954DAF /* DBaseManager.m */; };
 		7ED810F61E55550100954DAF /* DGlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FC21E55550100954DAF /* DGlobalManager.m */; };
@@ -186,7 +183,6 @@
 		7ED8115C1E55550100954DAF /* DNotificationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810D71E55550100954DAF /* DNotificationTool.m */; };
 		7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810D91E55550100954DAF /* DSandboxTool.m */; };
 		7ED811601E55552300954DAF /* DKColorTable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8115E1E55552300954DAF /* DKColorTable.txt */; };
-		7ED811611E55552300954DAF /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8115F1E55552300954DAF /* main.js */; };
 		7ED811651E55566E00954DAF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811641E55566E00954DAF /* SystemConfiguration.framework */; };
 		7ED811671E55567700954DAF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811661E55567700954DAF /* libz.tbd */; };
 		7ED811691E55568000954DAF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811681E55568000954DAF /* CoreTelephony.framework */; };
@@ -417,12 +413,6 @@
 		7ED80FAC1E55550100954DAF /* DFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFileManager.m; sourceTree = "<group>"; };
 		7ED80FAD1E55550100954DAF /* DPlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPlistManager.h; sourceTree = "<group>"; };
 		7ED80FAE1E55550100954DAF /* DPlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPlistManager.m; sourceTree = "<group>"; };
-		7ED80FB31E55550100954DAF /* DDataBaseProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDataBaseProxy.h; sourceTree = "<group>"; };
-		7ED80FB41E55550100954DAF /* DDataBaseProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDataBaseProxy.m; sourceTree = "<group>"; };
-		7ED80FB51E55550100954DAF /* DDBSqlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBSqlTool.h; sourceTree = "<group>"; };
-		7ED80FB61E55550100954DAF /* DDBSqlTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBSqlTool.m; sourceTree = "<group>"; };
-		7ED80FB71E55550100954DAF /* DTestUserProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTestUserProxy.h; sourceTree = "<group>"; };
-		7ED80FB81E55550100954DAF /* DTestUserProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTestUserProxy.m; sourceTree = "<group>"; };
 		7ED80FBA1E55550100954DAF /* DGlobalInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGlobalInfoManager.h; sourceTree = "<group>"; };
 		7ED80FBB1E55550100954DAF /* DGlobalInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGlobalInfoManager.m; sourceTree = "<group>"; };
 		7ED80FBE1E55550100954DAF /* DBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBaseManager.h; sourceTree = "<group>"; };
@@ -641,7 +631,6 @@
 		7ED810D81E55550100954DAF /* DSandboxTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSandboxTool.h; sourceTree = "<group>"; };
 		7ED810D91E55550100954DAF /* DSandboxTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSandboxTool.m; sourceTree = "<group>"; };
 		7ED8115E1E55552300954DAF /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
-		7ED8115F1E55552300954DAF /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		7ED811621E55555F00954DAF /* ShareImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareImage.entitlements; sourceTree = "<group>"; };
 		7ED811631E5555F800954DAF /* ShareImage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShareImage-Prefix.pch"; sourceTree = "<group>"; };
 		7ED811641E55566E00954DAF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -908,7 +897,6 @@
 				7ED811741E55573300954DAF /* TestController */,
 				7ED811631E5555F800954DAF /* ShareImage-Prefix.pch */,
 				7ED8115E1E55552300954DAF /* DKColorTable.txt */,
-				7ED8115F1E55552300954DAF /* main.js */,
 				7ED80F521E554D8100954DAF /* Assets.xcassets */,
 				7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */,
 				7ED80F571E554D8100954DAF /* Info.plist */,
@@ -1012,7 +1000,6 @@
 			children = (
 				7ED80F971E55550100954DAF /* CacheManager */,
 				7ED80FAA1E55550100954DAF /* FileManager */,
-				7ED80FB21E55550100954DAF /* FMDBManager */,
 				7ED80FB91E55550100954DAF /* GlobalInfoManager */,
 				7ED80FBC1E55550100954DAF /* HTTPManager */,
 				7ED80FEB1E55550100954DAF /* PhotoManager */,
@@ -1057,19 +1044,6 @@
 				7ED80FAE1E55550100954DAF /* DPlistManager.m */,
 			);
 			path = FileManager;
-			sourceTree = "<group>";
-		};
-		7ED80FB21E55550100954DAF /* FMDBManager */ = {
-			isa = PBXGroup;
-			children = (
-				7ED80FB31E55550100954DAF /* DDataBaseProxy.h */,
-				7ED80FB41E55550100954DAF /* DDataBaseProxy.m */,
-				7ED80FB51E55550100954DAF /* DDBSqlTool.h */,
-				7ED80FB61E55550100954DAF /* DDBSqlTool.m */,
-				7ED80FB71E55550100954DAF /* DTestUserProxy.h */,
-				7ED80FB81E55550100954DAF /* DTestUserProxy.m */,
-			);
-			path = FMDBManager;
 			sourceTree = "<group>";
 		};
 		7ED80FB91E55550100954DAF /* GlobalInfoManager */ = {
@@ -1835,6 +1809,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ED80F701E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImage" */;
 			buildPhases = (
+				5FD4800FF10025772A3DC091 /* 📦 Check Pods Manifest.lock */,
 				8B585ABCAAFA1B32FEE362A1 /* [CP] Check Pods Manifest.lock */,
 				7ED80F3F1E554D8000954DAF /* Sources */,
 				7ED80F401E554D8000954DAF /* Frameworks */,
@@ -1842,6 +1817,8 @@
 				A0A7FDACF4DEBEDF4394B53F /* [CP] Embed Pods Frameworks */,
 				37CB195176CA017E6323F3E6 /* [CP] Copy Pods Resources */,
 				7ED811991E55594800954DAF /* Embed App Extensions */,
+				10B14B3CCD73EB150575F812 /* 📦 Embed Pods Frameworks */,
+				122F3FF224BF0DEABCF24515 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1983,7 +1960,6 @@
 				7ED811411E55550100954DAF /* zbar-helpicons.png in Resources */,
 				7ED811141E55550100954DAF /* .gitkeep in Resources */,
 				7ED811601E55552300954DAF /* DKColorTable.txt in Resources */,
-				7ED811611E55552300954DAF /* main.js in Resources */,
 				7ED811181E55550100954DAF /* .gitkeep in Resources */,
 				7ED811171E55550100954DAF /* vcTransition2.json in Resources */,
 				7ED811401E55550100954DAF /* zbar-help.html in Resources */,
@@ -2020,6 +1996,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10B14B3CCD73EB150575F812 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		122F3FF224BF0DEABCF24515 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37CB195176CA017E6323F3E6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2033,6 +2039,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FD4800FF10025772A3DC091 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8B585ABCAAFA1B32FEE362A1 /* [CP] Check Pods Manifest.lock */ = {
@@ -2109,7 +2130,6 @@
 				7ED811251E55550100954DAF /* LOTAnimatableScaleValue.m in Sources */,
 				7ED8114F1E55550100954DAF /* UIView+DLayer.m in Sources */,
 				074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */,
-				7ED810F11E55550100954DAF /* DDataBaseProxy.m in Sources */,
 				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				7ED8117F1E55573300954DAF /* DLottieViewController.m in Sources */,
@@ -2121,7 +2141,6 @@
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
 				7EAFD4C11E56EF8F00BBA972 /* DHomeCellTipLabel.m in Sources */,
-				7ED810F31E55550100954DAF /* DTestUserProxy.m in Sources */,
 				07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */,
 				7ED811801E55573300954DAF /* DTestPhotoViewController.m in Sources */,
 				07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */,
@@ -2196,7 +2215,6 @@
 				7ED811471E55550100954DAF /* UIColor+DColor.m in Sources */,
 				7ED811081E55550100954DAF /* DJsonModel.m in Sources */,
 				7ED810EB1E55550100954DAF /* DCacheManager.m in Sources */,
-				7ED810F21E55550100954DAF /* DDBSqlTool.m in Sources */,
 				7ED8114D1E55550100954DAF /* UITextView+Placeholder.m in Sources */,
 				7ED811491E55550100954DAF /* UIImage+DQRCode.m in Sources */,
 				7ED811391E55550100954DAF /* LOTShapeTransform.m in Sources */,

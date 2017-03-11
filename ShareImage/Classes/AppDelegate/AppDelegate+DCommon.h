@@ -25,18 +25,6 @@
 - (BOOL)handleApplicationOpenURL:(NSURL *)url;
 
 
-#pragma mark - 百度统计
-/**
- 初始化百度统计
- */
-+ (void)setupBaiduTongJi;
-
-#pragma mark - JSPatch热更新
-/**
- 初始化热更新
- */
-+ (void)setupJSPatch;
-
 
 #pragma mark - 3DTouch
 /**

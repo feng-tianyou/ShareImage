@@ -26,15 +26,8 @@ pod 'UMengUShare/Social/Email'
 # 集成短信
 pod 'UMengUShare/Social/SMS'
 
-pod 'BaiduMobStat'
-
-pod 'FMDB'
-
 # 主题切换
 pod 'DKNightVersion'
-
-# 热更新
-pod 'JSPatchPlatform'
 
 # 动画
 #pod 'lottie-ios'
