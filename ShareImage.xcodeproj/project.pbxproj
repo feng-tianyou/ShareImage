@@ -47,6 +47,7 @@
 		07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC071E6560A900BCF52A /* DHomeMenuCell.m */; };
 		07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */; };
 		36EFF1D419E3FA7F922A780F /* Pods_ShareImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */; };
+		7E1B159F1E759148001DFF28 /* DEditProfileMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B159E1E759148001DFF28 /* DEditProfileMsgController.m */; };
 		7E2C89581E6EE8F400D90089 /* DMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */; };
 		7E2C895B1E6EEC0600D90089 /* DMeHeaderFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */; };
 		7E5503EB1E6BFC4C00CB0D19 /* DCustomNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */; };
@@ -334,6 +335,8 @@
 		07ECEC0A1E65776900BCF52A /* DHomeMenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeMenuHeader.m; sourceTree = "<group>"; };
 		12A50CE0B47CF13FA7A00969 /* Pods_ShareImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B41749473E13A152F5B889 /* Pods-ShareImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.debug.xcconfig"; sourceTree = "<group>"; };
+		7E1B159D1E759148001DFF28 /* DEditProfileMsgController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEditProfileMsgController.h; sourceTree = "<group>"; };
+		7E1B159E1E759148001DFF28 /* DEditProfileMsgController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEditProfileMsgController.m; sourceTree = "<group>"; };
 		7E2C89561E6EE8F400D90089 /* DMeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeHeaderView.h; sourceTree = "<group>"; };
 		7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeHeaderView.m; sourceTree = "<group>"; };
 		7E2C89591E6EEC0600D90089 /* DMeHeaderFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeHeaderFunctionView.h; sourceTree = "<group>"; };
@@ -1284,6 +1287,8 @@
 			isa = PBXGroup;
 			children = (
 				7EC0B1E01E62AD2C00AF1318 /* Views */,
+				7E1B159D1E759148001DFF28 /* DEditProfileMsgController.h */,
+				7E1B159E1E759148001DFF28 /* DEditProfileMsgController.m */,
 				7ED810081E55550100954DAF /* DMeViewController.h */,
 				7ED810091E55550100954DAF /* DMeViewController.m */,
 				07DA8F931E60334F006D871B /* DUserProfileViewController.h */,
@@ -2228,6 +2233,7 @@
 				7ED811081E55550100954DAF /* DJsonModel.m in Sources */,
 				7ED810EB1E55550100954DAF /* DCacheManager.m in Sources */,
 				7ED8114D1E55550100954DAF /* UITextView+Placeholder.m in Sources */,
+				7E1B159F1E759148001DFF28 /* DEditProfileMsgController.m in Sources */,
 				7ED811491E55550100954DAF /* UIImage+DQRCode.m in Sources */,
 				7ED811391E55550100954DAF /* LOTShapeTransform.m in Sources */,
 				7EE1018F1E66B42800D5576D /* DSearchViewController.m in Sources */,

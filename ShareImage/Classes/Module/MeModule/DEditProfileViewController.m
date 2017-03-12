@@ -8,7 +8,7 @@
 
 #import "DEditProfileViewController.h"
 #import "DEditProfileCell.h"
-
+#import "DEditProfileMsgController.h"
 
 @interface DEditProfileViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -58,6 +58,11 @@
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
 }
+
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -123,6 +128,15 @@
             break;
     }
     return label;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSArray *titleArr = self.titles[indexPath.section];
+    NSArray *contentArr = self.contents[indexPath.section];
+    DEditProfileMsgController *editView = [[DEditProfileMsgController alloc] initWithTitle:titleArr[indexPath.row] content:contentArr[indexPath.row]];
+    [self.navigationController pushViewController:editView animated:YES];
 }
 
 #pragma mark - getter & setter
