@@ -90,6 +90,7 @@ static char* const navRighItemType_KEY = "navRighItemType";
         case DNavigationItemTypeRightFinish:
         case DNavigationItemTypeRightFeedback:
         case DNavigationItemTypeRightSetting:
+        case DNavigationItemTypeRightEdit:
         case DNavigationItemTypeRightMenu:
         case DNavigationItemTypeRightWriteMenu:
         case DNavigationItemTypeRightSearch:{
@@ -105,7 +106,8 @@ static char* const navRighItemType_KEY = "navRighItemType";
                 [button setTitle:strTitle forState:UIControlStateNormal];
                 [button setTitle:strTitle forState:UIControlStateHighlighted];
                 [button.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
-                [button.titleLabel setTextColor:[UIColor whiteColor]];
+                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
                 [button setFrame:0 y:0 w:size.width h:size.height];
             }
             

@@ -31,6 +31,7 @@
     [super viewDidLoad];
     self.navLeftItemType = DNavigationItemTypeBack;
     self.navRighItemType = DNavigationItemTypeRightSave;
+    self.view.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
     
     [self.view addSubview:self.textField];
     self.textField.sd_layout
@@ -50,9 +51,8 @@
         if (self.contentBlock && self.textField.text.length > 0) {
             self.contentBlock(self.textField.text);
         } else {
-            [SVProgressHUD showWithStatus:@"Please Input!"];
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
-            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            [SVProgressHUD showErrorWithStatus:@"Please Input!"];
+            [SVProgressHUD setMaximumDismissTimeInterval:1.5];
         }
     }
 }
@@ -66,6 +66,11 @@
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.textColor = [UIColor setHexColor:@"#bbbbbb"];
         _textField.placeholder = [NSString stringWithFormat:@"Input Your %@", self.titleStr];
+        _textField.backgroundColor = [UIColor whiteColor];
+        [_textField.layer setBorderWidth:0.5];
+        [_textField.layer setBorderColor:[UIColor grayColor].CGColor];
+        [_textField.layer setCornerRadius:5.0];
+        [_textField.layer setMasksToBounds:YES];
     }
     return _textField;
 }

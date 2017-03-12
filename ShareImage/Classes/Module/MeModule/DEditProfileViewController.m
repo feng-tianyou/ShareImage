@@ -28,7 +28,6 @@
     // Do any additional setup after loading the view.
     self.title = @"Edit Profile";
     self.navLeftItemType = DNavigationItemTypeBack;
-    self.navRighItemType = DNavigationItemTypeRightSave;
     self.userModel = KGLOBALINFOMANAGER.accountInfo;
     [self refreshUserData];
     
