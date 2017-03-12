@@ -52,7 +52,7 @@
             self.contentBlock(self.textField.text);
         } else {
             [SVProgressHUD showErrorWithStatus:@"Please Input!"];
-            [SVProgressHUD setMaximumDismissTimeInterval:1.5];
+            [SVProgressHUD setMinimumDismissTimeInterval:1.5];
         }
     }
 }
