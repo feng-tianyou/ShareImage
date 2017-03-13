@@ -35,6 +35,16 @@
 #define DUIColorFromRGB(_color, _alpha)  [DCommonTool TColor:_color colorAlpha:_alpha]
 
 
+// gray
+#define DSystemColorGrayE0E0E0      DUIColorFromRGB16(0xe0e0e0)
+#define DSystemColorGrayF3F3F3      DUIColorFromRGB16(0xf3f3f3)
+#define DSystemColorGray999999      DUIColorFromRGB16(0x999999)
+
+// black
+#define DSystemColorBlackBBBBBB     DUIColorFromRGB16(0xbbbbbb)
+#define DSystemColorBlack333333     DUIColorFromRGB16(0x333333)
+
+
 //一级颜色
 #define DSystemColorBlue           DUIColorFromRGB16(0x1177ff) //可点击的文字
 #define DSystemColorRed            DUIColorFromRGB16(0xc20000) //重点、错误

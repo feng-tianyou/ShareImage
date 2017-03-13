@@ -70,7 +70,7 @@ static NSString *const cellID = @"homeCell";
 - (UILabel *)leftTitleLabel{
     if (!_leftTitleLabel) {
         _leftTitleLabel = [[UILabel alloc] init];
-        _leftTitleLabel.textColor = [UIColor setHexColor:@"#333333"];
+        _leftTitleLabel.textColor = DSystemColorBlack333333;
         _leftTitleLabel.font = DSystemFontText;
         _leftTitleLabel.textAlignment = NSTextAlignmentLeft;
     }
@@ -80,7 +80,7 @@ static NSString *const cellID = @"homeCell";
 - (UILabel *)contentLabel{
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
-        _contentLabel.textColor = [UIColor setHexColor:@"#bbbbbb"];
+        _contentLabel.textColor = DSystemColorBlackBBBBBB;
         _contentLabel.font = DSystemFontText;
         _contentLabel.textAlignment = NSTextAlignmentRight;
     }
@@ -90,7 +90,7 @@ static NSString *const cellID = @"homeCell";
 - (UIImageView *)arrowView{
     if (!_arrowView) {
         _arrowView = [[UIImageView alloc] init];
-        _arrowView.image = [UIImage getImageWithName:@"common_btn_arrow_right_back"];
+        _arrowView.image = [UIImage getImageWithName:@"common_btn_arrow_right_gray"];
     }
     return _arrowView;
 }

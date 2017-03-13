@@ -29,11 +29,14 @@
     self.title = @"Edit Profile";
     self.navLeftItemType = DNavigationItemTypeBack;
     self.userModel = KGLOBALINFOMANAGER.accountInfo;
-    [self refreshUserData];
-    
     
     [self setupSubViews];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self refreshUserData];
 }
 
 
@@ -109,7 +112,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentLeft;
-    label.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
+    label.backgroundColor = DSystemColorGrayF3F3F3;
     label.font = DSystemFontText;
     [label setFrame:0 y:0 w:self.view.width h:40];
     switch (section) {
@@ -134,7 +137,7 @@
     
     NSArray *titleArr = self.titles[indexPath.section];
     NSArray *contentArr = self.contents[indexPath.section];
-    DEditProfileMsgController *editView = [[DEditProfileMsgController alloc] initWithTitle:titleArr[indexPath.row] content:contentArr[indexPath.row]];
+    DEditProfileMsgController *editView = [[DEditProfileMsgController alloc] initWithTitle:titleArr[indexPath.row] content:contentArr[indexPath.row] indexPatch:indexPath];
     [self.navigationController pushViewController:editView animated:YES];
 }
 
@@ -145,7 +148,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-        _tableView.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
+        _tableView.backgroundColor = DSystemColorGrayF3F3F3;
         _tableView.rowHeight = 50;
     }
     return _tableView;

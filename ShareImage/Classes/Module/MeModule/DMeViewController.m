@@ -149,7 +149,7 @@
     if (section == 0) {
         UILabel *label = [[UILabel alloc] init];
         label.text = @"   Recent Photos";
-        label.backgroundColor = [UIColor setHexColor:@"#f3f3f3"];
+        label.backgroundColor = DSystemColorGrayF3F3F3;
         label.font = DSystemFontText;
         return label;
     }

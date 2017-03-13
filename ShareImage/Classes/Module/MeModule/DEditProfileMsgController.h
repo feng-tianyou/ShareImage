@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UITextField *textField;
 
-- (instancetype)initWithTitle:(NSString *)title content:(NSString *)content;
+- (instancetype)initWithTitle:(NSString *)title content:(NSString *)content indexPatch:(NSIndexPath *)indexPatch;
 
 @property (nonatomic, copy) NSStringBlock contentBlock;
 
