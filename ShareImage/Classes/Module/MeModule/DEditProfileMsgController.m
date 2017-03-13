@@ -59,10 +59,14 @@
         bgViewHeight = 100;
         self.textView.hidden = NO;
         self.textField.hidden = YES;
+        self.textView.text = self.content;
+        [self.textView becomeFirstResponder];
         
     } else {
         self.textView.hidden = YES;
         self.textField.hidden = NO;
+        self.textField.text = self.content;
+        [self.textField becomeFirstResponder];
     }
     
     self.bgView.sd_layout
@@ -91,8 +95,6 @@
 }
 
 - (void)setupData{
-    self.textField.text = self.content;
-    [self.textField becomeFirstResponder];
     
     if (self.indexPatch.section == 1) {
         self.tipLabel.hidden = NO;
@@ -109,7 +111,7 @@
     if (isLeft) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        if (self.textField.text.length > 0) {
+        if (self.textField.text.length > 0 || self.textView.text.length > 0) {
             DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
             DUserParamModel *paramModel = [[DUserParamModel alloc] init];
             switch (self.indexPatch.section) {
@@ -160,6 +162,9 @@
                             break;
                         case 1:
                             paramModel.location = self.textField.text;
+                            break;
+                        case 2:
+                            paramModel.bio = self.textView.text;
                             break;
                             
                         default:

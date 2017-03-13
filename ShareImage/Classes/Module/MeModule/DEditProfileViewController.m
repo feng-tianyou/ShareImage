@@ -51,6 +51,7 @@
   @[[self changeContentWith:self.userModel.portfolio_url],
     [self changeContentWith:self.userModel.location],
     [self changeContentWith:self.userModel.bio]]];
+    
     [self.tableView reloadData];
 }
 
