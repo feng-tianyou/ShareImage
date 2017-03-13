@@ -43,14 +43,21 @@
 - (void)refreshUserData{
     self.userModel = KGLOBALINFOMANAGER.accountInfo;
     self.contents = @[
-  @[ExistStringGet(self.userModel.username),
-    ExistStringGet(self.userModel.first_name),
-    ExistStringGet(self.userModel.last_name)],
-  @[ExistStringGet(self.userModel.email),
-    ExistStringGet(self.userModel.instagram_username)],
-  @[ExistStringGet(self.userModel.portfolio_url),
-    ExistStringGet(self.userModel.location)]];
+  @[[self changeContentWith:self.userModel.username],
+    [self changeContentWith:self.userModel.first_name],
+    [self changeContentWith:self.userModel.last_name]],
+  @[[self changeContentWith:self.userModel.email],
+    [self changeContentWith:self.userModel.instagram_username]],
+  @[[self changeContentWith:self.userModel.portfolio_url],
+    [self changeContentWith:self.userModel.location],
+    [self changeContentWith:self.userModel.bio]]];
     [self.tableView reloadData];
+}
+
+- (NSString *)changeContentWith:(NSString *)content{
+    NSString *str = [content copy];
+    str = str.length > 0 ? str : @"Not Set";
+    return str;
 }
 
 - (void)setupSubViews{
@@ -78,8 +85,10 @@
             return 3;
             break;
         case 1:
-        case 2:
             return 2;
+            break;
+        case 2:
+            return 3;
             break;
             
         default:
@@ -153,7 +162,7 @@
 
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@[@"User Name", @"First Name", @"Last Name"], @[@"Email", @"Instagram"], @[@"Personal Website", @"Location"]];
+        _titles = @[@[@"User Name", @"First Name", @"Last Name"], @[@"Email", @"Instagram"], @[@"Personal Website", @"Location", @"Bio"]];
     }
     return _titles;
 }

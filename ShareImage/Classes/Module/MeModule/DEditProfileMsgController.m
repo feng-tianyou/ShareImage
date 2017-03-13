@@ -41,6 +41,7 @@
     
     [self.view addSubview:self.bgView];
     [self.bgView addSubview:self.textField];
+    [self.bgView addSubview:self.textView];
     [self.view addSubview:self.tipLabel];
     
     
@@ -52,13 +53,31 @@
 
 #pragma mark - private
 - (void)setupSubViews{
+    
+    CGFloat bgViewHeight = 44;
+    if (self.indexPatch.section == 2 && self.indexPatch.row == 2) {
+        bgViewHeight = 100;
+        self.textView.hidden = NO;
+        self.textField.hidden = YES;
+        
+    } else {
+        self.textView.hidden = YES;
+        self.textField.hidden = NO;
+    }
+    
     self.bgView.sd_layout
     .topSpaceToView(self.view, 15+self.navBarHeight)
     .leftSpaceToView(self.view, -1)
     .rightSpaceToView(self.view, -1)
-    .heightIs(44);
+    .heightIs(bgViewHeight);
     
     self.textField.sd_layout
+    .topEqualToView(self.bgView)
+    .leftSpaceToView(self.bgView, 15)
+    .rightSpaceToView(self.bgView, 15)
+    .bottomEqualToView(self.bgView);
+    
+    self.textView.sd_layout
     .topEqualToView(self.bgView)
     .leftSpaceToView(self.bgView, 15)
     .rightSpaceToView(self.bgView, 15)
@@ -211,6 +230,17 @@
         _tipLabel.hidden = YES;
     }
     return _tipLabel;
+}
+
+- (UITextView *)textView{
+    if (!_textView) {
+        _textView = [[UITextView alloc] init];
+        _textView.font = DSystemFontTitle;
+        _textView.textColor = DSystemColorBlack333333;
+        _textView.placeholder = [NSString stringWithFormat:@"Input Your %@", self.titleStr];
+        _textView.backgroundColor = [UIColor whiteColor];
+    }
+    return _textView;
 }
 
 
