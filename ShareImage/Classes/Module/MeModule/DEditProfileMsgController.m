@@ -49,10 +49,10 @@
     .heightIs(44);
     
     self.textField.sd_layout
-    .topSpaceToView(self.bgView, 0)
+    .topEqualToView(self.bgView)
     .leftSpaceToView(self.bgView, 15)
     .rightSpaceToView(self.bgView, 15)
-    .heightIs(44);
+    .bottomEqualToView(self.bgView);
     
     self.textField.text = self.content;
     [self.textField becomeFirstResponder];
@@ -60,6 +60,7 @@
 }
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.textField resignFirstResponder];
     if (isLeft) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
@@ -92,6 +93,12 @@
                             paramModel.email = self.textField.text;
                             break;
                         case 1:
+                            if ([self.textField.text isContainsChinese]) {
+                                [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+                                [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+                                [SVProgressHUD showErrorWithStatus:@"Instagram Username Is Contains Chinese!"];
+                                return;
+                            }
                             paramModel.instagram_username = self.textField.text;
                             break;
                             
@@ -122,16 +129,27 @@
             [manager updateAccountByParamModel:paramModel];
             
         } else {
-            [SVProgressHUD showErrorWithStatus:@"Please Input!"];
             [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+            [SVProgressHUD showErrorWithStatus:@"Please Input!"];
         }
     }
 }
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
     [SVProgressHUD showSuccessWithStatus:@"Update Success!"];
-    [self.navigationController popViewControllerAnimated:YES];
+    @weakify(self)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [NSThread sleepForTimeInterval:0.5];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self)
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    });
+    
 }
 
 

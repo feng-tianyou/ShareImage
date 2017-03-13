@@ -28,7 +28,6 @@
     // Do any additional setup after loading the view.
     self.title = @"Edit Profile";
     self.navLeftItemType = DNavigationItemTypeBack;
-    self.userModel = KGLOBALINFOMANAGER.accountInfo;
     
     [self setupSubViews];
     
@@ -42,6 +41,7 @@
 
 #pragma mark - private
 - (void)refreshUserData{
+    self.userModel = KGLOBALINFOMANAGER.accountInfo;
     self.contents = @[
   @[ExistStringGet(self.userModel.username),
     ExistStringGet(self.userModel.first_name),
@@ -50,6 +50,7 @@
     ExistStringGet(self.userModel.instagram_username)],
   @[ExistStringGet(self.userModel.portfolio_url),
     ExistStringGet(self.userModel.location)]];
+    [self.tableView reloadData];
 }
 
 - (void)setupSubViews{

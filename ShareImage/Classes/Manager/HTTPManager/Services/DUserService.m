@@ -130,7 +130,7 @@
         
         DUserModel *userModel = [DUserModel modelWithJSON:dic];
         KGLOBALINFOMANAGER.uid = userModel.uid;
-        KGLOBALINFOMANAGER.accountInfo = userModel;
+        
         [DBlockTool executeModelBlock:succeededBlock model:userModel];
     } onError:errorBlock];
 }
