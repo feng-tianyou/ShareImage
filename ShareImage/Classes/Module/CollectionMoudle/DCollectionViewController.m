@@ -58,7 +58,7 @@ static NSString * const cellID = @"collection";
     DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
     paramModel.page = self.page;
-    paramModel.per_page = 20;
+    paramModel.per_page = 10;
     [manager fetchFeaturedCollectionsByParamModel:paramModel];
     
 }

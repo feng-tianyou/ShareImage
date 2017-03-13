@@ -196,7 +196,9 @@
 #pragma mark - DHomeMenuViewDelegate
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
     DLog(@"点击头部");
-    
+    if ([self.slideMenu ll_isAnimating] && [self.slideMenu ll_isOpen]) {
+        return;
+    }
     DMeViewController *meViewController = [[DMeViewController alloc] init];
     [self.navigationController pushViewController:meViewController animated:YES];
     
@@ -209,6 +211,9 @@
 //    if (self.slideMenu.ll_isOpen) {
 //        [self.slideMenu ll_closeSlideMenu];
 //    }
+    if ([self.slideMenu ll_isAnimating]) {
+        return;
+    }
     switch (selectIndex) {
         case 0:
         {
