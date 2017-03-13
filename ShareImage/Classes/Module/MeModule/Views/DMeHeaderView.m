@@ -49,7 +49,7 @@
     .heightIs(250);
     
     self.nameLabel.sd_layout
-    .topSpaceToView(self, 160)
+    .topSpaceToView(self, 140)
     .leftSpaceToView(self , 15)
     .rightSpaceToView(self , 15)
     .heightIs(25);

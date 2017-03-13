@@ -79,6 +79,7 @@
     self.photoBtn.numberLabel.text = [NSString stringWithFormat:@"%@", @(KGLOBALINFOMANAGER.accountInfo.u_photos.count)];
     self.followersBtn.numberLabel.text = [self changeThousandWithNumber:KGLOBALINFOMANAGER.accountInfo.followers_count];
     self.followingBtn.numberLabel.text = [self changeThousandWithNumber:KGLOBALINFOMANAGER.accountInfo.following_count];
+    [self setNeedsLayout];
 }
 
 #pragma mark - private

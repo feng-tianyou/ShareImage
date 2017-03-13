@@ -38,7 +38,6 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.tableView];
-    [self.tableView setTableHeaderView:self.headerView];
     [self.view addSubview:self.navigationView];
     [self.view bringSubviewToFront:self.navigationView];
     
@@ -78,8 +77,10 @@
     .rightEqualToView(self.view)
     .heightIs(self.navBarHeight);
     
-    [self.headerView setFrame:0 y:0 w:self.view.width h:320];
     [self.tableView setFrame:0 y:0 w:self.view.width h:self.view.height];
+    [self.headerView setFrame:0 y:0 w:self.view.width h:320];
+    
+    [self.tableView setTableHeaderView:self.headerView];
 }
 
 
@@ -205,7 +206,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
-        _tableView.showsVerticalScrollIndicator=NO;
+        _tableView.showsVerticalScrollIndicator = NO;
         _tableView.hidden = YES;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
