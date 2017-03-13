@@ -51,11 +51,12 @@ static NSString *const cellID = @"homeCell";
     .bottomEqualToView(self.contentView)
     .widthIs(titleSize.width);
     
+    CGSize imgSize = self.arrowView.image.size;
     self.arrowView.sd_layout
     .centerYEqualToView(self.contentView)
     .rightSpaceToView(self.contentView, 15)
-    .widthIs(12)
-    .heightIs(21);
+    .widthIs(imgSize.width)
+    .heightIs(imgSize.height);
     
     self.contentLabel.sd_layout
     .topEqualToView(self.contentView)
@@ -71,7 +72,7 @@ static NSString *const cellID = @"homeCell";
     if (!_leftTitleLabel) {
         _leftTitleLabel = [[UILabel alloc] init];
         _leftTitleLabel.textColor = DSystemColorBlack333333;
-        _leftTitleLabel.font = DSystemFontText;
+        _leftTitleLabel.font = DSystemFontTitle;
         _leftTitleLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _leftTitleLabel;
@@ -81,7 +82,7 @@ static NSString *const cellID = @"homeCell";
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.textColor = DSystemColorBlackBBBBBB;
-        _contentLabel.font = DSystemFontText;
+        _contentLabel.font = DSystemFontTitle;
         _contentLabel.textAlignment = NSTextAlignmentRight;
     }
     return _contentLabel;

@@ -75,15 +75,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
         case 0:
-        {
             return 3;
-        }
             break;
         case 1:
         case 2:
-        {
             return 2;
-        }
             break;
             
         default:
@@ -118,13 +114,13 @@
     [label setFrame:0 y:0 w:self.view.width h:40];
     switch (section) {
         case 0:
-            label.text = @"    INFROMATION";
+            label.text = @"   INFROMATION";
             break;
         case 1:
-            label.text = @"    CONTACT";
+            label.text = @"   CONTACT";
             break;
         case 2:
-            label.text = @"    INCIDENTALS";
+            label.text = @"   INCIDENTALS";
             break;
             
         default:
@@ -157,7 +153,7 @@
 
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@[@"User Name", @"First Name", @"Last Name"], @[@"Email", @"Instagram"], @[@"Url", @"Location"]];
+        _titles = @[@[@"User Name", @"First Name", @"Last Name"], @[@"Email", @"Instagram"], @[@"Personal Website", @"Location"]];
     }
     return _titles;
 }

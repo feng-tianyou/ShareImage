@@ -41,7 +41,17 @@
     
     [self.view addSubview:self.bgView];
     [self.bgView addSubview:self.textField];
+    [self.view addSubview:self.tipLabel];
     
+    
+    [self setupSubViews];
+    [self setupData];
+    
+}
+
+
+#pragma mark - private
+- (void)setupSubViews{
     self.bgView.sd_layout
     .topSpaceToView(self.view, 15+self.navBarHeight)
     .leftSpaceToView(self.view, -1)
@@ -54,9 +64,25 @@
     .rightSpaceToView(self.bgView, 15)
     .bottomEqualToView(self.bgView);
     
+    self.tipLabel.sd_layout
+    .topSpaceToView(self.bgView, 10)
+    .leftSpaceToView(self.view, 15)
+    .rightSpaceToView(self.view, 15)
+    .heightIs(20);
+}
+
+- (void)setupData{
     self.textField.text = self.content;
     [self.textField becomeFirstResponder];
     
+    if (self.indexPatch.section == 1) {
+        self.tipLabel.hidden = NO;
+        if (self.indexPatch.row == 0) {
+            self.tipLabel.text = @"The Format Of The Mailbox Must Be Correct";
+        } else {
+            self.tipLabel.text = @"By the English、Number、 _ Composition";
+        }
+    }
 }
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
@@ -159,7 +185,7 @@
         _textField = [[UITextField alloc] init];
         _textField.font = DSystemFontTitle;
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _textField.textColor = DSystemColorBlackBBBBBB;
+        _textField.textColor = DSystemColorBlack333333;
         _textField.placeholder = [NSString stringWithFormat:@"Input Your %@", self.titleStr];
         _textField.backgroundColor = [UIColor whiteColor];
     }
@@ -174,6 +200,17 @@
         [_bgView.layer setBorderColor:DSystemColorGrayE0E0E0.CGColor];
     }
     return _bgView;
+}
+
+- (UILabel *)tipLabel{
+    if (!_tipLabel) {
+        _tipLabel = [[UILabel alloc] init];
+        _tipLabel.font = DSystemFontAlert;
+        _tipLabel.textColor = DSystemColorBlackBBBBBB;
+        _tipLabel.textAlignment = NSTextAlignmentCenter;
+        _tipLabel.hidden = YES;
+    }
+    return _tipLabel;
 }
 
 

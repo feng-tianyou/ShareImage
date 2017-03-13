@@ -12,9 +12,9 @@
 
 
 @property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UILabel *tipLabel;
 
 - (instancetype)initWithTitle:(NSString *)title content:(NSString *)content indexPatch:(NSIndexPath *)indexPatch;
 
-@property (nonatomic, copy) NSStringBlock contentBlock;
 
 @end
