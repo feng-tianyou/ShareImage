@@ -37,26 +37,34 @@ static NSString *const cellID = @"UserListCell";
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.bioLabel];
         
-        self.iconView.sd_layout
-        .centerYEqualToView(self.contentView)
-        .leftSpaceToView(self.contentView, 10)
-        .widthIs(40)
-        .heightIs(40);
         
-        self.nameLabel.sd_layout
-        .centerYEqualToView(self.contentView)
-        .leftSpaceToView(self.iconView, 15)
-        .widthIs(100)
-        .heightIs(20);
-        
-        self.bioLabel.sd_layout
-        .centerYEqualToView(self.contentView)
-        .leftSpaceToView(self.nameLabel, 15)
-        .rightSpaceToView(self.contentView, 10)
-        .heightIs(20);
         
     }
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.iconView.sd_layout
+    .centerYEqualToView(self.contentView)
+    .leftSpaceToView(self.contentView, 10)
+    .widthIs(40)
+    .heightIs(40);
+    
+    CGSize bioSize = [self.bioLabel.text sizeWithFont:self.bioLabel.font maxWidth:self.width*0.5];
+    self.bioLabel.sd_layout
+    .centerYEqualToView(self.contentView)
+    .rightSpaceToView(self.contentView, 10)
+    .widthIs(bioSize.width)
+    .heightIs(20);
+    
+    self.nameLabel.sd_layout
+    .centerYEqualToView(self.contentView)
+    .leftSpaceToView(self.iconView, 15)
+    .rightSpaceToView(self.bioLabel, 10)
+    .heightIs(20);
+    
+    
 }
 
 
