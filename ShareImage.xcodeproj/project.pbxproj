@@ -32,6 +32,7 @@
 		078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */; };
 		078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */; };
 		079E30B41E729E1800FF7C6C /* DMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */; };
+		07C5179A1E77E40E00770D30 /* DTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C517991E77E40E00770D30 /* DTextField.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -305,6 +306,8 @@
 		078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchViewCell.m; sourceTree = "<group>"; };
 		079E30B21E729E1800FF7C6C /* DMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeTableViewCell.h; sourceTree = "<group>"; };
 		079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeTableViewCell.m; sourceTree = "<group>"; };
+		07C517981E77E40E00770D30 /* DTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTextField.h; sourceTree = "<group>"; };
+		07C517991E77E40E00770D30 /* DTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTextField.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -1660,6 +1663,8 @@
 				078D1B001E6A5C9A000DC645 /* DNoDataView.m */,
 				7E5503E91E6BFC4C00CB0D19 /* DCustomNavigationView.h */,
 				7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */,
+				07C517981E77E40E00770D30 /* DTextField.h */,
+				07C517991E77E40E00770D30 /* DTextField.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2172,6 +2177,7 @@
 				7ED810EE1E55550100954DAF /* DFileManager.m in Sources */,
 				7ED810FE1E55550100954DAF /* DNetworkFactory.m in Sources */,
 				7ED8112F1E55550100954DAF /* UIColor.m in Sources */,
+				07C5179A1E77E40E00770D30 /* DTextField.m in Sources */,
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
 				078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */,
 				7ED8113A1E55550100954DAF /* LOTShapeTrimPath.m in Sources */,

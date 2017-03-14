@@ -14,36 +14,37 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
+        self.backgroundColor = [UIColor whiteColor];
 
-        [self addSubview:self.contentView];
-        [self.contentView addSubview:self.photoBtn];
-        [self.contentView addSubview:self.userBtn];
-        [self.contentView addSubview:self.collectionBtn];
+        [self addSubview:self.photoBtn];
+        [self addSubview:self.userBtn];
+        [self addSubview:self.collectionBtn];
+        [self addSubview:self.bottomLine];
         
+        CGFloat width = SCREEN_WIDTH/3;
         self.photoBtn.sd_layout
-        .topEqualToView(self.contentView)
-        .leftEqualToView(self.contentView)
-        .rightEqualToView(self.contentView)
-        .heightIs(40);
+        .topEqualToView(self)
+        .leftSpaceToView(self, 0)
+        .widthIs(width - 10)
+        .bottomEqualToView(self);
         
         self.userBtn.sd_layout
-        .topSpaceToView(self.photoBtn, 0)
-        .leftEqualToView(self.contentView)
-        .rightEqualToView(self.contentView)
-        .heightIs(40);
+        .topEqualToView(self)
+        .leftSpaceToView(self.photoBtn, 0)
+        .widthIs(width - 10)
+        .bottomEqualToView(self);
         
         self.collectionBtn.sd_layout
-        .topSpaceToView(self.userBtn, 0)
-        .leftEqualToView(self.contentView)
-        .rightEqualToView(self.contentView)
-        .heightIs(40);
+        .topEqualToView(self)
+        .leftSpaceToView(self.userBtn, 0)
+        .widthIs(width + 20)
+        .bottomEqualToView(self);
         
-        self.contentView.sd_layout
-        .topSpaceToView(self, 0)
+        self.bottomLine.sd_layout
+        .bottomSpaceToView(self, -1)
         .leftEqualToView(self)
         .rightEqualToView(self)
-        .heightIs(120);
+        .heightIs(0.5);
     }
     return self;
 }
@@ -82,11 +83,11 @@
 - (UIButton *)photoBtn{
     if (!_photoBtn) {
         _photoBtn = [[UIButton alloc] init];
-        _photoBtn.backgroundColor = [UIColor whiteColor];
+        _photoBtn.backgroundColor = [UIColor clearColor];
         [_photoBtn setTitle:@"PHOTOS" forState:UIControlStateNormal];
-        [_photoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_photoBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
+        [_photoBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
         _photoBtn.tag = 1;
-        [_photoBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
         _photoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _photoBtn;
@@ -95,12 +96,11 @@
 - (UIButton *)userBtn{
     if (!_userBtn) {
         _userBtn = [[UIButton alloc] init];
-        _userBtn.backgroundColor = [UIColor whiteColor];
+        _userBtn.backgroundColor = [UIColor clearColor];
         [_userBtn setTitle:@"USERS" forState:UIControlStateNormal];
-        [_userBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_userBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
+        [_userBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
         _userBtn.tag = 2;
-        [_userBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
-        _userBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _userBtn;
 }
@@ -108,45 +108,23 @@
 - (UIButton *)collectionBtn{
     if (!_collectionBtn) {
         _collectionBtn = [[UIButton alloc] init];
-        _collectionBtn.backgroundColor = [UIColor whiteColor];
+        _collectionBtn.backgroundColor = [UIColor clearColor];
         [_collectionBtn setTitle:@"COLLECTIONS" forState:UIControlStateNormal];
-        [_collectionBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_collectionBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
+        [_collectionBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
         _collectionBtn.tag = 3;
-        [_collectionBtn setImage:[UIImage getImageWithName:@"common_btn_check"] forState:UIControlStateSelected];
-        _collectionBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _collectionBtn;
 }
 
-- (UIView *)contentView{
-    if (!_contentView) {
-        _contentView = [[UIControl alloc] init];
-        _contentView.backgroundColor = [UIColor clearColor];
+- (UILabel *)bottomLine{
+    if (!_bottomLine) {
+        _bottomLine = [[UILabel alloc] init];
+        _bottomLine.backgroundColor = DSystemColorGrayE0E0E0;
     }
-    return _contentView;
+    return _bottomLine;
 }
 
 
-- (void)show{
-    [self setHidden:NO];
-    @weakify(self)
-    [UIView animateWithDuration:0.4 animations:^{
-        @strongify(self)
-        [self setAlpha:1.0];
-        
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-
-- (void)hide{
-    @weakify(self)
-    [UIView animateWithDuration:0.4 animations:^{
-        @strongify(self)
-        [self setAlpha:0.0];
-    } completion:^(BOOL finished) {
-        [self setHidden:YES];
-    }];
-}
 
 @end

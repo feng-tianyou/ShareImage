@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTextField.h"
 
 @interface DSearchBar : UIView
 
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UIImageView *searchIcon;
-@property (nonatomic, strong) UITextField *searchTextField;
+@property (nonatomic, strong) DTextField *searchTextField;
 @property (nonatomic, strong) UIButton *clearButton;
 
 @end

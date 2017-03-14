@@ -7,11 +7,12 @@
 //
 
 #import "DBaseViewController.h"
+#import "DTextField.h"
 
 @interface DEditProfileMsgController : DBaseViewController
 
 
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) DTextField *textField;
 @property (nonatomic, strong) UILabel *tipLabel;
 @property (nonatomic, strong) UITextView *textView;
 

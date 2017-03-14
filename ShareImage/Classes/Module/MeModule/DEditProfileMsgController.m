@@ -206,7 +206,7 @@
 #pragma mark - getter & setter
 - (UITextField *)textField{
     if (!_textField) {
-        _textField = [[UITextField alloc] init];
+        _textField = [[DTextField alloc] init];
         _textField.font = DSystemFontTitle;
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.textColor = DSystemColorBlack333333;

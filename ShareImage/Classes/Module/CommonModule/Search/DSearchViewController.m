@@ -49,7 +49,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
@@ -60,9 +60,9 @@
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
     
-    [self.view addSubview:self.searchBar];
-    [self.view addSubview:self.tableView];
+    [self.navigationItem setTitleView:self.searchBar];
     [self.view addSubview:self.selectItemView];
+    [self.view addSubview:self.tableView];
     
     [self setupTableViewDownRefresh];
 }
@@ -70,7 +70,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
@@ -78,17 +78,19 @@
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
+    self.selectItemView.sd_layout
+    .topSpaceToView(self.view, self.navBarHeight)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(50);
+    
     self.tableView.sd_layout
-    .topSpaceToView(self.searchBar, 0)
+    .topSpaceToView(self.selectItemView, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    self.selectItemView.sd_layout
-    .topSpaceToView(self.searchBar, 0)
-    .leftEqualToView(self.view)
-    .rightEqualToView(self.view)
-    .bottomEqualToView(self.view);
+    
 }
 
 #pragma mark - navEvent
@@ -116,7 +118,6 @@
  */
 - (void)clickClearText{
     self.searchBar.searchTextField.text = @"";
-    [self.selectItemView hide];
     [self.searchBar.searchTextField resignFirstResponder];
 }
 
@@ -191,8 +192,10 @@
  */
 - (void)clickSearchPhotos:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
+    [self.searchBar.searchTextField resignFirstResponder];
     _searchType = PhotoSearchType;
     self.title = @"PHOTOS";
+    [self getCommonDataWithPage:1];
 }
 
 /**
@@ -200,8 +203,10 @@
  */
 - (void)clickSearchUsers:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
+    [self.searchBar.searchTextField resignFirstResponder];
     _searchType = UserSearchType;
     self.title = @"USERS";
+    [self getCommonDataWithPage:1];
 }
 
 /**
@@ -209,8 +214,10 @@
  */
 - (void)clickSearchCollections:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
+    [self.searchBar.searchTextField resignFirstResponder];
     _searchType = CollectionSearchType;
     self.title = @"COLLECTIONS";
+    [self getCommonDataWithPage:1];
 }
 
 - (void)pressNoDataBtnToRefresh{
@@ -235,6 +242,7 @@
             if (self.dataArray.count > indexPath.row) {
                 cell.photoModel = self.dataArray[indexPath.row];
             }
+            
         }
             break;
         case UserSearchType:
@@ -276,7 +284,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     DLog(@"textFieldShouldReturn---%@", textField.text);
     [textField resignFirstResponder];
-    [self.selectItemView hide];
     if (textField.text.length == 0) {
         return YES;
     }
@@ -285,7 +292,6 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [self.selectItemView show];
     return YES;
 }
 
@@ -298,18 +304,21 @@
         {
             DSearchPhotosModel *photosModel = dataModel;
             [self.dataArray addObjectsFromArray:photosModel.photos];
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         }
             break;
         case UserSearchType:
         {
             DSearchUsersModel *usersModel = dataModel;
             [self.dataArray addObjectsFromArray:usersModel.users];
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         }
             break;
         case CollectionSearchType:
         {
             DSearchCollectionsModel *collectionsModel = dataModel;
             [self.dataArray addObjectsFromArray:collectionsModel.collections];
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         }
             break;
             
@@ -369,7 +378,6 @@
 - (DSearchSelectItemView *)selectItemView{
     if (!_selectItemView) {
         _selectItemView = [[DSearchSelectItemView alloc] init];
-        _selectItemView.hidden = YES;
         [_selectItemView.photoBtn addTarget:self action:@selector(clickSearchPhotos:) forControlEvents:UIControlEventTouchUpInside];
         [_selectItemView.userBtn addTarget:self action:@selector(clickSearchUsers:) forControlEvents:UIControlEventTouchUpInside];
         [_selectItemView.collectionBtn addTarget:self action:@selector(clickSearchCollections:) forControlEvents:UIControlEventTouchUpInside];
@@ -398,14 +406,14 @@
 - (DSearchBar *)searchBar{
     if (!_searchBar) {
         _searchBar = [[DSearchBar alloc] init];
-        [_searchBar setFrame:0 y:self.navBarHeight w:SCREEN_WIDTH h:55];
-        _searchBar.backgroundColor = [UIColor setHexColor:@"#141515"];
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"Search..." attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"Search..." attributes:@{NSForegroundColorAttributeName:DSystemColorGray999999}];
         _searchBar.searchTextField.attributedPlaceholder = attr;
-        _searchBar.searchTextField.textColor = [UIColor whiteColor];
+        _searchBar.searchTextField.textColor = DSystemColorGray999999;
+        _searchBar.searchTextField.font = DSystemFontText;
         [_searchBar.clearButton addTarget:self action:@selector(clickClearText) forControlEvents:UIControlEventTouchUpInside];
         _searchBar.searchTextField.returnKeyType = UIReturnKeySearch;
         _searchBar.searchTextField.delegate = self;
+        [_searchBar setFrame:0 y:26 w:SCREEN_WIDTH - 100 h:30];
     }
     return _searchBar;
 }
