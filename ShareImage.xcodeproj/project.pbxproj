@@ -14,6 +14,8 @@
 		070A8B351E5D378700CE41E2 /* DCollectionsVaildRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B341E5D378700CE41E2 /* DCollectionsVaildRule.m */; };
 		070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B371E5D7D4300CE41E2 /* DPhotoCollectionModel.m */; };
 		070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */; };
+		070F7CE41E77F2B200423212 /* DSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F7CE31E77F2B200423212 /* DSettingViewController.m */; };
+		070F7CE71E77F6AF00423212 /* DSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F7CE61E77F6AF00423212 /* DSettingTableViewCell.m */; };
 		0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B74F1E5E7D9E005784CE /* DUserValidRule.m */; };
 		0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7531E5EDE18005784CE /* DCollectionViewController.m */; };
 		0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7561E5EE365005784CE /* DCollectionViewCell.m */; };
@@ -270,6 +272,10 @@
 		070A8B391E5D925400CE41E2 /* DUserParamProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserParamProtocol.h; sourceTree = "<group>"; };
 		070A8B3A1E5D927500CE41E2 /* DUserParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserParamModel.h; sourceTree = "<group>"; };
 		070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserParamModel.m; sourceTree = "<group>"; };
+		070F7CE21E77F2B200423212 /* DSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSettingViewController.h; sourceTree = "<group>"; };
+		070F7CE31E77F2B200423212 /* DSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSettingViewController.m; sourceTree = "<group>"; };
+		070F7CE51E77F6AF00423212 /* DSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSettingTableViewCell.h; sourceTree = "<group>"; };
+		070F7CE61E77F6AF00423212 /* DSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSettingTableViewCell.m; sourceTree = "<group>"; };
 		0733B74E1E5E7D9E005784CE /* DUserValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserValidRule.h; sourceTree = "<group>"; };
 		0733B74F1E5E7D9E005784CE /* DUserValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserValidRule.m; sourceTree = "<group>"; };
 		0733B7521E5EDE18005784CE /* DCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionViewController.h; sourceTree = "<group>"; };
@@ -850,6 +856,8 @@
 				7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */,
 				7EAFD4BF1E56EF8F00BBA972 /* DHomeCellTipLabel.h */,
 				7EAFD4C01E56EF8F00BBA972 /* DHomeCellTipLabel.m */,
+				070F7CE51E77F6AF00423212 /* DSettingTableViewCell.h */,
+				070F7CE61E77F6AF00423212 /* DSettingTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1282,6 +1290,8 @@
 				7EAFD4BB1E56DFE600BBA972 /* View */,
 				7ED810021E55550100954DAF /* DHomeViewController.h */,
 				7ED810031E55550100954DAF /* DHomeViewController.m */,
+				070F7CE21E77F2B200423212 /* DSettingViewController.h */,
+				070F7CE31E77F2B200423212 /* DSettingViewController.m */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -2152,6 +2162,7 @@
 				7ED8114F1E55550100954DAF /* UIView+DLayer.m in Sources */,
 				074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */,
 				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
+				070F7CE71E77F6AF00423212 /* DSettingTableViewCell.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				7ED8117F1E55573300954DAF /* DLottieViewController.m in Sources */,
 				0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */,
@@ -2172,6 +2183,7 @@
 				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
 				070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */,
 				07ECEBFD1E6555B700BCF52A /* LLSlideMenu.m in Sources */,
+				070F7CE41E77F2B200423212 /* DSettingViewController.m in Sources */,
 				7ED810E31E55550100954DAF /* DTabBar.m in Sources */,
 				7ED810E21E55550100954DAF /* UIViewController+DNetwork.m in Sources */,
 				7ED810EE1E55550100954DAF /* DFileManager.m in Sources */,

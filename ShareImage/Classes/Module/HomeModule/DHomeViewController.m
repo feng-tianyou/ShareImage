@@ -13,6 +13,7 @@
 #import "DMeViewController.h"
 #import "DCommonPhotoController.h"
 #import "DUserCollectionsController.h"
+#import "DSettingViewController.h"
 
 #import "DHomeTableViewCell.h"
 #import "DHomeMenuView.h"
@@ -212,6 +213,17 @@
         case 1:
         {
             DUserCollectionsController *collectionView = [[DUserCollectionsController alloc] init];
+            [self.navigationController pushViewController:collectionView animated:YES];
+        }
+            break;
+        case 2:
+        {
+            // 喜欢的图片
+        }
+            break;
+        case 3:
+        {
+            DSettingViewController *collectionView = [[DSettingViewController alloc] init];
             [self.navigationController pushViewController:collectionView animated:YES];
         }
             break;
