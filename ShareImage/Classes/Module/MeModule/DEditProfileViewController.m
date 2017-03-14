@@ -118,26 +118,33 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UILabel *label = [[UILabel alloc] init];
-    label.textAlignment = NSTextAlignmentLeft;
     label.backgroundColor = DSystemColorGrayF3F3F3;
     label.font = DSystemFontText;
-    [label setFrame:0 y:0 w:self.view.width h:40];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    //第一行头缩进
+    [style setFirstLineHeadIndent:15.0];
+    [label setLineBreakMode:NSLineBreakByTruncatingTail];
+    [label sizeToFit];
+    NSString *title = nil;
     switch (section) {
         case 0:
-            label.text = @"   INFROMATION";
+            title = @"INFROMATION";
             break;
         case 1:
-            label.text = @"   CONTACT";
+            title = @"CONTACT";
             break;
         case 2:
-            label.text = @"   INCIDENTALS";
+            title = @"INCIDENTALS";
             break;
             
         default:
             break;
     }
+    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:title attributes:@{NSParagraphStyleAttributeName : style}];
+    label.attributedText = attrText;
     return label;
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
