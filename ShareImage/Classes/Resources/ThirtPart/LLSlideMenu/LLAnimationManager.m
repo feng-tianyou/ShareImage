@@ -63,7 +63,7 @@ static NSString *ANIM_ENDCIRCLE = @"endLLCircleAnimate";
         [_circleLayer addAnimation:animCircle forKey:ANIM_ENDCIRCLE];
     }else {
         _layer.isAnimating = NO;
-        CAKeyframeAnimation *animSpring = [self createSpringAnima:@"distance" duration:1.5f usingSpringWithDamping:0.5 initialSpringVelocity:3 fromValue:@(_layer.distance) toValue:@(0)];
+        CAKeyframeAnimation *animSpring = [self createSpringAnima:@"distance" duration:0.5f usingSpringWithDamping:0.5 initialSpringVelocity:0.5 fromValue:@(_layer.distance) toValue:@(0)];
         [_layer addAnimation:animSpring forKey:ANIM_ENDSPRING];
     }
     
@@ -161,8 +161,9 @@ static NSString *ANIM_ENDCIRCLE = @"endLLCircleAnimate";
             [_layer removeAllAnimations];
             _layer.distance = _layer.bgWidth;
             _layer.isAnimating = NO;
-            CAKeyframeAnimation *animSpring = [self createSpringAnima:@"distance" duration:2.f usingSpringWithDamping:0.5 initialSpringVelocity:3 fromValue:@(_layer.bgWidth) toValue:@(0)];
+            CAKeyframeAnimation *animSpring = [self createSpringAnima:@"distance" duration:0.5f usingSpringWithDamping:0.5 initialSpringVelocity:0.5 fromValue:@(_layer.bgWidth) toValue:@(0)];
             [_layer addAnimation:animSpring forKey:@"endLLSlideSpringAnimate"];
+            DLog(@"-----close");
             return;
         }
         if (anim == [_layer animationForKey:ANIM_ENDSPRING]) {
@@ -171,6 +172,7 @@ static NSString *ANIM_ENDCIRCLE = @"endLLCircleAnimate";
             [_layer removeAllAnimations];
             _llSildeMenu.hidden = YES;
             _llSildeMenu.ll_isOpen = NO;
+            DLog(@"-----remove");
             return;
         }
         if (anim == [_circleLayer animationForKey:ANIM_ENDCIRCLE]) {

@@ -195,25 +195,12 @@
 
 #pragma mark - DHomeMenuViewDelegate
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
-    DLog(@"点击头部");
-    if ([self.slideMenu ll_isAnimating] && [self.slideMenu ll_isOpen]) {
-        return;
-    }
     DMeViewController *meViewController = [[DMeViewController alloc] init];
     [self.navigationController pushViewController:meViewController animated:YES];
     
 }
 
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didSelectIndex:(NSInteger)selectIndex{
-    DLog(@"点击--%@", @(selectIndex));
-//    self.slideMenu.hidden = YES;
-//    self.menuView.hidden = YES;
-//    if (self.slideMenu.ll_isOpen) {
-//        [self.slideMenu ll_closeSlideMenu];
-//    }
-    if ([self.slideMenu ll_isAnimating]) {
-        return;
-    }
     switch (selectIndex) {
         case 0:
         {
@@ -246,8 +233,6 @@
             [self.slideMenu ll_openSlideMenu];
             [self.menuView reloadData];
         }
-        
-        
     } else {
         DSearchViewController *searchController = [[DSearchViewController alloc] init];
         [self.navigationController pushViewController:searchController animated:YES];
