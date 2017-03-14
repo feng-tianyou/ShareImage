@@ -31,19 +31,22 @@
 
 @implementation DMeViewController
 
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.title = KGLOBALINFOMANAGER.accountInfo.username;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    [self.view addSubview:self.tableView];
-    [self.view addSubview:self.navigationView];
-    [self.view bringSubviewToFront:self.navigationView];
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     
     DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     [manager fetchAccountProfileWithNotCache];
+    
+    
+    [self.view addSubview:self.navigationView];
+    [self.view addSubview:self.tableView];
+    [self.view bringSubviewToFront:self.navigationView];
 }
 
 
