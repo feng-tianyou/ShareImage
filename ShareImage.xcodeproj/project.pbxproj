@@ -35,6 +35,7 @@
 		078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */; };
 		079E30B41E729E1800FF7C6C /* DMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */; };
 		07C5179A1E77E40E00770D30 /* DTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C517991E77E40E00770D30 /* DTextField.m */; };
+		07D055781E7914BD0031188F /* CATCurveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D055771E7914BD0031188F /* CATCurveProgressView.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -314,6 +315,8 @@
 		079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeTableViewCell.m; sourceTree = "<group>"; };
 		07C517981E77E40E00770D30 /* DTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTextField.h; sourceTree = "<group>"; };
 		07C517991E77E40E00770D30 /* DTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTextField.m; sourceTree = "<group>"; };
+		07D055761E7914BD0031188F /* CATCurveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATCurveProgressView.h; sourceTree = "<group>"; };
+		07D055771E7914BD0031188F /* CATCurveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATCurveProgressView.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -799,6 +802,13 @@
 			path = NewFeature;
 			sourceTree = "<group>";
 		};
+		07D0556C1E78EF940031188F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		07ECEBEF1E6555B700BCF52A /* LLSlideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +861,7 @@
 		7EAFD4BB1E56DFE600BBA972 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07D0556C1E78EF940031188F /* Setting */,
 				07ECEC021E65608E00BCF52A /* Menu */,
 				7EAFD4BC1E56DFFC00BBA972 /* DHomeTableViewCell.h */,
 				7EAFD4BD1E56DFFC00BBA972 /* DHomeTableViewCell.m */,
@@ -1675,6 +1686,8 @@
 				7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */,
 				07C517981E77E40E00770D30 /* DTextField.h */,
 				07C517991E77E40E00770D30 /* DTextField.m */,
+				07D055761E7914BD0031188F /* CATCurveProgressView.h */,
+				07D055771E7914BD0031188F /* CATCurveProgressView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2192,6 +2205,7 @@
 				07C5179A1E77E40E00770D30 /* DTextField.m in Sources */,
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
 				078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */,
+				07D055781E7914BD0031188F /* CATCurveProgressView.m in Sources */,
 				7ED8113A1E55550100954DAF /* LOTShapeTrimPath.m in Sources */,
 				7ED811061E55550100954DAF /* DPhotoManager.m in Sources */,
 				078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */,

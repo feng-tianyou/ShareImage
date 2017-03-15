@@ -9,10 +9,16 @@
 #import "DSettingViewController.h"
 #import "DSettingTableViewCell.h"
 
+#import <SDWebImage/SDImageCache.h>
+
+
 @interface DSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSArray *contents;
+@property (nonatomic, assign) NSString *cacheSizeStr;
+
 @end
 
 @implementation DSettingViewController
@@ -24,9 +30,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setupData];
+    [self setupView];
+    
+}
+
+- (void)setupData{
     self.title = @"Settings";
     self.navLeftItemType = DNavigationItemTypeBack;
-    
+    NSInteger size = [[SDImageCache sharedImageCache] getSize];
+    NSInteger sizeF = size / 1024 / 1024;
+    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
+}
+
+- (void)setupView{
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
     .topEqualToView(self.view)
@@ -34,6 +51,7 @@
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
 }
+
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
@@ -64,25 +82,7 @@
     DSettingTableViewCell *cell = [DSettingTableViewCell cellWithTableView:tableView];
     
     NSArray *titleArr = self.titles[indexPath.section];
-    cell.leftTitleLabel.text = titleArr[indexPath.row];
-    switch (indexPath.section) {
-        case 0:
-        case 2:
-        {
-            cell.arrowView.hidden = NO;
-            cell.rightSwitch.hidden = YES;
-        }
-            break;
-        case 1:
-        {
-            cell.arrowView.hidden = YES;
-            cell.rightSwitch.hidden = NO;
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [cell setLeftTitle:titleArr[indexPath.row] content:self.cacheSizeStr indexPath:indexPath];
     
     return cell;
 }
@@ -126,7 +126,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    switch (indexPath.section) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - getter & setter
@@ -137,7 +151,7 @@
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.backgroundColor = DSystemColorGrayF3F3F3;
-        _tableView.rowHeight = 50;
+        _tableView.rowHeight = 44;
     }
     return _tableView;
 }
@@ -146,10 +160,17 @@
  */
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@[@"Language"], @[@"Night"], @[@"Storage", @"About"]];
+        _titles = @[@[@"Language"], @[@"Night"], @[@"Clear Storage", @"About"]];
     }
     return _titles;
 }
+
+//- (NSArray *)contents{
+//    if (!_contents) {
+//        _contents = @[@[@""], @[@""], @[@"", @""]];
+//    }
+//    return _contents;
+//}
 
 
 

@@ -37,7 +37,7 @@ static NSString *const cellID = @"DSettingTableViewCell";
     [self.contentView addSubview:self.leftTitleLabel];
     [self.contentView addSubview:self.rightSwitch];
     [self.contentView addSubview:self.arrowView];
-    
+    [self.contentView addSubview:self.contentLabel];
     
 }
 
@@ -63,6 +63,51 @@ static NSString *const cellID = @"DSettingTableViewCell";
     .rightSpaceToView(self.contentView, 15)
     .widthIs(30)
     .heightIs(50);
+    
+    self.contentLabel.sd_layout
+    .centerYEqualToView(self.contentView)
+    .rightSpaceToView(self.contentView, 15)
+    .leftSpaceToView(self.leftTitleLabel, 20)
+    .heightIs(20);
+}
+
+
+- (void)setLeftTitle:(NSString *)leftTitle content:(NSString *)content indexPath:(NSIndexPath *)indexPath{
+    self.leftTitleLabel.text = leftTitle;
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            self.arrowView.hidden = NO;
+            self.contentLabel.hidden = YES;
+            self.rightSwitch.hidden = YES;
+        }
+            break;
+        case 1:
+        {
+            self.arrowView.hidden = YES;
+            self.contentLabel.hidden = YES;
+            self.rightSwitch.hidden = NO;
+        }
+            break;
+        case 2:
+        {
+            if (indexPath.row == 0) {
+                self.arrowView.hidden = YES;
+                self.contentLabel.hidden = NO;
+                self.rightSwitch.hidden = YES;
+                self.contentLabel.text = content;
+            } else {
+                self.arrowView.hidden = NO;
+                self.contentLabel.hidden = YES;
+                self.rightSwitch.hidden = YES;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
@@ -90,8 +135,20 @@ static NSString *const cellID = @"DSettingTableViewCell";
     if (!_arrowView) {
         _arrowView = [[UIImageView alloc] init];
         _arrowView.image = [UIImage getImageWithName:@"common_btn_arrow_right_gray"];
+        _arrowView.hidden = YES;
     }
     return _arrowView;
+}
+
+- (UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.textColor = DSystemColorBlackBBBBBB;
+        _contentLabel.font = DSystemFontTitle;
+        _contentLabel.textAlignment = NSTextAlignmentRight;
+        _contentLabel.hidden = YES;
+    }
+    return _contentLabel;
 }
 
 @end
