@@ -10,6 +10,7 @@
 #import "DSettingTableViewCell.h"
 
 #import <SDWebImage/SDImageCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface DSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -38,9 +39,9 @@
 - (void)setupData{
     self.title = @"Settings";
     self.navLeftItemType = DNavigationItemTypeBack;
-    NSInteger size = [[SDImageCache sharedImageCache] getSize];
-    NSInteger sizeF = size / 1024 / 1024;
-    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
+    
+    [self refreshCacheData];
+   
 }
 
 - (void)setupView{
@@ -50,6 +51,13 @@
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
+}
+
+- (void)refreshCacheData{
+    NSInteger size = [[SDImageCache sharedImageCache] getSize];
+    NSInteger sizeF = size / 1024 / 1024;
+    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
+    [self.tableView reloadData];
 }
 
 
@@ -94,35 +102,6 @@
     return 20;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UILabel *label = [[UILabel alloc] init];
-//    label.backgroundColor = DSystemColorGrayF3F3F3;
-//    label.font = DSystemFontText;
-//    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-//    //第一行头缩进
-//    [style setFirstLineHeadIndent:15.0];
-//    [label setLineBreakMode:NSLineBreakByTruncatingTail];
-//    [label sizeToFit];
-//    NSString *title = nil;
-//    switch (section) {
-//        case 0:
-//            title = @"INFROMATION";
-//            break;
-//        case 1:
-//            title = @"CONTACT";
-//            break;
-//        case 2:
-//            title = @"INCIDENTALS";
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:title attributes:@{NSParagraphStyleAttributeName : style}];
-//    label.attributedText = attrText;
-//    return label;
-//}
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -134,7 +113,16 @@
             break;
         case 2:
         {
-            
+            if (indexPath.row == 0) {
+                @weakify(self)
+                [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+                    [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+                    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+                    [SVProgressHUD showSuccessWithStatus:@"Clean up!"];
+                    @strongify(self)
+                    [self refreshCacheData];
+                }];
+            }
         }
             break;
             
