@@ -9,6 +9,8 @@
 #import "DSettingViewController.h"
 #import "DSettingTableViewCell.h"
 
+#import "DAboutViewController.h"
+
 #import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -122,6 +124,9 @@
                     @strongify(self)
                     [self refreshCacheData];
                 }];
+            } else {
+                DAboutViewController *about = [[DAboutViewController alloc] init];
+                [self.navigationController pushViewController:about animated:YES];
             }
         }
             break;

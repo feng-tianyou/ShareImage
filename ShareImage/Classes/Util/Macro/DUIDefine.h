@@ -44,6 +44,9 @@
 #define DSystemColorBlackBBBBBB     DUIColorFromRGB16(0xbbbbbb)
 #define DSystemColorBlack333333     DUIColorFromRGB16(0x333333)
 
+// blue
+#define DSystemColorBlue33AACC      DUIColorFromRGB16(0x33aacc)
+
 
 //一级颜色
 #define DSystemColorBlue           DUIColorFromRGB16(0x1177ff) //可点击的文字

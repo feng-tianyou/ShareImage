@@ -15,6 +15,8 @@
 #import "DTestViewController.h"
 #import "DWebViewController.h"
 
+#import "DTabBarViewController.h"
+
 
 #define kBAIDU_TONGJI_APP_KEY       @"39846ebc46" // 百度统计
 #define kJSPATCH_APP_KEY            @"9c2c9c38150f0643" // JSPatch
@@ -155,9 +157,9 @@
     }
     
     if (viewController) {
-//        DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
-//        UINavigationController *navController = rootContoller.selectedViewController;
-//        [navController pushViewController:viewController animated:YES];
+        DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
+        UINavigationController *navController = rootContoller.selectedViewController;
+        [navController pushViewController:viewController animated:YES];
 
     }
 }
@@ -195,9 +197,9 @@
         }
         
         if (viewController) {
-//            DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
-//            UINavigationController *navController = rootContoller.selectedViewController;
-//            [navController pushViewController:viewController animated:YES];
+            DTabBarViewController *rootContoller = (DTabBarViewController *)self.window.rootViewController;
+            UINavigationController *navController = rootContoller.selectedViewController;
+            [navController pushViewController:viewController animated:YES];
             
         }
     }

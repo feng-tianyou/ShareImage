@@ -36,6 +36,8 @@
 		079E30B41E729E1800FF7C6C /* DMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */; };
 		07C5179A1E77E40E00770D30 /* DTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C517991E77E40E00770D30 /* DTextField.m */; };
 		07D055781E7914BD0031188F /* CATCurveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D055771E7914BD0031188F /* CATCurveProgressView.m */; };
+		07D0557B1E792A0C0031188F /* DAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0557A1E792A0C0031188F /* DAboutViewController.m */; };
+		07D0557D1E7938290031188F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D0557C1E7938280031188F /* MessageUI.framework */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -317,6 +319,9 @@
 		07C517991E77E40E00770D30 /* DTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTextField.m; sourceTree = "<group>"; };
 		07D055761E7914BD0031188F /* CATCurveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATCurveProgressView.h; sourceTree = "<group>"; };
 		07D055771E7914BD0031188F /* CATCurveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATCurveProgressView.m; sourceTree = "<group>"; };
+		07D055791E792A0C0031188F /* DAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAboutViewController.h; sourceTree = "<group>"; };
+		07D0557A1E792A0C0031188F /* DAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAboutViewController.m; sourceTree = "<group>"; };
+		07D0557C1E7938280031188F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -700,6 +705,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D0557D1E7938290031188F /* MessageUI.framework in Frameworks */,
 				7ED811731E5556BE00954DAF /* AudioToolbox.framework in Frameworks */,
 				7ED811711E5556B000954DAF /* CoreVideo.framework in Frameworks */,
 				7ED8116F1E5556A400954DAF /* CoreMedia.framework in Frameworks */,
@@ -1303,6 +1309,8 @@
 				7ED810031E55550100954DAF /* DHomeViewController.m */,
 				070F7CE21E77F2B200423212 /* DSettingViewController.h */,
 				070F7CE31E77F2B200423212 /* DSettingViewController.m */,
+				07D055791E792A0C0031188F /* DAboutViewController.h */,
+				07D0557A1E792A0C0031188F /* DAboutViewController.m */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -1831,6 +1839,7 @@
 		F1286C7C9E81D8FA23608F53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07D0557C1E7938280031188F /* MessageUI.framework */,
 				7ED811721E5556BE00954DAF /* AudioToolbox.framework */,
 				7ED811701E5556B000954DAF /* CoreVideo.framework */,
 				7ED8116E1E5556A400954DAF /* CoreMedia.framework */,
@@ -2225,6 +2234,7 @@
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
 				070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */,
 				7ED811241E55550100954DAF /* LOTAnimatablePointValue.m in Sources */,
+				07D0557B1E792A0C0031188F /* DAboutViewController.m in Sources */,
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,
 				7EAFD4C41E56FF1900BBA972 /* DPhotosValidRule.m in Sources */,
 				7ED810E41E55550100954DAF /* DTabBarBadgeButton.m in Sources */,
