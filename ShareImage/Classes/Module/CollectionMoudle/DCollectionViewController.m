@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.page = 1;
+    self.headerView.featuredBtn.selected = YES;
     [self getFeaturedCollectionsData];
 }
 
@@ -100,14 +101,18 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     
 }
 
-- (void)clickFeatured{
+- (void)clickFeatured:(UIButton *)btn{
+    self.headerView.featuredBtn.selected = !btn.selected;
+    self.headerView.curatedBtn.selected = NO;
     self.page = 1;
     self.type = FeaturedCollectionType;
     [self getFeaturedCollectionsData];
 }
 
 
-- (void)clickCurated{
+- (void)clickCurated:(UIButton *)btn{
+    self.headerView.curatedBtn.selected = !btn.selected;
+    self.headerView.featuredBtn.selected = NO;
     self.page = 1;
     self.type = CuratedCollectionType;
     [self getCuratedCollectionsData];
@@ -225,8 +230,8 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 - (DCollectionHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[DCollectionHeaderView alloc] init];
-        [_headerView.featuredBtn addTarget:self action:@selector(clickFeatured) forControlEvents:UIControlEventTouchUpInside];
-        [_headerView.curatedBtn addTarget:self action:@selector(clickCurated) forControlEvents:UIControlEventTouchUpInside];
+        [_headerView.featuredBtn addTarget:self action:@selector(clickFeatured:) forControlEvents:UIControlEventTouchUpInside];
+        [_headerView.curatedBtn addTarget:self action:@selector(clickCurated:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headerView;
 }

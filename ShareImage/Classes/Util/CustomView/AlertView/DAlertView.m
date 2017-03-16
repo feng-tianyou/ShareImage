@@ -815,8 +815,8 @@ static DAlertView *_custom_alert_current_view;
     button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     button.titleLabel.font = self.buttonFont;
     [button setTitle:item.title forState:UIControlStateNormal];
-    [button setTitleColor:DSystemColorBlue forState:UIControlStateNormal];
-    [button setTitleColor:DSystemColorBlue forState:UIControlStateHighlighted];
+    [button setTitleColor:DSystemColorBlue33AACC forState:UIControlStateNormal];
+    [button setTitleColor:DSystemColorBlue33AACC forState:UIControlStateHighlighted];
     if(_buttonLeftTextColor && index == 0){
         [button setTitleColor:_buttonLeftTextColor forState:UIControlStateNormal];
         [button setTitleColor:_buttonLeftTextColor forState:UIControlStateHighlighted];

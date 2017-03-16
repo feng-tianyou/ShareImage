@@ -86,9 +86,8 @@
         _photoBtn.backgroundColor = [UIColor clearColor];
         [_photoBtn setTitle:@"PHOTOS" forState:UIControlStateNormal];
         [_photoBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
-        [_photoBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
+        [_photoBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _photoBtn.tag = 1;
-        _photoBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     }
     return _photoBtn;
 }
@@ -99,7 +98,7 @@
         _userBtn.backgroundColor = [UIColor clearColor];
         [_userBtn setTitle:@"USERS" forState:UIControlStateNormal];
         [_userBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
-        [_userBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
+        [_userBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _userBtn.tag = 2;
     }
     return _userBtn;
@@ -111,7 +110,7 @@
         _collectionBtn.backgroundColor = [UIColor clearColor];
         [_collectionBtn setTitle:@"COLLECTIONS" forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
-        [_collectionBtn setTitleColor:[UIColor setHexColor:@"#2979ff"] forState:UIControlStateSelected];
+        [_collectionBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _collectionBtn.tag = 3;
     }
     return _collectionBtn;
