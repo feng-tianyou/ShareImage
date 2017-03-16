@@ -133,7 +133,13 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.collections.count > indexPath.row) {
         DCollectionsModel *model = self.collections[indexPath.row];
-        DCommonPhotoController *detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
+        DCommonPhotoController *detaildController = nil;
+        if (self.type == FeaturedCollectionType) {
+            detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
+            
+        } else {
+            detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerCuratedType];
+        }
         detaildController.collectionId = model.c_id;
         [self.navigationController pushViewController:detaildController animated:YES];
     }

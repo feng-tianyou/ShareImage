@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, APIManagerType) {
     UserAPIManagerType,
     UserAPIManagerLikePhotoType,
-    CollectionAPIManagerType
+    CollectionAPIManagerType,
+    CollectionAPIManagerCuratedType // 策划分类
 };
 
 @interface DCommonPhotoController : DBaseViewController
