@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSInteger, APIManagerType) {
     UserAPIManagerType,
+    UserAPIManagerLikePhotoType,
     CollectionAPIManagerType
 };
 

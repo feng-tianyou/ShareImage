@@ -106,6 +106,16 @@ static NSString * const cellID = @"collectionPhotos";
             [manager fetchCollectionPhotosByParamModel:paramModel];
         }
             break;
+        case UserAPIManagerLikePhotoType:
+        {
+            DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+            DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+            paramModel.username = self.username;
+            paramModel.page = self.page;
+            paramModel.per_page = 20;
+            [manager fetchUserLikePhotosByParamModel:paramModel];
+        }
+            break;
             
         default:
             break;
