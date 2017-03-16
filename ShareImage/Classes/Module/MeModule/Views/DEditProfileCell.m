@@ -91,7 +91,7 @@ static NSString *const cellID = @"homeCell";
 - (UIImageView *)arrowView{
     if (!_arrowView) {
         _arrowView = [[UIImageView alloc] init];
-        _arrowView.image = [UIImage getImageWithName:@"common_btn_arrow_right_gray"];
+        _arrowView.image = [UIImage getImageWithName:@"cell_detail"];
     }
     return _arrowView;
 }

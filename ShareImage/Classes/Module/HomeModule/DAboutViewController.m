@@ -108,6 +108,11 @@
 }
 
 
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark - event
 - (void)tapEmail{
     DLog(@"tapEmail");
@@ -141,6 +146,8 @@
 
 - (void)tapAgree{
     DLog(@"tapAgree");
+    DWebViewController *webView = [[DWebViewController alloc] initWithUrl:@"https://www.baidu.com" type:WKWebViewLoadURLType];
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 

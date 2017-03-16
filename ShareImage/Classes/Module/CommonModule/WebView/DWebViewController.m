@@ -26,7 +26,7 @@
     if (self) {
         self.urlStr = [url copy];
         self.type = WKWebViewLoadURLType;
-        [self startLoad];
+//        [self startLoad];
     }
     return self;
 }
@@ -36,7 +36,7 @@
     if (self) {
         self.type = type;
         self.urlStr = [url copy];
-        [self startLoad];
+//        [self startLoad];
     }
     return self;
 }
@@ -153,6 +153,7 @@
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 #warning load
     // 初始化导航栏
     [self setupNav];
@@ -160,25 +161,25 @@
     [self.view addSubview:self.progressView];
     [self.view addSubview:self.webView];
     
-//    self.progressView.sd_layout
-//    .topSpaceToView(self.view, self.navBarHeight)
-//    .leftSpaceToView(self.view, 0)
-//    .rightSpaceToView(self.view, 0)
-//    .heightIs(3);
-    [self.progressView setFrame:0 y:self.navBarHeight w:self.view.width h:3];
+    self.progressView.sd_layout
+    .topSpaceToView(self.view, self.navBarHeight)
+    .leftSpaceToView(self.view, 0)
+    .rightSpaceToView(self.view, 0)
+    .heightIs(3);
+//    [self.progressView setFrame:0 y:self.navBarHeight w:self.view.width h:3];
     
     
     DLogRect(self.view.frame);
     DLog(@"%@", @(self.navBarHeight));
     
-//    self.webView.sd_layout
-//    .topSpaceToView(self.progressView, 0)
-//    .leftSpaceToView(self.view, 0)
-//    .rightSpaceToView(self.view, 0)
-//    .bottomSpaceToView(self.view, 0);
+    self.webView.sd_layout
+    .topSpaceToView(self.progressView, 0)
+    .leftSpaceToView(self.view, 0)
+    .rightSpaceToView(self.view, 0)
+    .bottomSpaceToView(self.view, 0);
     
-    [self.webView setFrame:0 y:self.navBarHeight w:self.view.width h:200];
-    
+//    [self.webView setFrame:0 y:self.navBarHeight w:self.view.width h:200];
+    [self startLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -316,23 +317,23 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
         CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
-//        if (newprogress == 1) {
-//            self.progressView.hidden = YES;
-//            [self.progressView setProgress:0 animated:NO];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                CGRect rect = self.webView.frame;
-//                rect.origin.y = self.navBarHeight;
-//                self.webView.frame = rect;
-//            }];
-//        }else {
-//            self.progressView.hidden = NO;
-//            [self.progressView setProgress:newprogress animated:YES];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                CGRect rect = self.webView.frame;
-//                rect.origin.y = self.navBarHeight+2.5;
-//                self.webView.frame = rect;
-//            }];
-//        }
+        if (newprogress == 1) {
+            self.progressView.hidden = YES;
+            [self.progressView setProgress:0 animated:NO];
+            [UIView animateWithDuration:0.2 animations:^{
+                CGRect rect = self.webView.frame;
+                rect.origin.y = self.navBarHeight;
+                self.webView.frame = rect;
+            }];
+        }else {
+            self.progressView.hidden = NO;
+            [self.progressView setProgress:newprogress animated:YES];
+            [UIView animateWithDuration:0.2 animations:^{
+                CGRect rect = self.webView.frame;
+                rect.origin.y = self.navBarHeight+2.5;
+                self.webView.frame = rect;
+            }];
+        }
     }
 }
 
@@ -392,7 +393,7 @@
 - (UIButton *)closeBtn{
     if (!_closeBtn) {
         _closeBtn = [[UIButton alloc] init];
-        [_closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_closeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_closeBtn setTitle:@"Close" forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(clickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
         _closeBtn.hidden = YES;

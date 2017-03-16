@@ -134,7 +134,7 @@ static NSString *const cellID = @"DSettingTableViewCell";
 - (UIImageView *)arrowView{
     if (!_arrowView) {
         _arrowView = [[UIImageView alloc] init];
-        _arrowView.image = [UIImage getImageWithName:@"common_btn_arrow_right_gray"];
+        _arrowView.image = [UIImage getImageWithName:@"cell_detail"];
         _arrowView.hidden = YES;
     }
     return _arrowView;

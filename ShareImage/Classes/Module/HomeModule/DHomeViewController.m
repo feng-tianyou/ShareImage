@@ -31,7 +31,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "LLSlideMenu.h"
 
-
+#import "DWebViewController.h"
 @interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource, DHomeMenuViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
