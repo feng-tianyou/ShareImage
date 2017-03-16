@@ -36,6 +36,7 @@
 		079E30B41E729E1800FF7C6C /* DMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */; };
 		07C5179A1E77E40E00770D30 /* DTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C517991E77E40E00770D30 /* DTextField.m */; };
 		07C647531E7A9A00002169FF /* DSettingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C647521E7A9A00002169FF /* DSettingFooterView.m */; };
+		07C647561E7AB1F5002169FF /* DCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C647551E7AB1F5002169FF /* DCollectionHeaderView.m */; };
 		07D055781E7914BD0031188F /* CATCurveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D055771E7914BD0031188F /* CATCurveProgressView.m */; };
 		07D0557B1E792A0C0031188F /* DAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0557A1E792A0C0031188F /* DAboutViewController.m */; };
 		07D0557D1E7938290031188F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D0557C1E7938280031188F /* MessageUI.framework */; };
@@ -320,6 +321,8 @@
 		07C517991E77E40E00770D30 /* DTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTextField.m; sourceTree = "<group>"; };
 		07C647511E7A9A00002169FF /* DSettingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSettingFooterView.h; sourceTree = "<group>"; };
 		07C647521E7A9A00002169FF /* DSettingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSettingFooterView.m; sourceTree = "<group>"; };
+		07C647541E7AB1F5002169FF /* DCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionHeaderView.h; sourceTree = "<group>"; };
+		07C647551E7AB1F5002169FF /* DCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionHeaderView.m; sourceTree = "<group>"; };
 		07D055761E7914BD0031188F /* CATCurveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATCurveProgressView.h; sourceTree = "<group>"; };
 		07D055771E7914BD0031188F /* CATCurveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATCurveProgressView.m; sourceTree = "<group>"; };
 		07D055791E792A0C0031188F /* DAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAboutViewController.h; sourceTree = "<group>"; };
@@ -755,6 +758,8 @@
 				0733B7531E5EDE18005784CE /* DCollectionViewController.m */,
 				0733B7551E5EE365005784CE /* DCollectionViewCell.h */,
 				0733B7561E5EE365005784CE /* DCollectionViewCell.m */,
+				07C647541E7AB1F5002169FF /* DCollectionHeaderView.h */,
+				07C647551E7AB1F5002169FF /* DCollectionHeaderView.m */,
 			);
 			path = CollectionMoudle;
 			sourceTree = "<group>";
@@ -2284,6 +2289,7 @@
 				7E1B159F1E759148001DFF28 /* DEditProfileMsgController.m in Sources */,
 				7ED811491E55550100954DAF /* UIImage+DQRCode.m in Sources */,
 				7ED811391E55550100954DAF /* LOTShapeTransform.m in Sources */,
+				07C647561E7AB1F5002169FF /* DCollectionHeaderView.m in Sources */,
 				7EE1018F1E66B42800D5576D /* DSearchViewController.m in Sources */,
 				0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */,
 				7ED811211E55550100954DAF /* LOTAnimatableBoundsValue.m in Sources */,

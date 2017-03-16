@@ -8,7 +8,10 @@
 
 #import "DCollectionViewController.h"
 #import "DCommonPhotoController.h"
+
 #import "DCollectionViewCell.h"
+#import "DCollectionHeaderView.h"
+
 #import "DCollectionsAPIManager.h"
 #import "DCollectionsParamModel.h"
 #import "DCollectionsModel.h"
@@ -16,12 +19,20 @@
 
 static NSString * const cellID = @"collection";
 
+typedef NS_ENUM(NSInteger, CollectionType) {
+    FeaturedCollectionType,
+    CuratedCollectionType
+};
+
 @interface DCollectionViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+@property (nonatomic, strong) DCollectionHeaderView *headerView;
+@property (nonatomic, assign) CollectionType type;
+
 
 @end
 
@@ -32,7 +43,7 @@ static NSString * const cellID = @"collection";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.page = 1;
-    [self getCollectionsData];
+    [self getFeaturedCollectionsData];
 }
 
 - (void)viewWillLayoutSubviews{
@@ -44,6 +55,7 @@ static NSString * const cellID = @"collection";
 #pragma mark - 私有方法
 - (void)setupSubViews{
     [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.headerView];
     
     self.collectionView.sd_layout
     .topEqualToView(self.view)
@@ -51,10 +63,16 @@ static NSString * const cellID = @"collection";
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
+    self.headerView.sd_layout
+    .topSpaceToView(self.view, self.navBarHeight)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(50);
+    
     self.collectionView.mj_footer = self.footerView;
 }
 
-- (void)getCollectionsData{
+- (void)getFeaturedCollectionsData{
     DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
     DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
     paramModel.page = self.page;
@@ -63,9 +81,36 @@ static NSString * const cellID = @"collection";
     
 }
 
+- (void)getCuratedCollectionsData{
+    DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
+    paramModel.page = self.page;
+    paramModel.per_page = 10;
+    [manager fetchCuratedCollectionsByParamModel:paramModel];
+    
+}
+
 - (void)pressNoDataBtnToRefresh{
     self.page = 1;
-    [self getCollectionsData];
+    if (self.type == FeaturedCollectionType) {
+        [self getFeaturedCollectionsData];
+    } else {
+        [self getCuratedCollectionsData];
+    }
+    
+}
+
+- (void)clickFeatured{
+    self.page = 1;
+    self.type = FeaturedCollectionType;
+    [self getFeaturedCollectionsData];
+}
+
+
+- (void)clickCurated{
+    self.page = 1;
+    self.type = CuratedCollectionType;
+    [self getCuratedCollectionsData];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -159,7 +204,11 @@ static NSString * const cellID = @"collection";
         _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 @strongify(self);
-                [self getCollectionsData];
+                if (self.type == FeaturedCollectionType) {
+                    [self getFeaturedCollectionsData];
+                } else {
+                    [self getCuratedCollectionsData];
+                }
             });
         }];
         _footerView.stateLabel.hidden = YES;
@@ -167,6 +216,13 @@ static NSString * const cellID = @"collection";
     return _footerView;
 }
 
-
+- (DCollectionHeaderView *)headerView{
+    if (!_headerView) {
+        _headerView = [[DCollectionHeaderView alloc] init];
+        [_headerView.featuredBtn addTarget:self action:@selector(clickFeatured) forControlEvents:UIControlEventTouchUpInside];
+        [_headerView.curatedBtn addTarget:self action:@selector(clickCurated) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _headerView;
+}
 
 @end
