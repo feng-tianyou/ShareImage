@@ -67,6 +67,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)clickLogout{
+    DAlertView *alertView = [[DAlertView alloc] initWithTitle:@"" andMessage:@"Do You Want To LogOut?"];
+    [alertView addButtonWithTitle:@"No" handler:nil];
+    [alertView addButtonWithTitle:@"Yes" handler:^(DAlertView *alertView) {
+        
+    }];
+    [alertView show];
+}
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -74,10 +83,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
-        case 0:
         case 1:
             return 1;
             break;
+        case 0:
         case 2:
             return 2;
             break;
@@ -98,10 +107,35 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 2) {
+        return 144;
+    }
     return 0.01;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 20;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    if (section == 2) {
+        UIView *bgView = [[UIView alloc] init];
+        bgView.backgroundColor = DSystemColorGrayF3F3F3;
+        [bgView setFrame:0 y:0 w:self.view.width h:144];
+        
+        UIButton *logoutBtn = [[UIButton alloc] init];
+        logoutBtn.backgroundColor = [UIColor whiteColor];
+        [logoutBtn setTitle:@"Log Out" forState:UIControlStateNormal];
+        [logoutBtn addTarget:self action:@selector(clickLogout) forControlEvents:UIControlEventTouchUpInside];
+        [logoutBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [logoutBtn.layer setBorderColor:DSystemColorGrayE0E0E0.CGColor];
+        [logoutBtn.layer setBorderWidth:0.5];
+        [logoutBtn setFrame:-0.5 y:50 w:self.view.width+1 h:44];
+        [bgView addSubview:logoutBtn];
+        return bgView;
+    }
+    
+    return [UIView new];
 }
 
 
@@ -153,7 +187,7 @@
  */
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@[@"Language"], @[@"Night"], @[@"Clear Storage", @"About"]];
+        _titles = @[@[@"Language", @"Night"], @[@"Give Evaluation"], @[@"Clear Storage", @"About"]];
     }
     return _titles;
 }

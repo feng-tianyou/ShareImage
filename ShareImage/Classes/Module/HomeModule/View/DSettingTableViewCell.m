@@ -78,16 +78,22 @@ static NSString *const cellID = @"DSettingTableViewCell";
     switch (indexPath.section) {
         case 0:
         {
-            self.arrowView.hidden = NO;
-            self.contentLabel.hidden = YES;
-            self.rightSwitch.hidden = YES;
+            if (indexPath.row == 0) {
+                self.arrowView.hidden = NO;
+                self.contentLabel.hidden = YES;
+                self.rightSwitch.hidden = YES;
+            } else {
+                self.arrowView.hidden = YES;
+                self.contentLabel.hidden = YES;
+                self.rightSwitch.hidden = NO;
+            }
         }
             break;
         case 1:
         {
-            self.arrowView.hidden = YES;
+            self.arrowView.hidden = NO;
             self.contentLabel.hidden = YES;
-            self.rightSwitch.hidden = NO;
+            self.rightSwitch.hidden = YES;
         }
             break;
         case 2:
