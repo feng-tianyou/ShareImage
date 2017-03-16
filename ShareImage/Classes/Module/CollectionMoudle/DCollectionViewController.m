@@ -8,6 +8,7 @@
 
 #import "DCollectionViewController.h"
 #import "DCommonPhotoController.h"
+#import "DSearchViewController.h"
 
 #import "DCollectionViewCell.h"
 #import "DCollectionHeaderView.h"
@@ -43,6 +44,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.page = 1;
+    self.navRighItemType = DNavigationItemTypeRightSearch;
     self.headerView.featuredBtn.selected = YES;
     [self getFeaturedCollectionsData];
 }
@@ -117,6 +119,14 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     self.type = CuratedCollectionType;
     [self getCuratedCollectionsData];
 }
+
+- (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    if (!isLeft) {
+        DSearchViewController *searchView = [[DSearchViewController alloc] initWithSearchType:CollectionSearchType];
+        [self.navigationController pushViewController:searchView animated:YES];
+    }
+}
+
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
