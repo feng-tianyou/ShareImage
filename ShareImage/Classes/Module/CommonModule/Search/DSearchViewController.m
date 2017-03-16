@@ -72,6 +72,8 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
 //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    [self.searchBar.searchTextField becomeFirstResponder];
 }
 
 
@@ -91,10 +93,13 @@
     .bottomEqualToView(self.view);
     
     
+    
+    
 }
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
+    [self.searchBar.searchTextField resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
