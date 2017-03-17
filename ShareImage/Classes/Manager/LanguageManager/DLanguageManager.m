@@ -112,4 +112,52 @@
 }
 
 
+/**
+ 设置语言
+
+ @param language 语言
+ */
+- (void)setUserlanguage:(NSString *)language{
+    if (![[self currentLanguage] isEqualToString:language]) {
+        [self saveLanguage:language];
+        [self changeBundle:language];
+        
+        // 改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
+        [[NSNotificationCenter defaultCenter] postNotificationName:ChangeLanguageNotificationName object:nil];
+        // 回调
+        if (self.completion) {
+            self.completion(language);
+        }
+    }
+}
+
+/**
+ 获取当前语种下的内容
+
+ @param key key
+ @param value calue
+ @return 内容
+ */
+- (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)value{
+    if (!self.bundle) {
+        [self initUserLanguage];
+    }
+    
+    if (key.length > 0 && self.bundle) {
+        NSString *str = NSLocalizedStringFromTableInBundle(key, kNSLocalizedStringTableName, self.bundle, value);
+        if (str.length > 0) {
+            return str;
+        }
+    }
+    return @"";
+}
+
+//图片多语言处理 有2种处理方案，第一种就是和文字一样，根据语言或者对应路径下的图片文件夹，然后用获取文字的方式，获取图片名字，或者用下面这种方法，图片命名的时候加上语言后缀，获取的时候调用此方法，在图片名后面加上语言后缀来显示图片
+- (UIImage *)ittemInternationalImageWithName:(NSString *)name {
+    NSString *selectedLanguage = [self languageFormat:[self currentLanguage]];
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@",name,selectedLanguage]];
+    return image;
+}
+
+
 @end
