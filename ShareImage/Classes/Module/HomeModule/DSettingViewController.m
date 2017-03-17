@@ -10,6 +10,8 @@
 #import "DSettingTableViewCell.h"
 
 #import "DAboutViewController.h"
+#import "DLanguageViewController.h"
+#import "DNavigationViewController.h"
 
 #import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -138,6 +140,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:
+        {
+            if (indexPath.row == 0) {
+                DNavigationViewController *nav = [[DNavigationViewController alloc] initWithRootViewController:[[DLanguageViewController alloc] init]];
+                [self presentViewController:nav animated:YES completion:nil];
+            }
+        }
+            break;
+        case 1:
         {
             
         }

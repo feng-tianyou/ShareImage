@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0701B8AD1E7BE5A50036016F /* DLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0701B8AC1E7BE5A50036016F /* DLanguageManager.m */; };
+		0701B8AF1E7BEF130036016F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0701B8AE1E7BEF130036016F /* Localizable.strings */; };
+		0701B8B21E7BEF510036016F /* DLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0701B8B11E7BEF510036016F /* DLanguageViewController.m */; };
 		070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */; };
 		070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */; };
 		070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */; };
@@ -264,6 +266,9 @@
 /* Begin PBXFileReference section */
 		0701B8AB1E7BE5A50036016F /* DLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLanguageManager.h; sourceTree = "<group>"; };
 		0701B8AC1E7BE5A50036016F /* DLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLanguageManager.m; sourceTree = "<group>"; };
+		0701B8AE1E7BEF130036016F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0701B8B01E7BEF510036016F /* DLanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLanguageViewController.h; sourceTree = "<group>"; };
+		0701B8B11E7BEF510036016F /* DLanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLanguageViewController.m; sourceTree = "<group>"; };
 		070A8B261E5D221900CE41E2 /* DCollectionsAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsAPIManager.h; sourceTree = "<group>"; };
 		070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsAPIManager.m; sourceTree = "<group>"; };
 		070A8B291E5D223C00CE41E2 /* DCollectionsNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsNetwork.h; sourceTree = "<group>"; };
@@ -759,6 +764,7 @@
 			children = (
 				0701B8AB1E7BE5A50036016F /* DLanguageManager.h */,
 				0701B8AC1E7BE5A50036016F /* DLanguageManager.m */,
+				0701B8AE1E7BEF130036016F /* Localizable.strings */,
 			);
 			path = LanguageManager;
 			sourceTree = "<group>";
@@ -1334,6 +1340,8 @@
 				070F7CE31E77F2B200423212 /* DSettingViewController.m */,
 				07D055791E792A0C0031188F /* DAboutViewController.h */,
 				07D0557A1E792A0C0031188F /* DAboutViewController.m */,
+				0701B8B01E7BEF510036016F /* DLanguageViewController.h */,
+				0701B8B11E7BEF510036016F /* DLanguageViewController.m */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -2029,6 +2037,7 @@
 				7ED8113F1E55550100954DAF /* zbar-back.png in Resources */,
 				7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */,
 				7ED811421E55550100954DAF /* zbar-samples.png in Resources */,
+				0701B8AF1E7BEF130036016F /* Localizable.strings in Resources */,
 				7ED811151E55550100954DAF /* MotionCorpse-Jrcanest.json in Resources */,
 				7ED80F531E554D8100954DAF /* Assets.xcassets in Resources */,
 				7ED811111E55550100954DAF /* DData.bundle in Resources */,
@@ -2225,6 +2234,7 @@
 				7ED8112C1E55550100954DAF /* CALayer+Compat.m in Sources */,
 				07C647531E7A9A00002169FF /* DSettingFooterView.m in Sources */,
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
+				0701B8B21E7BEF510036016F /* DLanguageViewController.m in Sources */,
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
 				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
 				070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */,
