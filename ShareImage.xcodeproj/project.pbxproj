@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701B8AD1E7BE5A50036016F /* DLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0701B8AC1E7BE5A50036016F /* DLanguageManager.m */; };
 		070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */; };
 		070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2A1E5D223C00CE41E2 /* DCollectionsNetwork.m */; };
 		070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B2D1E5D225000CE41E2 /* DCollectionsService.m */; };
@@ -261,6 +262,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0701B8AB1E7BE5A50036016F /* DLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLanguageManager.h; sourceTree = "<group>"; };
+		0701B8AC1E7BE5A50036016F /* DLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLanguageManager.m; sourceTree = "<group>"; };
 		070A8B261E5D221900CE41E2 /* DCollectionsAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsAPIManager.h; sourceTree = "<group>"; };
 		070A8B271E5D221900CE41E2 /* DCollectionsAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionsAPIManager.m; sourceTree = "<group>"; };
 		070A8B291E5D223C00CE41E2 /* DCollectionsNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionsNetwork.h; sourceTree = "<group>"; };
@@ -751,6 +754,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0701B8AA1E7BE5740036016F /* LanguageManager */ = {
+			isa = PBXGroup;
+			children = (
+				0701B8AB1E7BE5A50036016F /* DLanguageManager.h */,
+				0701B8AC1E7BE5A50036016F /* DLanguageManager.m */,
+			);
+			path = LanguageManager;
+			sourceTree = "<group>";
+		};
 		0733B7511E5EDE05005784CE /* CollectionMoudle */ = {
 			isa = PBXGroup;
 			children = (
@@ -1047,6 +1059,7 @@
 		7ED80F961E55550100954DAF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				0701B8AA1E7BE5740036016F /* LanguageManager */,
 				7ED80F971E55550100954DAF /* CacheManager */,
 				7ED80FAA1E55550100954DAF /* FileManager */,
 				7ED80FB91E55550100954DAF /* GlobalInfoManager */,
@@ -2282,6 +2295,7 @@
 				07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */,
 				7ED811821E55573300954DAF /* DTestViewController.m in Sources */,
 				7ED811191E55550100954DAF /* LOTAnimatableLayer.m in Sources */,
+				0701B8AD1E7BE5A50036016F /* DLanguageManager.m in Sources */,
 				7ED811471E55550100954DAF /* UIColor+DColor.m in Sources */,
 				7ED811081E55550100954DAF /* DJsonModel.m in Sources */,
 				7ED810EB1E55550100954DAF /* DCacheManager.m in Sources */,
