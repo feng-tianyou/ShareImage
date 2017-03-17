@@ -130,10 +130,15 @@
 
 
 
-
-
+/**
+ *  添加空白页面重新加载页面
+ *
+ *  @param inView 空白页面重新加载页面需要添加到哪个页面
+ */
 - (void)addNoDataViewAddInView:(UIView *)inView;
-
+/**
+ *  移除空白页面重新加载页面
+ */
 - (void)removeNoDataView;
 
 
