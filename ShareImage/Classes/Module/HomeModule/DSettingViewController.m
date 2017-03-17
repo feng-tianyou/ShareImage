@@ -68,12 +68,7 @@
 }
 
 - (void)clickLogout{
-    DAlertView *alertView = [[DAlertView alloc] initWithTitle:@"" andMessage:@"Do You Want To LogOut?"];
-    [alertView addButtonWithTitle:@"No" handler:nil];
-    [alertView addButtonWithTitle:@"Yes" handler:^(DAlertView *alertView) {
-        
-    }];
-    [alertView show];
+    [self logoutByType:LogoutTypeForOther];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource

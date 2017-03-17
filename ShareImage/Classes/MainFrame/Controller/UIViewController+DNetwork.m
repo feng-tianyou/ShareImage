@@ -12,6 +12,9 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Reachability.h"
 
+#import "DOAuthViewController.h"
+#import "DNavigationViewController.h"
+
 static char* const networkLoadingView_KEY = "networkLoadingView";
 static char* const noNetworkAlertView_KEY = "noNetworkAlertView";
 static char* const networkErrorReloadView_KEY = "networkErrorReloadView";
@@ -338,21 +341,51 @@ static char* const noNoDataView_KEY = "DataView";
 }
 
 
+/**
+ *  账号异常时让用户退出并重新登录，跳转至登陆页面
+ */
+- (void)logoutByType:(LogoutType)type{
+    @weakify(self)
+    switch (type) {
+        case LogoutTypeForNoValid:
+        {
+            
+        }
+            break;
+        case LogoutTypeForNoOAuth:
+        {
+            
+        }
+            break;
+        case LogoutTypeForOther:
+        {
+            DAlertView *alertView = [[DAlertView alloc] initWithTitle:@"" andMessage:@"Do You Want To LogOut?"];
+            [alertView addButtonWithTitle:@"No" handler:nil];
+            [alertView addButtonWithTitle:@"Yes" handler:^(DAlertView *alertView) {
+                @strongify(self)
+                [self logout];
+            }];
+            [alertView show];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
 - (void)logout{
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:@(NO) forKey:[NSString stringWithFormat:kCacheIsLoginByUid,KGLOBALINFOMANAGER.uid]];
     [KGLOBALINFOMANAGER setIsAlertLogout:NO];
-//    if(kAppUseALiPush){
-//        //退出成功后解除绑定阿里云账号
-//        [[TGALiPushManager share] unBindAccountByAccountStr:[NSString stringWithFormat:@"%@",@(KGLOBALINFOMANAGER.uid)]];
-//    }
-//    [[TGUserNetwork shareEngine] clearRefreshTokenBlockCache];
     [KGLOBALINFOMANAGER clearAllInfo];
-//    [[SocketManage share] userLogout];
-//    TGLoginView *loginView=[[TGLoginView alloc] init];
-//    [self.mainViewController initTabBar];
-//    [self.mainViewController setRootMainView:loginView];
+    // 授权
+    // 切换窗口的跟控制器
+    self.view.window.rootViewController = [[DOAuthViewController alloc] init];
+    
 }
 
 

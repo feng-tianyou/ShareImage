@@ -29,6 +29,15 @@
     [super viewDidLoad];
     
 //    self.navLeftItemType = DNavigationItemTypeBack;
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    NSHTTPCookie *cookie;
+    
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
+    for (cookie in [storage cookies])
+    {
+        [storage deleteCookie:cookie];
+    }
     
     [self.view addSubview:self.webView];
     
@@ -151,7 +160,6 @@
     
     // 授权成功
     DLog(@"授权成功");
-//    [self.navigationController popViewControllerAnimated:YES];
     [DChooesRootViewControllerTool choosedRootController];
 }
 

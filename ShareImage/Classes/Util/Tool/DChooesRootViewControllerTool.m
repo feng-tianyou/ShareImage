@@ -22,8 +22,7 @@
         [self choosedRootController];
     } else {
         // 授权
-        DNavigationViewController *nav = [[DNavigationViewController alloc] initWithRootViewController:[[DOAuthViewController alloc] init]];
-        window.rootViewController = nav;
+        window.rootViewController = [[DOAuthViewController alloc] init];
     }
 }
 

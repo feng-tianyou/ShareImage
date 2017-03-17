@@ -60,21 +60,21 @@
     
     
     // KVO 监听属性改变
-    [item addObserver:self forKeyPath:@"badgeValue" options:0 context:nil];
-    [item addObserver:self forKeyPath:@"title" options:0 context:nil];
-    [item addObserver:self forKeyPath:@"image" options:0 context:nil];
-    [item addObserver:self forKeyPath:@"selectedImage" options:0 context:nil];
-    
+//    [item addObserver:self forKeyPath:@"badgeValue" options:0 context:nil];
+//    [item addObserver:self forKeyPath:@"title" options:0 context:nil];
+//    [item addObserver:self forKeyPath:@"image" options:0 context:nil];
+//    [item addObserver:self forKeyPath:@"selectedImage" options:0 context:nil];
+//    
     [self observeValueForKeyPath:nil ofObject:nil change:nil context:nil];
 }
 
 // 消除监听
 - (void)dealloc{
     
-    [self removeObserver:self forKeyPath:@"badgeValue"];
-    [self removeObserver:self forKeyPath:@"title"];
-    [self removeObserver:self forKeyPath:@"image"];
-    [self removeObserver:self forKeyPath:@"selectedImage"];
+//    [self removeObserver:self forKeyPath:@"badgeValue"];
+//    [self removeObserver:self forKeyPath:@"title"];
+//    [self removeObserver:self forKeyPath:@"image"];
+//    [self removeObserver:self forKeyPath:@"selectedImage"];
 }
 
 /**
