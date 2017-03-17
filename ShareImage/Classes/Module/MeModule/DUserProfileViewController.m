@@ -164,25 +164,27 @@
     .heightIs(40);
     
     
+    self.bioLabel.isAttributedContent = YES;
     self.bioLabel.sd_layout
     .topSpaceToView(self.followerNumBtn, 20)
-    .leftSpaceToView(self.scrollView, 10)
-    .rightSpaceToView(self.scrollView,10)
+    .leftSpaceToView(self.scrollView, 15)
+    .rightSpaceToView(self.scrollView,15)
     .autoHeightRatio(0);
     
     self.followButton.sd_layout
-    .topSpaceToView(self.bioLabel, 20)
+    .topSpaceToView(self.bioLabel, 30)
     .leftSpaceToView(self.scrollView, 80)
     .rightSpaceToView(self.scrollView,80)
-    .heightIs(50);
+    .heightIs(45);
     
     
-    CGSize bioSize = [self.bioLabel.text sizeWithFont:DSystemFontText maxWidth:self.view.width - 20];
+    CGSize bioSize = [UILabel getContentSizeForHasLineSpaceByContent:self.bioLabel.text font:self.bioLabel.font maxWidth:self.view.width - 30];
     if (bioSize.height > 20) {
         self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 50 + bioSize.height);
     } else {
         self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
     }
+    DLogSize(self.scrollView.contentSize);
     
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
     
@@ -256,6 +258,12 @@
         f.size.height = -yOffset;
         self.bgImageView.frame = f;
     }
+    
+    if (yOffset > -250) {
+        self.navigationView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
+    } else {
+        self.navigationView.backgroundColor = [UIColor clearColor];
+    }
 }
 
 
@@ -283,13 +291,16 @@
     self.followingNumBtn.numberLabel.text = [self changeThousandWithNumber:userModel.following_count];
     
     self.bioLabel.text = userModel.bio;
+    if (userModel.bio.length > 0) {
+        [self.bioLabel addLineSpace];
+    }
     
     if (userModel.followed_by_user) {
         [self.followButton setBackgroundColor:[UIColor blackColor]];
     } else {
         [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
     }
-    [self.view setNeedsLayout];
+//    [self.view setNeedsLayout];
     
 }
 
@@ -303,6 +314,7 @@
         _navigationView.title = @"Profile";
         [_navigationView.navLeftItem addTarget:self action:@selector(navigationBarDidClickNavigationLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
         [_navigationView.navRightItem addTarget:self action:@selector(navigationBarDidClickNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _navigationView;
 }
@@ -404,7 +416,7 @@
         _followButton.titleLabel.textColor = [UIColor whiteColor];
         [_followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
         _followButton.titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:22.0];
-        [_followButton.layer setCornerRadius:25.0];
+        [_followButton.layer setCornerRadius:22.5];
         [_followButton.layer setMasksToBounds:YES];
         [_followButton addTarget:self action:@selector(clickFollowButton) forControlEvents:UIControlEventTouchUpInside];
     }

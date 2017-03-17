@@ -171,6 +171,14 @@
     return 0.01;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > 61) {
+        self.navigationView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
+    } else {
+        self.navigationView.backgroundColor = [UIColor clearColor];
+    }
+}
+
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
