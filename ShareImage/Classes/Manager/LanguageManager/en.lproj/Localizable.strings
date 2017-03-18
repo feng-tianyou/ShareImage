@@ -8,9 +8,13 @@
 
 
 
+// DSettingViewController
 "settings" = "Settings";
 "language" = "Language";
 "night" = "Night";
 "give Evaluation" = "Give Evaluation";
 "clear Storage" = "Clear Storage";
 "about" = "About";
+
+"log Out" = "Log Out";
+"clean up!" = "Clean up!";

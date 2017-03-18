@@ -4,12 +4,23 @@
  
  Created by FTY on 2017/3/18.
  Copyright © 2017年 DaiSuke. All rights reserved.
+ 
+ 请按页面修改，并注明页面类
+ 
  */
 
 
+
+
+
+
+// DSettingViewController
 "settings" = "设置";
 "language" = "语言";
 "night" = "夜间模式";
 "give Evaluation" = "给予评价";
 "clear Storage" = "清除";
 "about" = "关于";
+
+"log Out" = "退出";
+"clean up!" = "清除完毕!";

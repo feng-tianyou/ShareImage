@@ -12,8 +12,8 @@
 @interface DLanguageViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *languages;
-@property (nonatomic, strong) NSArray *languageArr;
+@property (nonatomic, strong) NSArray *languages;
+//@property (nonatomic, strong) NSArray *languageArr;
 
 @end
 
@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = kLocalizedString(@"Language", @"语言");
+    self.title = kLocalizedLanguage(@"language");
     self.navRighItemType = DNavigationItemTypeRightSave;
     self.navLeftItemType = DNavigationItemTypeRightCancel;
     
@@ -129,7 +129,7 @@
 }
 
 //目前支持的语言
-- (NSArray *)languageArr{
+- (NSArray *)languages{
     return @[@"zh-Hans-CN", //中文简体
              @"zh-Hant-CN", //中文繁体
              @"en-CN", //英语
@@ -139,23 +139,23 @@
              @"it-CN"]; //意大利语
 }
 
-- (NSMutableArray *)languages{
-    if (!_languages) {
-        _languages = [[NSMutableArray alloc] init];
-        [self.languageArr enumerateObjectsUsingBlock:^(NSString *lang, NSUInteger idx, BOOL * _Nonnull stop) {
-            //对应国家的语言
-//            NSString *countryLanguage = [self getCountryWithLanguage:lang];
-//            //当前语言下的对应国家语言翻译
-//            NSString *currentLanguageName = [self getCurrentLanguageName:lang] ;
-            
-//            if([countryLanguage rangeOfString:_searchText options:NSCaseInsensitiveSearch].location != NSNotFound || [currentLanguageName rangeOfString:_searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
-//                [_dataAry addObject:lang];
-//            }
-            [_languages addObject:lang];
-        }];
-    }
-    return _languages;
-}
+//- (NSMutableArray *)languages{
+//    if (!_languages) {
+//        _languages = [[NSMutableArray alloc] init];
+//        [self.languageArr enumerateObjectsUsingBlock:^(NSString *lang, NSUInteger idx, BOOL * _Nonnull stop) {
+//            //对应国家的语言
+////            NSString *countryLanguage = [self getCountryWithLanguage:lang];
+////            //当前语言下的对应国家语言翻译
+////            NSString *currentLanguageName = [self getCurrentLanguageName:lang] ;
+//            
+////            if([countryLanguage rangeOfString:_searchText options:NSCaseInsensitiveSearch].location != NSNotFound || [currentLanguageName rangeOfString:_searchText options:NSCaseInsensitiveSearch].location != NSNotFound) {
+////                [_dataAry addObject:lang];
+////            }
+//            [_languages addObject:lang];
+//        }];
+//    }
+//    return _languages;
+//}
 
 
 @end

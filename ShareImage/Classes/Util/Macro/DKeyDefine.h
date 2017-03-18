@@ -38,7 +38,7 @@
 
 #define kLanguageManager [DLanguageManager shareInstance]
 #define kLocalizedString(key, comment) [kLanguageManager localizedStringForKey:key value:comment]
-
+#define kLocalizedLanguage(key)  kLocalizedString(key, @"")
 
 // 控制显示器相关
 // 是否需要显示加载

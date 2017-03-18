@@ -28,9 +28,9 @@
 
 @implementation DSettingViewController
 
-- (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kChangeLanguageNotificationName object:nil];
-}
+//- (void)dealloc{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kChangeLanguageNotificationName object:nil];
+//}
 
 /**
  夜间（考虑）、缓存、语言、关于、退出
@@ -39,8 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 注册刷新文字通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshLanguage:) name:kChangeLanguageNotificationName object:nil];
+    @weakify(self)
+    kLanguageManager.completion = ^(NSString *language){
+        @strongify(self)
+        [self refreshLanguage];
+    };
     
     [self setupData];
     [self setupView];
@@ -48,11 +51,10 @@
 }
 
 - (void)setupData{
-//    self.title = @"Settings";
     self.navLeftItemType = DNavigationItemTypeBack;
     
     [self refreshCacheData];
-    [self refreshLanguage:nil];
+    [self refreshLanguage];
    
 }
 
@@ -77,9 +79,9 @@
 }
 
 #pragma mark - overLoad
-- (void)refreshLanguage:(NSNotification *)notifacation{
-    self.title = kLocalizedString(@"settings", @"设置");
-    self.titles = @[@[kLocalizedString(@"language", @"语言"), kLocalizedString(@"night", @"夜间模式")], @[kLocalizedString(@"give Evaluation", @"给予评价")], @[kLocalizedString(@"clear Storage", @"清除缓存"),kLocalizedString(@"about", @"关于")]];
+- (void)refreshLanguage{
+    self.title = kLocalizedLanguage(@"settings");
+    self.titles = @[@[kLocalizedLanguage(@"language"), kLocalizedLanguage(@"night")], @[kLocalizedLanguage(@"give Evaluation")], @[kLocalizedLanguage(@"clear Storage"),kLocalizedLanguage(@"about")]];
     [self.tableView reloadData];
 }
 
@@ -139,7 +141,7 @@
         
         UIButton *logoutBtn = [[UIButton alloc] init];
         logoutBtn.backgroundColor = [UIColor whiteColor];
-        [logoutBtn setTitle:@"Log Out" forState:UIControlStateNormal];
+        [logoutBtn setTitle:kLocalizedLanguage(@"log Out") forState:UIControlStateNormal];
         [logoutBtn addTarget:self action:@selector(clickLogout) forControlEvents:UIControlEventTouchUpInside];
         [logoutBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [logoutBtn.layer setBorderColor:DSystemColorGrayE0E0E0.CGColor];
@@ -176,7 +178,7 @@
                 [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
                     [SVProgressHUD setMinimumDismissTimeInterval:1.0];
                     [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-                    [SVProgressHUD showSuccessWithStatus:@"Clean up!"];
+                    [SVProgressHUD showSuccessWithStatus:kLocalizedLanguage(@"clean up!")];
                     @strongify(self)
                     [self refreshCacheData];
                 }];
