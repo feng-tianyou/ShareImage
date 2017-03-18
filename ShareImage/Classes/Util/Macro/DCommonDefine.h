@@ -57,7 +57,7 @@
 #import "DGlobalManager.h"
 #import "DCacheManager.h"
 #import "DBaseManager.h"
-
+#import "DLanguageManager.h"
 
 
 // 第三方

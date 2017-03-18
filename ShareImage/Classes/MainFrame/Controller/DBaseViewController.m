@@ -20,8 +20,11 @@
     [super viewWillAppear:animated];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    // 注册通知
+    // 注册退出通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout:) name:KNOTIF_LOGOUT_KEY object:nil];
+    // 注册刷新文字通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshLanguage:) name:kChangeLanguageNotificationName object:nil];
+    
 
 }
 
@@ -30,6 +33,7 @@
     
     // 注销通知
     [[NSNotificationCenter defaultCenter] removeObserver:self name:KNOTIF_LOGOUT_KEY object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kChangeLanguageNotificationName object:nil];
 }
 
 - (void)viewDidLoad {
@@ -70,6 +74,15 @@
     }];
     [alertView show];
 }
+
+- (void)refreshLanguage:(NSNotification *)notification{
+//    DLog(@"%@", notification);
+    [self refreshLanguage];
+}
+
+- (void)refreshLanguage{};
+
+
 
 #pragma mark - 状态栏
 

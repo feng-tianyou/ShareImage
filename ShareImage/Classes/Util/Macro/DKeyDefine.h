@@ -33,6 +33,13 @@
 #define KNOTIF_LOGOUT_KEY       @"logout_key"
 #define KVIEW_KEY_LOGOUT        @"logout_cache_key" // 缓存退出key
 
+#define kChangeLanguageNotificationName  @"ChangeLanguageNotificationName"   // 刷新语言通知字段
+
+
+#define kLanguageManager [DLanguageManager shareInstance]
+#define kLocalizedString(key, comment) [kLanguageManager localizedStringForKey:key value:comment]
+
+
 // 控制显示器相关
 // 是否需要显示加载
 #define kParamNoAddLoading      @"no_add_loading"

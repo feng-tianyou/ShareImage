@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define ChangeLanguageNotificationName @"changeLanguage"
-#define kLocalizedString(key, comment) [kLanguageManager localizedStringForKey:key value:comment]
-
 @interface DLanguageManager : NSObject
 
 @property (nonatomic,copy) void (^completion)(NSString *currentLanguage);
@@ -25,6 +22,6 @@
 
 + (instancetype)shareInstance;
 
-#define kLanguageManager [HXLanguageManager shareInstance]
+
 
 @end

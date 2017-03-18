@@ -28,6 +28,10 @@
 
 @implementation DSettingViewController
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kChangeLanguageNotificationName object:nil];
+}
+
 /**
  夜间（考虑）、缓存、语言、关于、退出
  */
@@ -35,16 +39,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // 注册刷新文字通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshLanguage:) name:kChangeLanguageNotificationName object:nil];
+    
     [self setupData];
     [self setupView];
     
 }
 
 - (void)setupData{
-    self.title = @"Settings";
+//    self.title = @"Settings";
     self.navLeftItemType = DNavigationItemTypeBack;
     
     [self refreshCacheData];
+    [self refreshLanguage:nil];
    
 }
 
@@ -64,14 +72,23 @@
     [self.tableView reloadData];
 }
 
+- (void)clickLogout{
+    [self logoutByType:LogoutTypeForOther];
+}
+
+#pragma mark - overLoad
+- (void)refreshLanguage:(NSNotification *)notifacation{
+    self.title = kLocalizedString(@"settings", @"设置");
+    self.titles = @[@[kLocalizedString(@"language", @"语言"), kLocalizedString(@"night", @"夜间模式")], @[kLocalizedString(@"give Evaluation", @"给予评价")], @[kLocalizedString(@"clear Storage", @"清除缓存"),kLocalizedString(@"about", @"关于")]];
+    [self.tableView reloadData];
+}
+
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)clickLogout{
-    [self logoutByType:LogoutTypeForOther];
-}
+
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -190,12 +207,12 @@
 /**
  夜间（考虑）、缓存、语言、关于、退出
  */
-- (NSArray *)titles{
-    if (!_titles) {
-        _titles = @[@[@"Language", @"Night"], @[@"Give Evaluation"], @[@"Clear Storage", @"About"]];
-    }
-    return _titles;
-}
+//- (NSArray *)titles{
+//    if (!_titles) {
+//        _titles = @[@[kLocalizedString(@"Language", @"语言"), kLocalizedString(@"Night", @"夜间模式")], @[@"Give Evaluation"], @[@"Clear Storage", @"About"]];
+//    }
+//    return _titles;
+//}
 
 //- (NSArray *)contents{
 //    if (!_contents) {

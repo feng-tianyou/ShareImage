@@ -123,7 +123,7 @@
         [self changeBundle:language];
         
         // 改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
-        [[NSNotificationCenter defaultCenter] postNotificationName:ChangeLanguageNotificationName object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kChangeLanguageNotificationName object:nil];
         // 回调
         if (self.completion) {
             self.completion(language);
@@ -143,10 +143,12 @@
         [self initUserLanguage];
     }
     
-    if (key.length > 0 && self.bundle) {
-        NSString *str = NSLocalizedStringFromTableInBundle(key, kNSLocalizedStringTableName, self.bundle, value);
-        if (str.length > 0) {
-            return str;
+    if (key.length > 0) {
+        if (self.bundle) {
+            NSString *str = NSLocalizedStringFromTableInBundle(key, kNSLocalizedStringTableName, self.bundle, value);
+            if (str.length > 0) {
+                return str;
+            }
         }
     }
     return @"";

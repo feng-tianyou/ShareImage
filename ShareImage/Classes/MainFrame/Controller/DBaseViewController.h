@@ -22,6 +22,10 @@
 @property (nonatomic, assign) CGFloat navBarHeight;
 
 
+/**
+ 刷新语言文字
+ */
+- (void)refreshLanguage;
 
 
 

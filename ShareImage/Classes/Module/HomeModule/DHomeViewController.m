@@ -73,6 +73,11 @@
     
 }
 
+- (void)refreshLanguage{
+//    self.title = kLocalizedString(@"settings", @"");
+}
+
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
