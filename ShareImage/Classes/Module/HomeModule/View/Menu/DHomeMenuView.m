@@ -107,7 +107,7 @@
 
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@"Photos", @"Collections", @"Likes", @"Setting"];
+        _titles = @[kLocalizedLanguage(@"homePhotos"), kLocalizedLanguage(@"homeCollections"), kLocalizedLanguage(@"homeLikes"), kLocalizedLanguage(@"homeSetting")];
     }
     return _titles;
 }

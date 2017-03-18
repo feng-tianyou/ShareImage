@@ -7,6 +7,33 @@
  */
 
 
+// DNavigationTool
+"navBack" = "返回";
+"navHome" = "首页";
+"navBackHome" = "首页";
+"navSend" = "发送";
+"navSave" = "保存";
+"navClear" = "清除";
+"navNext" = "下一步";
+"navPublic" = "发布";
+"navCancel" = "取消";
+"navFinish" = "完成";
+"navFeedBack" = "反馈";
+"navSetting" = "设置";
+"navEdit" = "编辑";
+
+
+// DTabBarViewController
+"tabHome" = "首页";
+"tabCollection" = "分类";
+
+// DHomeViewController
+"homePhotos" = "图片";
+"homeLikes" = "喜欢的图片";
+"homeCollections" = "分类";
+"homeSetting" = "设置";
+
+
 // DSettingViewController
 "settings" = "设置";
 "language" = "语言";

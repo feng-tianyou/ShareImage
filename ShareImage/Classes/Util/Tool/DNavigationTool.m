@@ -35,50 +35,50 @@
     NSString *strTitle = @"";
     switch (type) {
         case DNavigationItemTypeBackHome:{
-            strTitle = D_NAVIGATION_BAR_TEXT_LEFT_BACK_HOME;
+            strTitle = kLocalizedLanguage(@"navBack");
             break;
         }
         case DNavigationItemTypeRightHome:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_HOME;
+            strTitle = kLocalizedLanguage(@"navHome");
             break;
         }
         case DNavigationItemTypeRightSend:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_SEND;
+            strTitle = kLocalizedLanguage(@"navSend");
             break;
         }
         case DNavigationItemTypeRightSave:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_SAVE;
+            strTitle = kLocalizedLanguage(@"navSave");
             break;
         }
         case DNavigationItemTypeRightClear:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_CLEAR;
+            strTitle = kLocalizedLanguage(@"navClear");
             break;
         }
         case DNavigationItemTypeRightNext:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_NEXT;
+            strTitle = kLocalizedLanguage(@"navNext");
             break;
         }
         case DNavigationItemTypeRightPublic:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_PUBLIC;
+            strTitle = kLocalizedLanguage(@"navPublic");
             break;
         }
         case DNavigationItemTypeRightCancel:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_CANCEL;
+            strTitle = kLocalizedLanguage(@"navCancel");
             break;
         }
         case DNavigationItemTypeRightFinish:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_FINISH;
+            strTitle = kLocalizedLanguage(@"navFinish");
             break;
         }
         case DNavigationItemTypeRightFeedback:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_FEEDBACK;
+            strTitle = kLocalizedLanguage(@"navFeedBack");
             break;
         }
         case DNavigationItemTypeRightSetting:{
-            strTitle = D_NAVIGATION_BAR_TEXT_RIGHT_SETTING;
+            strTitle = kLocalizedLanguage(@"navSetting");
             break;
         }case DNavigationItemTypeRightEdit:{
-            strTitle = @"Edit";
+            strTitle = kLocalizedLanguage(@"navEdit");
             break;
         }
         default:{

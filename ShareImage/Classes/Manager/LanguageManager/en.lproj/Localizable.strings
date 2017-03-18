@@ -8,6 +8,34 @@
 
 
 
+
+// DNavigationTool
+"navBack" = "Back";
+"navHome" = "Home";
+"navBackHome" = "BackHome";
+"navSend" = "Send";
+"navSave" = "Save";
+"navClear" = "Clear";
+"navNext" = "Next";
+"navPublic" = "Public";
+"navCancel" = "Cancel";
+"navFinish" = "Finish";
+"navFeedBack" = "FeedBack";
+"navSetting" = "Setting";
+"navEdit" = "Edit";
+
+// DTabBarViewController
+"tabHome" = "Home";
+"tabCollection" = "Collection";
+
+
+// DHomeViewController
+"homePhotos" = "Photos";
+"homeLikes" = "Likes";
+"homeCollections" = "Collections";
+"homeSetting" = "Setting";
+
+
 // DSettingViewController
 "settings" = "Settings";
 "language" = "Language";

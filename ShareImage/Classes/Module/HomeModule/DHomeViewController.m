@@ -55,12 +55,15 @@
     
     [[UIApplication sharedApplication].keyWindow addSubview:self.slideMenu];
 //    [self.slideMenu ll_closeSlideMenu];
+    
+    
+    self.title = kLocalizedLanguage(@"tabHome");
+//    [self.tabBarItem setTitle:kLocalizedLanguage(@"tabHome")];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeRightMenu;
     self.navRighItemType = DNavigationItemTypeRightSearch;
@@ -73,10 +76,6 @@
     
 }
 
-- (void)refreshLanguage{
-//    self.title = kLocalizedString(@"settings", @"");
-}
-
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -85,6 +84,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    
     self.slideMenu.hidden = YES;
     self.menuView.hidden = YES;
     if (self.slideMenu.ll_isOpen) {
