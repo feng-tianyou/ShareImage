@@ -57,10 +57,32 @@
 
 
 
+// DEditProfileViewController
+"edEdit Profile" = "Edit Profile";
+"edNot Set" = "Not Set";
+
+"edINFROMATION" = "INFROMATION";
+"edCONTACT" = "CONTACT";
+"edINCIDENTALS" = "INCIDENTALS";
+
+"edUser Name" = "User Name";
+"edFirst Name" = "First Name";
+"edLast Name" = "Last Name";
+"edEmail" = "Email";
+"edInstagram" = "Instagram";
+"edPersonal Website" = "Personal Website";
+"edLocation" = "Location";
+"edBio" = "Bio";
 
 
+// DEditProfileMsgController
+"edTip0" = "The Format Of The Mailbox Must Be Correct";
+"edTip1" = "By the English、Number、 _ Composition";
+"edInstagramHud" = "Instagram Username Is Contains Chinese!";
 
+"edPleaseInput!" = "Please Input!";
+"edUpdateSuccess!" = "Update Success!";
 
-
+"edInputYour" = "Input Your";
 
 

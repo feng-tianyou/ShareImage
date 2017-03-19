@@ -50,3 +50,55 @@
 "meFOLLOWERS" = "粉丝";
 "meFOLLOWING" = "关注";
 "meRecent Photos" = "最近照片";
+
+
+// DEditProfileViewController
+"edEdit Profile" = "编辑信息";
+"edNot Set" = "请设置";
+
+"edINFROMATION" = "基本信息";
+"edCONTACT" = "联系方式";
+"edINCIDENTALS" = "附带信息";
+
+"edUser Name" = "昵称";
+"edFirst Name" = "姓";
+"edLast Name" = "名";
+"edEmail" = "邮箱";
+"edInstagram" = "Instagram";
+"edPersonal Website" = "个人网站";
+"edLocation" = "地址";
+"edBio" = "简介";
+
+
+
+// DEditProfileMsgController
+"edTip0" = "请输入邮箱的正确格式";
+"edTip1" = "由英文、数字及下划线组成";
+"edInstagramHud" = "Instagram Username有中文";
+
+"edPleaseInput!" = "请输入!";
+"edUpdateSuccess!" = "更新成功!";
+
+"edInputYour" = "输入你的";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

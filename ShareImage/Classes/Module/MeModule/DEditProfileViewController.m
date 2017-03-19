@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Edit Profile";
+    self.title = kLocalizedLanguage(@"edEdit Profile");
     self.navLeftItemType = DNavigationItemTypeBack;
     
     [self setupSubViews];
@@ -57,7 +57,7 @@
 
 - (NSString *)changeContentWith:(NSString *)content{
     NSString *str = [content copy];
-    str = str.length > 0 ? str : @"Not Set";
+    str = str.length > 0 ? str : kLocalizedLanguage(@"edNot Set");
     return str;
 }
 
@@ -128,13 +128,13 @@
     NSString *title = nil;
     switch (section) {
         case 0:
-            title = @"INFROMATION";
+            title = kLocalizedLanguage(@"edINFROMATION");
             break;
         case 1:
-            title = @"CONTACT";
+            title = kLocalizedLanguage(@"edCONTACT");
             break;
         case 2:
-            title = @"INCIDENTALS";
+            title = kLocalizedLanguage(@"edINCIDENTALS");
             break;
             
         default:
@@ -170,7 +170,7 @@
 
 - (NSArray *)titles{
     if (!_titles) {
-        _titles = @[@[@"User Name", @"First Name", @"Last Name"], @[@"Email", @"Instagram"], @[@"Personal Website", @"Location", @"Bio"]];
+        _titles = @[@[kLocalizedLanguage(@"edUser Name"), kLocalizedLanguage(@"edFirst Name"), kLocalizedLanguage(@"edLast Name")], @[kLocalizedLanguage(@"edEmail"), kLocalizedLanguage(@"edInstagram")], @[kLocalizedLanguage(@"edPersonal Website"), kLocalizedLanguage(@"edLocation"), kLocalizedLanguage(@"edBio")]];
     }
     return _titles;
 }

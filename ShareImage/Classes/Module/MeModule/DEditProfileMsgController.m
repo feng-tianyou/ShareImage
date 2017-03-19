@@ -99,9 +99,9 @@
     if (self.indexPatch.section == 1) {
         self.tipLabel.hidden = NO;
         if (self.indexPatch.row == 0) {
-            self.tipLabel.text = @"The Format Of The Mailbox Must Be Correct";
+            self.tipLabel.text = kLocalizedLanguage(@"edTip0");
         } else {
-            self.tipLabel.text = @"By the English、Number、 _ Composition";
+            self.tipLabel.text = kLocalizedLanguage(@"edTip1");
         }
     }
 }
@@ -143,7 +143,7 @@
                             if ([self.textField.text isContainsChinese]) {
                                 [SVProgressHUD setMinimumDismissTimeInterval:1.5];
                                 [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-                                [SVProgressHUD showErrorWithStatus:@"Instagram Username Is Contains Chinese!"];
+                                [SVProgressHUD showErrorWithStatus:kLocalizedLanguage(@"edInstagramHud")];
                                 return;
                             }
                             paramModel.instagram_username = self.textField.text;
@@ -181,7 +181,7 @@
         } else {
             [SVProgressHUD setMinimumDismissTimeInterval:1.5];
             [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-            [SVProgressHUD showErrorWithStatus:@"Please Input!"];
+            [SVProgressHUD showErrorWithStatus:kLocalizedLanguage(@"edPleaseInput!")];
         }
     }
 }
@@ -190,7 +190,7 @@
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-    [SVProgressHUD showSuccessWithStatus:@"Update Success!"];
+    [SVProgressHUD showSuccessWithStatus:kLocalizedLanguage(@"edUpdateSuccess!")];
     @weakify(self)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [NSThread sleepForTimeInterval:0.5];
@@ -210,7 +210,7 @@
         _textField.font = DSystemFontTitle;
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.textColor = DSystemColorBlack333333;
-        _textField.placeholder = [NSString stringWithFormat:@"Input Your %@", self.titleStr];
+        _textField.placeholder = [NSString stringWithFormat:@"%@ %@", kLocalizedLanguage(@"edInputYour"), self.titleStr];
         _textField.backgroundColor = [UIColor whiteColor];
     }
     return _textField;
@@ -242,7 +242,7 @@
         _textView = [[UITextView alloc] init];
         _textView.font = DSystemFontTitle;
         _textView.textColor = DSystemColorBlack333333;
-        _textView.placeholder = [NSString stringWithFormat:@"Input Your %@", self.titleStr];
+        _textView.placeholder = [NSString stringWithFormat:@"%@ %@", kLocalizedLanguage(@"edInputYour"), self.titleStr];
         _textView.backgroundColor = [UIColor whiteColor];
     }
     return _textView;
