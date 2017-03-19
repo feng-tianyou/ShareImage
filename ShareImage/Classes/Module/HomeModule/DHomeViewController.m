@@ -57,7 +57,7 @@
 //    [self.slideMenu ll_closeSlideMenu];
     
     
-    self.title = kLocalizedLanguage(@"tabHome");
+//    self.title = kLocalizedLanguage(@"tabHome");
 //    [self.tabBarItem setTitle:kLocalizedLanguage(@"tabHome")];
 }
 
