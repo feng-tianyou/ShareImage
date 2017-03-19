@@ -104,6 +104,11 @@
 "seCOLLECTIONS" = "COLLECTIONS";
 
 
+// DAboutViewController
+"abAbout" = "About";
+"abContact" = "Contact:";
+"abDeveloperWebsite" = "Developer Website:";
+"abUseAgreement" = "Use Agreement";
 
 
 

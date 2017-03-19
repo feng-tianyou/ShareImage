@@ -109,7 +109,11 @@
 "seUSERS" = "用户";
 "seCOLLECTIONS" = "分类";
 
-
+// DAboutViewController
+"abAbout" = "关于";
+"abContact" = "联系方式:";
+"abDeveloperWebsite" = "开发者网站:";
+"abUseAgreement" = "图享使用协议";
 
 
 

@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"About";
+    self.title = kLocalizedLanguage(@"abAbout");
     self.navLeftItemType = DNavigationItemTypeBack;
     self.view.backgroundColor = DSystemColorGrayF3F3F3;
     
@@ -42,18 +42,18 @@
     NSString *key = @"CFBundleShortVersionString";
     // 获取当前版本
     NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-    self.versionLabel.text = [NSString stringWithFormat:@"图享 %@", currentVersion];
+    self.versionLabel.text = [NSString stringWithFormat:@"%@ %@", @"图享", currentVersion];
     
-    self.emailLabel.text = @"联系方式: feng.daisuke@gmail.com";
+    self.emailLabel.text = [NSString stringWithFormat:@"%@ %@", kLocalizedLanguage(@"abContact"), @"feng.daisuke@gmail.com"];
     [self.emailLabel addKeyword:@"feng.daisuke@gmail.com" keywordColor:DSystemColorBlue33AACC];
     
-    self.developLabel.text = @"开发者网站: http://daisuke.cn";
+    self.developLabel.text = [NSString stringWithFormat:@"%@ %@", kLocalizedLanguage(@"abDeveloperWebsite"), @"http://daisuke.cn"];
     [self.developLabel addKeyword:@"http://daisuke.cn" keywordColor:DSystemColorBlue33AACC];
     
-    self.agreeLabel.text = @"图享使用协议";
-    [self.agreeLabel addKeyword:@"图享使用协议" keywordColor:DSystemColorBlue33AACC];
+    self.agreeLabel.text = kLocalizedLanguage(@"abUseAgreement");
+    [self.agreeLabel addKeyword:kLocalizedLanguage(@"abUseAgreement") keywordColor:DSystemColorBlue33AACC];
     
-    self.reservedLabel.text = @"Copyright© 2017 daisuke.cn All Rights Reserved";
+    self.reservedLabel.text = @"Copyright© 2017 DaiSuke All Rights Reserved.";
     
 }
 
@@ -94,9 +94,9 @@
     // ---
     
     self.reservedLabel.sd_layout
-    .bottomSpaceToView(self.view, 20)
-    .leftSpaceToView(self.view, 15)
-    .rightSpaceToView(self.view, 15)
+    .bottomSpaceToView(self.view, 10)
+    .leftSpaceToView(self.view, 10)
+    .rightSpaceToView(self.view, 10)
     .heightIs(20);
     
     self.agreeLabel.sd_layout
@@ -231,7 +231,7 @@
     if (!_reservedLabel) {
         _reservedLabel = [[UILabel alloc] init];
         _reservedLabel.textColor = DSystemColorBlackBBBBBB;
-        _reservedLabel.font = DSystemFontText;
+        _reservedLabel.font = DSystemFontDate;
         _reservedLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _reservedLabel;
