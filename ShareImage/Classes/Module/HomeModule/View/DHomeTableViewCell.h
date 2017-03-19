@@ -14,5 +14,6 @@
 
 @property (nonatomic, strong) DPhotosModel *photosModel;
 @property (nonatomic, copy) VoidBlock clickIconBlock;
+@property (nonatomic, copy) VoidBlock clickLikeBlock;
 
 @end

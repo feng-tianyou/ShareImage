@@ -105,6 +105,10 @@ static NSString *const cellID = @"homeCell";
     ExistActionDo(self.clickIconBlock, self.clickIconBlock());
 }
 
+- (void)clickLike{
+    ExistActionDo(self.clickLikeBlock, self.clickLikeBlock());
+}
+
 
 
 #pragma mark - getter & setter
@@ -152,6 +156,7 @@ static NSString *const cellID = @"homeCell";
         _likeLabel.iconName = @"common_btn_like_hight";
         _likeLabel.describeLabel.textColor = [UIColor whiteColor];
         _likeLabel.mode = HomeCellTipLabelRight;
+        [_likeLabel addTarget:self action:@selector(clickLike) forControlEvents:UIControlEventTouchUpInside];
     }
     return _likeLabel;
 }

@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, HomeCellTipLabelContentMode)
     HomeCellTipLabelRight
 };
 
-@interface DHomeCellTipLabel : UIView
+@interface DHomeCellTipLabel : UIControl
 
 @property (nonatomic, copy) NSString *iconName;
 @property (nonatomic, copy) NSString *describe;

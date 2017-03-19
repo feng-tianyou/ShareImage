@@ -129,7 +129,7 @@ static char* const noNoDataView_KEY = "DataView";
     self.noDataView = [[DNoDataView alloc] init];
     self.noDataView.titleLabel.text = @"Very Sorry\n No Datas You Want";
     [self.noDataView.refreshButton addTarget:self action:@selector(clickRefreshButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.noDataView setFrame:0 y:55 w:SCREEN_WIDTH h:SCREEN_HEIGHT - 55];
+    [self.noDataView setFrame:0 y:20 w:SCREEN_WIDTH h:SCREEN_HEIGHT - 20];
     [inView addSubview:self.noDataView];
     [inView bringSubviewToFront:self.noDataView];
 }
