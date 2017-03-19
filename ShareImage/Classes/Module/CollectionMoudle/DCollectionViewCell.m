@@ -38,7 +38,7 @@
         .topSpaceToView(self.contentView, 50)
         .leftEqualToView(self.contentView)
         .rightEqualToView(self.contentView)
-        .heightIs(30);
+        .autoHeightRatio(0);
         
         self.describleLabel.sd_layout
         .topSpaceToView(self.titleLabel, 10)
@@ -55,7 +55,7 @@
     _collection = collection;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:collection.cover_photo.urls.regular] placeholderImage:nil];
     self.titleLabel.text = [collection.title uppercaseString];
-    self.describleLabel.text = [NSString stringWithFormat:@"%@ photos", @(collection.total_photos)];
+    self.describleLabel.text = [NSString stringWithFormat:@"%@ %@", @(collection.total_photos), kLocalizedLanguage(@"colPhotos")];
 }
 
 - (UIImageView *)iconView{
@@ -71,6 +71,7 @@
         _titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:21.0];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.numberOfLines = 0;
     }
     return _titleLabel;
 }

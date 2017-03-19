@@ -210,7 +210,7 @@
     switch (selectIndex) {
         case 0:
         {
-            DCommonPhotoController *photoView = [[DCommonPhotoController alloc] initWithTitle:@"Photos" type:UserAPIManagerType];
+            DCommonPhotoController *photoView = [[DCommonPhotoController alloc] initWithTitle:kLocalizedLanguage(@"homePhotos") type:UserAPIManagerType];
             photoView.username = KGLOBALINFOMANAGER.accountInfo.username;
             [self.navigationController pushViewController:photoView animated:YES];
         }
@@ -224,7 +224,7 @@
         case 2:
         {
             // 喜欢的图片
-            DCommonPhotoController *likeView = [[DCommonPhotoController alloc] initWithTitle:@"Likes" type:UserAPIManagerLikePhotoType];
+            DCommonPhotoController *likeView = [[DCommonPhotoController alloc] initWithTitle:kLocalizedLanguage(@"homeLikes") type:UserAPIManagerLikePhotoType];
             likeView.username = KGLOBALINFOMANAGER.accountInfo.username;
             [self.navigationController pushViewController:likeView animated:YES];
         }

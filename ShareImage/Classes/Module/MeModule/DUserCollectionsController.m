@@ -28,7 +28,7 @@ static NSString * const cellID = @"userCollection";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = KGLOBALINFOMANAGER.accountInfo.username;
+    self.title = kLocalizedLanguage(@"homeCollections");
     self.navLeftItemType = DNavigationItemTypeBack;
     self.page = 1;
     [self getCollectionsData];

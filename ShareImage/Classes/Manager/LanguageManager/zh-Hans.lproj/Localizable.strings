@@ -83,9 +83,12 @@
 
 
 
+// DCollectionHeaderView
+"colFeatured" = "精选";
+"colCurated" = "策展";
 
-
-
+// DCollectionViewCell
+"colPhotos" = "张";
 
 
 

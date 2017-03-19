@@ -41,7 +41,7 @@
         _featuredBtn = [[UIButton alloc] init];
         _featuredBtn.backgroundColor = [UIColor clearColor];
         [_featuredBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_featuredBtn setTitle:@"Featured" forState:UIControlStateNormal];
+        [_featuredBtn setTitle:kLocalizedLanguage(@"colFeatured") forState:UIControlStateNormal];
         _featuredBtn.titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:15.0];
         [_featuredBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
     }
@@ -54,7 +54,7 @@
         _curatedBtn = [[UIButton alloc] init];
         _curatedBtn.backgroundColor = [UIColor clearColor];
         [_curatedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_curatedBtn setTitle:@"Curated" forState:UIControlStateNormal];
+        [_curatedBtn setTitle:kLocalizedLanguage(@"colCurated") forState:UIControlStateNormal];
         _curatedBtn.titleLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:15.0];
         [_curatedBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
     }

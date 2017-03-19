@@ -86,3 +86,23 @@
 "edInputYour" = "Input Your";
 
 
+
+// DCollectionHeaderView
+"colFeatured" = "Featured";
+"colCurated" = "Curated";
+
+// DCollectionViewCell
+"colPhotos" = "Photos";
+
+
+
+
+
+
+
+
+
+
+
+
+
