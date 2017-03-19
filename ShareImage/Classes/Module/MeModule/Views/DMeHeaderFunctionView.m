@@ -99,21 +99,21 @@
 #pragma mark - getter & setter
 - (DNumberButton *)photoBtn{
     if (!_photoBtn) {
-        _photoBtn = [[DNumberButton alloc] initWithDescrible:@"PHOTOS"];
+        _photoBtn = [[DNumberButton alloc] initWithDescrible:kLocalizedLanguage(@"mePHOTOS")];
     }
     return _photoBtn;
 }
 
 - (DNumberButton *)followersBtn{
     if (!_followersBtn) {
-        _followersBtn = [[DNumberButton alloc] initWithDescrible:@"FOLLOWERS"];
+        _followersBtn = [[DNumberButton alloc] initWithDescrible:kLocalizedLanguage(@"meFOLLOWERS")];
     }
     return _followersBtn;
 }
 
 - (DNumberButton *)followingBtn{
     if (!_followingBtn) {
-        _followingBtn = [[DNumberButton alloc] initWithDescrible:@"FOLLOWINGS"];
+        _followingBtn = [[DNumberButton alloc] initWithDescrible:kLocalizedLanguage(@"meFOLLOWING")];
     }
     return _followingBtn;
 }

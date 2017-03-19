@@ -102,20 +102,20 @@
     switch (index) {
         case 0:
         {
-            DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:@"PHOTOS" type:UserAPIManagerType];
+            DCommonPhotoController *photoController = [[DCommonPhotoController alloc] initWithTitle:kLocalizedLanguage(@"mePHOTOS") type:UserAPIManagerType];
             photoController.username = KGLOBALINFOMANAGER.accountInfo.username;
             [self.navigationController pushViewController:photoController animated:YES];
         }
             break;
         case 1:
         {
-            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWERS" userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowersType];
+            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:kLocalizedLanguage(@"meFOLLOWERS") userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowersType];
             [self.navigationController pushViewController:userController animated:YES];
         }
             break;
         case 2:
         {
-            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:@"FOLLOWING" userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowingType];
+            DUserListViewController *userController = [[DUserListViewController alloc] initWithTitle:kLocalizedLanguage(@"meFOLLOWING") userName:KGLOBALINFOMANAGER.accountInfo.username type:FollowingType];
             [self.navigationController pushViewController:userController animated:YES];
         }
             break;
@@ -152,9 +152,15 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         UILabel *label = [[UILabel alloc] init];
-        label.text = @"   Recent Photos";
         label.backgroundColor = DSystemColorGrayF3F3F3;
         label.font = DSystemFontText;
+        NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        //第一行头缩进
+        [style setFirstLineHeadIndent:15.0];
+        [label setLineBreakMode:NSLineBreakByTruncatingTail];
+        [label sizeToFit];
+        NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:kLocalizedLanguage(@"meRecent Photos") attributes:@{NSParagraphStyleAttributeName : style}];
+        label.attributedText = attrText;
         return label;
     }
     return nil;
