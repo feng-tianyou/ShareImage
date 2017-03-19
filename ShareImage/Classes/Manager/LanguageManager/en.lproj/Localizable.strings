@@ -95,11 +95,13 @@
 "colPhotos" = "Photos";
 
 
+// DSearchViewController
+"seSearch..." = "Search...";
 
-
-
-
-
+// DSearchSelectItemView
+"sePHOTOS" = "PHOTOS";
+"seUSERS" = "USERS";
+"seCOLLECTIONS" = "COLLECTIONS";
 
 
 

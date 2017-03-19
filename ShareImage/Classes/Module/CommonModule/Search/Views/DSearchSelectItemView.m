@@ -84,7 +84,7 @@
     if (!_photoBtn) {
         _photoBtn = [[UIButton alloc] init];
         _photoBtn.backgroundColor = [UIColor clearColor];
-        [_photoBtn setTitle:@"PHOTOS" forState:UIControlStateNormal];
+        [_photoBtn setTitle:kLocalizedLanguage(@"sePHOTOS") forState:UIControlStateNormal];
         [_photoBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_photoBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _photoBtn.tag = 1;
@@ -96,7 +96,7 @@
     if (!_userBtn) {
         _userBtn = [[UIButton alloc] init];
         _userBtn.backgroundColor = [UIColor clearColor];
-        [_userBtn setTitle:@"USERS" forState:UIControlStateNormal];
+        [_userBtn setTitle:kLocalizedLanguage(@"seUSERS") forState:UIControlStateNormal];
         [_userBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_userBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _userBtn.tag = 2;
@@ -108,7 +108,7 @@
     if (!_collectionBtn) {
         _collectionBtn = [[UIButton alloc] init];
         _collectionBtn.backgroundColor = [UIColor clearColor];
-        [_collectionBtn setTitle:@"COLLECTIONS" forState:UIControlStateNormal];
+        [_collectionBtn setTitle:kLocalizedLanguage(@"seCOLLECTIONS") forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
         _collectionBtn.tag = 3;

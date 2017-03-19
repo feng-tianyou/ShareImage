@@ -56,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Search";
+
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
     
@@ -199,7 +199,6 @@
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
     _searchType = PhotoSearchType;
-    self.title = @"PHOTOS";
     [self getCommonDataWithPage:1];
 }
 
@@ -210,7 +209,6 @@
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
     _searchType = UserSearchType;
-    self.title = @"USERS";
     [self getCommonDataWithPage:1];
 }
 
@@ -221,7 +219,6 @@
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
     _searchType = CollectionSearchType;
-    self.title = @"COLLECTIONS";
     [self getCommonDataWithPage:1];
 }
 
@@ -411,7 +408,7 @@
 - (DSearchBar *)searchBar{
     if (!_searchBar) {
         _searchBar = [[DSearchBar alloc] init];
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"Search..." attributes:@{NSForegroundColorAttributeName:DSystemColorGray999999}];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:kLocalizedLanguage(@"seSearch...") attributes:@{NSForegroundColorAttributeName:DSystemColorGray999999}];
         _searchBar.searchTextField.attributedPlaceholder = attr;
         _searchBar.searchTextField.textColor = DSystemColorGray999999;
         _searchBar.searchTextField.font = DSystemFontText;

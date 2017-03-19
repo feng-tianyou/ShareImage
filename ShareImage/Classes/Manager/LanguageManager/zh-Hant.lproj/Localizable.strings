@@ -101,7 +101,13 @@
 
 
 
+// DSearchViewController
+"seSearch..." = "搜索...";
 
+// DSearchSelectItemView
+"sePHOTOS" = "图片";
+"seUSERS" = "用户";
+"seCOLLECTIONS" = "分类";
 
 
 
