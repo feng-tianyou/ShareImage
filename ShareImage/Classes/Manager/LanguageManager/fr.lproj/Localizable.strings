@@ -4,8 +4,108 @@
  
  Created by FTY on 2017/3/18.
  Copyright © 2017年 DaiSuke. All rights reserved.
+ 
+ 法语
+ 
  */
 
 
 
-"settings" = "法语设置";
+// DNavigationTool
+"navBack" = "Retour";
+"navHome" = "Maison";
+"navBackHome" = "Maison";
+"navSend" = "Transmettre";
+"navSave" = "Sauvegarder";
+"navClear" = "Supprimer";
+"navNext" = "Suivant";
+"navPublic" = "Libération";
+"navCancel" = "Annulé";
+"navFinish" = "Complet";
+"navFeedBack" = "Réaction";
+"navSetting" = "Installer";
+"navEdit" = "éditer";
+
+
+// DTabBarViewController
+"tabHome" = "Maison";
+"tabCollection" = "Collection";
+
+// DHomeViewController
+"homePhotos" = "Photos";
+"homeLikes" = "Favorites";
+"homeCollections" = "Collections";
+"homeSetting" = "Installer";
+
+
+// DSettingViewController
+"settings" = "Installer";
+"language" = "Langue";
+"night" = "Mode Nuit";
+"give Evaluation" = "Donnez leur évaluation";
+"clear Storage" = "Supprimer";
+"about" = "Sur";
+
+"log Out" = "Quitter";
+"clean up!" = "Effacer complété!";
+
+// DMeViewController
+"mePHOTOS" = "PHOTOS";
+"meFOLLOWERS" = "Ventilateurs";
+"meFOLLOWING" = "Attentions";
+"meRecent Photos" = "Dernières photos";
+
+
+// DEditProfileViewController
+"edEdit Profile" = "Modifier les informations";
+"edNot Set" = "Ensemble";
+
+"edINFROMATION" = "INFROMATION";
+"edCONTACT" = "CONTACT";
+"edINCIDENTALS" = "INCIDENTALS";
+
+"edUser Name" = "Surnom";
+"edFirst Name" = "Patronyme";
+"edLast Name" = "Nom";
+"edEmail" = "Boîte aux lettres";
+"edInstagram" = "Instagram";
+"edPersonal Website" = "Personal Website";
+"edLocation" = "Location";
+"edBio" = "Brève introduction";
+
+
+
+// DEditProfileMsgController
+"edTip0" = "S'il vous plaît entrer le format de boîte aux lettres correcte";
+"edTip1" = "Par les Anglais, les chiffres et caractères de soulignement";
+"edInstagramHud" = "Nom d'utilisateur Instagram en chinois";
+
+"edPleaseInput!" = "S'il vous plaît entrer!";
+"edUpdateSuccess!" = "Mettre à jour réussie!";
+
+"edInputYour" = "Entrez Votre";
+
+
+
+// DCollectionHeaderView
+"colFeatured" = "Choix";
+"colCurated" = "Curatorial";
+
+// DCollectionViewCell
+"colPhotos" = "Photos";
+
+// DSearchViewController
+"seSearch..." = "Recherche...";
+
+// DSearchSelectItemView
+"sePHOTOS" = "PHOTOS";
+"seUSERS" = "USERS";
+"seCOLLECTIONS" = "COLLECTIONS";
+
+
+
+// DAboutViewController
+"abAbout" = "Sur";
+"abContact" = "Contact:";
+"abDeveloperWebsite" = "Personal Website:";
+"abUseAgreement" = "TOShare Convention d'utilisation";
