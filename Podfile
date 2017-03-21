@@ -10,7 +10,7 @@ pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'YYKit'
 pod 'TZImagePickerController'
-pod 'MWPhotoBrowser'
+#pod 'MWPhotoBrowser'
 pod 'SDAutoLayout'
 
 # U-Share SDK UI模块（分享面板，建议添加）

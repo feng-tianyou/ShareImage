@@ -74,6 +74,9 @@
 		7E1B159F1E759148001DFF28 /* DEditProfileMsgController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B159E1E759148001DFF28 /* DEditProfileMsgController.m */; };
 		7E2C89581E6EE8F400D90089 /* DMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */; };
 		7E2C895B1E6EEC0600D90089 /* DMeHeaderFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */; };
+		7E31E0341E816DF900FD3CE4 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31E02E1E816DF900FD3CE4 /* SDBrowserImageView.m */; };
+		7E31E0351E816DF900FD3CE4 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31E0301E816DF900FD3CE4 /* SDPhotoBrowser.m */; };
+		7E31E0361E816DF900FD3CE4 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31E0331E816DF900FD3CE4 /* SDWaitingView.m */; };
 		7E5503EB1E6BFC4C00CB0D19 /* DCustomNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */; };
 		7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873741E559DF700213B1B /* DOAuthParamModel.m */; };
 		7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7873791E55AAE300213B1B /* DOAuthAccountModel.m */; };
@@ -398,6 +401,13 @@
 		7E2C89571E6EE8F400D90089 /* DMeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeHeaderView.m; sourceTree = "<group>"; };
 		7E2C89591E6EEC0600D90089 /* DMeHeaderFunctionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeHeaderFunctionView.h; sourceTree = "<group>"; };
 		7E2C895A1E6EEC0600D90089 /* DMeHeaderFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeHeaderFunctionView.m; sourceTree = "<group>"; };
+		7E31E02D1E816DF900FD3CE4 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		7E31E02E1E816DF900FD3CE4 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		7E31E02F1E816DF900FD3CE4 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		7E31E0301E816DF900FD3CE4 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		7E31E0311E816DF900FD3CE4 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		7E31E0321E816DF900FD3CE4 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		7E31E0331E816DF900FD3CE4 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		7E5503E91E6BFC4C00CB0D19 /* DCustomNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCustomNavigationView.h; sourceTree = "<group>"; };
 		7E5503EA1E6BFC4C00CB0D19 /* DCustomNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCustomNavigationView.m; sourceTree = "<group>"; };
 		7E7873731E559DF700213B1B /* DOAuthParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOAuthParamModel.h; sourceTree = "<group>"; };
@@ -968,6 +978,20 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		7E31E02C1E816DF900FD3CE4 /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				7E31E02D1E816DF900FD3CE4 /* SDBrowserImageView.h */,
+				7E31E02E1E816DF900FD3CE4 /* SDBrowserImageView.m */,
+				7E31E02F1E816DF900FD3CE4 /* SDPhotoBrowser.h */,
+				7E31E0301E816DF900FD3CE4 /* SDPhotoBrowser.m */,
+				7E31E0311E816DF900FD3CE4 /* SDPhotoBrowserConfig.h */,
+				7E31E0321E816DF900FD3CE4 /* SDWaitingView.h */,
+				7E31E0331E816DF900FD3CE4 /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		7EAFD4B71E56D7A700BBA972 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1471,6 +1495,7 @@
 		7ED810101E55550100954DAF /* ThirtPart */ = {
 			isa = PBXGroup;
 			children = (
+				7E31E02C1E816DF900FD3CE4 /* SDPhotoBrowser */,
 				07ECEBEF1E6555B700BCF52A /* LLSlideMenu */,
 				7ED810111E55550100954DAF /* EGOCache */,
 				7ED810141E55550100954DAF /* lottie-ios */,
@@ -2315,6 +2340,7 @@
 				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
 				7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */,
 				7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */,
+				7E31E0341E816DF900FD3CE4 /* SDBrowserImageView.m in Sources */,
 				7ED810E51E55550100954DAF /* DTabBarButton.m in Sources */,
 				7ED811341E55550100954DAF /* LOTShapeFill.m in Sources */,
 				7ED810E01E55550100954DAF /* DNavigationViewController.m in Sources */,
@@ -2350,6 +2376,7 @@
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
 				0701B8B21E7BEF510036016F /* DLanguageViewController.m in Sources */,
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
+				7E31E0351E816DF900FD3CE4 /* SDPhotoBrowser.m in Sources */,
 				7EAFD4AB1E56AEDA00BBA972 /* DPhotosNetwork.m in Sources */,
 				070A8B381E5D7D4300CE41E2 /* DPhotoCollectionModel.m in Sources */,
 				07ECEBFD1E6555B700BCF52A /* LLSlideMenu.m in Sources */,
@@ -2391,6 +2418,7 @@
 				7E2C89581E6EE8F400D90089 /* DMeHeaderView.m in Sources */,
 				7EAFD4BE1E56DFFC00BBA972 /* DHomeTableViewCell.m in Sources */,
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
+				7E31E0361E816DF900FD3CE4 /* SDWaitingView.m in Sources */,
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,
 				07ECEBFA1E6555B700BCF52A /* LLAnimationManager.m in Sources */,
