@@ -13,8 +13,8 @@
 #import "DLanguageViewController.h"
 #import "DNavigationViewController.h"
 
-#import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <SDWebImage/SDImageCache.h>
 
 
 @interface DSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -53,7 +53,7 @@
 - (void)setupData{
     self.navLeftItemType = DNavigationItemTypeBack;
     
-    [self refreshCacheData];
+//    [self refreshCacheData];
     [self refreshLanguage];
    
 }
@@ -67,12 +67,12 @@
     .bottomEqualToView(self.view);
 }
 
-- (void)refreshCacheData{
-    NSInteger size = [[SDImageCache sharedImageCache] getSize];
-    NSInteger sizeF = size / 1024 / 1024;
-    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
-    [self.tableView reloadData];
-}
+//- (void)refreshCacheData{
+//    NSInteger size = [[SDImageCache sharedImageCache] getSize];
+//    NSInteger sizeF = size / 1024 / 1024;
+//    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
+//    [self.tableView reloadData];
+//}
 
 - (void)clickLogout{
     [self logoutByType:LogoutTypeForOther];
@@ -116,8 +116,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DSettingTableViewCell *cell = [DSettingTableViewCell cellWithTableView:tableView];
     
-    NSArray *titleArr = self.titles[indexPath.section];
-    [cell setLeftTitle:titleArr[indexPath.row] content:self.cacheSizeStr indexPath:indexPath];
+    if (self.titles.count > indexPath.section) {
+        NSArray *titleArr = self.titles[indexPath.section];
+        [cell setLeftTitle:titleArr[indexPath.row] indexPath:indexPath];
+    }
     
     return cell;
 }
@@ -180,7 +182,7 @@
                     [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
                     [SVProgressHUD showSuccessWithStatus:kLocalizedLanguage(@"clean up!")];
                     @strongify(self)
-                    [self refreshCacheData];
+                    [self.tableView reloadData];
                 }];
             } else {
                 DAboutViewController *about = [[DAboutViewController alloc] init];

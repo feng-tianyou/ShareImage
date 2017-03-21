@@ -18,6 +18,6 @@
 @property (nonatomic, strong) UIImageView *arrowView;
 @property (nonatomic, strong) UILabel *contentLabel;
 
-- (void)setLeftTitle:(NSString *)leftTitle content:(NSString *)content indexPath:(NSIndexPath *)indexPath;
+- (void)setLeftTitle:(NSString *)leftTitle indexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "DSettingTableViewCell.h"
+#import <SDWebImage/SDImageCache.h>
 
 
 static NSString *const cellID = @"DSettingTableViewCell";
@@ -72,7 +73,7 @@ static NSString *const cellID = @"DSettingTableViewCell";
 }
 
 
-- (void)setLeftTitle:(NSString *)leftTitle content:(NSString *)content indexPath:(NSIndexPath *)indexPath{
+- (void)setLeftTitle:(NSString *)leftTitle indexPath:(NSIndexPath *)indexPath{
     self.leftTitleLabel.text = leftTitle;
     
     switch (indexPath.section) {
@@ -102,7 +103,9 @@ static NSString *const cellID = @"DSettingTableViewCell";
                 self.arrowView.hidden = YES;
                 self.contentLabel.hidden = NO;
                 self.rightSwitch.hidden = YES;
-                self.contentLabel.text = content;
+                NSInteger size = [[SDImageCache sharedImageCache] getSize];
+                NSInteger sizeF = size / 1024 / 1024;
+                self.contentLabel.text = [NSString stringWithFormat:@"%@M", @(sizeF)];
             } else {
                 self.arrowView.hidden = NO;
                 self.contentLabel.hidden = YES;
