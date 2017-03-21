@@ -10,6 +10,7 @@
 
 @interface DCustomNavigationView : UIView
 
+@property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UIButton *navLeftItem;
 @property (nonatomic, strong) UIButton *navRightItem;
 @property (nonatomic, strong) UIButton *navTitleItem;

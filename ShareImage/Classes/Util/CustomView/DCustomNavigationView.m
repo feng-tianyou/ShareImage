@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        [self insertSubview:self.bgView atIndex:0];
         [self addSubview:self.navLeftItem];
         [self addSubview:self.navTitleItem];
         [self addSubview:self.navRightItem];
@@ -25,6 +26,8 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
+    self.bgView.frame = self.bounds;
     
     CGSize leftimgSize = self.navLeftItem.imageView.image.size;
     self.navLeftItem.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 100-leftimgSize.width - 10);
@@ -48,6 +51,14 @@
 
 
 #pragma mark - getter & setter
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] init];
+        _bgView.backgroundColor = [UIColor clearColor];
+    }
+    return _bgView;
+}
+
 - (UIButton *)navLeftItem{
     if (!_navLeftItem) {
         _navLeftItem = [[UIButton alloc] init];

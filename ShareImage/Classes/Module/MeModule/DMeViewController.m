@@ -178,10 +178,16 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y > 61) {
-        self.navigationView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
-    } else {
-        self.navigationView.backgroundColor = [UIColor clearColor];
+    if(scrollView.contentOffset.y > 61){
+        CGFloat alpha = scrollView.contentOffset.y - 61;
+        alpha = alpha/10;
+        if(alpha > 1.0){
+            alpha = 1.0;
+        }
+        self.navigationView.bgView.backgroundColor = DSystem2AlphaWhiteColor8;
+        self.navigationView.bgView.alpha = alpha;
+    } else{
+        self.navigationView.bgView.backgroundColor = [UIColor clearColor];
     }
 }
 

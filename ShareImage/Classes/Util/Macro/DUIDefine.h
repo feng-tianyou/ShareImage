@@ -35,6 +35,10 @@
 #define DUIColorFromRGB(_color, _alpha)  [DCommonTool TColor:_color colorAlpha:_alpha]
 
 
+// alphaColor
+#define DSystem2AlphaWhiteColor8      [UIColor colorWithWhite:0.2 alpha:0.8]
+
+
 // gray
 #define DSystemColorGrayE0E0E0      DUIColorFromRGB16(0xe0e0e0)
 #define DSystemColorGrayF3F3F3      DUIColorFromRGB16(0xf3f3f3)
