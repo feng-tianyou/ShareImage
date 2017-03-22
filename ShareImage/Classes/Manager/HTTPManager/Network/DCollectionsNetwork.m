@@ -10,7 +10,7 @@
 
 @implementation DCollectionsNetwork
 #pragma mark 单例实现初始化
-+(DCollectionsNetwork *)shareEngine
++ (DCollectionsNetwork *)shareEngine
 {
     static DCollectionsNetwork *_engine = nil;
     static dispatch_once_t onceToken;
@@ -155,14 +155,14 @@
                                 onError:(ErrorBlock)errorBlock{
     if (paramModel.page == 1) {
         // 读取缓存
-        NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,self.userId];
+        NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,@(paramModel.collection_id)];
         [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
     }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/%@/photos",@(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         if (paramModel.page == 1) {
             // 缓存
-            NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,self.userId];
+            NSString *cachekey = [NSString stringWithFormat:kCacheCollectionPhotosByUid,@(paramModel.collection_id)];
             [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
         }
         ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));
@@ -184,14 +184,14 @@
                                        onError:(ErrorBlock)errorBlock{
     if (paramModel.page == 1) {
         // 读取缓存
-        NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,self.userId];
+        NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,@(paramModel.collection_id)];
         [self readCacheDataWithCacheKey:cachekey succeededBlock:succeededBlock];
     }
     NSDictionary *dicParam = [paramModel getParamDicForGetCollections];
     [self opGetWithUrlPath:[NSString stringWithFormat:@"/collections/curated/%@/photos", @(paramModel.collection_id)] params:dicParam needUUID:NO needToken:YES onSucceeded:^(id responseObject) {
         if (paramModel.page == 1) {
             // 缓存
-            NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,self.userId];
+            NSString *cachekey = [NSString stringWithFormat:kCacheCuratedCollectionPhotosByUid,@(paramModel.collection_id)];
             [self saveDataWithData:responseObject cacheKey:cachekey cacheTime:kCacheTimeForOneWeek];
         }
         ExistActionDo(succeededBlock, succeededBlock(responseObject, NO));

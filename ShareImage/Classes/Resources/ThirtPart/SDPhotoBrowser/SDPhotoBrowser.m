@@ -38,6 +38,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = SDPhotoBrowserBackgrounColor;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     }
     return self;
 }
@@ -52,6 +53,7 @@
 
 - (void)dealloc
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [[UIApplication sharedApplication].keyWindow removeObserver:self forKeyPath:@"frame"];
 }
 

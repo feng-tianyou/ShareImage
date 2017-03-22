@@ -20,10 +20,12 @@
 #import "DPhotoManager.h"
 
 #import <MJRefresh/MJRefresh.h>
+#import "SDPhotoBrowser.h"
+#import <SDWebImage/UIImage+GIF.h>
 
 static NSString * const cellID = @"collectionPhotos";
 
-@interface DCommonPhotoController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DCommonPhotoController ()<UICollectionViewDelegate, UICollectionViewDataSource, SDPhotoBrowserDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -57,12 +59,14 @@ static NSString * const cellID = @"collectionPhotos";
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeBack;
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [self setupSubViews];
     [self getPhotosData];
 }
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    [self setupSubViews];
+    
 }
 
 #pragma mark - navEvent
@@ -161,10 +165,39 @@ static NSString * const cellID = @"collectionPhotos";
 //        self.manager  = [DPhotoManager manager];
 //        [self.manager photoPreviewWithPhotoUrls:self.photoUrls currentIndex:indexPath.row currentViewController:self];
         
-        DSwipeViewController *swip = [[DSwipeViewController alloc] initWithTitle:self.navTitle photoModels:self.photos index:indexPath.row];
-        [self.navigationController pushViewController:swip animated:YES];
+//        DSwipeViewController *swip = [[DSwipeViewController alloc] initWithTitle:self.navTitle photoModels:self.photos index:indexPath.row];
+//        [self.navigationController pushViewController:swip animated:YES];
+        
+        SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+        browser.sourceImagesContainerView = self.collectionView; // 原图的父控件
+        browser.imageCount = self.photos.count; // 图片总数
+        browser.currentImageIndex = indexPath.row;
+        browser.delegate = self;
+        [browser show];
     }
+    
+    
 }
+
+#pragma mark - SDPhotoBrowserDelegate
+// 返回临时占位图片（即原来的小图）
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
+{
+//    DPhotosModel *photo = self.photos[index];
+    // 不建议用此种方式获取小图，这里只是为了简单实现展示而已
+    DCommonPhotosCell *cell = (DCommonPhotosCell *)[self collectionView:self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    
+    return cell.iconView.image;
+}
+
+
+// 返回高质量图片的url
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
+{
+    DPhotosModel *photo = self.photos[index];
+    return [NSURL URLWithString:photo.urls.regular];
+}
+
 
 #pragma mark - requet
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
@@ -213,10 +246,10 @@ static NSString * const cellID = @"collectionPhotos";
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         //设置布局方向为垂直流布局
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.minimumInteritemSpacing = 5.0;
-        layout.minimumLineSpacing = 5.0;
+        layout.minimumInteritemSpacing = 3.0;
+        layout.minimumLineSpacing = 3.0;
         //设置每个item的大小
-        CGFloat wh = (SCREEN_WIDTH - 15)/4;
+        CGFloat wh = (SCREEN_WIDTH - 9)/4;
         layout.itemSize = CGSizeMake(wh, 120);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.delegate = self;

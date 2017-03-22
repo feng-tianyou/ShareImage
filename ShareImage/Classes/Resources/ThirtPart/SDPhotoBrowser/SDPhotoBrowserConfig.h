@@ -31,7 +31,7 @@ typedef enum {
 #define SDPhotoBrowserHideImageAnimationDuration 0.4f
 
 // 图片下载进度指示进度显示样式（SDWaitingViewModeLoopDiagram 环形，SDWaitingViewModePieDiagram 饼型）
-#define SDWaitingViewProgressMode SDWaitingViewModeLoopDiagram
+#define SDWaitingViewProgressMode SDWaitingViewModePieDiagram
 
 // 图片下载进度指示器背景色
 #define SDWaitingViewBackgroundColor [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]

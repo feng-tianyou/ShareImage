@@ -40,7 +40,7 @@
 - (void)setPhotoModel:(DPhotosModel *)photoModel{
     _photoModel = photoModel;
     
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.regular] placeholderImage:nil];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.thumb] placeholderImage:nil];
 }
 
 @end
