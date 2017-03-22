@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "SDPhotoBrowserConfig.h"
 
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @implementation SDBrowserImageView
 {
     __weak SDWaitingView *_waitingView;
@@ -94,7 +96,7 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     SDWaitingView *waiting = [[SDWaitingView alloc] init];
-    waiting.bounds = CGRectMake(0, 0, 100, 100);
+    waiting.bounds = CGRectMake(0, 0, 50, 50);
     waiting.mode = SDWaitingViewProgressMode;
     _waitingView = waiting;
     [self addSubview:waiting];
@@ -110,17 +112,21 @@
         
         
         if (error) {
-            UILabel *label = [[UILabel alloc] init];
-            label.bounds = CGRectMake(0, 0, 160, 30);
-            label.center = CGPointMake(imageViewWeak.bounds.size.width * 0.5, imageViewWeak.bounds.size.height * 0.5);
-            label.text = @"图片加载失败";
-            label.font = [UIFont systemFontOfSize:16];
-            label.textColor = [UIColor whiteColor];
-            label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
-            label.layer.cornerRadius = 5;
-            label.clipsToBounds = YES;
-            label.textAlignment = NSTextAlignmentCenter;
-            [imageViewWeak addSubview:label];
+//            UILabel *label = [[UILabel alloc] init];
+//            label.bounds = CGRectMake(0, 0, 160, 30);
+//            label.center = CGPointMake(imageViewWeak.bounds.size.width * 0.5, imageViewWeak.bounds.size.height * 0.5);
+//            label.text = @"图片加载失败";
+//            label.font = [UIFont systemFontOfSize:16];
+//            label.textColor = [UIColor whiteColor];
+//            label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+//            label.layer.cornerRadius = 5;
+//            label.clipsToBounds = YES;
+//            label.textAlignment = NSTextAlignmentCenter;
+//            [imageViewWeak addSubview:label];
+            [SVProgressHUD setMaximumDismissTimeInterval:1.5];
+            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+            [SVProgressHUD showErrorWithStatus:@"图片加载失败"];
+            
         } else {
             _scrollImageView.image = image;
             [_scrollImageView setNeedsDisplay];
@@ -230,7 +236,9 @@
     [_waitingView removeFromSuperview];
 }
 
-
+- (void)dealloc{
+    [SVProgressHUD dismiss];
+}
 
 
 @end

@@ -46,12 +46,14 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     self.page = 1;
     self.navRighItemType = DNavigationItemTypeRightSearch;
     self.headerView.featuredBtn.selected = YES;
+    
+    [self setupSubViews];
     [self getFeaturedCollectionsData];
 }
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    [self setupSubViews];
+    
 }
 
 
