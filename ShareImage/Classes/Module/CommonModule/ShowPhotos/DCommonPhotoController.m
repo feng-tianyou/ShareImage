@@ -18,6 +18,7 @@
 #import "DPhotosModel.h"
 
 #import "DPhotoManager.h"
+#import "DShareManager.h"
 
 #import <MJRefresh/MJRefresh.h>
 #import "SDPhotoBrowser.h"
@@ -204,6 +205,7 @@ static NSString * const cellID = @"collectionPhotos";
         case 0:
         {
             DLog(@"0==%@", photo.pid);
+            [DShareManager shareUrlForAllPlatformByTitle:@"分享图片" content:@"分享图片" shareUrl:photo.urls.regular parentController:self];
         }
             break;
         case 1:
