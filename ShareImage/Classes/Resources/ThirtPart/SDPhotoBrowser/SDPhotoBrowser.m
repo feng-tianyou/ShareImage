@@ -10,16 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
- 
-//  ============在这里方便配置样式相关设置===========
-
-//                      ||
-//                      ||
-//                      ||
-//                     \\//
-//                      \/
-
 #import "SDPhotoBrowserConfig.h"
+
 
 //  =============================================
 
@@ -36,6 +28,7 @@
     UIButton *_shareButton;
     UIButton *_likeButton;
     UIButton *_downloadButton;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -119,15 +112,24 @@
 
 #pragma mark - event
 - (void)clickShareImage{
-    
+    int index = _scrollView.contentOffset.x / _scrollView.bounds.size.width;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoBrowser:didSelectButtonIndex:imageIndex:)]) {
+        [self.delegate photoBrowser:self didSelectButtonIndex:0 imageIndex:index];
+    }
 }
 
 - (void)clickLike{
-    
+    int index = _scrollView.contentOffset.x / _scrollView.bounds.size.width;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoBrowser:didSelectButtonIndex:imageIndex:)]) {
+        [self.delegate photoBrowser:self didSelectButtonIndex:1 imageIndex:index];
+    }
 }
 
 - (void)clickDdownload{
-    
+    int index = _scrollView.contentOffset.x / _scrollView.bounds.size.width;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoBrowser:didSelectButtonIndex:imageIndex:)]) {
+        [self.delegate photoBrowser:self didSelectButtonIndex:2 imageIndex:index];
+    }
 }
 
 

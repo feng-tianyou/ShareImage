@@ -198,6 +198,30 @@ static NSString * const cellID = @"collectionPhotos";
     return [NSURL URLWithString:photo.urls.regular];
 }
 
+- (void)photoBrowser:(SDPhotoBrowser *)browser didSelectButtonIndex:(NSInteger)buttonIndex imageIndex:(NSInteger)imageIndex{
+    DPhotosModel *photo = self.photos[imageIndex];
+    switch (buttonIndex) {
+        case 0:
+        {
+            DLog(@"0==%@", photo.pid);
+        }
+            break;
+        case 1:
+        {
+            DLog(@"1==%@", photo.pid);
+        }
+            break;
+        case 2:
+        {
+            DLog(@"2==%@", photo.pid);
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 #pragma mark - requet
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
