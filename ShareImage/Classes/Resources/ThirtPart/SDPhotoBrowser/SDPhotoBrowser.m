@@ -31,6 +31,11 @@
     UIButton *_saveButton;
     UIActivityIndicatorView *_indicatorView;
     BOOL _willDisappear;
+    
+    UIView *_bottomView;
+    UIButton *_shareButton;
+    UIButton *_likeButton;
+    UIButton *_downloadButton;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -74,17 +79,58 @@
 //    _indexLabel = indexLabel;
 //    [self addSubview:indexLabel];
     
-    // 2.保存按钮
-    UIButton *saveButton = [[UIButton alloc] init];
-    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
-    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
-    saveButton.layer.cornerRadius = 5;
-    saveButton.clipsToBounds = YES;
-    [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
-    _saveButton = saveButton;
-    [self addSubview:saveButton];
+//    // 2.保存按钮
+//    UIButton *saveButton = [[UIButton alloc] init];
+//    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
+//    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
+//    saveButton.layer.cornerRadius = 5;
+//    saveButton.clipsToBounds = YES;
+//    [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
+//    _saveButton = saveButton;
+//    [self addSubview:saveButton];
+    
+    UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = DSystem2AlphaWhiteColor8;
+    _bottomView = bottomView;
+    [self addSubview:bottomView];
+    
+    UIButton *shareButton = [[UIButton alloc] init];
+    [shareButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(clickShareImage) forControlEvents:UIControlEventTouchUpInside];
+    _shareButton = shareButton;
+    [bottomView addSubview:shareButton];
+    
+    UIButton *likeButton = [[UIButton alloc] init];
+    [likeButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [likeButton addTarget:self action:@selector(clickLike) forControlEvents:UIControlEventTouchUpInside];
+    _likeButton = likeButton;
+    [bottomView addSubview:likeButton];
+    
+    UIButton *downloadButton = [[UIButton alloc] init];
+    [downloadButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [downloadButton addTarget:self action:@selector(clickDdownload) forControlEvents:UIControlEventTouchUpInside];
+    _downloadButton = downloadButton;
+    [bottomView addSubview:downloadButton];
+    
 }
+
+
+
+#pragma mark - event
+- (void)clickShareImage{
+    
+}
+
+- (void)clickLike{
+    
+}
+
+- (void)clickDdownload{
+    
+}
+
+
 
 - (void)saveImage
 {
@@ -260,8 +306,15 @@
         [self showFirstImage];
     }
     
-    _indexLabel.center = CGPointMake(self.bounds.size.width * 0.5, 35);
-    _saveButton.frame = CGRectMake(30, self.bounds.size.height - 70, 50, 25);
+//    _indexLabel.center = CGPointMake(self.bounds.size.width * 0.5, 35);
+//    _saveButton.frame = CGRectMake(30, self.bounds.size.height - 70, 50, 25);
+    
+    [_bottomView setFrame:0 y:self.height - 50 w:self.width h:50];
+    CGFloat btnwidth = self.width/3;
+    [_shareButton setFrame:0 y:0 w:btnwidth h:50];
+    [_likeButton setFrame:btnwidth y:0 w:btnwidth h:50];
+    [_downloadButton setFrame:btnwidth*2 y:0 w:btnwidth h:50];
+    
 }
 
 - (void)show
