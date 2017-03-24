@@ -16,6 +16,8 @@
 #import "DUserParamModel.h"
 #import "DCollectionsParamModel.h"
 #import "DPhotosModel.h"
+#import "DPhotosAPIManager.h"
+#import "DPhotosParamModel.h"
 
 #import "DPhotoManager.h"
 #import "DShareManager.h"
@@ -23,6 +25,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import "SDPhotoBrowser.h"
 #import <SDWebImage/UIImage+GIF.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 static NSString * const cellID = @"collectionPhotos";
 
@@ -211,6 +214,10 @@ static NSString * const cellID = @"collectionPhotos";
         case 1:
         {
             DLog(@"1==%@", photo.pid);
+            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+            paramModel.pid = photo.pid;
+            [manager likePhotoByParamModel:paramModel];
         }
             break;
         case 2:
@@ -226,6 +233,14 @@ static NSString * const cellID = @"collectionPhotos";
 
 
 #pragma mark - requet
+- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    
+    [SVProgressHUD setMaxSupportedWindowLevel:1.0];
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD showSuccessWithStatus:@"💖"];
+}
+
+
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
     self.page++;
     [self.photos addObjectsFromArray:arrData];
