@@ -11,6 +11,8 @@
 
 @interface DPhotosParamModel : NSObject<DPhotosParamProtocol>
 
+@property (nonatomic, copy) NSString *photoUrl;
+
 // ------获取图片集合
 // 页数，默认1
 @property (nonatomic, assign) NSInteger page;

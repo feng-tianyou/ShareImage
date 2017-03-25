@@ -389,6 +389,13 @@
     return nil;
 }
 
+- (DPhotosModel *)photoBrowser:(SDPhotoBrowser *)browser photoModelForIndex:(NSInteger)index{
+    if ([self.delegate respondsToSelector:@selector(photoBrowser:photoModelForIndex:)]) {
+        return [self.delegate photoBrowser:self photoModelForIndex:index];
+    }
+    return nil;
+}
+
 #pragma mark - scrollview代理方法
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

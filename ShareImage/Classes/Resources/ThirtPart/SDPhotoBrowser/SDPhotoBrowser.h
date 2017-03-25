@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@class SDButton, SDPhotoBrowser;
+@class SDButton, SDPhotoBrowser, DPhotosModel;
 
 @protocol SDPhotoBrowserDelegate <NSObject>
 
@@ -22,6 +22,9 @@
 @optional
 
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index;
+
+- (DPhotosModel *)photoBrowser:(SDPhotoBrowser *)browser photoModelForIndex:(NSInteger)index;
+
 
 @end
 

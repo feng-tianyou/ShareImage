@@ -397,9 +397,10 @@
     
     if (error) {
         DLog(@"写入失败");
-        [SVProgressHUD dismiss];
+        //[SVProgressHUD dismiss];
     } else {
-        @weakify(self);
+        //@weakify(self);
+        /*
         __block TZAlbumModel *albumModel = nil;
         [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
             albumModel = model;
@@ -416,6 +417,9 @@
                 [SVProgressHUD dismiss];
             }];
         }];
+         */
+        [SVProgressHUD setMaximumDismissTimeInterval:1.0];
+        [SVProgressHUD showSuccessWithStatus:@"Download Success!"];
     }
 }
 

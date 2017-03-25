@@ -160,6 +160,7 @@ static float progress = 0.0f;
  @param paramModel 参数模型
  */
 - (void)downloadPhotoByParamModel:(id<DPhotosParamProtocol>)paramModel{
+    /*
     [self addLoadingView];
     @weakify(self);
     [self.service fetchPhotoDownloadLinkByParamModel:paramModel onSucceeded:^(NSString *str) {
@@ -169,13 +170,12 @@ static float progress = 0.0f;
         
         [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:str] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             progress = receivedSize/(float)expectedSize;
-            DLog(@"%f", progress);
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-            [SVProgressHUD showProgress:progress status:@"Loading..."];
+            [SVProgressHUD showProgress:progress status:@"Downloading..."];
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            DLog(@"%@--%@", image, @(finished));
             if (finished) {
                 [SVProgressHUD dismiss];
+                @strongify(self)
                 UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             }
         }];
@@ -183,6 +183,19 @@ static float progress = 0.0f;
     } onError:^(DError *error) {
         @strongify(self)
         [self proccessNetwordError:error];
+    }];
+     */
+    @weakify(self);
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:paramModel.photoUrl] options:SDWebImageProgressiveDownload progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        progress = receivedSize/(float)expectedSize;
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+        [SVProgressHUD showProgress:progress status:@"Downloading..."];
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (finished) {
+            [SVProgressHUD dismiss];
+            @strongify(self)
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        }
     }];
 }
 

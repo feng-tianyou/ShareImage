@@ -223,6 +223,10 @@ static NSString * const cellID = @"collectionPhotos";
         case 2:
         {
             DLog(@"2==%@", photo.pid);
+            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+            paramModel.photoUrl = photo.urls.regular;
+            [manager downloadPhotoByParamModel:paramModel];
         }
             break;
             
