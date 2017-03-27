@@ -89,13 +89,13 @@
     [self addSubview:bottomView];
     
     UIButton *shareButton = [[UIButton alloc] init];
-    [shareButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage getImageWithName:@"common_img_share"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(clickShareImage) forControlEvents:UIControlEventTouchUpInside];
     _shareButton = shareButton;
     [bottomView addSubview:shareButton];
     
     UIButton *likeButton = [[UIButton alloc] init];
-    [likeButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [likeButton setImage:[UIImage getImageWithName:@"common_img_like"] forState:UIControlStateNormal];
     [likeButton addTarget:self action:@selector(clickLike) forControlEvents:UIControlEventTouchUpInside];
     _likeButton = likeButton;
     [bottomView addSubview:likeButton];
