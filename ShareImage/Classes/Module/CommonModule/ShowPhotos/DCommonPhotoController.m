@@ -237,6 +237,23 @@ static NSString * const cellID = @"collectionPhotos";
 
 
 #pragma mark - requet
+- (void)requestServiceSucceedByUserInfo:(NSDictionary *)userInfo{
+    // 下载成功
+    [SVProgressHUD setMaximumDismissTimeInterval:1.0];
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD showSuccessWithStatus:@"Download Success!"];
+    @weakify(self)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [NSThread sleepForTimeInterval:1.0];
+       dispatch_async(dispatch_get_main_queue(), ^{
+           @strongify(self)
+           DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:nil];
+           [self.navigationController pushViewController:detailController animated:YES];
+       });
+    });
+}
+
+
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
     
     [SVProgressHUD setMaxSupportedWindowLevel:1.0];

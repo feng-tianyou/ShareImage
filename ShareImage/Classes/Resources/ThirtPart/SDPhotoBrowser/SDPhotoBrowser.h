@@ -38,5 +38,6 @@
 @property (nonatomic, weak) id<SDPhotoBrowserDelegate> delegate;
 
 - (void)show;
+- (void)hide;
 
 @end

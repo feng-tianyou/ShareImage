@@ -413,11 +413,9 @@ static float progress = 0.0f;
 */
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error) {
-       // UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
         
     } else {
-        [SVProgressHUD setMaximumDismissTimeInterval:1.0];
-        [SVProgressHUD showSuccessWithStatus:@"Download Success!"];
+        [self requestServiceSucceedByUserInfo];
     }
 }
 

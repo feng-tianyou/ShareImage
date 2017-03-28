@@ -101,7 +101,7 @@
     [bottomView addSubview:likeButton];
     
     UIButton *downloadButton = [[UIButton alloc] init];
-    [downloadButton setImage:[UIImage getImageWithName:@"common_btn_camera"] forState:UIControlStateNormal];
+    [downloadButton setImage:[UIImage getImageWithName:@"common_img_download"] forState:UIControlStateNormal];
     [downloadButton addTarget:self action:@selector(clickDdownload) forControlEvents:UIControlEventTouchUpInside];
     _downloadButton = downloadButton;
     [bottomView addSubview:downloadButton];
@@ -325,6 +325,10 @@
     self.frame = window.bounds;
     [window addObserver:self forKeyPath:@"frame" options:0 context:nil];
     [window addSubview:self];
+}
+
+- (void)hide{
+    [self photoClick:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UIView *)object change:(NSDictionary *)change context:(void *)context
