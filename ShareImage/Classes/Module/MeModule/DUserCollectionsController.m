@@ -13,8 +13,6 @@
 #import "DUserParamModel.h"
 #import "DCollectionsModel.h"
 
-//#import "YTAnimation.h"
-
 #import <MJRefresh/MJRefresh.h>
 
 static NSString * const cellID = @"userCollection";

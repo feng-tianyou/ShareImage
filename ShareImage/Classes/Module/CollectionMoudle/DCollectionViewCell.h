@@ -12,7 +12,9 @@
 
 @property (nonatomic, strong) DCollectionsModel *collection;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, copy) NSIndexPathBlock clickDeleteBlock;
 
+// 外部控制是否展示
 - (void)showDeleteBtn;
 - (void)hideDeleteBtn;
 

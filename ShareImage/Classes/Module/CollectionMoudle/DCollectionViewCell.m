@@ -60,7 +60,9 @@
 }
 
 - (void)clickDeleteBtn{
-    
+    if (self.clickDeleteBlock) {
+        self.clickDeleteBlock(self.indexPath);
+    }
 }
 
 - (void)showDeleteBtn{
