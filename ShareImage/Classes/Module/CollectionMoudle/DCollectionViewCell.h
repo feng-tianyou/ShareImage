@@ -11,5 +11,9 @@
 @interface DCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) DCollectionsModel *collection;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
+- (void)showDeleteBtn;
+- (void)hideDeleteBtn;
 
 @end

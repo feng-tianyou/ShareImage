@@ -9,12 +9,14 @@
 #import "DCollectionViewCell.h"
 #import "DCollectionsModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "YTAnimation.h"
 
 @interface DCollectionViewCell ()
 
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *describleLabel;
+@property (nonatomic, strong) UIButton *deleteBtn;
 
 @end
 
@@ -27,6 +29,7 @@
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describleLabel];
+        [self.contentView addSubview:self.deleteBtn];
         
         self.iconView.sd_layout
         .topEqualToView(self.contentView)
@@ -46,9 +49,30 @@
         .rightEqualToView(self.contentView)
         .heightIs(20);
         
+        self.deleteBtn.sd_layout
+        .topEqualToView(self.contentView)
+        .leftEqualToView(self.contentView)
+        .widthIs(20)
+        .heightIs(20);
+        
     }
     return self;
 }
+
+- (void)clickDeleteBtn{
+    
+}
+
+- (void)showDeleteBtn{
+    self.deleteBtn.hidden = NO;
+    [YTAnimation vibrateAnimation:self];
+}
+
+- (void)hideDeleteBtn{
+    self.deleteBtn.hidden = YES;
+    [self.layer removeAnimationForKey:@"shake"];
+}
+
 
 #pragma mark - setter & getter
 - (void)setCollection:(DCollectionsModel *)collection{
@@ -85,5 +109,18 @@
     }
     return _describleLabel;
 }
+
+- (UIButton *)deleteBtn{
+    if (!_deleteBtn) {
+        _deleteBtn = [[UIButton alloc] init];
+        [_deleteBtn setImage:[UIImage getImageWithName:@"user_delete_btn"] forState:UIControlStateNormal];
+        [_deleteBtn setImage:[UIImage getImageWithName:@"user_delete_btn"] forState:UIControlStateHighlighted];
+        _deleteBtn.hidden = YES;
+        [_deleteBtn addTarget:self action:@selector(clickDeleteBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _deleteBtn;
+}
+
+
 
 @end

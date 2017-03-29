@@ -12,6 +12,9 @@
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 #import "DCollectionsModel.h"
+
+//#import "YTAnimation.h"
+
 #import <MJRefresh/MJRefresh.h>
 
 static NSString * const cellID = @"userCollection";
@@ -21,6 +24,9 @@ static NSString * const cellID = @"userCollection";
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
+
+@property (nonatomic, assign) BOOL showDeleteBtn;
+
 @end
 
 @implementation DUserCollectionsController
@@ -45,8 +51,23 @@ static NSString * const cellID = @"userCollection";
     if (isLeft) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        
+        if (self.showDeleteBtn) {
+            [self hideDeleteForAnimation];
+        } else {
+            [self showDeleteForAnimation];
+        }
     }
+}
+
+#pragma mark - 导航函数
+- (void)showDeleteForAnimation{
+    self.showDeleteBtn = YES;
+    [self.collectionView reloadData];
+}
+
+- (void)hideDeleteForAnimation{
+    self.showDeleteBtn = NO;
+    [self.collectionView reloadData];
 }
 
 
@@ -77,6 +98,16 @@ static NSString * const cellID = @"userCollection";
     [self getCollectionsData];
 }
 
+- (void)setAnimationCollectionViewCell:(DCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath{
+    cell.indexPath = indexPath;
+    if (self.showDeleteBtn) {
+        [cell showDeleteBtn];
+    } else {
+        [cell hideDeleteBtn];
+    }
+}
+
+
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -91,6 +122,10 @@ static NSString * const cellID = @"userCollection";
         DCollectionsModel *model = self.collections[indexPath.row];
         cell.collection = model;
     }
+    
+    // 设置删除动画
+    [ self setAnimationCollectionViewCell:cell indexPath:indexPath];
+    
     return cell;
 }
 
@@ -100,6 +135,7 @@ static NSString * const cellID = @"userCollection";
         DCommonPhotoController *detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
         detaildController.collectionId = model.c_id;
         [self.navigationController pushViewController:detaildController animated:YES];
+        [self hideDeleteForAnimation];
     }
 }
 
