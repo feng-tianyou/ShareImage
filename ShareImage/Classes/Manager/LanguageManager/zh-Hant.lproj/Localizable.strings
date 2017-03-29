@@ -38,6 +38,7 @@
 "homeLikes" = "喜欢的图片";
 "homeCollections" = "分类";
 "homeSetting" = "设置";
+"homeDownloads" = "下载";
 
 
 // DSettingViewController

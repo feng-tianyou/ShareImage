@@ -30,6 +30,7 @@ static NSString * const cellID = @"userCollection";
     // Do any additional setup after loading the view.
     self.title = kLocalizedLanguage(@"homeCollections");
     self.navLeftItemType = DNavigationItemTypeBack;
+    self.navRighItemType = DNavigationItemTypeRightEdit;
     self.page = 1;
     [self getCollectionsData];
 }
@@ -41,7 +42,11 @@ static NSString * const cellID = @"userCollection";
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (isLeft) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        
+    }
 }
 
 

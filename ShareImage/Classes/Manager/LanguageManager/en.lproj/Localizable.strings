@@ -34,6 +34,7 @@
 "homeLikes" = "Likes";
 "homeCollections" = "Collections";
 "homeSetting" = "Setting";
+"homeDownloads" = "Downloads";
 
 
 // DSettingViewController
