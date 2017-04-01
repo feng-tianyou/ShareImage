@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIButton *photoBtn;
 @property (nonatomic, strong) UIButton *userBtn;
 @property (nonatomic, strong) UIButton *collectionBtn;
-@property (nonatomic, strong) UILabel *bottomLine;
+
 //@property (nonatomic, strong) UIView *contentView;
 
 - (void)didCilckButton:(UIButton *)button;

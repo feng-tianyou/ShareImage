@@ -195,6 +195,7 @@
     [self.searchBar.searchTextField resignFirstResponder];
     [self.dataArray removeAllObjects];
     _searchType = PhotoSearchType;
+    if (self.searchBar.searchTextField.text.length <= 0) return;
     [self getCommonDataWithPage:1];
 }
 
@@ -206,6 +207,7 @@
     [self.searchBar.searchTextField resignFirstResponder];
     [self.dataArray removeAllObjects];
     _searchType = UserSearchType;
+    if (self.searchBar.searchTextField.text.length <= 0) return;
     [self getCommonDataWithPage:1];
 }
 
@@ -217,6 +219,7 @@
     [self.searchBar.searchTextField resignFirstResponder];
     [self.dataArray removeAllObjects];
     _searchType = CollectionSearchType;
+    if (self.searchBar.searchTextField.text.length <= 0) return;
     [self getCommonDataWithPage:1];
 }
 

@@ -8,6 +8,12 @@
 
 #import "DSearchSelectItemView.h"
 
+@interface DSearchSelectItemView ()
+
+@property (nonatomic, strong) UILabel *bottomLine;
+@property (nonatomic, strong) UILabel *sliderLine;
+@end
+
 @implementation DSearchSelectItemView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -20,6 +26,7 @@
         [self addSubview:self.userBtn];
         [self addSubview:self.collectionBtn];
         [self addSubview:self.bottomLine];
+        [self addSubview:self.sliderLine];
         
         CGFloat width = SCREEN_WIDTH/3;
         self.photoBtn.sd_layout
@@ -49,6 +56,12 @@
     return self;
 }
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    [self.sliderLine setFrame:self.photoBtn.center.x-27 y:self.bottomLine.y - 2 w:50 h:2];
+}
+
 - (void)didCilckButton:(UIButton *)button{
     switch (button.tag) {
         case 1:
@@ -56,6 +69,10 @@
             self.photoBtn.selected = !button.isSelected;
             self.userBtn.selected = NO;
             self.collectionBtn.selected = NO;
+            CGFloat x = self.photoBtn.center.x;
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.sliderLine setFrame:x-27 y:self.bottomLine.y - 2 w:50 h:2];
+            }];
         }
             break;
         case 2:
@@ -63,6 +80,10 @@
             self.photoBtn.selected = NO;
             self.userBtn.selected = !button.isSelected;
             self.collectionBtn.selected = NO;
+            CGFloat x = self.userBtn.center.x;
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.sliderLine setFrame:x-25 y:self.bottomLine.y - 2 w:50 h:2];
+            }];
         }
             break;
         case 3:
@@ -70,6 +91,10 @@
             self.photoBtn.selected = NO;
             self.userBtn.selected = NO;
             self.collectionBtn.selected = !button.isSelected;
+            CGFloat x = self.collectionBtn.center.x;
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.sliderLine setFrame:x-25 y:self.bottomLine.y - 2 w:50 h:2];
+            }];
         }
             break;
             
@@ -124,6 +149,12 @@
     return _bottomLine;
 }
 
-
+- (UILabel *)sliderLine{
+    if (!_sliderLine) {
+        _sliderLine = [[UILabel alloc] init];
+        _sliderLine.backgroundColor = DSystemColorBlue33AACC;
+    }
+    return _sliderLine;
+}
 
 @end
