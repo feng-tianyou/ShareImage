@@ -41,7 +41,7 @@
         .bottomEqualToView(self);
         
         self.bottomLine.sd_layout
-        .bottomSpaceToView(self, -1)
+        .bottomSpaceToView(self, 0.5)
         .leftEqualToView(self)
         .rightEqualToView(self)
         .heightIs(0.5);

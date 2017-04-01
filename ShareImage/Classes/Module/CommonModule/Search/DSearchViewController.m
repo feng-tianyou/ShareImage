@@ -49,7 +49,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
@@ -70,7 +69,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     [self.searchBar.searchTextField becomeFirstResponder];
@@ -91,9 +89,6 @@
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
-    
-    
-    
     
 }
 
@@ -198,6 +193,7 @@
 - (void)clickSearchPhotos:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
+    [self.dataArray removeAllObjects];
     _searchType = PhotoSearchType;
     [self getCommonDataWithPage:1];
 }
@@ -208,6 +204,7 @@
 - (void)clickSearchUsers:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
+    [self.dataArray removeAllObjects];
     _searchType = UserSearchType;
     [self getCommonDataWithPage:1];
 }
@@ -218,6 +215,7 @@
 - (void)clickSearchCollections:(UIButton *)button{
     [self.selectItemView didCilckButton:button];
     [self.searchBar.searchTextField resignFirstResponder];
+    [self.dataArray removeAllObjects];
     _searchType = CollectionSearchType;
     [self getCommonDataWithPage:1];
 }
@@ -272,7 +270,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_searchType == PhotoSearchType) {
-        return 150;
+        return 170;
     }
     return 50;
 }

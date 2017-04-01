@@ -57,7 +57,7 @@ static NSString *const cellID = @"UserListCell";
         .topEqualToView(self.contentView)
         .leftEqualToView(self.contentView)
         .rightEqualToView(self.contentView)
-        .heightIs(150);
+        .heightIs(170);
         
     }
     return self;
@@ -79,6 +79,8 @@ static NSString *const cellID = @"UserListCell";
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
         _photoView.backgroundColor = [UIColor lightRandom];
+        _photoView.contentMode = UIViewContentModeScaleAspectFill;
+        _photoView.clipsToBounds = YES;
     }
     return _photoView;
 }

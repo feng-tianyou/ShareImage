@@ -25,6 +25,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import "SDPhotoBrowser.h"
 #import <SDWebImage/UIImage+GIF.h>
+#import <SDWebImage/SDWebImageManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
 static NSString * const cellID = @"collectionPhotos";
@@ -73,9 +74,11 @@ static NSString * const cellID = @"collectionPhotos";
     
 }
 
+
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     [self.navigationController popViewControllerAnimated:YES];
+    [[SDWebImageManager sharedManager] cancelAll];
 }
 
 

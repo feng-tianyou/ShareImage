@@ -116,6 +116,8 @@ static NSString *const cellID = @"homeCell";
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
         _photoView.backgroundColor = [UIColor lightRandom];
+        _photoView.contentMode = UIViewContentModeScaleAspectFill;
+        _photoView.clipsToBounds = YES;
     }
     return _photoView;
 }

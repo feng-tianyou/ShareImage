@@ -87,6 +87,8 @@
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
+        _iconView.contentMode = UIViewContentModeScaleAspectFill;
+        _iconView.clipsToBounds = YES;
     }
     return _iconView;
 }

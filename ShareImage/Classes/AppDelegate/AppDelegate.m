@@ -44,11 +44,11 @@
     [self setupRootViewController];
     
     // 初始化苹果推送相关配置
-    [self setupAPNS:application launchOptions:launchOptions];
+    //[self setupAPNS:application launchOptions:launchOptions];
     
     
     // 初始化信鸽推送
-    [AppDelegate setupXGPush];
+    //[AppDelegate setupXGPush];
     
     // 初始化分享功能
     [AppDelegate setupShareManager];
