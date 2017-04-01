@@ -7,6 +7,11 @@
 //
 
 #import "DSearchViewController.h"
+#import "DUserProfileViewController.h"
+#import "DPhotoDetailController.h"
+#import "DCommonPhotoController.h"
+
+
 #import "DSearchSelectItemView.h"
 #import "DSearchBar.h"
 
@@ -64,14 +69,14 @@
     [self.view addSubview:self.tableView];
     
     [self setupTableViewDownRefresh];
+    
+    [self.searchBar.searchTextField becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    
-    [self.searchBar.searchTextField becomeFirstResponder];
 }
 
 
@@ -235,7 +240,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    [self.view endEditing:YES];
     DSearchViewCell *cell = [DSearchViewCell cellWithTableView:tableView];
     
     switch (_searchType) {
@@ -280,7 +285,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
+    switch (_searchType) {
+        case PhotoSearchType:
+        {
+            if (self.dataArray.count > indexPath.row) {
+                DPhotoDetailController *photoController = [[DPhotoDetailController alloc] initWithPhotoModel:self.dataArray[indexPath.row]];
+                [self.navigationController pushViewController:photoController animated:YES];
+            }
+            
+        }
+            break;
+        case UserSearchType:
+        {
+            if (self.dataArray.count > indexPath.row) {
+               DUserModel *user = self.dataArray[indexPath.row];
+                DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:user.username];
+                [self.navigationController pushViewController:userController animated:YES];
+            }
+        }
+            break;
+        case CollectionSearchType:
+        {
+            if (self.dataArray.count > indexPath.row) {
+                DCollectionsModel *model = self.dataArray[indexPath.row];
+                DCommonPhotoController *detaildController = nil;
+                if (!model.curated) {
+                    detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
+                    
+                } else {
+                    detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerCuratedType];
+                }
+                detaildController.collectionId = model.c_id;
+                [self.navigationController pushViewController:detaildController animated:YES];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - UITextFieldDelegate

@@ -64,18 +64,15 @@ static NSString *const cellID = @"homeCell";
     .leftSpaceToView(self.contentView, 15)
     .rightSpaceToView(self.contentView, 15)
     .heightIs(20);
-    
-    
 }
-
-
-
 
 #pragma mark - getter & setter
 - (UIImageView *)photoView{
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
         _photoView.backgroundColor = [UIColor lightRandom];
+        _photoView.contentMode = UIViewContentModeScaleAspectFill;
+        _photoView.clipsToBounds = YES;
     }
     return _photoView;
 }

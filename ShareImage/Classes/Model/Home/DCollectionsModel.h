@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *c_description;
 /// 发布时间
 @property (nonatomic, copy) NSString *published_at;
-///
+/// 是否是策划的
 @property (nonatomic, assign) BOOL curated;
 ///
 @property (nonatomic, assign) BOOL featured;
