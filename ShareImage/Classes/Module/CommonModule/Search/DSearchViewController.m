@@ -53,13 +53,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
     self.page = 1;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
@@ -69,7 +68,6 @@
     [self.view addSubview:self.tableView];
     
     [self setupTableViewDownRefresh];
-    
     [self.searchBar.searchTextField becomeFirstResponder];
 }
 
@@ -170,21 +168,14 @@
 - (void)getCommonDataWithPage:(NSInteger)page{
     switch (_searchType) {
         case PhotoSearchType:
-        {
             [self getSearchPhotosDataWithPage:page];
-        }
             break;
         case UserSearchType:
-        {
             [self getSearchUsersDataWithPage:page];
-        }
             break;
         case CollectionSearchType:
-        {
             [self getSearchCollectionsDataWithPage:page];
-        }
             break;
-            
         default:
             break;
     }
@@ -277,9 +268,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_searchType == PhotoSearchType) {
-        return 170;
-    }
+    if (_searchType == PhotoSearchType) return 170;
     return 50;
 }
 

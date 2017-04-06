@@ -17,9 +17,11 @@
 
 - (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index;
 
-- (void)photoBrowser:(SDPhotoBrowser *)browser didSelectButtonIndex:(NSInteger)buttonIndex  imageIndex:(NSInteger)imageIndex;
+
 
 @optional
+
+- (void)photoBrowser:(SDPhotoBrowser *)browser didSelectButtonIndex:(NSInteger)buttonIndex  imageIndex:(NSInteger)imageIndex;
 
 - (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index;
 
@@ -36,6 +38,10 @@
 @property (nonatomic, assign) NSInteger imageCount;
 
 @property (nonatomic, weak) id<SDPhotoBrowserDelegate> delegate;
+
+@property (nonatomic, assign, getter=isHideBottomFunctionView) BOOL hideBottomFunctionView; // 底部功能视图
+
+
 
 - (void)show;
 - (void)hide;

@@ -87,6 +87,9 @@
     bottomView.backgroundColor = DSystem2AlphaWhiteColor8;
     _bottomView = bottomView;
     [self addSubview:bottomView];
+    if (self.hideBottomFunctionView) {
+        _bottomView.hidden = YES;
+    }
     
     UIButton *shareButton = [[UIButton alloc] init];
     [shareButton setImage:[UIImage getImageWithName:@"common_img_share"] forState:UIControlStateNormal];

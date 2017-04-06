@@ -10,7 +10,6 @@
 #import "DCommonPhotoController.h"
 #import "DUserListViewController.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 #import "DPhotosModel.h"
@@ -21,8 +20,11 @@
 #import "DCustomNavigationView.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import "SDPhotoBrowser.h"
 
-@interface DUserProfileViewController ()<UIScrollViewDelegate>
+@interface DUserProfileViewController ()<UIScrollViewDelegate, SDPhotoBrowserDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 
@@ -185,6 +187,7 @@
         self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
     }
     DLogSize(self.scrollView.contentSize);
+    DLog(@"%@", @(self.bioLabel.autoHeight));
     
     [self.scrollView setContentInset:UIEdgeInsetsMake(300, 0, 0, 0)];
     
@@ -213,6 +216,15 @@
         return [NSString stringWithFormat:@"%@W", str];
     }
     return [NSString stringWithFormat:@"%@", @(number)];
+}
+
+- (void)clickIconView{
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+    browser.sourceImagesContainerView = self.scrollView; // 原图的父控件
+    browser.imageCount = 1; // 图片总数
+    browser.hideBottomFunctionView = YES;
+    browser.delegate = self;
+    [browser show];
 }
 
 - (void)clickPhotoNumBtn{
@@ -270,6 +282,15 @@
     } else{
         self.navigationView.bgView.backgroundColor = [UIColor clearColor];
     }
+}
+
+#pragma mark - SDPhotoBrowserDelegate
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+    return self.iconView.image;
+}
+
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    return [NSURL URLWithString:self.userModel.profile_image.large];
 }
 
 
@@ -352,6 +373,9 @@
         _iconView.backgroundColor = [UIColor lightRandom];
         [_iconView.layer setCornerRadius:35.0];
         [_iconView.layer setMasksToBounds:YES];
+        _iconView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickIconView)];
+        [_iconView addGestureRecognizer:tap];
     }
     return _iconView;
 }
