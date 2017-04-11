@@ -12,4 +12,6 @@
 
 - (instancetype)initWithPhotoModel:(DPhotosModel *)photoModel;
 
+- (instancetype)initWithPhotoModels:(NSArray<DPhotosModel *> *)photoModels;
+
 @end

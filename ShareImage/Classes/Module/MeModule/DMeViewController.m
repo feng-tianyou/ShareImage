@@ -17,6 +17,8 @@
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
+#import "DPhotoManager.h"
+#import "DPhotosModel.h"
 
 @interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource, MeHeaderViewDelegate>
 
@@ -24,6 +26,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DMeHeaderView *headerView;
 
+@property (nonatomic, strong) DPhotoManager *manager;
 @property (nonatomic, strong) NSArray *usersPhotos;
 
 
@@ -143,6 +146,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.usersPhotos.count > indexPath.section) {
+        DPhotosModel *photoModel = self.usersPhotos[indexPath.section];
+        [self.manager photoPreviewWithPhotoModels:@[photoModel] currentIndex:0 currentViewController:self];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     id model = self.usersPhotos[indexPath.section];
     CGFloat height = [self.tableView cellHeightForIndexPath:indexPath model:model keyPath:@"photosModel" cellClass:[DMeTableViewCell class] contentViewWidth:self.view.width];
@@ -241,6 +251,13 @@
         _usersPhotos = [[NSArray alloc] init];
     }
     return _usersPhotos;
+}
+
+- (DPhotoManager *)manager{
+    if (!_manager) {
+        _manager = [[DPhotoManager alloc] init];
+    }
+    return _manager;
 }
 
 @end

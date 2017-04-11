@@ -7,6 +7,9 @@
 //
 
 #import "DPhotoManager.h"
+#import "DPhotosModel.h"
+#import "DCollectionsModel.h"
+
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
@@ -223,6 +226,67 @@
 /**
  浏览图片(自动关闭页面)(MWPhotoBrowser)
  
+ @param photoModels 图片集合
+ @param currentIndex 当前图片索引
+ @param currentViewController 当前控制器
+ */
+- (void)photoPreviewWithPhotoModels:(NSArray<DPhotosModel *> *)photoModels
+                       currentIndex:(NSInteger)currentIndex
+              currentViewController:(UIViewController *)currentViewController{
+
+    self.currentIndex = currentIndex;
+    self.currentViewController = currentViewController;
+    
+    NSMutableArray *tmpPhotos = [NSMutableArray arrayWithCapacity:0];
+    [photoModels enumerateObjectsUsingBlock:^(DPhotosModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:obj.urls.raw]];
+        DCollectionsModel *collectionModel = [obj.current_user_collections firstObject];
+        NSString *caption = nil;
+        
+        if (collectionModel.title.length > 0) {
+            caption = collectionModel.title;
+        }
+        if (collectionModel.c_description.length > 0 && collectionModel.title.length == 0) {
+            caption = collectionModel.c_description;
+        }
+        if (collectionModel.title.length > 0 && collectionModel.c_description.length > 0) {
+            caption = [NSString stringWithFormat:@"%@\n%@", caption, collectionModel.c_description];
+        }
+        photo.caption = caption;
+        
+        [tmpPhotos addObject:photo];
+    }];
+    
+    self.mwPhotos = [tmpPhotos copy];
+    
+    // Create browser
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = NO;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = YES;
+    browser.zoomPhotosToFill = YES;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    browser.wantsFullScreenLayout = YES;
+#endif
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    [browser setCurrentPhotoIndex:currentIndex];
+    
+    [browser showNextPhotoAnimated:YES];
+    [browser showPreviousPhotoAnimated:YES];
+    
+    // Modal
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [currentViewController presentViewController:nc animated:YES completion:nil];
+}
+
+
+/**
+ 浏览图片(自动关闭页面)(MWPhotoBrowser)
+ 
  @param photoUrls 图片路径集合
  @param photos 图片集合
  @param currentIndex 当前图片索引
@@ -264,6 +328,9 @@
     browser.startOnGrid = NO;
     browser.enableSwipeToDismiss = YES;
     [browser setCurrentPhotoIndex:currentIndex];
+    
+    [browser showNextPhotoAnimated:YES];
+    [browser showPreviousPhotoAnimated:YES];
     
     // Modal
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
@@ -445,6 +512,7 @@
     // If we subscribe to this method we must dismiss the view controller ourselves
     NSLog(@"Did finish modal presentation");
     [self.currentViewController dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

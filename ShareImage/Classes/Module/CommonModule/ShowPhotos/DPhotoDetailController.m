@@ -8,19 +8,21 @@
 
 #import "DPhotoDetailController.h"
 #import "DPhotosModel.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 
-static float progress = 0.0f;
+#import "DPhotoManager.h"
 
-@interface DPhotoDetailController ()<UIGestureRecognizerDelegate>
+#import "DPhotosAPIManager.h"
+#import "DPhotosParamModel.h"
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIImageView *imageView;
+
+@interface DPhotoDetailController ()
+
 @property (nonatomic, strong) DPhotosModel *photoModel;
 
-@property (nonatomic, assign) CGRect oldFrame;
-@property (nonatomic, assign) CGRect largeFrame;
+@property (nonatomic, strong) NSArray<DPhotosModel *> *photoModels;
+
+@property (nonatomic, strong) DPhotoManager *manager;
+
 
 @end
 
@@ -29,8 +31,16 @@ static float progress = 0.0f;
 - (instancetype)initWithPhotoModel:(DPhotosModel *)photoModel{
     self = [super init];
     if (self) {
+        self.photoModels = [NSArray arrayWithObject:photoModel];
         self.photoModel = photoModel;
-        self.title = photoModel.user.username;
+    }
+    return self;
+}
+
+- (instancetype)initWithPhotoModels:(NSArray<DPhotosModel *> *)photoModels{
+    self = [super init];
+    if (self) {
+        self.photoModels = [NSArray arrayWithArray:photoModels];
     }
     return self;
 }
@@ -39,124 +49,63 @@ static float progress = 0.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navLeftItemType = DNavigationItemTypeBack;
-    
-    @weakify(self)
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.photoModel.urls.regular] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        progress = receivedSize/(float)expectedSize;
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-        [SVProgressHUD showProgress:progress status:@"Loading..."];
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [SVProgressHUD dismiss];
-        @strongify(self)
-        [self.view setNeedsLayout];
-        
-    }];
-    
-    [self addGestureRecognizer];
-    //[self.view addSubview:self.scrollView];
-    [self.view addSubview:self.imageView];
-    
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    DPhotosParamModel *param = [[DPhotosParamModel alloc] init];
+    param.pid = self.photoModel.pid;
+    [manager fetchPhotoDetailsByParamModel:param];
 }
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
-    self.oldFrame = self.imageView.frame;
-    self.largeFrame = CGRectMake(0 - SCREEN_WIDTH, 0 - SCREEN_HEIGHT, 3 * self.oldFrame.size.width, 3 * self.oldFrame.size.height);
-    
-    CGSize imageSize = self.imageView.image.size;
-    CGFloat imageY = (self.view.height - imageSize.height - self.navBarHeight)*0.5;
-    [self.imageView setFrame:0 y:imageY w:self.view.width h:imageSize.height];
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+   /* self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.navigationBar.hidden = NO;*/
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    /*self.view.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.alpha = 0;
+    self.navigationController.navigationBar.hidden = YES;
+    
+    NSMutableArray *photoUrlsM = [NSMutableArray arrayWithCapacity:self.photoModels.count];
+    [self.photoModels enumerateObjectsUsingBlock:^(DPhotosModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [photoUrlsM addObject:obj.urls.regular];
+    }];
+    
+    [self.manager photoPreviewWithPhotoUrls:photoUrlsM currentIndex:0 currentViewController:self];*/
 }
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - private
-- (void)addGestureRecognizer{
-    // 旋转手势
-    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];
-    rotation.delegate = self;
-    [self.imageView addGestureRecognizer:rotation];
-    
-    // 缩放手势
-    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
-    pinch.delegate = self;
-    [self.imageView addGestureRecognizer:pinch];
-    
-    // 拖拉手势
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-    pan.delegate = self;
-    [self.imageView addGestureRecognizer:pan];
-}
+#pragma mark - DPhotoManagerDelegate
 
-- (void)rotateView:(UIRotationGestureRecognizer *)rotaionGesture{
-    UIView *view = rotaionGesture.view;
-    if (rotaionGesture.state == UIGestureRecognizerStateBegan || rotaionGesture.state == UIGestureRecognizerStateChanged) {
-        view.transform = CGAffineTransformRotate(view.transform, rotaionGesture.rotation);
-        [rotaionGesture setRotation:0];
-    }
-}
-
-- (void)pinchView:(UIPinchGestureRecognizer *)pinchGesture{
-    UIView *view = pinchGesture.view;
-    
-    //当手指离开屏幕时,将lastscale设置为1.0
-    if(pinchGesture.state == UIGestureRecognizerStateEnded) {
-        pinchGesture.scale = 1.0;
-        return;
-    }
-    
-    if (pinchGesture.state == UIGestureRecognizerStateBegan || pinchGesture.state == UIGestureRecognizerStateChanged) {
-        view.transform = CGAffineTransformScale(view.transform, pinchGesture.scale, pinchGesture.scale);
-        /*
-        if (self.imageView.frame.size.width < self.oldFrame.size.width) {
-            self.imageView.frame = self.oldFrame;
-            //让图片无法缩得比原图小
-        }
-        if (self.imageView.frame.size.width > 3 * self.oldFrame.size.width) {
-            self.imageView.frame = self.largeFrame;
-        }
-         */
-        pinchGesture.scale = 1;
-    }
-}
-
-- (void)panView:(UIPanGestureRecognizer *)panGesture{
-    UIView *view = panGesture.view;
-    if (panGesture.state == UIGestureRecognizerStateBegan || panGesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [panGesture translationInView:view];
-        [view setCenter:(CGPoint){view.center.x + translation.x, view.center.y + translation.y}];
-        [panGesture setTranslation:CGPointZero inView:view];
-    }
-}
-
-#pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
 
 #pragma mark - getter & setter
-- (UIImageView *)imageView{
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc] init];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _imageView.multipleTouchEnabled = YES;
-        _imageView.userInteractionEnabled = YES;
+- (DPhotoManager *)manager{
+    if (!_manager) {
+        _manager = [[DPhotoManager alloc] init];
     }
-    return _imageView;
+    return _manager;
 }
 
-- (UIScrollView *)scrollView{
-    if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] init];
-    }
-    return _scrollView;
+- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    DLog(@"%@", dataModel);
 }
+
+
+
+
+
 
 @end

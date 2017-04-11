@@ -7,7 +7,8 @@
 //  此类必须作为强引用的全局变量，不然无法返回图片
 
 #import <Foundation/Foundation.h>
-@class PHAsset;
+@class PHAsset,DPhotosModel;
+
 @interface DPhotoManager : NSObject
 
 #pragma mark - 公共设置
@@ -124,6 +125,18 @@
  @param currentViewController 当前控制器
  */
 - (void)photoPreviewWithPhotos:(NSArray *)photos
+                  currentIndex:(NSInteger)currentIndex
+         currentViewController:(UIViewController *)currentViewController;
+
+
+/**
+ 浏览图片(自动关闭页面)(MWPhotoBrowser)
+ 
+ @param photoModels 图片集合
+ @param currentIndex 当前图片索引
+ @param currentViewController 当前控制器
+ */
+- (void)photoPreviewWithPhotoModels:(NSArray<DPhotosModel *> *)photoModels
                   currentIndex:(NSInteger)currentIndex
          currentViewController:(UIViewController *)currentViewController;
 

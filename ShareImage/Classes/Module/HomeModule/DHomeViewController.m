@@ -22,6 +22,7 @@
 #import "DPhotosAPIManager.h"
 #import "DCollectionsAPIManager.h"
 #import "DUserAPIManager.h"
+#import "DPhotoManager.h"
 
 #import "DPhotosParamModel.h"
 #import "DCollectionsParamModel.h"
@@ -41,6 +42,7 @@
 @property (nonatomic, strong) LLSlideMenu *slideMenu;
 @property (nonatomic, strong) DHomeMenuView *menuView;
 
+@property (nonatomic, strong) DPhotoManager *manager;
 
 @property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
 
@@ -193,8 +195,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (self.photos.count > indexPath.section) {
-        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.section]];
-        [self.navigationController pushViewController:detailController animated:YES];
+        DPhotosModel *photoModel = self.photos[indexPath.section];
+        [self.manager photoPreviewWithPhotoModels:@[photoModel] currentIndex:0 currentViewController:self];
     }
 }
 
@@ -320,6 +322,15 @@
     return _photos;
 }
 
+
+- (DPhotoManager *)manager{
+    if (!_manager) {
+        _manager = [[DPhotoManager alloc] init];
+    }
+    return _manager;
+}
+
+
 - (LLSlideMenu *)slideMenu{
     if (!_slideMenu) {
         _slideMenu = [[LLSlideMenu alloc] init];
@@ -362,6 +373,8 @@
     }
     return _footerView;
 }
+
+
 
 
 @end
