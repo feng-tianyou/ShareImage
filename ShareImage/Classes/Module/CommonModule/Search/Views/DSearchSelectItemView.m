@@ -8,10 +8,15 @@
 
 #import "DSearchSelectItemView.h"
 
+#define kPHOTO_BUTTON_TAG               1001
+#define kUSER_BUTTON_TAG                1002
+#define kCOLLECTION_BUTTON_TAG          1003
+
 @interface DSearchSelectItemView ()
 
 @property (nonatomic, strong) UILabel *bottomLine;
 @property (nonatomic, strong) UILabel *sliderLine;
+@property (nonatomic, assign) BOOL isFirst;
 @end
 
 @implementation DSearchSelectItemView
@@ -21,6 +26,7 @@
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
+        self.isFirst = YES;
 
         [self addSubview:self.photoBtn];
         [self addSubview:self.userBtn];
@@ -59,42 +65,43 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    [self.sliderLine setFrame:self.photoBtn.center.x-27 y:self.bottomLine.y - 2 w:50 h:2];
+    if (self.isFirst) {
+        CGFloat lineWidth = [self.photoBtn.titleLabel.text sizeWithFont:self.photoBtn.titleLabel.font].width;
+        [self.sliderLine setFrame:self.photoBtn.center.x-lineWidth*0.5 y:self.bottomLine.y - 1 w:lineWidth h:2];
+    }
 }
 
 - (void)didCilckButton:(UIButton *)button{
+    self.isFirst = NO;
+    CGFloat lineWidth = [button.titleLabel.text sizeWithFont:button.titleLabel.font].width;
+    CGRect lineRect = self.sliderLine.frame;
+    lineRect.size.width = lineWidth;
+    self.sliderLine.frame = lineRect;
+    [UIView animateWithDuration:0.25 animations:^{
+        CGPoint point = button.center;
+        point.y = self.bottomLine.y - 1;
+        [self.sliderLine setCenter:point];
+    }];
     switch (button.tag) {
-        case 1:
+        case kPHOTO_BUTTON_TAG:
         {
             self.photoBtn.selected = !button.isSelected;
             self.userBtn.selected = NO;
             self.collectionBtn.selected = NO;
-            CGFloat x = self.photoBtn.center.x;
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.sliderLine setFrame:x-27 y:self.bottomLine.y - 2 w:50 h:2];
-            }];
         }
             break;
-        case 2:
+        case kUSER_BUTTON_TAG:
         {
             self.photoBtn.selected = NO;
             self.userBtn.selected = !button.isSelected;
             self.collectionBtn.selected = NO;
-            CGFloat x = self.userBtn.center.x;
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.sliderLine setFrame:x-25 y:self.bottomLine.y - 2 w:50 h:2];
-            }];
         }
             break;
-        case 3:
+        case kCOLLECTION_BUTTON_TAG:
         {
             self.photoBtn.selected = NO;
             self.userBtn.selected = NO;
             self.collectionBtn.selected = !button.isSelected;
-            CGFloat x = self.collectionBtn.center.x;
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.sliderLine setFrame:x-25 y:self.bottomLine.y - 2 w:50 h:2];
-            }];
         }
             break;
             
@@ -112,7 +119,7 @@
         [_photoBtn setTitle:kLocalizedLanguage(@"sePHOTOS") forState:UIControlStateNormal];
         [_photoBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_photoBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
-        _photoBtn.tag = 1;
+        _photoBtn.tag = kPHOTO_BUTTON_TAG;
     }
     return _photoBtn;
 }
@@ -124,7 +131,7 @@
         [_userBtn setTitle:kLocalizedLanguage(@"seUSERS") forState:UIControlStateNormal];
         [_userBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_userBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
-        _userBtn.tag = 2;
+        _userBtn.tag = kUSER_BUTTON_TAG;
     }
     return _userBtn;
 }
@@ -136,7 +143,7 @@
         [_collectionBtn setTitle:kLocalizedLanguage(@"seCOLLECTIONS") forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:DSystemColorBlackBBBBBB forState:UIControlStateNormal];
         [_collectionBtn setTitleColor:DSystemColorBlue33AACC forState:UIControlStateSelected];
-        _collectionBtn.tag = 3;
+        _collectionBtn.tag = kCOLLECTION_BUTTON_TAG;
     }
     return _collectionBtn;
 }
