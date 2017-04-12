@@ -262,6 +262,7 @@
         tempView.frame = targetTemp;
         self.backgroundColor = [UIColor clearColor];
         _indexLabel.alpha = 0.1;
+        _bottomView.alpha = 0.1;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
