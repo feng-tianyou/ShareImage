@@ -29,6 +29,7 @@
 		0744FAD81E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */; };
 		0744FADB1E9F7767004EDB9C /* DMWPhotosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FADA1E9F7767004EDB9C /* DMWPhotosManager.m */; };
 		0744FADE1E9F7AFC004EDB9C /* DTZPhotosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FADD1E9F7AFC004EDB9C /* DTZPhotosManager.m */; };
+		0744FAE11E9F8139004EDB9C /* DPhotoHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FAE01E9F8139004EDB9C /* DPhotoHandleTool.m */; };
 		0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */; };
 		0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719E1E63DA7500ADBC90 /* DWebViewController.m */; };
 		074671A61E6409B800ADBC90 /* DUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A51E6409B800ADBC90 /* DUserListViewController.m */; };
@@ -333,6 +334,8 @@
 		0744FADA1E9F7767004EDB9C /* DMWPhotosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWPhotosManager.m; sourceTree = "<group>"; };
 		0744FADC1E9F7AFC004EDB9C /* DTZPhotosManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZPhotosManager.h; sourceTree = "<group>"; };
 		0744FADD1E9F7AFC004EDB9C /* DTZPhotosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZPhotosManager.m; sourceTree = "<group>"; };
+		0744FADF1E9F8139004EDB9C /* DPhotoHandleTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPhotoHandleTool.h; sourceTree = "<group>"; };
+		0744FAE01E9F8139004EDB9C /* DPhotoHandleTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPhotoHandleTool.m; sourceTree = "<group>"; };
 		074671991E63DA6500ADBC90 /* DCommonPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonPhotoController.h; sourceTree = "<group>"; };
 		0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotoController.m; sourceTree = "<group>"; };
 		0746719D1E63DA7500ADBC90 /* DWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebViewController.h; sourceTree = "<group>"; };
@@ -1953,6 +1956,8 @@
 				7ED810D91E55550100954DAF /* DSandboxTool.m */,
 				078D1B021E6A9C40000DC645 /* DChooesRootViewControllerTool.h */,
 				078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */,
+				0744FADF1E9F8139004EDB9C /* DPhotoHandleTool.h */,
+				0744FAE01E9F8139004EDB9C /* DPhotoHandleTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -2537,6 +2542,7 @@
 				7ED811231E55550100954DAF /* LOTAnimatableNumberValue.m in Sources */,
 				7ED811561E55550100954DAF /* DImageTextButton.m in Sources */,
 				0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */,
+				0744FAE11E9F8139004EDB9C /* DPhotoHandleTool.m in Sources */,
 				074A02981E6D5CB100CA1E2B /* DUserCollectionsController.m in Sources */,
 				7ED8114B1E55550100954DAF /* UILabel+DAttributed.m in Sources */,
 				7ED811451E55550100954DAF /* NSDate+DDate.m in Sources */,

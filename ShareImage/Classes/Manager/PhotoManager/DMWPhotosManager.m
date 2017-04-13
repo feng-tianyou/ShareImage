@@ -15,6 +15,7 @@
 #import "DPhotosParamModel.h"
 
 #import "FSActionSheet.h"
+#import "DPhotoHandleTool.h"
 
 #import <MWPhotoBrowser/MWPhotoBrowser.h>
 #import <SDWebImage/SDWebImageManager.h>
@@ -27,6 +28,8 @@
  */
 @property (nonatomic, strong) NSArray<MWPhoto *> *mwPhotos;
 @property (nonatomic, strong) MWPhoto *photo;
+@property (nonatomic, strong) DPhotoHandleTool *handleTool;
+
 @end
 
 @implementation DMWPhotosManager
@@ -41,6 +44,32 @@
     return [[self alloc] init];
 }
 
+
+#pragma mark - private
+- (void)presentViewControllerMWPhotoBrowser{
+    // Create browser
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = NO;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = YES;
+    browser.zoomPhotosToFill = YES;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+    browser.wantsFullScreenLayout = YES;
+#endif
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    [browser setCurrentPhotoIndex:self.currentIndex];
+    
+    [browser showNextPhotoAnimated:YES];
+    [browser showPreviousPhotoAnimated:YES];
+    
+    // Modal
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.currentViewController presentViewController:nc animated:YES completion:nil];
+}
 
 
 #pragma mark - Public -> MWPhotoBrowser
@@ -113,28 +142,8 @@
     
     self.mwPhotos = [tmpPhotos copy];
     
-    // Create browser
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    browser.displayActionButton = NO;
-    browser.displayNavArrows = NO;
-    browser.displaySelectionButtons = NO;
-    browser.alwaysShowControls = YES;
-    browser.zoomPhotosToFill = YES;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    browser.wantsFullScreenLayout = YES;
-#endif
-    browser.enableGrid = NO;
-    browser.startOnGrid = NO;
-    browser.enableSwipeToDismiss = YES;
-    [browser setCurrentPhotoIndex:currentIndex];
+    [self presentViewControllerMWPhotoBrowser];
     
-    [browser showNextPhotoAnimated:YES];
-    [browser showPreviousPhotoAnimated:YES];
-    
-    // Modal
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [currentViewController presentViewController:nc animated:YES completion:nil];
 }
 
 
@@ -168,48 +177,8 @@
     
     self.mwPhotos = [tmpPhotos copy];
     
-    // Create browser
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    browser.displayActionButton = NO;
-    browser.displayNavArrows = NO;
-    browser.displaySelectionButtons = NO;
-    browser.alwaysShowControls = YES;
-    browser.zoomPhotosToFill = YES;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-    browser.wantsFullScreenLayout = YES;
-#endif
-    browser.enableGrid = NO;
-    browser.startOnGrid = NO;
-    browser.enableSwipeToDismiss = YES;
-    [browser setCurrentPhotoIndex:currentIndex];
-    
-    [browser showNextPhotoAnimated:YES];
-    [browser showPreviousPhotoAnimated:YES];
-    
-    // Modal
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [currentViewController presentViewController:nc animated:YES completion:nil];
+    [self presentViewControllerMWPhotoBrowser];
 }
-
-
-#pragma mark - private
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
-    // 写入相册,写入失败不做处理
-    
-    if (error) {
-        DLog(@"写入失败");
-        [SVProgressHUD dismiss];
-    } else {
-        
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
-        [SVProgressHUD setMaximumDismissTimeInterval:1.0];
-        [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
-        
-    }
-}
-
 
 
 #pragma mark - MWPhotoBrowserDelegate
@@ -238,46 +207,13 @@
     self.photo = photo;
     NSString *strLike = self.photo.liked_by_user ? @"已喜欢":@"喜欢";
     
-    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"保存",@"保存高清图片",strLike]];
+    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[strLike, @"保存",@"保存高清图片"]];
     @weakify(self)
     [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        DLog(@"%@", @(selectedIndex));
         switch (selectedIndex) {
             case 0:
             {
                 @strongify(self)
-                UIImageWriteToSavedPhotosAlbum(photo.underlyingImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-            }
-                break;
-            case 1:
-            {
-                SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                [manager downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]
-                                      options:0
-                                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                         if (expectedSize > 0) {
-                                             float progress = receivedSize / (float)expectedSize;
-                                             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
-                                             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-                                             [SVProgressHUD showProgress:progress status:@"Downloading..."];
-                                         }
-                                     }
-                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                        if (finished) {
-                                            [SVProgressHUD dismiss];
-                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                @strongify(self)
-                                                UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-                                            });
-                                        } else {
-                                            DLog(@"SDWebImage failed to download image: %@", error);
-                                        }
-                                        
-                                    }];
-            }
-                break;
-            case 2:
-            {
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                 DPhotosAPIManager *manager = nil;
                 DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
@@ -291,6 +227,16 @@
                     manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
                     [manager likePhotoByParamModel:paramModel];
                 }
+            }
+                break;
+            case 1:
+            {
+                [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+            }
+                break;
+            case 2:
+            {
+                [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
             }
                 break;
                 
@@ -325,6 +271,13 @@
         _mwPhotos = [NSArray array];
     }
     return _mwPhotos;
+}
+
+- (DPhotoHandleTool *)handleTool{
+    if (!_handleTool) {
+        _handleTool = [[DPhotoHandleTool alloc] init];
+    }
+    return _handleTool;
 }
 
 @end
