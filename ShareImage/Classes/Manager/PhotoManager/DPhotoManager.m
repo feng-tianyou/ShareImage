@@ -10,6 +10,8 @@
 #import "DPhotosModel.h"
 #import "DCollectionsModel.h"
 
+#import "FSActionSheet.h"
+
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
@@ -18,12 +20,17 @@
 #import <TZImagePickerController/TZImagePickerController.h>
 #import <TZImagePickerController/TZImageManager.h>
 #import <TZImagePickerController/TZPhotoPreviewController.h>
+#import <SDWebImage/SDWebImageManager.h>
+
+
+#define kUIIMGE_WRITE_MWPHOTO_TAG       1001
+#define kUIIMGE_WRITE_TZPHOTO_TAG       1002
 
 @interface DPhotoManager()<TZImagePickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, MWPhotoBrowserDelegate>
 
 @property (nonatomic, strong) TZImagePickerController *imagecontroller;
 @property (nonatomic, strong) UIViewController *currentViewController;
-
+@property (nonatomic, assign) NSInteger imageTag;
 
 
 /**
@@ -239,7 +246,9 @@
     
     NSMutableArray *tmpPhotos = [NSMutableArray arrayWithCapacity:0];
     [photoModels enumerateObjectsUsingBlock:^(DPhotosModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:obj.urls.raw]];
+        MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:obj.urls.regular]];
+        photo.rawImageUrl = obj.urls.raw;
+        
         DCollectionsModel *collectionModel = [obj.current_user_collections firstObject];
         NSString *caption = nil;
         
@@ -454,6 +463,7 @@
         [SVProgressHUD showWithStatus:@"正在处理..."];
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        self.imageTag = kUIIMGE_WRITE_TZPHOTO_TAG;
         UIImageWriteToSavedPhotosAlbum(originalImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
     
@@ -466,23 +476,31 @@
         DLog(@"写入失败");
         [SVProgressHUD dismiss];
     } else {
-        @weakify(self);
-        __block TZAlbumModel *albumModel = nil;
-        [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
-            albumModel = model;
-            [[TZImageManager manager] getAssetsFromFetchResult:albumModel.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
-                @strongify(self)
-                TZAssetModel *model = [models lastObject];
-                if (self.didFinishPickingPhotosHandleBlock) {
-                    self.didFinishPickingPhotosHandleBlock(@[image], @[model.asset], NO);
-                }
-                
-                if (self.didFinishPickingPhotosWithInfosHandleBlock) {
-                    self.didFinishPickingPhotosWithInfosHandleBlock(@[image], @[model.asset], NO, nil);
-                }
-                [SVProgressHUD dismiss];
+        
+        if (self.imageTag == kUIIMGE_WRITE_TZPHOTO_TAG) {
+            @weakify(self);
+            __block TZAlbumModel *albumModel = nil;
+            [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
+                albumModel = model;
+                [[TZImageManager manager] getAssetsFromFetchResult:albumModel.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
+                    @strongify(self)
+                    TZAssetModel *model = [models lastObject];
+                    if (self.didFinishPickingPhotosHandleBlock) {
+                        self.didFinishPickingPhotosHandleBlock(@[image], @[model.asset], NO);
+                    }
+                    
+                    if (self.didFinishPickingPhotosWithInfosHandleBlock) {
+                        self.didFinishPickingPhotosWithInfosHandleBlock(@[image], @[model.asset], NO, nil);
+                    }
+                    [SVProgressHUD dismiss];
+                }];
             }];
-        }];
+        } else {
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+            [SVProgressHUD setMaximumDismissTimeInterval:1.0];
+            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+            [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        }
         
     }
 }
@@ -512,7 +530,54 @@
     // If we subscribe to this method we must dismiss the view controller ourselves
     NSLog(@"Did finish modal presentation");
     [self.currentViewController dismissViewControllerAnimated:YES completion:nil];
-    
+}
+
+- (void)photoBrowserLongPressGesture:(MWPhotoBrowser *)photoBrowser photo:(MWPhoto *)photo {
+    DLog(@"photoBrowserLongPressGesture");
+    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"保存",@"保存高清图片"]];
+    @weakify(self)
+    [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
+        DLog(@"%@", @(selectedIndex));
+        switch (selectedIndex) {
+            case 0:
+            {
+                @strongify(self)
+                self.imageTag = kUIIMGE_WRITE_MWPHOTO_TAG;
+                UIImageWriteToSavedPhotosAlbum(photo.underlyingImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            }
+                break;
+            case 1:
+            {
+                SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                [manager downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]
+                                                           options:0
+                                                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                              if (expectedSize > 0) {
+                                                                  float progress = receivedSize / (float)expectedSize;
+                                                                  [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+                                                                  [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+                                                                  [SVProgressHUD showProgress:progress status:@"Downloading..."];
+                                                              }
+                                                          }
+                                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                             if (finished) {
+                                                                 [SVProgressHUD dismiss];
+                                                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                                                     @strongify(self)
+                                                                     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+                                                                 });
+                                                             } else {
+                                                                 DLog(@"SDWebImage failed to download image: %@", error);
+                                                             }
+                                                             
+                                                         }];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 

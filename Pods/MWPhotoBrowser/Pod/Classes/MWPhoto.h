@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, copy) NSString *rawImageUrl;
 @property (nonatomic) BOOL emptyImage;
 @property (nonatomic) BOOL isVideo;
 

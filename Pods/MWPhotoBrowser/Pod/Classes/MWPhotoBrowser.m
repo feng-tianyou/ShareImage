@@ -1532,6 +1532,16 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 - (void)showControls { [self setControlsHidden:NO animated:YES permanent:NO]; }
 - (void)toggleControls { [self setControlsHidden:![self areControlsHidden] animated:YES permanent:NO]; }
 
+- (void)photoImageViewLongPress:(UIImageView *)imageView{
+    MWTapDetectingImageView *tapDetectingImageView = imageView;
+    MWZoomingScrollView *scrollView = tapDetectingImageView.tapDelegate;
+    MWPhoto *photo = scrollView.photo;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoBrowserLongPressGesture:photo:)]) {
+        [self.delegate photoBrowserLongPressGesture:self photo:photo];
+    }
+}
+
+
 #pragma mark - Properties
 
 - (void)setCurrentPhotoIndex:(NSUInteger)index {

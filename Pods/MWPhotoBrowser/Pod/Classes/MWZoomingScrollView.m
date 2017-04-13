@@ -48,6 +48,10 @@
 		_photoImageView.tapDelegate = self;
 		_photoImageView.contentMode = UIViewContentModeCenter;
 		_photoImageView.backgroundColor = [UIColor blackColor];
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewLongPress:)];
+        [_photoImageView addGestureRecognizer:longPress];
+        
 		[self addSubview:_photoImageView];
 		
 		// Loading indicator
@@ -440,6 +444,13 @@
     touchX += self.contentOffset.x;
     touchY += self.contentOffset.y;
     [self handleDoubleTap:CGPointMake(touchX, touchY)];
+}
+
+
+- (void)photoImageViewLongPress:(UILongPressGestureRecognizer *)longPress {
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        [_photoBrowser photoImageViewLongPress:longPress.view];
+    }
 }
 
 @end
