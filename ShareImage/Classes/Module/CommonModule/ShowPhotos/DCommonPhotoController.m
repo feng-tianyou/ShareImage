@@ -7,7 +7,7 @@
 //
 
 #import "DCommonPhotoController.h"
-#import "DPhotoDetailController.h"
+
 #import "DCommonPhotosCell.h"
 #import "DSwipeViewController.h"
 
@@ -167,14 +167,6 @@ static NSString * const cellID = @"collectionPhotos";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.photos.count > indexPath.row) {
-//        DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:self.photos[indexPath.row]];
-//        [self.navigationController pushViewController:detailController animated:YES];
-//        self.manager  = [DPhotoManager manager];
-//        [self.manager photoPreviewWithPhotoUrls:self.photoUrls currentIndex:indexPath.row currentViewController:self];
-        
-//        DSwipeViewController *swip = [[DSwipeViewController alloc] initWithTitle:self.navTitle photoModels:self.photos index:indexPath.row];
-//        [self.navigationController pushViewController:swip animated:YES];
-        
         SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
         browser.sourceImagesContainerView = self.collectionView; // 原图的父控件
         browser.imageCount = self.photos.count; // 图片总数
@@ -245,15 +237,15 @@ static NSString * const cellID = @"collectionPhotos";
     [SVProgressHUD setMaximumDismissTimeInterval:1.0];
     [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
     [SVProgressHUD showSuccessWithStatus:@"Download Success!"];
-    @weakify(self)
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [NSThread sleepForTimeInterval:1.0];
-       dispatch_async(dispatch_get_main_queue(), ^{
-           @strongify(self)
-//           DPhotoDetailController *detailController = [[DPhotoDetailController alloc] initWithPhotoModel:nil];
-//           [self.navigationController pushViewController:detailController animated:YES];
-       });
-    });
+//    @weakify(self)
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [NSThread sleepForTimeInterval:1.0];
+//       dispatch_async(dispatch_get_main_queue(), ^{
+//           @strongify(self)
+//
+//           
+//       });
+//    });
 }
 
 

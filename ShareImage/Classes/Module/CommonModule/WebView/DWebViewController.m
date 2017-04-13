@@ -232,7 +232,7 @@
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (!isLeft) {
         @weakify(self);
-        [DShareManager  shareUrlForAllPlatformByTitle:self.webView.title content:@"" shareUrl:self.urlStr customPlatforms:@[@{@"platformIcon":@"common_refresh", @"platformName":@"刷新"}] parentController:self eventBlock:^(NSInteger index, NSDictionary *userInfo) {
+        [DShareManager  shareUrlForAllPlatformByTitle:self.webView.title content:@"" shareUrl:self.urlStr image:nil customPlatforms:@[@{@"platformIcon":@"common_refresh", @"platformName":@"刷新"}] parentController:self eventBlock:^(NSInteger index, NSDictionary *userInfo) {
             DLog(@"index = %@, userInfo = %@", @(index), userInfo);
             @strongify(self);
             [self.webView reload];

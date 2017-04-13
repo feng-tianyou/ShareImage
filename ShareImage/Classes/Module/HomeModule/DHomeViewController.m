@@ -8,7 +8,7 @@
 
 #import "DHomeViewController.h"
 #import "DUserProfileViewController.h"
-#import "DPhotoDetailController.h"
+
 #import "DSearchViewController.h"
 #import "DMeViewController.h"
 #import "DCommonPhotoController.h"

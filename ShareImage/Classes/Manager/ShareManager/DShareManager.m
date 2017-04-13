@@ -41,7 +41,23 @@
                               content:(NSString *)content
                              shareUrl:(NSString *)shareUrl
                      parentController:(UIViewController *)parentController{
-    [self shareUrlForAllPlatformByTitle:title content:content shareUrl:shareUrl customPlatforms:nil parentController:parentController eventBlock:nil];
+    [self shareUrlForAllPlatformByTitle:title content:content shareUrl:shareUrl image:nil customPlatforms:nil parentController:parentController eventBlock:nil];
+}
+
+
+/**
+ 分享（所有平台）
+ 
+ @param title 标题
+ @param content 内容
+ @param image 图片
+ @param parentController 当前控制器
+ */
++ (void)shareUrlForAllPlatformByTitle:(NSString *)title
+                              content:(NSString *)content
+                                image:(UIImage *)image
+                     parentController:(UIViewController *)parentController{
+     [self shareUrlForAllPlatformByTitle:title content:content shareUrl:nil image:image customPlatforms:nil parentController:parentController eventBlock:nil];
 }
 
 
@@ -51,6 +67,7 @@
  @param title 标题
  @param content 内容
  @param shareUrl 连接
+ @param image 图片
  @param customPlatforms 自定义平台（
  描述： customPlatforms数组存放字典，
  字典格式：@{@"platformIcon":@"平台图片", @"platformName":@"平台名称"}）
@@ -60,6 +77,7 @@
 + (void)shareUrlForAllPlatformByTitle:(NSString *)title
                               content:(NSString *)content
                              shareUrl:(NSString *)shareUrl
+                                image:(UIImage *)image
                       customPlatforms:(NSArray *)customPlatforms
                      parentController:(UIViewController *)parentController
                            eventBlock:(CustomPlatformBlock)eventBlock{
@@ -109,8 +127,13 @@
         UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:content thumImage:defaultImage];
         //设置网页地址
         shareObject.webpageUrl = shareUrl;
-        
         messageObject.shareObject = shareObject;
+        if (image) {
+            UMShareImageObject *imageObject = [UMShareImageObject shareObjectWithTitle:title descr:content thumImage:image];
+            messageObject.shareObject = imageObject;
+        }
+        
+        
         
         switch (platformType) {
             case UMSocialPlatformType_Sms:

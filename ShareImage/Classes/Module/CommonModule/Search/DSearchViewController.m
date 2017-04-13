@@ -19,6 +19,7 @@
 
 #import "DPhotosAPIManager.h"
 #import "DPhotosParamModel.h"
+#import "DPhotoManager.h"
 
 #import "DSearchPhotosModel.h"
 #import "DSearchUsersModel.h"
@@ -31,8 +32,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) DPhotoManager *manager;
 
 @property (nonatomic, strong) DSearchSelectItemView *selectItemView;
 @property (nonatomic, strong) DSearchBar *searchBar;
@@ -278,8 +279,7 @@
         case PhotoSearchType:
         {
             if (self.dataArray.count > indexPath.row) {
-                DPhotoDetailController *photoController = [[DPhotoDetailController alloc] initWithPhotoModel:self.dataArray[indexPath.row]];
-                [self.navigationController pushViewController:photoController animated:YES];
+                [self.manager photoPreviewWithPhotoModels:self.dataArray currentIndex:indexPath.row currentViewController:self];
             }
             
         }
@@ -465,6 +465,14 @@
         _footerView.stateLabel.hidden = YES;
     }
     return _footerView;
+}
+
+
+- (DPhotoManager *)manager{
+    if (!_manager) {
+        _manager = [[DPhotoManager alloc] init];
+    }
+    return _manager;
 }
 
 @end
