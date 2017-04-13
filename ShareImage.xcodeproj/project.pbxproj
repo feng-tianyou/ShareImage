@@ -27,6 +27,7 @@
 		0744FAD61E9F5ACA004EDB9C /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FACF1E9F5ACA004EDB9C /* FSActionSheetItem.m */; };
 		0744FAD71E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744FAD11E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png */; };
 		0744FAD81E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */; };
+		0744FADB1E9F7767004EDB9C /* DMWPhotosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FADA1E9F7767004EDB9C /* DMWPhotosManager.m */; };
 		0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */; };
 		0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719E1E63DA7500ADBC90 /* DWebViewController.m */; };
 		074671A61E6409B800ADBC90 /* DUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A51E6409B800ADBC90 /* DUserListViewController.m */; };
@@ -327,6 +328,8 @@
 		0744FACF1E9F5ACA004EDB9C /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
 		0744FAD11E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@2x.png"; sourceTree = "<group>"; };
 		0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@3x.png"; sourceTree = "<group>"; };
+		0744FAD91E9F7767004EDB9C /* DMWPhotosManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWPhotosManager.h; sourceTree = "<group>"; };
+		0744FADA1E9F7767004EDB9C /* DMWPhotosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWPhotosManager.m; sourceTree = "<group>"; };
 		074671991E63DA6500ADBC90 /* DCommonPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonPhotoController.h; sourceTree = "<group>"; };
 		0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotoController.m; sourceTree = "<group>"; };
 		0746719D1E63DA7500ADBC90 /* DWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebViewController.h; sourceTree = "<group>"; };
@@ -1426,6 +1429,8 @@
 			children = (
 				7ED80FEC1E55550100954DAF /* DPhotoManager.h */,
 				7ED80FED1E55550100954DAF /* DPhotoManager.m */,
+				0744FAD91E9F7767004EDB9C /* DMWPhotosManager.h */,
+				0744FADA1E9F7767004EDB9C /* DMWPhotosManager.m */,
 			);
 			path = PhotoManager;
 			sourceTree = "<group>";
@@ -2436,6 +2441,7 @@
 				7ED810FE1E55550100954DAF /* DNetworkFactory.m in Sources */,
 				7ED8112F1E55550100954DAF /* UIColor.m in Sources */,
 				07C5179A1E77E40E00770D30 /* DTextField.m in Sources */,
+				0744FADB1E9F7767004EDB9C /* DMWPhotosManager.m in Sources */,
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
 				078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */,
 				07D055781E7914BD0031188F /* CATCurveProgressView.m in Sources */,

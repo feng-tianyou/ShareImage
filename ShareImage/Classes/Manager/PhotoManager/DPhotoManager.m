@@ -10,6 +10,9 @@
 #import "DPhotosModel.h"
 #import "DCollectionsModel.h"
 
+#import "DPhotosAPIManager.h"
+#import "DPhotosParamModel.h"
+
 #import "FSActionSheet.h"
 
 #import <Photos/Photos.h>
@@ -26,11 +29,12 @@
 #define kUIIMGE_WRITE_MWPHOTO_TAG       1001
 #define kUIIMGE_WRITE_TZPHOTO_TAG       1002
 
-@interface DPhotoManager()<TZImagePickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, MWPhotoBrowserDelegate>
+@interface DPhotoManager()<TZImagePickerControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, MWPhotoBrowserDelegate, DBaseManagerProtocol>
 
 @property (nonatomic, strong) TZImagePickerController *imagecontroller;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, assign) NSInteger imageTag;
+@property (nonatomic, strong) MWPhoto *photo;
 
 
 /**
@@ -248,7 +252,8 @@
     [photoModels enumerateObjectsUsingBlock:^(DPhotosModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:obj.urls.regular]];
         photo.rawImageUrl = obj.urls.raw;
-        
+        photo.liked_by_user = obj.liked_by_user;
+        photo.pid = obj.pid;
         DCollectionsModel *collectionModel = [obj.current_user_collections firstObject];
         NSString *caption = nil;
         
@@ -533,8 +538,10 @@
 }
 
 - (void)photoBrowserLongPressGesture:(MWPhotoBrowser *)photoBrowser photo:(MWPhoto *)photo {
-    DLog(@"photoBrowserLongPressGesture");
-    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"保存",@"保存高清图片"]];
+    self.photo = photo;
+    NSString *strLike = self.photo.liked_by_user ? @"已喜欢":@"喜欢";
+    
+    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"保存",@"保存高清图片",strLike]];
     @weakify(self)
     [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
         DLog(@"%@", @(selectedIndex));
@@ -573,12 +580,48 @@
                                                          }];
             }
                 break;
+            case 2:
+            {
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                DPhotosAPIManager *manager = nil;
+                DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+                paramModel.pid = photo.pid;
+                if (photo.liked_by_user) {
+                    [dic setValue:@"unLike" forKey:@"methor"];
+                    manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                    [manager unLikePhotoByParamModel:paramModel];
+                } else {
+                    [dic setValue:@"like" forKey:@"methor"];
+                    manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                    [manager likePhotoByParamModel:paramModel];
+                }
+            }
+                break;
                 
             default:
                 break;
         }
     }];
 }
+
+
+#pragma mark - request
+- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    NSString *methor = [userInfo objectForKey:@"methor"];
+    NSString *tipStr = nil;
+    if ([methor isEqualToString:@"like"]) {
+        tipStr = @"喜欢";
+    } else {
+        tipStr = @"取消喜欢";
+    }
+    DPhotosModel *photoModel = dataModel;
+    self.photo.liked_by_user = photoModel.liked_by_user;
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+    [SVProgressHUD setMaximumDismissTimeInterval:1.0];
+    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD showSuccessWithStatus:tipStr];
+}
+
 
 
 #pragma mark - dealloc

@@ -19,6 +19,10 @@
 @property (nonatomic, strong) NSString *caption;
 @property (nonatomic, strong) NSURL *videoURL;
 @property (nonatomic, copy) NSString *rawImageUrl;
+/// 是否被用户喜欢
+@property (nonatomic, assign) BOOL liked_by_user;
+/// 图片id
+@property (nonatomic, copy) NSString *pid;
 @property (nonatomic) BOOL emptyImage;
 @property (nonatomic) BOOL isVideo;
 
