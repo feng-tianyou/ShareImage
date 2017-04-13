@@ -21,6 +21,12 @@
 		0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B74F1E5E7D9E005784CE /* DUserValidRule.m */; };
 		0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7531E5EDE18005784CE /* DCollectionViewController.m */; };
 		0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7561E5EE365005784CE /* DCollectionViewCell.m */; };
+		0744FAD31E9F5ACA004EDB9C /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FAC91E9F5ACA004EDB9C /* FSActionSheet.m */; };
+		0744FAD41E9F5ACA004EDB9C /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FACB1E9F5ACA004EDB9C /* FSActionSheetCell.m */; };
+		0744FAD51E9F5ACA004EDB9C /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FACD1E9F5ACA004EDB9C /* FSActionSheetConfig.m */; };
+		0744FAD61E9F5ACA004EDB9C /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744FACF1E9F5ACA004EDB9C /* FSActionSheetItem.m */; };
+		0744FAD71E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744FAD11E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png */; };
+		0744FAD81E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */; };
 		0746719B1E63DA6500ADBC90 /* DCommonPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */; };
 		0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746719E1E63DA7500ADBC90 /* DWebViewController.m */; };
 		074671A61E6409B800ADBC90 /* DUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671A51E6409B800ADBC90 /* DUserListViewController.m */; };
@@ -311,6 +317,16 @@
 		0733B7531E5EDE18005784CE /* DCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionViewController.m; sourceTree = "<group>"; };
 		0733B7551E5EE365005784CE /* DCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionViewCell.h; sourceTree = "<group>"; };
 		0733B7561E5EE365005784CE /* DCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCollectionViewCell.m; sourceTree = "<group>"; };
+		0744FAC81E9F5ACA004EDB9C /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
+		0744FAC91E9F5ACA004EDB9C /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
+		0744FACA1E9F5ACA004EDB9C /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
+		0744FACB1E9F5ACA004EDB9C /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
+		0744FACC1E9F5ACA004EDB9C /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
+		0744FACD1E9F5ACA004EDB9C /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
+		0744FACE1E9F5ACA004EDB9C /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
+		0744FACF1E9F5ACA004EDB9C /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
+		0744FAD11E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@2x.png"; sourceTree = "<group>"; };
+		0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@3x.png"; sourceTree = "<group>"; };
 		074671991E63DA6500ADBC90 /* DCommonPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonPhotoController.h; sourceTree = "<group>"; };
 		0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotoController.m; sourceTree = "<group>"; };
 		0746719D1E63DA7500ADBC90 /* DWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebViewController.h; sourceTree = "<group>"; };
@@ -825,6 +841,31 @@
 				07C647551E7AB1F5002169FF /* DCollectionHeaderView.m */,
 			);
 			path = CollectionMoudle;
+			sourceTree = "<group>";
+		};
+		0744FAC71E9F5ACA004EDB9C /* FSActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				0744FAC81E9F5ACA004EDB9C /* FSActionSheet.h */,
+				0744FAC91E9F5ACA004EDB9C /* FSActionSheet.m */,
+				0744FACA1E9F5ACA004EDB9C /* FSActionSheetCell.h */,
+				0744FACB1E9F5ACA004EDB9C /* FSActionSheetCell.m */,
+				0744FACC1E9F5ACA004EDB9C /* FSActionSheetConfig.h */,
+				0744FACD1E9F5ACA004EDB9C /* FSActionSheetConfig.m */,
+				0744FACE1E9F5ACA004EDB9C /* FSActionSheetItem.h */,
+				0744FACF1E9F5ACA004EDB9C /* FSActionSheetItem.m */,
+				0744FAD01E9F5ACA004EDB9C /* FSActionSheetResources */,
+			);
+			path = FSActionSheet;
+			sourceTree = "<group>";
+		};
+		0744FAD01E9F5ACA004EDB9C /* FSActionSheetResources */ = {
+			isa = PBXGroup;
+			children = (
+				0744FAD11E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png */,
+				0744FAD21E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png */,
+			);
+			path = FSActionSheetResources;
 			sourceTree = "<group>";
 		};
 		074671981E63DA6500ADBC90 /* ShowPhotos */ = {
@@ -1498,6 +1539,7 @@
 		7ED810101E55550100954DAF /* ThirtPart */ = {
 			isa = PBXGroup;
 			children = (
+				0744FAC71E9F5ACA004EDB9C /* FSActionSheet */,
 				7E31E02C1E816DF900FD3CE4 /* SDPhotoBrowser */,
 				07ECEBEF1E6555B700BCF52A /* LLSlideMenu */,
 				7ED810111E55550100954DAF /* EGOCache */,
@@ -2174,6 +2216,8 @@
 				07B0E70F1E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
 				07B0E70D1E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
 				7ED80F561E554D8100954DAF /* LaunchScreen.storyboard in Resources */,
+				0744FAD81E9F5ACA004EDB9C /* FSActionSheet_cancel@3x.png in Resources */,
+				0744FAD71E9F5ACA004EDB9C /* FSActionSheet_cancel@2x.png in Resources */,
 				7ED811421E55550100954DAF /* zbar-samples.png in Resources */,
 				7ED811151E55550100954DAF /* MotionCorpse-Jrcanest.json in Resources */,
 				07B0E7111E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
@@ -2403,6 +2447,7 @@
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811281E55550100954DAF /* CAAnimationGroup+LOTAnimatableGroup.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
+				0744FAD51E9F5ACA004EDB9C /* FSActionSheetConfig.m in Sources */,
 				0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */,
 				07ECEC051E65608E00BCF52A /* DHomeMenuView.m in Sources */,
 				070A8B2E1E5D225000CE41E2 /* DCollectionsService.m in Sources */,
@@ -2433,12 +2478,14 @@
 				7ED810F81E55550100954DAF /* DErrorRespone.m in Sources */,
 				7ED8111D1E55550100954DAF /* LOTMaskLayer.m in Sources */,
 				7ED8111B1E55550100954DAF /* LOTGroupLayerView.m in Sources */,
+				0744FAD61E9F5ACA004EDB9C /* FSActionSheetItem.m in Sources */,
 				7ED811301E55550100954DAF /* LOTComposition.m in Sources */,
 				7ED810E11E55550100954DAF /* DTabBarViewController.m in Sources */,
 				7ED8111E1E55550100954DAF /* LOTRectShapeLayer.m in Sources */,
 				7ED811321E55550100954DAF /* LOTMask.m in Sources */,
 				7ED8110B1E55550100954DAF /* DScanQRCodeViewController.m in Sources */,
 				7ED80F481E554D8100954DAF /* main.m in Sources */,
+				0744FAD41E9F5ACA004EDB9C /* FSActionSheetCell.m in Sources */,
 				07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */,
 				7EAFD4B41E56B1CE00BBA972 /* DPhotosParamModel.m in Sources */,
 				070A8B2B1E5D223C00CE41E2 /* DCollectionsNetwork.m in Sources */,
@@ -2449,6 +2496,7 @@
 				7ED8113B1E55550100954DAF /* LOTAnimationTransitionController.m in Sources */,
 				7ED810EA1E55550100954DAF /* DPlistCache.m in Sources */,
 				7ED811581E55550100954DAF /* DBlockTool.m in Sources */,
+				0744FAD31E9F5ACA004EDB9C /* FSActionSheet.m in Sources */,
 				07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */,
 				7ED811821E55573300954DAF /* DTestViewController.m in Sources */,
 				7ED811191E55550100954DAF /* LOTAnimatableLayer.m in Sources */,
