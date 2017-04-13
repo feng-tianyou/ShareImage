@@ -207,42 +207,98 @@
     self.photo = photo;
     NSString *strLike = self.photo.liked_by_user ? @"已喜欢":@"喜欢";
     
-    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[strLike, @"保存",@"保存高清图片"]];
+    NSArray *titles = nil;
+    switch (self.longPressType) {
+        case DMWPhotosManagerTypeForSave:titles = @[@"保存"];
+            break;
+        case DMWPhotosManagerTypeForSaveDownLoad:titles = @[@"保存",@"保存高清图片"];
+            break;
+        case DMWPhotosManagerTypeForSaveDownLoadLike:titles = @[strLike, @"保存",@"保存高清图片"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:titles];
     @weakify(self)
     [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        switch (selectedIndex) {
-            case 0:
+        switch (self.longPressType) {
+            case DMWPhotosManagerTypeForSave:
             {
-                @strongify(self)
-                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                DPhotosAPIManager *manager = nil;
-                DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-                paramModel.pid = photo.pid;
-                if (photo.liked_by_user) {
-                    [dic setValue:@"unLike" forKey:@"methor"];
-                    manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
-                    [manager unLikePhotoByParamModel:paramModel];
-                } else {
-                    [dic setValue:@"like" forKey:@"methor"];
-                    manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
-                    [manager likePhotoByParamModel:paramModel];
+                switch (selectedIndex) {
+                    case 0:
+                    {
+                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                    }
+                        break;
+                        
+                    default:
+                        break;
                 }
-            }
+            };
                 break;
-            case 1:
+            case DMWPhotosManagerTypeForSaveDownLoad:
             {
-                [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
-            }
+                switch (selectedIndex) {
+                    case 0:
+                    {
+                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                    }
+                        break;
+                    case 1:
+                    {
+                        [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            };
                 break;
-            case 2:
+            case DMWPhotosManagerTypeForSaveDownLoadLike:
             {
-                [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
-            }
+                switch (selectedIndex) {
+                    case 0:
+                    {
+                        @strongify(self)
+                        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                        DPhotosAPIManager *manager = nil;
+                        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+                        paramModel.pid = photo.pid;
+                        if (photo.liked_by_user) {
+                            [dic setValue:@"unLike" forKey:@"methor"];
+                            manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                            [manager unLikePhotoByParamModel:paramModel];
+                        } else {
+                            [dic setValue:@"like" forKey:@"methor"];
+                            manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                            [manager likePhotoByParamModel:paramModel];
+                        }
+                    }
+                        break;
+                    case 1:
+                    {
+                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                    }
+                        break;
+                    case 2:
+                    {
+                        [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            };
                 break;
                 
             default:
                 break;
         }
+        
     }];
 }
 

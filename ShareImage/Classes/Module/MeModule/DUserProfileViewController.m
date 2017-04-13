@@ -13,6 +13,7 @@
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 #import "DPhotosModel.h"
+#import "DMWPhotosManager.h"
 
 #import "DNumberButton.h"
 #import "DHomeCellTipLabel.h"
@@ -22,9 +23,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
-#import "SDPhotoBrowser.h"
 
-@interface DUserProfileViewController ()<UIScrollViewDelegate, SDPhotoBrowserDelegate>
+
+@interface DUserProfileViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, copy) NSString *userName;
 
@@ -43,6 +44,7 @@
 
 // 数据
 @property (nonatomic, strong) DUserModel *userModel;
+@property (nonatomic, strong) DMWPhotosManager *manager;
 
 @end
 
@@ -219,12 +221,7 @@
 }
 
 - (void)clickIconView{
-    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
-    browser.sourceImagesContainerView = self.scrollView; // 原图的父控件
-    browser.imageCount = 1; // 图片总数
-    browser.hideBottomFunctionView = YES;
-    browser.delegate = self;
-    [browser show];
+    [self.manager photoPreviewWithPhotoUrls:@[self.userModel.profile_image.large] currentIndex:0 currentViewController:self];
 }
 
 - (void)clickPhotoNumBtn{
@@ -283,16 +280,6 @@
         self.navigationView.bgView.backgroundColor = [UIColor clearColor];
     }
 }
-
-#pragma mark - SDPhotoBrowserDelegate
-- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
-    return self.iconView.image;
-}
-
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
-    return [NSURL URLWithString:self.userModel.profile_image.large];
-}
-
 
 
 #pragma mark - request
@@ -451,6 +438,14 @@
         [_followButton addTarget:self action:@selector(clickFollowButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return _followButton;
+}
+
+- (DMWPhotosManager *)manager{
+    if (!_manager) {
+        _manager = [[DMWPhotosManager alloc] init];
+        _manager.longPressType = DMWPhotosManagerTypeForSave;
+    }
+    return _manager;
 }
 
 

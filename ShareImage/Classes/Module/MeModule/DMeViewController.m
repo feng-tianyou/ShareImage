@@ -256,6 +256,7 @@
 - (DMWPhotosManager *)manager{
     if (!_manager) {
         _manager = [[DMWPhotosManager alloc] init];
+        _manager.longPressType = DMWPhotosManagerTypeForSaveDownLoadLike;
     }
     return _manager;
 }

@@ -7,6 +7,16 @@
 //
 
 #import "DPhotoManager.h"
+
+
+typedef NS_ENUM(NSInteger, DMWPhotosManagerLongPressType)
+{
+    DMWPhotosManagerTypeForSave, // 1 << 0 只有保存图片
+    DMWPhotosManagerTypeForSaveDownLoad,  // 1 << 1 只有下载图片
+    DMWPhotosManagerTypeForSaveDownLoadLike,  // 1 << 2 只有喜欢
+};
+
+
 @class DPhotosModel;
 @interface DMWPhotosManager : DPhotoManager
 
@@ -14,6 +24,7 @@
 @property (nonatomic, strong) NSArray<NSString *> *photoUrls;                ///< All photos / 所有图片的数组(相片路径)
 @property (nonatomic, strong) NSArray<UIImage *> *photos;                ///< All photos / 所有图片的数组(UIImage类型)
 
+@property (nonatomic, assign) DMWPhotosManagerLongPressType longPressType;
 
 
 
