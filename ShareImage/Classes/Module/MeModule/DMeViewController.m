@@ -17,7 +17,7 @@
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
-#import "DPhotoManager.h"
+#import "DMWPhotosManager.h"
 #import "DPhotosModel.h"
 
 @interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource, MeHeaderViewDelegate>
@@ -26,7 +26,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) DMeHeaderView *headerView;
 
-@property (nonatomic, strong) DPhotoManager *manager;
+@property (nonatomic, strong) DMWPhotosManager *manager;
 @property (nonatomic, strong) NSArray *usersPhotos;
 
 
@@ -253,9 +253,9 @@
     return _usersPhotos;
 }
 
-- (DPhotoManager *)manager{
+- (DMWPhotosManager *)manager{
     if (!_manager) {
-        _manager = [[DPhotoManager alloc] init];
+        _manager = [[DMWPhotosManager alloc] init];
     }
     return _manager;
 }

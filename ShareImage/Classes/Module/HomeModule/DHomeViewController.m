@@ -22,7 +22,7 @@
 #import "DPhotosAPIManager.h"
 #import "DCollectionsAPIManager.h"
 #import "DUserAPIManager.h"
-#import "DPhotoManager.h"
+#import "DMWPhotosManager.h"
 
 #import "DPhotosParamModel.h"
 #import "DCollectionsParamModel.h"
@@ -42,7 +42,7 @@
 @property (nonatomic, strong) LLSlideMenu *slideMenu;
 @property (nonatomic, strong) DHomeMenuView *menuView;
 
-@property (nonatomic, strong) DPhotoManager *manager;
+@property (nonatomic, strong) DMWPhotosManager *manager;
 
 @property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
 
@@ -323,9 +323,9 @@
 }
 
 
-- (DPhotoManager *)manager{
+- (DMWPhotosManager *)manager{
     if (!_manager) {
-        _manager = [[DPhotoManager alloc] init];
+        _manager = [[DMWPhotosManager alloc] init];
     }
     return _manager;
 }

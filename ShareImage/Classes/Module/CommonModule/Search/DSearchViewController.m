@@ -19,7 +19,7 @@
 
 #import "DPhotosAPIManager.h"
 #import "DPhotosParamModel.h"
-#import "DPhotoManager.h"
+#import "DMWPhotosManager.h"
 
 #import "DSearchPhotosModel.h"
 #import "DSearchUsersModel.h"
@@ -33,7 +33,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) DPhotoManager *manager;
+@property (nonatomic, strong) DMWPhotosManager *manager;
 
 @property (nonatomic, strong) DSearchSelectItemView *selectItemView;
 @property (nonatomic, strong) DSearchBar *searchBar;
@@ -468,9 +468,9 @@
 }
 
 
-- (DPhotoManager *)manager{
+- (DMWPhotosManager *)manager{
     if (!_manager) {
-        _manager = [[DPhotoManager alloc] init];
+        _manager = [[DMWPhotosManager alloc] init];
     }
     return _manager;
 }

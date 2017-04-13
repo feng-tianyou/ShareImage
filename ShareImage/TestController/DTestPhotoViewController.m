@@ -7,7 +7,7 @@
 //
 
 #import "DTestPhotoViewController.h"
-#import "DPhotoManager.h"
+#import "DTZPhotosManager.h"
 
 
 static NSString * const cellID = @"cell";
@@ -17,7 +17,7 @@ static NSString * const cellID = @"cell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSArray *assets;
-@property (nonatomic, strong) DPhotoManager *photoManager;
+@property (nonatomic, strong) DTZPhotosManager *photoManager;
 
 @end
 
@@ -56,8 +56,6 @@ static NSString * const cellID = @"cell";
     // Do any additional setup after loading the view.
     
     self.navLeftItemType = DNavigationItemTypeBack;
-    
-    self.photoManager = [DPhotoManager manager];
     
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
@@ -113,5 +111,13 @@ static NSString * const cellID = @"cell";
     
     
 }
+
+- (DTZPhotosManager *)photoManager{
+    if (!_photoManager) {
+        _photoManager = [[DTZPhotosManager alloc] init];
+    }
+    return _photoManager;
+}
+
 
 @end
