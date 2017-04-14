@@ -62,20 +62,13 @@
     return self;
 }
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    
-    if (self.isFirst) {
-        CGFloat lineWidth = [self.photoBtn.titleLabel.text sizeWithFont:self.photoBtn.titleLabel.font].width;
-        [self.sliderLine setFrame:self.photoBtn.center.x-lineWidth*0.5 y:self.bottomLine.y - 1 w:lineWidth h:2];
-    }
-}
 
 - (void)didCilckButton:(UIButton *)button{
-    self.isFirst = NO;
+    if (button.bounds.size.height <= 0) return;
     CGFloat lineWidth = [button.titleLabel.text sizeWithFont:button.titleLabel.font].width;
     CGRect lineRect = self.sliderLine.frame;
     lineRect.size.width = lineWidth;
+    lineRect.size.height = 2;
     self.sliderLine.frame = lineRect;
     [UIView animateWithDuration:0.25 animations:^{
         CGPoint point = button.center;

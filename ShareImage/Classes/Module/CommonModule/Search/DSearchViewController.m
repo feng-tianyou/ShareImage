@@ -70,6 +70,9 @@
     
     [self setupTableViewDownRefresh];
     [self.searchBar.searchTextField becomeFirstResponder];
+    
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -93,6 +96,23 @@
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
+    
+    switch (self.searchType) {
+        case PhotoSearchType:
+            [self clickSearchPhotos:self.selectItemView.photoBtn];
+            break;
+        case UserSearchType:
+            [self clickSearchUsers:self.selectItemView.userBtn];
+            break;
+        case CollectionSearchType:
+            [self clickSearchCollections:self.selectItemView.collectionBtn];
+            break;
+        case OtherSearchType:
+            [self clickSearchPhotos:self.selectItemView.photoBtn];
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -416,24 +436,6 @@
         [_selectItemView.photoBtn addTarget:self action:@selector(clickSearchPhotos:) forControlEvents:UIControlEventTouchUpInside];
         [_selectItemView.userBtn addTarget:self action:@selector(clickSearchUsers:) forControlEvents:UIControlEventTouchUpInside];
         [_selectItemView.collectionBtn addTarget:self action:@selector(clickSearchCollections:) forControlEvents:UIControlEventTouchUpInside];
-        switch (_searchType) {
-            case PhotoSearchType:
-                _selectItemView.photoBtn.selected = YES;
-                break;
-            case UserSearchType:
-                _selectItemView.userBtn.selected = YES;
-                break;
-            case CollectionSearchType:
-                _selectItemView.collectionBtn.selected = YES;
-                break;
-            case OtherSearchType:
-                _selectItemView.photoBtn.selected = YES;
-                break;
-                
-            default:
-                break;
-        }
-        
     }
     return _selectItemView;
 }
