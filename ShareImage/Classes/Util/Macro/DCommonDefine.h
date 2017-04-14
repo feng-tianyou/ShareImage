@@ -27,7 +27,6 @@
 #import "UILabel+DAttributed.h"
 #import "UIImage+DEffect.h"
 #import "UIScrollView+DControl.h"
-#import "UIViewController+DLottieAnimated.h"
 
 
 // 工具

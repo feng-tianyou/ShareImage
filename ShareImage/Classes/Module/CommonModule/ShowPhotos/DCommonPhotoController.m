@@ -18,25 +18,24 @@
 #import "DPhotosAPIManager.h"
 #import "DPhotosParamModel.h"
 
-#import "DPhotoManager.h"
+#import "DMWPhotosManager.h"
 #import "DShareManager.h"
 
 #import <MJRefresh/MJRefresh.h>
-#import "SDPhotoBrowser.h"
 #import <SDWebImage/UIImage+GIF.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
 static NSString * const cellID = @"collectionPhotos";
 
-@interface DCommonPhotoController ()<UICollectionViewDelegate, UICollectionViewDataSource, SDPhotoBrowserDelegate>
+@interface DCommonPhotoController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *photoUrls;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) APIManagerType type;
-@property (nonatomic, strong) DPhotoManager *manager;
+@property (nonatomic, strong) DMWPhotosManager *manager;
 
 @property (nonatomic, copy) NSString *navTitle;
 
@@ -137,7 +136,6 @@ static NSString * const cellID = @"collectionPhotos";
         }
             break;
             
-            
         default:
             break;
     }
@@ -166,96 +164,12 @@ static NSString * const cellID = @"collectionPhotos";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.photos.count > indexPath.row) {
-        SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
-        browser.sourceImagesContainerView = self.collectionView; // 原图的父控件
-        browser.imageCount = self.photos.count; // 图片总数
-        browser.currentImageIndex = indexPath.row;
-        browser.delegate = self;
-        [browser show];
-    }
-    
-    
-}
-
-#pragma mark - SDPhotoBrowserDelegate
-// 返回临时占位图片（即原来的小图）
-- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
-{
-//    DPhotosModel *photo = self.photos[index];
-    // 不建议用此种方式获取小图，这里只是为了简单实现展示而已
-    DCommonPhotosCell *cell = (DCommonPhotosCell *)[self collectionView:self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-    
-    return cell.iconView.image;
-}
-
-
-// 返回高质量图片的url
-- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
-{
-    DPhotosModel *photo = self.photos[index];
-    return [NSURL URLWithString:photo.urls.regular];
-}
-
-- (void)photoBrowser:(SDPhotoBrowser *)browser didSelectButtonIndex:(NSInteger)buttonIndex imageIndex:(NSInteger)imageIndex{
-    DPhotosModel *photo = self.photos[imageIndex];
-    switch (buttonIndex) {
-        case 0:
-        {
-            DLog(@"0==%@", photo.pid);
-            [DShareManager shareUrlForAllPlatformByTitle:@"分享图片" content:@"分享图片" shareUrl:photo.urls.regular parentController:self];
-        }
-            break;
-        case 1:
-        {
-            DLog(@"1==%@", photo.pid);
-            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-            paramModel.pid = photo.pid;
-            [manager likePhotoByParamModel:paramModel];
-        }
-            break;
-        case 2:
-        {
-            DLog(@"2==%@", photo.pid);
-            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-            paramModel.photoUrl = photo.urls.raw;
-            [manager downloadPhotoByParamModel:paramModel];
-        }
-            break;
-            
-        default:
-            break;
+        [self.manager photoPreviewWithPhotoModels:self.photos currentIndex:indexPath.row currentViewController:self];
     }
 }
 
 
 #pragma mark - requet
-- (void)requestServiceSucceedByUserInfo:(NSDictionary *)userInfo{
-    // 下载成功
-    [SVProgressHUD setMaximumDismissTimeInterval:1.0];
-    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-    [SVProgressHUD showSuccessWithStatus:@"Download Success!"];
-//    @weakify(self)
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        [NSThread sleepForTimeInterval:1.0];
-//       dispatch_async(dispatch_get_main_queue(), ^{
-//           @strongify(self)
-//
-//           
-//       });
-//    });
-}
-
-
-- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
-    
-    [SVProgressHUD setMaxSupportedWindowLevel:1.0];
-    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
-    [SVProgressHUD showSuccessWithStatus:@"Likes"];
-}
-
-
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
     self.page++;
     [self.photos addObjectsFromArray:arrData];
@@ -345,5 +259,13 @@ static NSString * const cellID = @"collectionPhotos";
     return _footerView;
 }
 
+
+- (DMWPhotosManager *)manager{
+    if (!_manager) {
+        _manager = [[DMWPhotosManager alloc] init];
+        _manager.longPressType = DMWPhotosManagerTypeForSaveDownLoadLike;
+    }
+    return _manager;
+}
 
 @end

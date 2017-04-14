@@ -13,7 +13,6 @@
 @property (nonatomic, copy) NSString *accessToken;
 @property (nonatomic, copy) NSString *refreshToken;
 @property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString *UDID;
 
 @property (nonatomic, strong) NSMutableDictionary *userInfoForCancelTask;
 

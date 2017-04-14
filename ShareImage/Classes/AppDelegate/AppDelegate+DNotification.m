@@ -8,7 +8,6 @@
 
 #import "AppDelegate+DNotification.h"
 #import <UserNotifications/UserNotifications.h>
-#import "XGPush.h"
 #import "DNotificationTool.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
@@ -44,47 +43,6 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:userNotificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
-}
-
-/**
- 初始化信鸽
- */
-+ (void)setupXGPush{
-    [XGPush startApp:2200249937 appKey:@"I5NJ285D9ZRW"];
-}
-
-/**
- 注册远程推送，并且设置第三方设备ID
- 
- @param deviceToken
- */
-+ (void)registerDeviceToken:(NSData *)deviceToken{
-    NSString *deviceTokenStr = [XGPush registerDevice:deviceToken account:@"dd123456" successCallback:^{
-        DLog(@"XGPush register push success");
-    } errorCallback:^{
-        DLog(@"XGPush register push error");
-    }];
-    DLog(@"XGPush device token is %@", deviceTokenStr);
-}
-
-
-/**
- 处理接收到的推送通知
- 
- @param userInfo 信息
- */
-+ (void)handleReceiveNotification:(NSDictionary *)userInfo{
-    DLog(@"receive slient Notification");
-    DLog(@"userinfo %@", userInfo);
-    [XGPush handleReceiveNotification:userInfo
-                      successCallback:^{
-                          DLog(@"Handle receive success");
-                      } errorCallback:^{
-                          DLog(@"Handle receive error");
-                      }];
-    
-    // 设置tabbar提醒数据
-    [DNotificationTool sendTabBarUpdateNotificationWithUserInfo:userInfo];
 }
 
 
@@ -126,13 +84,6 @@
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
-    
-    [XGPush handleReceiveNotification:response.notification.request.content.userInfo
-                      successCallback:^{
-                          NSLog(@"[XGDemo] Handle receive success");
-                      } errorCallback:^{
-                          NSLog(@"[XGDemo] Handle receive error");
-                      }];
     
     //点击推送
     //    NSString *userAction = response.actionIdentifier;

@@ -7,7 +7,6 @@
 //
 
 #import "DBaseNetwork.h"
-#import "OpenUDID.h"
 #import "AppDelegate.h"
 #import "DPlistManager.h"
 
@@ -618,13 +617,6 @@
 -(NSString *)userId
 {
     return KGLOBALINFOMANAGER.uid;
-}
-
--(NSString *)UDID
-{
-    NSString *udid = [OpenUDID value];
-    
-    return udid;
 }
 
 
