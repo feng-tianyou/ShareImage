@@ -11,8 +11,6 @@
 #import <WXApi.h>
 
 #import "DChooesRootViewControllerTool.h"
-
-#import "DTestViewController.h"
 #import "DWebViewController.h"
 
 #import "DTabBarViewController.h"
@@ -138,7 +136,7 @@
     switch (index) {
         case 1:
         {
-            viewController = [[DTestViewController alloc] init];
+            
         }
             break;
         case 2:
@@ -173,7 +171,7 @@
         switch ([url.host integerValue]) {
             case 1:
             {
-                viewController = [[DTestViewController alloc] init];
+                
             }
                 break;
             case 2:
