@@ -58,7 +58,6 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
-  - ZLSwipeableView (0.0.8)
 
 DEPENDENCIES:
   - AFNetworking
@@ -75,7 +74,6 @@ DEPENDENCIES:
   - UMengUShare/Social/WeChat
   - UMengUShare/UI
   - YYKit
-  - ZLSwipeableView
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -90,8 +88,7 @@ SPEC CHECKSUMS:
   TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
   UMengUShare: 700415220ee9df4051d27d8a31fb1286a8f3b4e6
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
-  ZLSwipeableView: df385760ff4838935cdbcb62878ac5acd7355949
 
-PODFILE CHECKSUM: 7adc8edd5e2caee5a4f1921fb886d13dfc42af1c
+PODFILE CHECKSUM: a1580b87f88f1cbcd7ad09a1f925cd23fd4540b5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.1

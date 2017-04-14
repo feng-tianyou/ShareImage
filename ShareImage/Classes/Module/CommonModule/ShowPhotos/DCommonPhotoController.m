@@ -9,7 +9,6 @@
 #import "DCommonPhotoController.h"
 
 #import "DCommonPhotosCell.h"
-#import "DSwipeViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DCollectionsAPIManager.h"

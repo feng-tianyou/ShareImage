@@ -71,7 +71,6 @@
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
 		07DF55691E5C3ABD004EC4A7 /* DSearchCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */; };
 		07DF556C1E5C3FC4004EC4A7 /* DSearchUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */; };
-		07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */; };
 		07ECEBFA1E6555B700BCF52A /* LLAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF11E6555B700BCF52A /* LLAnimationManager.m */; };
 		07ECEBFB1E6555B700BCF52A /* LLCircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF31E6555B700BCF52A /* LLCircleLayer.m */; };
 		07ECEBFC1E6555B700BCF52A /* LLDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ECEBF51E6555B700BCF52A /* LLDisplayLayer.m */; };
@@ -403,8 +402,6 @@
 		07DF55681E5C3ABD004EC4A7 /* DSearchCollectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchCollectionsModel.m; sourceTree = "<group>"; };
 		07DF556A1E5C3FC4004EC4A7 /* DSearchUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchUsersModel.h; sourceTree = "<group>"; };
 		07DF556B1E5C3FC4004EC4A7 /* DSearchUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchUsersModel.m; sourceTree = "<group>"; };
-		07ECEBEB1E651A6100BCF52A /* DSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSwipeViewController.h; sourceTree = "<group>"; };
-		07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSwipeViewController.m; sourceTree = "<group>"; };
 		07ECEBF01E6555B700BCF52A /* LLAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAnimationManager.h; sourceTree = "<group>"; };
 		07ECEBF11E6555B700BCF52A /* LLAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAnimationManager.m; sourceTree = "<group>"; };
 		07ECEBF21E6555B700BCF52A /* LLCircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLCircleLayer.h; sourceTree = "<group>"; };
@@ -885,8 +882,6 @@
 				0746719A1E63DA6500ADBC90 /* DCommonPhotoController.m */,
 				074671AA1E641F6300ADBC90 /* DPhotoDetailController.h */,
 				074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */,
-				07ECEBEB1E651A6100BCF52A /* DSwipeViewController.h */,
-				07ECEBEC1E651A6100BCF52A /* DSwipeViewController.m */,
 			);
 			path = ShowPhotos;
 			sourceTree = "<group>";
@@ -2074,7 +2069,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ED80F701E554D8100954DAF /* Build configuration list for PBXNativeTarget "ShareImage" */;
 			buildPhases = (
-				5FD4800FF10025772A3DC091 /* 📦 Check Pods Manifest.lock */,
+				5FD4800FF10025772A3DC091 /* [CP] Check Pods Manifest.lock */,
 				8B585ABCAAFA1B32FEE362A1 /* [CP] Check Pods Manifest.lock */,
 				7ED80F3F1E554D8000954DAF /* Sources */,
 				7ED80F401E554D8000954DAF /* Frameworks */,
@@ -2328,19 +2323,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5FD4800FF10025772A3DC091 /* 📦 Check Pods Manifest.lock */ = {
+		5FD4800FF10025772A3DC091 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8B585ABCAAFA1B32FEE362A1 /* [CP] Check Pods Manifest.lock */ = {
@@ -2514,7 +2509,6 @@
 				7ED810EA1E55550100954DAF /* DPlistCache.m in Sources */,
 				7ED811581E55550100954DAF /* DBlockTool.m in Sources */,
 				0744FAD31E9F5ACA004EDB9C /* FSActionSheet.m in Sources */,
-				07ECEBED1E651A6100BCF52A /* DSwipeViewController.m in Sources */,
 				7ED811821E55573300954DAF /* DTestViewController.m in Sources */,
 				7ED811191E55550100954DAF /* LOTAnimatableLayer.m in Sources */,
 				0701B8AD1E7BE5A50036016F /* DLanguageManager.m in Sources */,

@@ -29,9 +29,6 @@ pod 'UMengUShare/Social/SMS'
 # 主题切换
 pod 'DKNightVersion'
 
-# 动画
-#pod 'lottie-ios'
-pod 'ZLSwipeableView'
 
 
 end

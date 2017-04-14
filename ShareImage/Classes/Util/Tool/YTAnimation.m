@@ -16,7 +16,7 @@
 +(void)vibrateAnimation:(UIView *)AniView {
     CAKeyframeAnimation *rvibrateAni = [CAKeyframeAnimation animation];
     rvibrateAni.keyPath = @"transform.rotation";
-    CGFloat angle = M_PI_4/18;
+    CGFloat angle = M_PI_4/22;
     rvibrateAni.values = @[@(-angle),@(angle),@(-angle)];
     rvibrateAni.repeatCount = MAXFLOAT;
     [AniView.layer addAnimation:rvibrateAni forKey:@"shake"];

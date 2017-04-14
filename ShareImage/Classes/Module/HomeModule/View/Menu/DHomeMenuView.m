@@ -100,7 +100,7 @@
 
 - (NSArray *)icons{
     if (!_icons) {
-        _icons = @[@"common_btn_image",@"common_btn_Albums",@"common_btn_like", @"common_menu_download", @"common_btn_settings"];
+        _icons = @[@"common_btn_image",@"common_btn_Albums",@"common_btn_like", @"common_btn_settings"];
     }
     return _icons;
 }
@@ -108,7 +108,6 @@
 - (NSArray *)titles{
     if (!_titles) {
         _titles = @[kLocalizedLanguage(@"homePhotos"), kLocalizedLanguage(@"homeCollections"), kLocalizedLanguage(@"homeLikes"),
-                    kLocalizedLanguage(@"homeDownloads"),
                     kLocalizedLanguage(@"homeSetting")];
     }
     return _titles;
