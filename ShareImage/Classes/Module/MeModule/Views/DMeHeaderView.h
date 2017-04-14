@@ -12,6 +12,7 @@
 
 @optional
 - (void)meHeaderView:(DMeHeaderView *)meHeaderView didSelectIndex:(NSInteger)index;
+- (void)meHeaderViewdDidClickAddress:(DMeHeaderView *)meHeaderView;
 
 @end
 

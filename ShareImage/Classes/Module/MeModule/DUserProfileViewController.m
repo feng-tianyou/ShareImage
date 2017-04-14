@@ -9,6 +9,7 @@
 #import "DUserProfileViewController.h"
 #import "DCommonPhotoController.h"
 #import "DUserListViewController.h"
+#import "DMapViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -143,7 +144,7 @@
     .heightIs(30);
     
     self.addressLabel.sd_layout
-    .topSpaceToView(self.nameLabel, 0)
+    .topSpaceToView(self.nameLabel, 10)
     .leftSpaceToView(self.scrollView, 20)
     .rightSpaceToView(self.scrollView,10)
     .heightIs(20);
@@ -170,7 +171,7 @@
     
     self.bioLabel.isAttributedContent = YES;
     self.bioLabel.sd_layout
-    .topSpaceToView(self.followerNumBtn, 20)
+    .topSpaceToView(self.followerNumBtn, 25)
     .leftSpaceToView(self.scrollView, 15)
     .rightSpaceToView(self.scrollView,15)
     .autoHeightRatio(0);
@@ -251,7 +252,11 @@
         manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
         [manager followUserByParamModel:paramModel];
     }
-    
+}
+
+- (void)clickAddress{
+    DMapViewController *mapController = [[DMapViewController alloc] initWithAddress:self.userModel.location];
+    [self.navigationController pushViewController:mapController animated:YES];
 }
 
 
@@ -396,6 +401,7 @@
         _addressLabel.describeLabel.textColor = [UIColor blackColor];
         _addressLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
         _addressLabel.mode = HomeCellTipLabelCenter;
+        [_addressLabel addTarget:self action:@selector(clickAddress) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addressLabel;
 }

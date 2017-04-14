@@ -449,6 +449,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     navBar.barStyle = UIBarStyleBlackTranslucent;
     [navBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [navBar setBackgroundImage:nil forBarMetrics:UIBarMetricsLandscapePhone];
+    self.navigationController.navigationBar.titleTextAttributes =@{NSForegroundColorAttributeName:[UIColor whiteColor]};
 }
 
 - (void)storePreviousNavBarAppearance {

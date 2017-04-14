@@ -125,6 +125,12 @@
     }
 }
 
+- (void)clickAddress{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(meHeaderViewdDidClickAddress:)]) {
+        [self.delegate meHeaderViewdDidClickAddress:self];
+    }
+}
+
 #pragma mark - setter & getter
 - (UIImageView *)bgImbageView{
     if (!_bgImbageView) {
@@ -152,6 +158,7 @@
         _addressLabel.describeLabel.textColor = [UIColor whiteColor];
         _addressLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
         _addressLabel.mode = HomeCellTipLabelCenter;
+        [_addressLabel addTarget:self action:@selector(clickAddress) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addressLabel;
 }

@@ -45,6 +45,9 @@
 		078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */; };
 		078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */; };
 		079E30B41E729E1800FF7C6C /* DMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */; };
+		07AF4DC01EA079F7006D9376 /* DLocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF4DBF1EA079F7006D9376 /* DLocationTool.m */; };
+		07AF4DC41EA084DC006D9376 /* DMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF4DC31EA084DC006D9376 /* DMapViewController.m */; };
+		07AF4DC71EA0C58D006D9376 /* DMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF4DC61EA0C58D006D9376 /* DMapAnnotation.m */; };
 		07B0E70D1E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B0E6EB1E7D0F6C00BD97B0 /* InfoPlist.strings */; };
 		07B0E70E1E7D0F6C00BD97B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B0E6ED1E7D0F6C00BD97B0 /* Localizable.strings */; };
 		07B0E70F1E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B0E6F01E7D0F6C00BD97B0 /* InfoPlist.strings */; };
@@ -313,6 +316,12 @@
 		078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchViewCell.m; sourceTree = "<group>"; };
 		079E30B21E729E1800FF7C6C /* DMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeTableViewCell.h; sourceTree = "<group>"; };
 		079E30B31E729E1800FF7C6C /* DMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeTableViewCell.m; sourceTree = "<group>"; };
+		07AF4DBE1EA079F7006D9376 /* DLocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLocationTool.h; sourceTree = "<group>"; };
+		07AF4DBF1EA079F7006D9376 /* DLocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLocationTool.m; sourceTree = "<group>"; };
+		07AF4DC21EA084DC006D9376 /* DMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMapViewController.h; sourceTree = "<group>"; };
+		07AF4DC31EA084DC006D9376 /* DMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMapViewController.m; sourceTree = "<group>"; };
+		07AF4DC51EA0C58D006D9376 /* DMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMapAnnotation.h; sourceTree = "<group>"; };
+		07AF4DC61EA0C58D006D9376 /* DMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMapAnnotation.m; sourceTree = "<group>"; };
 		07B0E6EC1E7D0F6C00BD97B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		07B0E6EE1E7D0F6C00BD97B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		07B0E6F11E7D0F6C00BD97B0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -761,6 +770,17 @@
 				078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */,
 			);
 			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		07AF4DC11EA084CE006D9376 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				07AF4DC21EA084DC006D9376 /* DMapViewController.h */,
+				07AF4DC31EA084DC006D9376 /* DMapViewController.m */,
+				07AF4DC51EA0C58D006D9376 /* DMapAnnotation.h */,
+				07AF4DC61EA0C58D006D9376 /* DMapAnnotation.m */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		07B0E6EA1E7D0F6C00BD97B0 /* en.lproj */ = {
@@ -1307,6 +1327,7 @@
 		7ED80FF81E55550100954DAF /* CommonModule */ = {
 			isa = PBXGroup;
 			children = (
+				07AF4DC11EA084CE006D9376 /* MapView */,
 				7EE1018C1E66B41800D5576D /* Search */,
 				074671A31E64099700ADBC90 /* UserList */,
 				0746719C1E63DA7500ADBC90 /* WebView */,
@@ -1581,6 +1602,8 @@
 				078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */,
 				0744FADF1E9F8139004EDB9C /* DPhotoHandleTool.h */,
 				0744FAE01E9F8139004EDB9C /* DPhotoHandleTool.m */,
+				07AF4DBE1EA079F7006D9376 /* DLocationTool.h */,
+				07AF4DBF1EA079F7006D9376 /* DLocationTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1981,6 +2004,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07AF4DC41EA084DC006D9376 /* DMapViewController.m in Sources */,
 				07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */,
 				074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
@@ -2000,6 +2024,7 @@
 				7E78737A1E55AAE300213B1B /* DOAuthAccountModel.m in Sources */,
 				7EAFD4BA1E56D7BE00BBA972 /* DPhotosModel.m in Sources */,
 				0744FADE1E9F7AFC004EDB9C /* DTZPhotosManager.m in Sources */,
+				07AF4DC01EA079F7006D9376 /* DLocationTool.m in Sources */,
 				7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */,
 				7ED810E51E55550100954DAF /* DTabBarButton.m in Sources */,
 				7ED810E01E55550100954DAF /* DNavigationViewController.m in Sources */,
@@ -2118,6 +2143,7 @@
 				07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */,
 				7ED811091E55550100954DAF /* DUserModel.m in Sources */,
 				078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */,
+				07AF4DC71EA0C58D006D9376 /* DMapAnnotation.m in Sources */,
 				7ED811131E55550100954DAF /* EGOCache.m in Sources */,
 				7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */,
 				070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */,

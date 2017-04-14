@@ -10,6 +10,7 @@
 #import "DCommonPhotoController.h"
 #import "DUserListViewController.h"
 #import "DEditProfileViewController.h"
+#import "DMapViewController.h"
 
 #import "DMeHeaderView.h"
 #import "DCustomNavigationView.h"
@@ -40,16 +41,13 @@
     self.title = KGLOBALINFOMANAGER.accountInfo.username;
     self.navLeftItemType = DNavigationItemTypeWriteBack;
     
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    
-    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    [manager fetchAccountProfileWithNotCache];
-    
+    self.usersPhotos = KGLOBALINFOMANAGER.accountInfo.u_photos;
     
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.tableView];
     [self.view bringSubviewToFront:self.navigationView];
+    
+    
 }
 
 
@@ -59,6 +57,7 @@
     
     self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self.headerView reloadData];
     
 }
 
@@ -87,6 +86,7 @@
     [self.headerView setFrame:0 y:0 w:self.view.width h:320];
     
     [self.tableView setTableHeaderView:self.headerView];
+    [self.headerView reloadData];
 }
 
 
@@ -101,6 +101,13 @@
 }
 
 #pragma mark - MeHeaderViewDelegate
+- (void)meHeaderViewdDidClickAddress:(DMeHeaderView *)meHeaderView{
+    DMapViewController *mapController = [[DMapViewController alloc] initWithAddress:KGLOBALINFOMANAGER.accountInfo.location];
+//    mapController.longitude = KGLOBALINFOMANAGER.accountInfo.
+    [self.navigationController pushViewController:mapController animated:YES];
+}
+
+
 - (void)meHeaderView:(DMeHeaderView *)meHeaderView didSelectIndex:(NSInteger)index{
     switch (index) {
         case 0:
@@ -202,16 +209,6 @@
 }
 
 
-#pragma mark - request
-- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
-    DUserModel *userModel = dataModel;
-    self.tableView.hidden = NO;
-    self.usersPhotos = userModel.u_photos;
-    [self.headerView reloadData];
-    [self.tableView reloadData];
-}
-
-
 #pragma mark - getter & setter
 - (DCustomNavigationView *)navigationView{
     if (!_navigationView) {
@@ -240,7 +237,6 @@
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.hidden = YES;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
