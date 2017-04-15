@@ -15,6 +15,7 @@
 #import "DUserParamModel.h"
 #import "DPhotosModel.h"
 #import "DMWPhotosManager.h"
+#import "DShareManager.h"
 
 #import "DNumberButton.h"
 #import "DHomeCellTipLabel.h"
@@ -199,7 +200,7 @@
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationRightBtn:(UIButton *)rightBtn{
-    
+    [DShareManager shareUrlForAllPlatformByTitle:self.userModel.username content:self.userModel.bio shareUrl:self.userModel.portfolio_url parentController:self];
 }
 
 - (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
@@ -223,6 +224,11 @@
 
 - (void)clickIconView{
     [self.manager photoPreviewWithPhotoUrls:@[self.userModel.profile_image.large] currentIndex:0 currentViewController:self];
+}
+
+- (void)clickBgImageViewView{
+    DPhotosModel *photoModel = [self.userModel.u_photos lastObject];
+    [self.manager photoPreviewWithPhotoUrls:@[photoModel.urls.regular] currentIndex:0 currentViewController:self];
 }
 
 - (void)clickPhotoNumBtn{
@@ -293,9 +299,9 @@
     self.userModel = dataModel;
     
     DUserModel *userModel = dataModel;
-    DPhotosModel *photoModel = [userModel.u_photos firstObject];
+    DPhotosModel *photoModel = [userModel.u_photos lastObject];
     [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.regular] placeholderImage:nil];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.large] placeholderImage:nil];
     self.nameLabel.text = userModel.username;
     
     if (userModel.location.length > 0) {
@@ -319,8 +325,6 @@
     } else {
         [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
     }
-//    [self.view setNeedsLayout];
-    
 }
 
 
@@ -354,6 +358,9 @@
         _bgImageView.backgroundColor = [UIColor lightRandom];
         _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
         _bgImageView.clipsToBounds = YES;
+        _bgImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickBgImageViewView)];
+        [_bgImageView addGestureRecognizer:tap];
     }
     return _bgImageView;
 }

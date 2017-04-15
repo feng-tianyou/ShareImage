@@ -21,7 +21,6 @@ static NSString *const cellID = @"homeCell";
 @property (nonatomic, strong) UIButton *iconView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) DHomeCellTipLabel *addressLabel;
-@property (nonatomic, strong) DHomeCellTipLabel *timeLabel;
 @property (nonatomic, strong) DHomeCellTipLabel *likeLabel;
 @end
 
@@ -55,7 +54,6 @@ static NSString *const cellID = @"homeCell";
     [self.contentView addSubview:self.nameLabel];
     [self.photoView addSubview:self.likeLabel];
     [self.contentView addSubview:self.addressLabel];
-    [self.contentView addSubview:self.timeLabel];
     
     // layout
     self.photoView.sd_layout
@@ -93,12 +91,6 @@ static NSString *const cellID = @"homeCell";
     .leftEqualToView(self.nameLabel)
     .rightSpaceToView(self.contentView,10)
     .heightIs(20);
-    
-//    self.timeLabel.sd_layout
-//    .topSpaceToView(self.addressLabel, 0)
-//    .leftEqualToView(self.nameLabel)
-//    .rightSpaceToView(self.contentView,10)
-//    .heightIs(20);
 }
 
 - (void)clickIcon{
@@ -108,8 +100,6 @@ static NSString *const cellID = @"homeCell";
 - (void)clickLike{
     ExistActionDo(self.clickLikeBlock, self.clickLikeBlock());
 }
-
-
 
 #pragma mark - getter & setter
 - (UIImageView *)photoView{
@@ -157,6 +147,7 @@ static NSString *const cellID = @"homeCell";
         _likeLabel = [[DHomeCellTipLabel alloc] init];
         _likeLabel.iconName = @"common_btn_like_hight";
         _likeLabel.describeLabel.textColor = [UIColor whiteColor];
+        _likeLabel.describeLabel.font = DSystemFontTitle;
         _likeLabel.mode = HomeCellTipLabelRight;
         [_likeLabel addTarget:self action:@selector(clickLike) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -171,19 +162,11 @@ static NSString *const cellID = @"homeCell";
     return _addressLabel;
 }
 
-//- (DHomeCellTipLabel *)timeLabel{
-//    if (!_timeLabel) {
-//        _timeLabel = [[DHomeCellTipLabel alloc] init];
-//        _timeLabel.iconName = @"common_btn_time";
-//    }
-//    return _timeLabel;
-//}
-
 - (void)setPhotosModel:(DPhotosModel *)photosModel{
     _photosModel = photosModel;
     
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:photosModel.urls.small] placeholderImage:[UIImage getImageWithName:@""]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.medium] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.large] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
     self.nameLabel.text = photosModel.user.name;
     
     if (photosModel.likes > 0) {
@@ -203,7 +186,6 @@ static NSString *const cellID = @"homeCell";
         // 设置最低端的距离
         [self setupAutoHeightWithBottomView:self.iconBgView bottomMargin:10];
     }
-    
 }
 
 @end

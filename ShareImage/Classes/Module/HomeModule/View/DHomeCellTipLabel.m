@@ -29,18 +29,6 @@
 - (void)setupSubViews{
     [self addSubview:self.iconView];
     [self addSubview:self.describeLabel];
-//    
-//    self.describeLabel.sd_layout
-//    .topEqualToView(self)
-//    .leftEqualToView(self)
-//    .rightEqualToView(self)
-//    .bottomEqualToView(self);
-//    
-//    self.iconView.sd_layout
-//    .centerYEqualToView(self)
-//    .rightSpaceToView(self.describeLabel, 5)
-//    .widthIs(12)
-//    .heightIs(10);
 }
 
 
@@ -57,7 +45,7 @@
     if (!_describeLabel) {
         _describeLabel = [[UILabel alloc] init];
         _describeLabel.textColor = DSystemColorGray;
-        _describeLabel.font = DSystemFontDate;
+        _describeLabel.font = DSystemFontAlert;
         _describeLabel.backgroundColor = [UIColor clearColor];
     }
     return _describeLabel;
