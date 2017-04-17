@@ -77,8 +77,19 @@
 
 #pragma mark - Private
 - (void)setAnnotation{
+    NSString *address = self.address;
+    NSArray *arrKey = @[@",", @"/", @"，", @"("];
+    __block NSRange range = NSMakeRange(0, 0);
+    [arrKey enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
+        range = [self.address rangeOfString:key];
+        if (range.length > 0) *stop = YES;
+    }];
+    if (range.length > 0) {
+        address = [self.address substringWithRange:NSMakeRange(0, range.location)];
+    }
+    
     @weakify(self)
-    [self.geocoder geocodeAddressString:self.address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    [self.geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         // 取得第一个地表，地表存储了详细的地址信息，：注意：一个地名可能搜索出多个地址
         CLPlacemark *placemark = [placemarks firstObject];
         
