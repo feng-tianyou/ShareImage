@@ -8,13 +8,23 @@
 
 #import "DMapViewController.h"
 #import "DMapAnnotation.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+
+#define kMAP_GAODE_SCHEME           @"iosamap://"
+#define kMAP_BAIDU_SCHEME           @"baidumap://"
+#define kMAP_TENCENT_SCHEME         @"qqmap://"
+#define kMAP_GOOGLE_SCHEME          @"comgooglemaps://"
 
 
 @interface DMapViewController ()<MKMapViewDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) MKMapView *mapView;
+
+@property (nonatomic,assign) CLLocationCoordinate2D coordinate;  //!< 要导航的坐标
+
 @property (nonatomic, copy) NSString *address;
+@property (nonatomic, strong) NSArray *mapTitles;
 @end
 
 @implementation DMapViewController
@@ -56,6 +66,10 @@
     
     self.title = self.address;
     self.navLeftItemType = DNavigationItemTypeBack;
+    if ([self isCanOpenOtherMap]) {
+        self.navRighItemType = DNavigationItemTypeRightMenu;
+    }
+    
     
     [self.view addSubview:self.mapView];
     self.mapView.frame = self.view.bounds;
@@ -72,10 +86,56 @@
 }
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (isLeft) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        NSMutableArray *titles = [NSMutableArray arrayWithCapacity:self.mapTitles.count];
+        [self.mapTitles enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            [titles addObject:[[dic allValues] firstObject]];
+        }];
+        FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:@"选择导航设备" delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:[titles copy]];
+        @weakify(self)
+        [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
+            @strongify(self)
+            [self openOtherMapWithSelectIndex:selectedIndex];
+        }];
+    }
 }
 
 #pragma mark - Private
+- (BOOL)isCanOpenOtherMap{
+    // 判断是否安装高德地图
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_GAODE_SCHEME]]) return YES;
+    
+    // 判断是否安装百度地图
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_BAIDU_SCHEME]]) return YES;
+    
+    // 判断是否安装google地图
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_GOOGLE_SCHEME]]) return YES;
+    
+    return NO;
+}
+
+- (void)openOtherMapWithSelectIndex:(NSInteger)selectedIndex{
+    NSDictionary *mapDic = self.mapTitles[selectedIndex];
+    __block NSString *mapStr = [[mapDic allKeys] firstObject];
+    [self.mapTitles enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *title = [[dic allKeys] firstObject];
+        if ([title isEqualToString:mapStr]) {
+            if ([mapStr isEqualToString:kMAP_GAODE_SCHEME]) {
+                mapStr = [[NSString stringWithFormat:@"iosamap://marker?position=%f,%f&name=%@&src=mypage&coordinate=gaode&callnative=0",self.coordinate.latitude,self.coordinate.longitude, self.address]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            } else if ([mapStr isEqualToString:kMAP_BAIDU_SCHEME]) {
+                mapStr = [[NSString stringWithFormat:@"baidumap://map/geocoder?address=%@", self.address] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            } else if ([mapStr isEqualToString:kMAP_TENCENT_SCHEME]) {
+                mapStr = [[NSString stringWithFormat:@"qqmap://map/routeplan?type=drive&fromcoord=CurrentLocation&tocoord=%f,%f&coord_type=1&policy=0",self.coordinate.latitude, self.coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            } else if ([mapStr isEqualToString:kMAP_GOOGLE_SCHEME]) {
+                mapStr = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",@"",@"",self.coordinate.latitude, self.coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            }
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapStr]];
+        }
+    }];
+}
+
 - (void)setAnnotation{
     NSString *address = self.address;
     NSArray *arrKey = @[@",", @"/", @"，", @"("];
@@ -93,18 +153,25 @@
         // 取得第一个地表，地表存储了详细的地址信息，：注意：一个地名可能搜索出多个地址
         CLPlacemark *placemark = [placemarks firstObject];
         
-        if (!placemark) return ;
+        if (!placemark) {
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [SVProgressHUD setMaximumDismissTimeInterval:2.0];
+            [SVProgressHUD showErrorWithStatus:@"你的地址未能定位到！"];
+            return;
+        }
         
         // 位置
         @strongify(self)
         CLLocation *location = placemark.location;
         CLLocationCoordinate2D locationCoordinate = location.coordinate;
+        
+        self.coordinate = locationCoordinate;
+        DLog(@"address:%f,%f", locationCoordinate.latitude, locationCoordinate.longitude);
         DMapAnnotation *annotation = [[DMapAnnotation alloc] init];
         annotation.coordinate = locationCoordinate;
         annotation.title = self.address;
         annotation.image = [UIImage getImageWithName:@"address_big_icon"];
         [self.mapView addAnnotation:annotation];
-        
         
         MKCoordinateRegion region;
         region.center = locationCoordinate;
@@ -185,6 +252,33 @@
         _geocoder = [[CLGeocoder alloc] init];
     }
     return _geocoder;
+}
+
+- (NSArray *)mapTitles{
+    if (!_mapTitles) {
+        NSMutableArray *titles = [NSMutableArray array];
+        // 判断是否安装高德地图
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_GAODE_SCHEME]]) {
+            [titles addObject:@{kMAP_GAODE_SCHEME:@"高德地图"}];
+        }
+        
+        // 判断是否安装百度地图
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_BAIDU_SCHEME]]) {
+            [titles addObject:@{kMAP_BAIDU_SCHEME:@"百度地图"}];
+        }
+        
+        // 判断是否安装腾讯地图
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_TENCENT_SCHEME]]) {
+            [titles addObject:@{kMAP_TENCENT_SCHEME:@"腾讯地图"}];
+        }
+        
+        // 判断是否安装google地图
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_GOOGLE_SCHEME]]) {
+            [titles addObject:@{kMAP_GOOGLE_SCHEME:@"谷歌地图"}];
+        }
+        _mapTitles = [titles copy];
+    }
+    return _mapTitles;
 }
 
 @end
