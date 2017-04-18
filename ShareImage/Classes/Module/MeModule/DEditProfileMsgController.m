@@ -8,15 +8,21 @@
 
 #import "DEditProfileMsgController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "DHomeCellTipLabel.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
 
-@interface DEditProfileMsgController ()
+#import <MapKit/MapKit.h>
+
+@interface DEditProfileMsgController ()<CLLocationManagerDelegate>
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *titleStr;
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) NSIndexPath *indexPatch;
+@property (nonatomic, strong) DHomeCellTipLabel *currentAddressLabel;
+
+@property (nonatomic, strong) CLLocationManager * locationManager;
 
 @end
 
@@ -43,6 +49,7 @@
     [self.bgView addSubview:self.textField];
     [self.bgView addSubview:self.textView];
     [self.view addSubview:self.tipLabel];
+    [self.view addSubview:self.currentAddressLabel];
     
     
     [self setupSubViews];
@@ -91,6 +98,12 @@
     .topSpaceToView(self.bgView, 10)
     .leftSpaceToView(self.view, 15)
     .rightSpaceToView(self.view, 15)
+    .autoHeightRatio(0);
+    
+    self.currentAddressLabel.sd_layout
+    .topSpaceToView(self.bgView, 10)
+    .leftSpaceToView(self.view, 15)
+    .rightSpaceToView(self.view, 15)
     .heightIs(20);
 }
 
@@ -102,6 +115,11 @@
             self.tipLabel.text = kLocalizedLanguage(@"edTip0");
         } else {
             self.tipLabel.text = kLocalizedLanguage(@"edTip1");
+        }
+    } else if (self.indexPatch.section == 2) {
+        if (self.indexPatch.row == 1) {
+            // 开始定位
+            [self.locationManager startUpdatingLocation];
         }
     }
 }
@@ -186,6 +204,31 @@
     }
 }
 
+#pragma mark - CLLocationManagerDelegate
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+{
+    CLLocation * newLoaction = locations[0];
+    [self.locationManager stopUpdatingLocation];
+    //创建地理位置解码编码器对象
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    @weakify(self)
+    [geoCoder reverseGeocodeLocation:newLoaction completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        @strongify(self)
+        CLPlacemark * place = [placemarks firstObject];
+        self.currentAddressLabel.hidden = NO;
+        self.currentAddressLabel.describe = place.name;
+        if (error) {
+            self.currentAddressLabel.describeLabel.text = @"Have Not Found!";
+        }
+    }];
+}
+
+// 定位失误时触发
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    self.currentAddressLabel.describeLabel.text = @"Have Not Found!";
+}
+
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
     [SVProgressHUD setMinimumDismissTimeInterval:1.5];
@@ -233,6 +276,7 @@
         _tipLabel.textColor = DSystemColorBlackBBBBBB;
         _tipLabel.textAlignment = NSTextAlignmentCenter;
         _tipLabel.hidden = YES;
+        _tipLabel.numberOfLines = 0;
     }
     return _tipLabel;
 }
@@ -246,6 +290,30 @@
         _textView.backgroundColor = [UIColor whiteColor];
     }
     return _textView;
+}
+
+- (DHomeCellTipLabel *)currentAddressLabel{
+    if (!_currentAddressLabel) {
+        _currentAddressLabel = [[DHomeCellTipLabel alloc] init];
+        _currentAddressLabel.iconName = @"common_btn_address_hight";
+        _currentAddressLabel.describeLabel.textColor = DSystemColorBlack333333;
+        _currentAddressLabel.describeLabel.font = [UIFont fontWithName:@"Verdana-Bold" size:14.0];
+        _currentAddressLabel.mode = HomeCellTipLabelLeft;
+        _currentAddressLabel.hidden = YES;
+    }
+    return _currentAddressLabel;
+}
+
+- (CLLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        //请求定位服务
+        if(![CLLocationManager locationServicesEnabled]||[CLLocationManager authorizationStatus]!=kCLAuthorizationStatusAuthorizedWhenInUse){
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
 }
 
 

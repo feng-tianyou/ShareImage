@@ -33,7 +33,7 @@
     BOOL addLoading = YES;
     DicHasKeyAndDo(self.info, kParamNoAddLoading, addLoading = [[self.info objectForKey:kParamNoAddLoading] boolValue];)
     if(addLoading){
-        DelegateHasMethorAndDoOrLog(self.delegate, addNetworkLoadingViewByText:userInfo:, [self.delegate addNetworkLoadingViewByText:@"正在加载中..." userInfo:self.info];)
+        DelegateHasMethorAndDoOrLog(self.delegate, addNetworkLoadingViewByText:userInfo:, [self.delegate addNetworkLoadingViewByText:@"Loading..." userInfo:self.info];)
     }
 }
 
@@ -151,8 +151,6 @@
     }
     
     [DErrorRespone proccessError:error delegate:self.delegate isAlertFor2Second:NO UserInfo:self.info];
-    
-    
 }
 
 

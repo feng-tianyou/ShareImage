@@ -81,10 +81,10 @@ static NSString *const cellID = @"homeCell";
     .heightIs(20);
     
     self.likeLabel.sd_layout
-    .topSpaceToView(self.photoView, 10)
+    .topSpaceToView(self.photoView, 0)
     .rightSpaceToView(self.photoView, 10)
-    .widthIs(40)
-    .heightIs(20);
+    .widthIs(60)
+    .heightIs(40);
     
     self.addressLabel.sd_layout
     .topSpaceToView(self.nameLabel, 0)
@@ -108,6 +108,7 @@ static NSString *const cellID = @"homeCell";
         _photoView.backgroundColor = [UIColor lightRandom];
         _photoView.contentMode = UIViewContentModeScaleAspectFill;
         _photoView.clipsToBounds = YES;
+        _photoView.userInteractionEnabled = YES;
     }
     return _photoView;
 }

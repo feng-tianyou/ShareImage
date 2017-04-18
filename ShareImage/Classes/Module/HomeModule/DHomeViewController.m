@@ -33,6 +33,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "LLSlideMenu.h"
 
+
+#define kPhotoModelIndex        @"kPhotoModelIndex"
+
 @interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource, DHomeMenuViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -74,8 +77,8 @@
     // 初始化上下拉刷新
     [self setupTableViewUpAndDowmLoad];
     
-    
-    
+    [self.view addSubview:self.tableView];
+
 }
 
 
@@ -112,7 +115,6 @@
 
 #pragma mark - 私有方法
 - (void)setupSubViewsAutoLayout{
-    [self.view addSubview:self.tableView];
     self.tableView.sd_layout
     .topSpaceToView(self.view, 0)
     .bottomSpaceToView(self.view,0)
@@ -176,10 +178,20 @@
         DPhotosModel *model = self.photos[indexPath.section];
         cell.photosModel = model;
         DUserModel *userModel = model.user;
+        @weakify(self)
         [cell setClickIconBlock:^{
             DLog(@"点击头像");
+            @strongify(self)
             DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:userModel.username];
             [self.navigationController pushViewController:userController animated:YES];
+        }];
+        [cell setClickLikeBlock:^{
+           @strongify(self)
+            [self.networkUserInfo setObject:@(indexPath.section) forKey:kPhotoModelIndex];
+            DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+            paramModel.pid = model.pid;
+            [manager likePhotoByParamModel:paramModel];
         }];
     }
     
@@ -262,10 +274,12 @@
 }
 
 
-
-
-
 #pragma mark - 请求回调
+- (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
+    [self.tableView reloadData];
+}
+
+
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
     
     self.page++;
