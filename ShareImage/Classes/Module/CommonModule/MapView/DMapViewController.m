@@ -10,6 +10,7 @@
 #import "DMapAnnotation.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
+#define kMAP_APPLE_SCHEME           @"apple"
 #define kMAP_GAODE_SCHEME           @"iosamap://"
 #define kMAP_BAIDU_SCHEME           @"baidumap://"
 #define kMAP_TENCENT_SCHEME         @"qqmap://"
@@ -74,7 +75,7 @@
     [self.view addSubview:self.mapView];
     self.mapView.frame = self.view.bounds;
     
-    DLog(@"%@", self.locationManager);
+//    DLog(@"%@", self.locationManager);
     
     //请求定位服务
     if(![CLLocationManager locationServicesEnabled]||[CLLocationManager authorizationStatus]!=kCLAuthorizationStatusAuthorizedWhenInUse){
@@ -93,7 +94,7 @@
         [self.mapTitles enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             [titles addObject:[[dic allValues] firstObject]];
         }];
-        FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:@"选择导航设备" delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:[titles copy]];
+        FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:@"选择打开地图" delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:[titles copy]];
         @weakify(self)
         [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
             @strongify(self)
@@ -122,7 +123,19 @@
     [self.mapTitles enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *title = [[dic allKeys] firstObject];
         if ([title isEqualToString:mapStr]) {
-            if ([mapStr isEqualToString:kMAP_GAODE_SCHEME]) {
+            if ([mapStr isEqualToString:kMAP_APPLE_SCHEME]) {
+                MKMapItem *currentLoc = [MKMapItem mapItemForCurrentLocation];
+                MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:self.coordinate addressDictionary:nil]];
+                NSArray *items = @[currentLoc,toLocation];
+                NSDictionary *dic = @{
+                                      MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving,
+                                      MKLaunchOptionsMapTypeKey : @(MKMapTypeStandard),
+                                      MKLaunchOptionsShowsTrafficKey : @(YES)
+                                      };
+                
+                [MKMapItem openMapsWithItems:items launchOptions:dic];
+                return ;
+            } else if ([mapStr isEqualToString:kMAP_GAODE_SCHEME]) {
                 mapStr = [[NSString stringWithFormat:@"iosamap://marker?position=%f,%f&name=%@&src=mypage&coordinate=gaode&callnative=0",self.coordinate.latitude,self.coordinate.longitude, self.address]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             } else if ([mapStr isEqualToString:kMAP_BAIDU_SCHEME]) {
                 mapStr = [[NSString stringWithFormat:@"baidumap://map/geocoder?address=%@", self.address] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -153,7 +166,7 @@
         // 取得第一个地表，地表存储了详细的地址信息，：注意：一个地名可能搜索出多个地址
         CLPlacemark *placemark = [placemarks firstObject];
         
-        if (!placemark) {
+        if (!placemark && error) {
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             [SVProgressHUD setMaximumDismissTimeInterval:2.0];
             [SVProgressHUD showErrorWithStatus:@"你的地址未能定位到！"];
@@ -257,6 +270,9 @@
 - (NSArray *)mapTitles{
     if (!_mapTitles) {
         NSMutableArray *titles = [NSMutableArray array];
+        
+        [titles addObject:@{kMAP_APPLE_SCHEME:@"苹果地图"}];
+        
         // 判断是否安装高德地图
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kMAP_GAODE_SCHEME]]) {
             [titles addObject:@{kMAP_GAODE_SCHEME:@"高德地图"}];
