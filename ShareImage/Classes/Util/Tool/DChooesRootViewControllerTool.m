@@ -16,41 +16,40 @@
 
 @implementation DChooesRootViewControllerTool
 
-+ (void)setupRootViewControllerWithWindow:(UIWindow *)window{
++ (void)setupRootViewController{
     DOAuthAccountModel *account = [DOAuthAccountTool account];
     if (account) {
-        [self choosedRootController];
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[DTabBarViewController alloc] init];
     } else {
         // 授权
-        window.rootViewController = [[DOAuthViewController alloc] init];
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[DOAuthViewController alloc] init];
     }
 }
 
-+ (void)choosedRootController{
++ (void)checkVersion{
     
-//    NSString *key = @"CFBundleVersion";
-//    
-//    // 取出上一个版本
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *lastVersion = [defaults stringForKey:key];
-//    
-//    // 获取当前版本
-//    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
-//    if ([currentVersion isEqualToString:lastVersion]) {
+    NSString *key = @"CFBundleVersion";
+    
+    // 取出上一个版本
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastVersion = [defaults stringForKey:key];
+    
+    // 获取当前版本
+    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
+    if ([currentVersion isEqualToString:lastVersion]) {
     
         // 显示状态栏
         [UIApplication sharedApplication].statusBarHidden = NO;
         
-        [UIApplication sharedApplication].keyWindow.rootViewController = [[DTabBarViewController alloc] init];
-//    } else {
-//        // 新特性
-//        [UIApplication sharedApplication].keyWindow.rootViewController = [[DNewFeatureController alloc] init];
-//        
-//        // 存储当前版本号
-//        [defaults setObject:currentVersion forKey:key];
-//        [defaults synchronize];
-//    }
-    
+        [self setupRootViewController];
+    } else {
+        // 新特性
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[DNewFeatureController alloc] init];
+        
+        // 存储当前版本号
+        [defaults setObject:currentVersion forKey:key];
+        [defaults synchronize];
+    }
 }
 
 

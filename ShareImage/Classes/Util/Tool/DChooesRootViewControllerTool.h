@@ -10,8 +10,8 @@
 
 @interface DChooesRootViewControllerTool : NSObject
 
-+ (void)setupRootViewControllerWithWindow:(UIWindow *)window;
++ (void)checkVersion;
 
-+ (void)choosedRootController;
++ (void)setupRootViewController;
 
 @end

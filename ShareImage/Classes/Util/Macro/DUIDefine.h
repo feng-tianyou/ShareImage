@@ -50,6 +50,7 @@
 
 // blue
 #define DSystemColorBlue33AACC      DUIColorFromRGB16(0x33aacc)
+#define DSystemColorBlue2979FF      DUIColorFromRGB16(0x2979ff)
 
 
 //一级颜色

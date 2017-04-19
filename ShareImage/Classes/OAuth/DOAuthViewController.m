@@ -160,7 +160,7 @@
     
     // 授权成功
     DLog(@"授权成功");
-    [DChooesRootViewControllerTool choosedRootController];
+    [DChooesRootViewControllerTool setupRootViewController];
 }
 
 

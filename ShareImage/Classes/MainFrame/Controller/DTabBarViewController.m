@@ -19,25 +19,10 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
 @interface DTabBarViewController ()<DTabBarDelegate>
 
 @property (nonatomic, weak) DTabBar *customerTabBar;
-/// 当前选择的控制器下标
-@property (nonatomic, assign) NSInteger currentSelectIndex;
 
 @end
 
 @implementation DTabBarViewController
-
-/**
- 设置tabbar的提醒数字
- */
-- (void)updateTabarBadgeValue:(NSNotification *)noti{
-    
-    NSDictionary *userInfo = noti.userInfo;
-
-    // 请求获取数据
-    DNavigationViewController *nav = self.viewControllers[self.currentSelectIndex];
-    UIViewController *vc = [nav.viewControllers firstObject];
-    vc.tabBarItem.badgeValue = [userInfo objectForKey:@"bgvalue"];
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -49,9 +34,6 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
             [child removeFromSuperview];
         }
     }
-    
-    // 添加tabbar监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTabarBadgeValue:) name:kTabBar_Badge_value object:nil];
 }
 
 - (void)viewDidLoad {
@@ -118,19 +100,12 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kTabBar_Badge_value object:nil];
+    
 }
 
 #pragma mark -DTabBarDelegate方法
 - (void)tabBar:(DTabBar *)tabBar didSelectedButtonFrom:(int)from to:(int)to{
-    DLog(@"from = %@, to = %@", @(from), @(to));
-    self.currentSelectIndex = to;
     self.selectedIndex = to;
 }
 
