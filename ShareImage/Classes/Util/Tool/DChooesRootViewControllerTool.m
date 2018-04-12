@@ -30,8 +30,6 @@
     
     NSString *key = @"CFBundleVersion";
     
-    NSString *key = @"CFBundleVersion";
-    
     // 取出上一个版本
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *lastVersion = [defaults stringForKey:key];
@@ -43,7 +41,7 @@
         // 显示状态栏
         [UIApplication sharedApplication].statusBarHidden = NO;
         
-        [UIApplication sharedApplication].keyWindow.rootViewController = [[DTabBarViewController alloc] init];
+        [self setupRootViewController];
     } else {
         // 新特性
         [UIApplication sharedApplication].keyWindow.rootViewController = [[DNewFeatureController alloc] init];
