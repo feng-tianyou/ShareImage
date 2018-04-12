@@ -65,7 +65,8 @@
         imageView.image = [UIImage getImageWithName:name];
         [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        imageView.clipsToBounds = YES;
+//        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         CGFloat imageX = index * imageW;
         imageView.frame = CGRectMake(imageX, 0, imageW, imageH);
         [scrollview addSubview:imageView];
