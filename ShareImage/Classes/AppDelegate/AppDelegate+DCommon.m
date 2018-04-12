@@ -32,8 +32,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-//    self.window.rootViewController = [[DTabBarViewController alloc] init];
-    [DChooesRootViewControllerTool setupRootViewControllerWithWindow:self.window];
+
+    [DChooesRootViewControllerTool checkVersion];
 }
 
 #pragma mark - 回调地址

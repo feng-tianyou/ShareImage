@@ -16,17 +16,19 @@
 
 @implementation DChooesRootViewControllerTool
 
-+ (void)setupRootViewControllerWithWindow:(UIWindow *)window{
++ (void)setupRootViewController{
     DOAuthAccountModel *account = [DOAuthAccountTool account];
     if (account) {
-        [self choosedRootController];
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[DTabBarViewController alloc] init];
     } else {
         // 授权
-        window.rootViewController = [[DOAuthViewController alloc] init];
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[DOAuthViewController alloc] init];
     }
 }
 
-+ (void)choosedRootController{
++ (void)checkVersion{
+    
+    NSString *key = @"CFBundleVersion";
     
     NSString *key = @"CFBundleVersion";
     

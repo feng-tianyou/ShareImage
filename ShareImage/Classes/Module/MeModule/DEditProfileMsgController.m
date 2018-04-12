@@ -218,7 +218,7 @@
         self.currentAddressLabel.hidden = NO;
         self.currentAddressLabel.describe = place.name;
         if (error) {
-            self.currentAddressLabel.describeLabel.text = @"Have Not Found!";
+            self.currentAddressLabel.describe = @"Have Not Found!";
         }
     }];
 }
