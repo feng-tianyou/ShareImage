@@ -67,13 +67,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareImage/Classes/Module/CommonModule/ShowPhotos/DCommonPhotoController.m"
-            timestampString = "512394950.418839"
+            filePath = "ShareImage/Classes/OAuth/DOAuthViewController.m"
+            timestampString = "545211990.557344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-requestServiceSucceedByUserInfo:"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-requestServiceSucceedWithModel:userInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareImage/Classes/Manager/HTTPManager/Services/DUserService.m"
+            timestampString = "545214115.598606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-oauthAccountByParamModel:onSucceeded:onError:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareImage/Classes/Manager/HTTPManager/Network/DUserNetwork.m"
+            timestampString = "545215369.744821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-getAccountNeedCache:onSucceeded:onError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

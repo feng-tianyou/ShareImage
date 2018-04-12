@@ -475,7 +475,7 @@
         strToken = model.access_token;
     }
     
-    [self.requestSerializer setValue:[NSString stringWithFormat:@"%@ %@", model.token_type, strToken] forHTTPHeaderField:@"Authorization"];
+    [self.requestSerializer setValue:[NSString stringWithFormat:@"%@ %@",@"Bearer", strToken] forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:@"v1" forHTTPHeaderField:@"Accept-Versions"];
     
 }

@@ -13,7 +13,7 @@
 // 归档
 - (instancetype)initWithCoder:(NSCoder *)decoder{
     if (self = [super init]) {
-        self.access_token = [decoder decodeObjectForKey:@""];
+        self.access_token = [decoder decodeObjectForKey:@"access_token"];
         self.created_at = [decoder decodeInt64ForKey:@"created_at"];
         self.refresh_token = [decoder decodeObjectForKey:@"refresh_token"];
         self.scope = [decoder decodeObjectForKey:@"scope"];

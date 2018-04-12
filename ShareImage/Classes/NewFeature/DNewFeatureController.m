@@ -62,8 +62,10 @@
     for (int index = 0; index < MENewFeatureImageCount; index++) {
         UIImageView *imageView = [[UIImageView alloc] init];
         NSString *name = [NSString stringWithFormat:@"new_feature_%d", index+1];
-        imageView.image = [UIImage imageNamed:name];
-        
+        imageView.image = [UIImage getImageWithName:name];
+        [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         CGFloat imageX = index * imageW;
         imageView.frame = CGRectMake(imageX, 0, imageW, imageH);
         [scrollview addSubview:imageView];

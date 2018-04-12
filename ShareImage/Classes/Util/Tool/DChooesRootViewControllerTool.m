@@ -50,6 +50,7 @@
         [defaults setObject:currentVersion forKey:key];
         [defaults synchronize];
     }
+    
 }
 
 
