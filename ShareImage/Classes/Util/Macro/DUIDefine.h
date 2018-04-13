@@ -14,6 +14,12 @@
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+// 判断是否是iPhone X
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define IPHONEX_NAV_SPACE    (iPhoneX?(24):(0))
+#define IPHONEX_BOT_SPACE    (iPhoneX?(34):(0))
+
 #pragma mark - iOS版本
 // iOS6
 #define IOS6 ([[UIDevice currentDevice].systemVersion doubleValue] >= 6.0)

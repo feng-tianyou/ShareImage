@@ -69,7 +69,9 @@
     CGRect lineRect = self.sliderLine.frame;
     lineRect.size.width = lineWidth;
     lineRect.size.height = 2;
+    lineRect.origin.y = button.botm;
     self.sliderLine.frame = lineRect;
+    self.sliderLine.hidden = NO;
     [UIView animateWithDuration:0.25 animations:^{
         CGPoint point = button.center;
         point.y = self.bottomLine.y - 1;
@@ -153,6 +155,7 @@
     if (!_sliderLine) {
         _sliderLine = [[UILabel alloc] init];
         _sliderLine.backgroundColor = DSystemColorBlue33AACC;
+        _sliderLine.hidden = YES;
     }
     return _sliderLine;
 }

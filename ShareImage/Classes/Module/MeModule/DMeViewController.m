@@ -14,6 +14,7 @@
 
 #import "DMeHeaderView.h"
 #import "DCustomNavigationView.h"
+#import "DUITableView.h"
 #import "DMeTableViewCell.h"
 
 #import "DUserAPIManager.h"
@@ -24,7 +25,7 @@
 @interface DMeViewController ()<UITableViewDelegate, UITableViewDataSource, MeHeaderViewDelegate>
 
 @property (nonatomic, strong) DCustomNavigationView *navigationView;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, strong) DMeHeaderView *headerView;
 
 @property (nonatomic, strong) DMWPhotosManager *manager;

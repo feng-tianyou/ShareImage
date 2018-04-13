@@ -16,6 +16,7 @@
 #import "DSettingViewController.h"
 #import "DCommonPhotoController.h"
 
+#import "DUITableView.h"
 #import "DHomeTableViewCell.h"
 #import "DHomeMenuView.h"
 
@@ -38,7 +39,7 @@
 
 @interface DHomeViewController ()<UITableViewDelegate, UITableViewDataSource, DHomeMenuViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, assign) NSInteger page;
 
@@ -319,7 +320,7 @@
 #pragma mark - getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];

@@ -40,6 +40,7 @@
 		077040C61E68221F000DEE50 /* DSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 077040C51E68221F000DEE50 /* DSearchBar.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
+		078221342080A35800D970A6 /* DUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078221332080A35800D970A6 /* DUITableView.m */; };
 		078D1B011E6A5C9A000DC645 /* DNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B001E6A5C9A000DC645 /* DNoDataView.m */; };
 		078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */; };
 		078D1B081E6A9E2F000DC645 /* DNewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B071E6A9E2F000DC645 /* DNewFeatureController.m */; };
@@ -306,6 +307,8 @@
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
 		0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAnimationContollerTool.m; sourceTree = "<group>"; };
+		078221322080A35800D970A6 /* DUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITableView.h; sourceTree = "<group>"; };
+		078221332080A35800D970A6 /* DUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITableView.m; sourceTree = "<group>"; };
 		078D1AFF1E6A5C9A000DC645 /* DNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNoDataView.h; sourceTree = "<group>"; };
 		078D1B001E6A5C9A000DC645 /* DNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNoDataView.m; sourceTree = "<group>"; };
 		078D1B021E6A9C40000DC645 /* DChooesRootViewControllerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DChooesRootViewControllerTool.h; sourceTree = "<group>"; };
@@ -761,6 +764,23 @@
 				074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		078221302080A35800D970A6 /* CommonSubView */ = {
+			isa = PBXGroup;
+			children = (
+				078221312080A35800D970A6 /* TableView */,
+			);
+			path = CommonSubView;
+			sourceTree = "<group>";
+		};
+		078221312080A35800D970A6 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				078221322080A35800D970A6 /* DUITableView.h */,
+				078221332080A35800D970A6 /* DUITableView.m */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		078D1B051E6A9E1D000DC645 /* NewFeature */ = {
@@ -1327,6 +1347,7 @@
 		7ED80FF81E55550100954DAF /* CommonModule */ = {
 			isa = PBXGroup;
 			children = (
+				078221302080A35800D970A6 /* CommonSubView */,
 				07AF4DC11EA084CE006D9376 /* MapView */,
 				7EE1018C1E66B41800D5576D /* Search */,
 				074671A31E64099700ADBC90 /* UserList */,
@@ -2078,6 +2099,7 @@
 				7E799AB61E742D37001B5B70 /* DEditProfileCell.m in Sources */,
 				07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
+				078221342080A35800D970A6 /* DUITableView.m in Sources */,
 				070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */,
 				07D0557B1E792A0C0031188F /* DAboutViewController.m in Sources */,
 				7ED811021E55550100954DAF /* DBaseService.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "DSettingViewController.h"
+#import "DUITableView.h"
 #import "DSettingTableViewCell.h"
 
 #import "DAboutViewController.h"
@@ -19,7 +20,7 @@
 
 @interface DSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSArray *contents;
 @property (nonatomic, assign) NSString *cacheSizeStr;
@@ -199,7 +200,7 @@
 #pragma mark - getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];

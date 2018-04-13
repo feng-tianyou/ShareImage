@@ -73,6 +73,8 @@ static char* const navRighItemType_KEY = "navRighItemType";
 #pragma mark - Private
 - (UIButton *)getBarButtonItemWithType:(DNavigationItemType)type isLeft:(BOOL)isLeft isTitle:(BOOL)isTitle{
     UIButton *button = nil;
+    CGSize titleSize = CGSizeZero;
+    CGSize imgSize = CGSizeZero;
     switch (type) {
         case DNavigationItemTypeNone:{
             break;
@@ -99,25 +101,21 @@ static char* const navRighItemType_KEY = "navRighItemType";
             UIImage *img = [DNavigationTool getNavigationBarRightImgByType:type];
             
             button = [[UIButton alloc] init];
-            CGSize size = CGSizeZero;
             if (strTitle.length > 0) {
                 button.titleLabel.textAlignment = NSTextAlignmentCenter;
-                size = [strTitle sizeWithFont:[UIFont systemFontOfSize:15.0] maxWidth:MAXFLOAT];
+                titleSize = [strTitle sizeWithFont:[UIFont systemFontOfSize:15.0] maxWidth:MAXFLOAT];
                 [button setTitle:strTitle forState:UIControlStateNormal];
                 [button setTitle:strTitle forState:UIControlStateHighlighted];
                 [button.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
                 [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-                [button setFrame:0 y:0 w:size.width h:size.height];
             }
             
             if (img) {
-                //                size = CGSizeMake(20.0, 20.0);
-                size = img.size;
+                imgSize = img.size;
                 button.contentMode = UIViewContentModeCenter;
                 [button setImage:img forState:UIControlStateNormal];
                 [button setImage:img forState:UIControlStateHighlighted];
-                [button setFrame:0 y:0 w:size.width h:size.height];
             }
             break;
         }
@@ -134,11 +132,28 @@ static char* const navRighItemType_KEY = "navRighItemType";
         [button addTarget:self action:@selector(navigationItemClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    CGFloat width = titleSize.width;
+    if (imgSize.width > 0) {
+        width += imgSize.width + 10;
+    }
+    if (width < 44) {
+        width = 44;
+    }
+    [button setFrame:0 y:0 w:width h:44];
     
+    if (isTitle) {
+       button.contentMode = UIViewContentModeCenter;
+    } else {
+        if (isLeft) {
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        } else {
+            button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        }
+    }
     return button;
 }
-
-
 
 #pragma mark - getter & setter
 // 标题

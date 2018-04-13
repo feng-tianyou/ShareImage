@@ -24,20 +24,8 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
 
 @implementation DTabBarViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-    // 删除系统自动生成的UITabBarButton
-    for (UIView *child in self.tabBar.subviews) {
-        if ([child isKindOfClass:[UIControl class]]) {
-            [child removeFromSuperview];
-        }
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
     // 删除系统自动生成的UITabBarButton
     for (UIView *child in self.tabBar.subviews) {
         if ([child isKindOfClass:[UIControl class]]) {
@@ -65,6 +53,7 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
     customerTabBar.delagate = self;
     
     customerTabBar.frame = self.tabBar.bounds;
+    self.tabBar.backgroundColor = [UIColor whiteColor];
     [self.tabBar addSubview:customerTabBar];
     self.customerTabBar = customerTabBar;
 }

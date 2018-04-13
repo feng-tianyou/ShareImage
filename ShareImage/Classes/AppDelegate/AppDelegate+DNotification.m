@@ -51,9 +51,9 @@
  *  处理iOS 10通知(iOS 10+)
  */
 - (void)handleiOS10Notification:(UNNotification *)notification {
-    UNNotificationRequest *request = notification.request;
-    UNNotificationContent *content = request.content;
-    NSDictionary *userInfo = content.userInfo;
+//    UNNotificationRequest *request = notification.request;
+//    UNNotificationContent *content = request.content;
+//    NSDictionary *userInfo = content.userInfo;
     //    // 通知时间
     //    NSDate *noticeDate = notification.date;
     //    // 标题

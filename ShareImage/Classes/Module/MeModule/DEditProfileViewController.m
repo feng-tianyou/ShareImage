@@ -7,12 +7,13 @@
 //
 
 #import "DEditProfileViewController.h"
+#import "DUITableView.h"
 #import "DEditProfileCell.h"
 #import "DEditProfileMsgController.h"
 
 @interface DEditProfileViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSArray *contents;
@@ -158,7 +159,7 @@
 #pragma mark - getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];

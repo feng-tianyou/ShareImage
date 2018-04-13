@@ -94,7 +94,7 @@
     // ---
     
     self.reservedLabel.sd_layout
-    .bottomSpaceToView(self.view, 10)
+    .bottomSpaceToView(self.view, 10+IPHONEX_BOT_SPACE)
     .leftSpaceToView(self.view, 10)
     .rightSpaceToView(self.view, 10)
     .heightIs(20);
@@ -146,7 +146,7 @@
 
 - (void)tapAgree{
     DLog(@"tapAgree");
-    DWebViewController *webView = [[DWebViewController alloc] initWithUrl:@"https://www.baidu.com" type:WKWebViewLoadURLType];
+    DWebViewController *webView = [[DWebViewController alloc] initWithUrl:@"http://daisuke.cn" type:WKWebViewLoadURLType];
     [self.navigationController pushViewController:webView animated:YES];
 }
 

@@ -7,13 +7,14 @@
 //
 
 #import "DHomeMenuView.h"
+#import "DUITableView.h"
 #import "DHomeMenuCell.h"
 #import "DHomeMenuHeader.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DHomeMenuView()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, strong) NSArray *icons;
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) DHomeMenuHeader *headerView;
@@ -88,7 +89,7 @@
 #pragma mark - setter & getter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

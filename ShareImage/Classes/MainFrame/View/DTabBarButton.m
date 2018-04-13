@@ -16,7 +16,7 @@
 #define DTabBarButtonTitleSelectedColor (IOS7? DColor(234, 103, 7) : DColor(248, 139, 0))
 
 // 图片占据按钮的比例
-#define DTabBarButtonImageRatio 0.6
+#define DTabBarButtonImageRatio 0.7
 
 @interface DTabBarButton ()
 

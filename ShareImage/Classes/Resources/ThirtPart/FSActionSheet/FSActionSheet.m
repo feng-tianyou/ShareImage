@@ -7,6 +7,7 @@
 //
 
 #import "FSActionSheet.h"
+#import "DUITableView.h"
 #import "FSActionSheetCell.h"
 
 CGFloat const kFSActionSheetSectionHeight = 10; ///< 分区间距
@@ -21,7 +22,7 @@ CGFloat const kFSActionSheetSectionHeight = 10; ///< 分区间距
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, weak)   UIView *controllerView;
 @property (nonatomic, strong) UIView *backView;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, weak)   UILabel *titleLabel;
 
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint; ///< 内容高度约束
@@ -280,7 +281,7 @@ static NSString * const kFSActionSheetCellIdentifier = @"kFSActionSheetCellIdent
 - (UITableView *)tableView {
     if (_tableView) return _tableView;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;

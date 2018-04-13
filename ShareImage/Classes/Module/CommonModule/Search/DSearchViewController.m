@@ -14,7 +14,7 @@
 
 #import "DSearchSelectItemView.h"
 #import "DSearchBar.h"
-
+#import "DUITableView.h"
 #import "DSearchViewCell.h"
 
 #import "DPhotosAPIManager.h"
@@ -30,7 +30,7 @@
 
 @interface DSearchViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DUITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) DMWPhotosManager *manager;
@@ -71,7 +71,22 @@
     [self setupTableViewDownRefresh];
     [self.searchBar.searchTextField becomeFirstResponder];
     
-    
+    switch (self.searchType) {
+        case PhotoSearchType:
+            [self clickSearchPhotos:self.selectItemView.photoBtn];
+            break;
+        case UserSearchType:
+            [self clickSearchUsers:self.selectItemView.userBtn];
+            break;
+        case CollectionSearchType:
+            [self clickSearchCollections:self.selectItemView.collectionBtn];
+            break;
+        case OtherSearchType:
+            [self clickSearchPhotos:self.selectItemView.photoBtn];
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -96,24 +111,7 @@
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
-    
-    switch (self.searchType) {
-        case PhotoSearchType:
-            [self clickSearchPhotos:self.selectItemView.photoBtn];
-            break;
-        case UserSearchType:
-            [self clickSearchUsers:self.selectItemView.userBtn];
-            break;
-        case CollectionSearchType:
-            [self clickSearchCollections:self.selectItemView.collectionBtn];
-            break;
-        case OtherSearchType:
-            [self clickSearchPhotos:self.selectItemView.photoBtn];
-            break;
-        default:
-            break;
-    }
-    
+
 }
 
 #pragma mark - navEvent
@@ -414,7 +412,7 @@
 #pragma mark getter & setter
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.tableFooterView = [UIView new];
