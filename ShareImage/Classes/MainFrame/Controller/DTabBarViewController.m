@@ -26,6 +26,7 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
+    self.tabBar.backgroundColor = [UIColor whiteColor];
     // 删除系统自动生成的UITabBarButton
     for (UIView *child in self.tabBar.subviews) {
         if ([child isKindOfClass:[UIControl class]]) {

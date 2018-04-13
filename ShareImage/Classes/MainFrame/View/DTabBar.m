@@ -43,7 +43,8 @@
 //        [plusButton addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchUpInside];
 //        self.plusButton = plusButton;
         
-        self.dk_backgroundColorPicker = DKColorPickerWithKey(TABBAR);
+//        self.dk_backgroundColorPicker = DKColorPickerWithKey(TABBAR);
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
