@@ -13,9 +13,11 @@
 #import "DAboutViewController.h"
 #import "DLanguageViewController.h"
 #import "DNavigationViewController.h"
+#import "DWebViewController.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SDWebImage/SDImageCache.h>
+#import <DKNightVersion/DKNightVersion.h>
 
 
 @interface DSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -68,21 +70,19 @@
     .bottomEqualToView(self.view);
 }
 
-//- (void)refreshCacheData{
-//    NSInteger size = [[SDImageCache sharedImageCache] getSize];
-//    NSInteger sizeF = size / 1024 / 1024;
-//    self.cacheSizeStr = [NSString stringWithFormat:@"%@M", @(sizeF)];
-//    [self.tableView reloadData];
-//}
+
 
 - (void)clickLogout{
     [self logoutByType:LogoutTypeForOther];
 }
 
 #pragma mark - overLoad
+/**
+ 夜间（考虑）、缓存、语言、关于、退出
+ */
 - (void)refreshLanguage{
     self.title = kLocalizedLanguage(@"settings");
-    self.titles = @[@[kLocalizedLanguage(@"language"), kLocalizedLanguage(@"night")], @[kLocalizedLanguage(@"give Evaluation")], @[kLocalizedLanguage(@"clear Storage"),kLocalizedLanguage(@"about")]];
+    self.titles = @[@[kLocalizedLanguage(@"language"), kLocalizedLanguage(@"night")], @[kLocalizedLanguage(@"give Star")], @[kLocalizedLanguage(@"clear Storage"),kLocalizedLanguage(@"about")]];
     [self.tableView reloadData];
 }
 
@@ -120,6 +120,10 @@
     if (self.titles.count > indexPath.section) {
         NSArray *titleArr = self.titles[indexPath.section];
         [cell setLeftTitle:titleArr[indexPath.row] indexPath:indexPath];
+        [cell setSwitchBlock:^(BOOL isTrue) {
+            DKNightVersionManager *manager = [DKNightVersionManager sharedManager];
+            manager.themeVersion = isTrue ? DKThemeVersionNight : DKThemeVersionNormal;
+        }];
     }
     
     return cell;
@@ -164,14 +168,17 @@
         case 0:
         {
             if (indexPath.row == 0) {
-                DNavigationViewController *nav = [[DNavigationViewController alloc] initWithRootViewController:[[DLanguageViewController alloc] init]];
-                [self presentViewController:nav animated:YES completion:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    DNavigationViewController *nav = [[DNavigationViewController alloc] initWithRootViewController:[[DLanguageViewController alloc] init]];
+                    [self presentViewController:nav animated:YES completion:nil];
+                });
             }
         }
             break;
         case 1:
         {
-            
+            DWebViewController *view = [[DWebViewController alloc] initWithUrl:@"https://github.com/DaisukeZJY/ShareImage"];
+            [self.navigationController pushViewController:view animated:YES];
         }
             break;
         case 2:
@@ -204,27 +211,12 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-        _tableView.backgroundColor = DSystemColorGrayF3F3F3;
+        _tableView.dk_backgroundColorPicker = DKColorPickerWithKey(BG);
         _tableView.rowHeight = 44;
     }
     return _tableView;
 }
-/**
- 夜间（考虑）、缓存、语言、关于、退出
- */
-//- (NSArray *)titles{
-//    if (!_titles) {
-//        _titles = @[@[kLocalizedString(@"Language", @"语言"), kLocalizedString(@"Night", @"夜间模式")], @[@"Give Evaluation"], @[@"Clear Storage", @"About"]];
-//    }
-//    return _titles;
-//}
 
-//- (NSArray *)contents{
-//    if (!_contents) {
-//        _contents = @[@[@""], @[@""], @[@"", @""]];
-//    }
-//    return _contents;
-//}
 
 
 

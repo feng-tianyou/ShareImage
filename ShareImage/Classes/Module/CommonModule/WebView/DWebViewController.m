@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIButton *closeBtn;
 
 @end
-
+#warning 出现白屏问题，查找了相关资料也不行，哪位大佬能解决的，告知一声，谢谢
 @implementation DWebViewController
 
 

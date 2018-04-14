@@ -26,7 +26,7 @@
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController{
     self = [super initWithRootViewController:rootViewController];
     if (self) {
-        self.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationBar.dk_barTintColorPicker = DKColorPickerWithKey(BG);
         
     }
     return self;
@@ -124,7 +124,6 @@
     textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
     textAttrs[NSFontAttributeName] = [UIFont boldSystemFontOfSize:19];
     [navBar setTitleTextAttributes:textAttrs];
-    
 }
 
 

@@ -37,6 +37,7 @@
 		074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671AB1E641F6300ADBC90 /* DPhotoDetailController.m */; };
 		074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */; };
 		074A02981E6D5CB100CA1E2B /* DUserCollectionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A02971E6D5CB100CA1E2B /* DUserCollectionsController.m */; };
+		076970752081F5AA002FF8D4 /* DKColorTable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 076970742081F5A9002FF8D4 /* DKColorTable.txt */; };
 		077040C61E68221F000DEE50 /* DSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 077040C51E68221F000DEE50 /* DSearchBar.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
@@ -178,7 +179,6 @@
 		7ED8115B1E55550100954DAF /* DNavigationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810D51E55550100954DAF /* DNavigationTool.m */; };
 		7ED8115C1E55550100954DAF /* DNotificationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810D71E55550100954DAF /* DNotificationTool.m */; };
 		7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810D91E55550100954DAF /* DSandboxTool.m */; };
-		7ED811601E55552300954DAF /* DKColorTable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8115E1E55552300954DAF /* DKColorTable.txt */; };
 		7ED811651E55566E00954DAF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811641E55566E00954DAF /* SystemConfiguration.framework */; };
 		7ED811671E55567700954DAF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811661E55567700954DAF /* libz.tbd */; };
 		7ED811691E55568000954DAF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED811681E55568000954DAF /* CoreTelephony.framework */; };
@@ -301,6 +301,7 @@
 		074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonPhotosCell.m; sourceTree = "<group>"; };
 		074A02961E6D5CB100CA1E2B /* DUserCollectionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserCollectionsController.h; sourceTree = "<group>"; };
 		074A02971E6D5CB100CA1E2B /* DUserCollectionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserCollectionsController.m; sourceTree = "<group>"; };
+		076970742081F5A9002FF8D4 /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
 		077040C41E68221F000DEE50 /* DSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchBar.h; sourceTree = "<group>"; };
 		077040C51E68221F000DEE50 /* DSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchBar.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
@@ -593,7 +594,6 @@
 		7ED810D71E55550100954DAF /* DNotificationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNotificationTool.m; sourceTree = "<group>"; };
 		7ED810D81E55550100954DAF /* DSandboxTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSandboxTool.h; sourceTree = "<group>"; };
 		7ED810D91E55550100954DAF /* DSandboxTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSandboxTool.m; sourceTree = "<group>"; };
-		7ED8115E1E55552300954DAF /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
 		7ED811621E55555F00954DAF /* ShareImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareImage.entitlements; sourceTree = "<group>"; };
 		7ED811631E5555F800954DAF /* ShareImage-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShareImage-Prefix.pch"; sourceTree = "<group>"; };
 		7ED811641E55566E00954DAF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -993,8 +993,8 @@
 		7ED80F461E554D8100954DAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				076970742081F5A9002FF8D4 /* DKColorTable.txt */,
 				7ED811631E5555F800954DAF /* ShareImage-Prefix.pch */,
-				7ED8115E1E55552300954DAF /* DKColorTable.txt */,
 				7ED80F521E554D8100954DAF /* Assets.xcassets */,
 				7ED80F541E554D8100954DAF /* LaunchScreen.storyboard */,
 				7ED80F571E554D8100954DAF /* Info.plist */,
@@ -1876,6 +1876,7 @@
 				07B0E7171E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
 				7ED8113F1E55550100954DAF /* zbar-back.png in Resources */,
 				07B0E7191E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
+				076970752081F5AA002FF8D4 /* DKColorTable.txt in Resources */,
 				07B0E71A1E7D0F6C00BD97B0 /* Localizable.strings in Resources */,
 				07B0E7161E7D0F6C00BD97B0 /* Localizable.strings in Resources */,
 				07B0E70F1E7D0F6C00BD97B0 /* InfoPlist.strings in Resources */,
@@ -1892,7 +1893,6 @@
 				07B0E7141E7D0F6C00BD97B0 /* Localizable.strings in Resources */,
 				7ED811111E55550100954DAF /* DData.bundle in Resources */,
 				7ED811411E55550100954DAF /* zbar-helpicons.png in Resources */,
-				7ED811601E55552300954DAF /* DKColorTable.txt in Resources */,
 				07B0E70E1E7D0F6C00BD97B0 /* Localizable.strings in Resources */,
 				07B0E7121E7D0F6C00BD97B0 /* Localizable.strings in Resources */,
 				7ED811401E55550100954DAF /* zbar-help.html in Resources */,

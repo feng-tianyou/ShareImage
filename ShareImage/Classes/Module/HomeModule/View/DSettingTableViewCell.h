@@ -20,4 +20,6 @@
 
 - (void)setLeftTitle:(NSString *)leftTitle indexPath:(NSIndexPath *)indexPath;
 
+@property (nonatomic, copy) BoolBlock switchBlock;
+
 @end

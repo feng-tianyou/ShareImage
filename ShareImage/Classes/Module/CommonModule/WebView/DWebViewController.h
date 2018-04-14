@@ -6,6 +6,7 @@
 //  Copyright © 2017年 DaiSuke. All rights reserved.
 //
 
+
 #import "DBaseViewController.h"
 
 typedef NS_ENUM(NSInteger, WKWebViewLoadType) {
@@ -15,7 +16,7 @@ typedef NS_ENUM(NSInteger, WKWebViewLoadType) {
     WKWebViewLoadURLType, // 加载路径
     WKWebViewLoadDataType // 加载数据
 };
-
+#warning 出现白屏问题，查找了相关资料也不行，哪位大佬能解决的，告知一声，谢谢
 @interface DWebViewController : DBaseViewController
 
 - (instancetype)initWithUrl:(NSString *)url;

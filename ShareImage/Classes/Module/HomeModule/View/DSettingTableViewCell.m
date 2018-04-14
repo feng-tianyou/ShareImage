@@ -8,9 +8,11 @@
 
 #import "DSettingTableViewCell.h"
 #import <SDWebImage/SDImageCache.h>
+//#import "DCacheManager.h"
 
 
 static NSString *const cellID = @"DSettingTableViewCell";
+static NSString *const kNightCacheKey = @"kNightCacheKey";
 
 @implementation DSettingTableViewCell
 
@@ -25,7 +27,7 @@ static NSString *const cellID = @"DSettingTableViewCell";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.dk_backgroundColorPicker = DKColorPickerWithKey(BG);
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self setupSubViews];
     }
@@ -119,7 +121,10 @@ static NSString *const cellID = @"DSettingTableViewCell";
     }
 }
 
-
+- (void)clickSwitch:(UISwitch *)uswitch{
+    [DCacheManager setCacheObjectByData:@(uswitch.isOn) forKey:kNightCacheKey];
+    ExistActionDo(self.switchBlock, self.switchBlock(uswitch.isOn));
+}
 
 #pragma mark - getter & setter
 - (UILabel *)leftTitleLabel{
@@ -136,6 +141,9 @@ static NSString *const cellID = @"DSettingTableViewCell";
     if (!_rightSwitch) {
         _rightSwitch = [[UISwitch alloc] init];
         _rightSwitch.hidden = YES;
+        [_rightSwitch addTarget:self action:@selector(clickSwitch:) forControlEvents:UIControlEventValueChanged];
+        id object = [DCacheManager getCacheObjectForKey:kNightCacheKey];
+        [_rightSwitch setOn:[object boolValue] animated:YES];
     }
     return _rightSwitch;
 }
