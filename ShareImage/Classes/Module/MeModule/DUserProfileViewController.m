@@ -10,6 +10,7 @@
 #import "DCommonPhotoController.h"
 #import "DUserListViewController.h"
 #import "DMapViewController.h"
+#import "DEditProfileViewController.h"
 
 #import "DUserAPIManager.h"
 #import "DUserParamModel.h"
@@ -47,15 +48,16 @@
 // 数据
 @property (nonatomic, strong) DUserModel *userModel;
 @property (nonatomic, strong) DMWPhotosManager *manager;
-
+@property (nonatomic, assign) DUserProfileType type;
 @end
 
 @implementation DUserProfileViewController
 
-- (instancetype)initWithUserName:(NSString *)userName{
+- (instancetype)initWithUserName:(NSString *)userName type:(DUserProfileType)type{
     self = [super init];
     if (self) {
         self.userName = userName;
+        self.type = type;
         [self.view addSubview:self.navigationView];
         
         [self.view addSubview:self.scrollView];
@@ -70,8 +72,9 @@
         [self.scrollView addSubview:self.followingNumBtn];
         
         [self.scrollView addSubview:self.bioLabel];
-        [self.scrollView addSubview:self.followButton];
-        
+        if (type == DUserProfileTypeForOther) {
+            [self.scrollView addSubview:self.followButton];
+        }
         
         [self.view bringSubviewToFront:self.navigationView];
     }
@@ -80,16 +83,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navLeftItemType = DNavigationItemTypeWriteBack;
-
-    
-    // 请求数据
-    DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
-    DUserParamModel *paramModel = [[DUserParamModel alloc] init];
-    paramModel.username = self.userName;
-    [manager fetchUserProfileByParamModel:paramModel];
-    
+    [self getUserData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -106,17 +101,9 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    
-    
-}
-
-
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
-    
+    CGFloat currentHeight = 0;
     // 布局
     self.navigationView.sd_layout
     .topSpaceToView(self.view, 0)
@@ -131,24 +118,28 @@
     .bottomEqualToView(self.view);
     
     [self.bgImageView setFrame:0 y:-300 w:self.view.width h:300];
+    currentHeight += 300;
     
     self.iconView.sd_layout
     .topSpaceToView(self.bgImageView, -35)
     .centerXEqualToView(self.bgImageView)
     .widthIs(70)
     .heightIs(70);
+    currentHeight += 35;
     
     self.nameLabel.sd_layout
     .topSpaceToView(self.iconView, 10)
     .leftSpaceToView(self.scrollView, 10)
     .rightSpaceToView(self.scrollView,10)
     .heightIs(30);
+    currentHeight += 40;
     
     self.addressLabel.sd_layout
     .topSpaceToView(self.nameLabel, 10)
     .leftSpaceToView(self.scrollView, 20)
     .rightSpaceToView(self.scrollView,10)
     .heightIs(20);
+    currentHeight += 30;
     
     CGFloat numBtnWidth = SCREEN_WIDTH/3;
     self.photoNumBtn.sd_layout
@@ -168,7 +159,7 @@
     .leftSpaceToView(self.followerNumBtn, 0)
     .widthIs(numBtnWidth)
     .heightIs(40);
-    
+    currentHeight += 60;
     
     self.bioLabel.isAttributedContent = YES;
     self.bioLabel.sd_layout
@@ -176,20 +167,20 @@
     .leftSpaceToView(self.scrollView, 15)
     .rightSpaceToView(self.scrollView,15)
     .autoHeightRatio(0);
-    
-    self.followButton.sd_layout
-    .topSpaceToView(self.bioLabel, 30)
-    .leftSpaceToView(self.scrollView, 80)
-    .rightSpaceToView(self.scrollView,80)
-    .heightIs(45);
-    
-    
     CGSize bioSize = [UILabel getContentSizeForHasLineSpaceByContent:self.bioLabel.text font:self.bioLabel.font maxWidth:self.view.width - 30];
-    if (bioSize.height > 20) {
-        self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 50 + bioSize.height);
-    } else {
-        self.scrollView.contentSize = CGSizeMake(self.view.width,self.followButton.y + 80 + bioSize.height);
+    currentHeight += bioSize.height + 25;
+    
+    if (self.type == DUserProfileTypeForOther) {
+        self.followButton.sd_layout
+        .topSpaceToView(self.bioLabel, 30)
+        .leftSpaceToView(self.scrollView, 80)
+        .rightSpaceToView(self.scrollView,80)
+        .heightIs(45);
+        currentHeight += 75;
     }
+    currentHeight -= self.navBarHeight;
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.width,currentHeight);
     DLogSize(self.scrollView.contentSize);
     DLog(@"%@", @(self.bioLabel.autoHeight));
     
@@ -200,7 +191,12 @@
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationRightBtn:(UIButton *)rightBtn{
-    [DShareManager shareUrlForAllPlatformByTitle:self.userModel.username content:self.userModel.bio shareUrl:self.userModel.portfolio_url parentController:self];
+    if (self.type == DUserProfileTypeForMine) {
+        DEditProfileViewController *view = [[DEditProfileViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+    } else {
+        [DShareManager shareUrlForAllPlatformByTitle:self.userModel.username content:self.userModel.bio shareUrl:self.userModel.portfolio_url parentController:self];
+    }
 }
 
 - (void)navigationBarDidClickNavigationLeftBtn:(UIButton *)leftBtn{
@@ -265,10 +261,21 @@
     [self.navigationController pushViewController:mapController animated:YES];
 }
 
+#pragma mark - get data
+- (void)getUserData{
+    if (self.type == DUserProfileTypeForMine) {
+        [self requestServiceSucceedWithModel:KGLOBALINFOMANAGER.accountInfo userInfo:nil];
+    } else {
+        // 请求数据
+        DUserAPIManager *manager = [DUserAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+        DUserParamModel *paramModel = [[DUserParamModel alloc] init];
+        paramModel.username = self.userName;
+        [manager fetchUserProfileByParamModel:paramModel];
+    }
+}
 
 #pragma mark - delegate
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //通过滑动的便宜距离重新给图片设置大小
     CGFloat yOffset = scrollView.contentOffset.y;
     if(yOffset<-300)
@@ -320,10 +327,12 @@
         [self.bioLabel addLineSpace];
     }
     
-    if (userModel.followed_by_user) {
-        [self.followButton setBackgroundColor:[UIColor blackColor]];
-    } else {
-        [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
+    if (self.type == DUserProfileTypeForOther) {
+        if (userModel.followed_by_user) {
+            [self.followButton setBackgroundColor:[UIColor blackColor]];
+        } else {
+            [self.followButton setBackgroundColor:[UIColor setHexColor:@"#2979ff"]];
+        }
     }
 }
 
@@ -333,7 +342,11 @@
     if (!_navigationView) {
         _navigationView = [[DCustomNavigationView alloc] init];
         _navigationView.navLeftItemType = DNavigationItemTypeWriteBack;
-        _navigationView.navRighItemType = DNavigationItemTypeRightWriteMenu;
+        if (_type == DUserProfileTypeForMine) {
+            _navigationView.navRighItemType = DNavigationItemTypeRightEdit;
+        } else {
+            _navigationView.navRighItemType = DNavigationItemTypeRightWriteMenu;
+        }
         _navigationView.title = @"Profile";
         [_navigationView.navLeftItem addTarget:self action:@selector(navigationBarDidClickNavigationLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
         [_navigationView.navRightItem addTarget:self action:@selector(navigationBarDidClickNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];

@@ -49,12 +49,6 @@
 "log Out" = "Quitter";
 "clean up!" = "Effacer complété!";
 
-// DMeViewController
-"mePHOTOS" = "PHOTOS";
-"meFOLLOWERS" = "Ventilateurs";
-"meFOLLOWING" = "Attentions";
-"meRecent Photos" = "Dernières photos";
-
 
 // DEditProfileViewController
 "edEdit Profile" = "Modifier les informations";

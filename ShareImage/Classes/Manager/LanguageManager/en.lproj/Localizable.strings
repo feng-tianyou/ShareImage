@@ -50,13 +50,6 @@
 
 
 
-// DMeViewController
-"mePHOTOS" = "PHOTOS";
-"meFOLLOWERS" = "FOLLOWERS";
-"meFOLLOWING" = "FOLLOWING";
-"meRecent Photos" = "Recent Photos";
-
-
 
 // DEditProfileViewController
 "edEdit Profile" = "Edit Profile";

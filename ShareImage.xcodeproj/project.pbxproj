@@ -146,7 +146,6 @@
 		7ED811091E55550100954DAF /* DUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FF61E55550100954DAF /* DUserModel.m */; };
 		7ED8110B1E55550100954DAF /* DScanQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED80FFD1E55550100954DAF /* DScanQRCodeViewController.m */; };
 		7ED8110D1E55550100954DAF /* DHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810031E55550100954DAF /* DHomeViewController.m */; };
-		7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810091E55550100954DAF /* DMeViewController.m */; };
 		7ED811111E55550100954DAF /* DData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7ED8100E1E55550100954DAF /* DData.bundle */; };
 		7ED811131E55550100954DAF /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED810131E55550100954DAF /* EGOCache.m */; };
 		7ED8113E1E55550100954DAF /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED8108F1E55550100954DAF /* libzbar.a */; };
@@ -508,8 +507,6 @@
 		7ED80FFD1E55550100954DAF /* DScanQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DScanQRCodeViewController.m; sourceTree = "<group>"; };
 		7ED810021E55550100954DAF /* DHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHomeViewController.h; sourceTree = "<group>"; };
 		7ED810031E55550100954DAF /* DHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHomeViewController.m; sourceTree = "<group>"; };
-		7ED810081E55550100954DAF /* DMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMeViewController.h; sourceTree = "<group>"; };
-		7ED810091E55550100954DAF /* DMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMeViewController.m; sourceTree = "<group>"; };
 		7ED8100E1E55550100954DAF /* DData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DData.bundle; sourceTree = "<group>"; };
 		7ED810121E55550100954DAF /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		7ED810131E55550100954DAF /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
@@ -1389,8 +1386,6 @@
 				7EC0B1E01E62AD2C00AF1318 /* Views */,
 				7E1B159D1E759148001DFF28 /* DEditProfileMsgController.h */,
 				7E1B159E1E759148001DFF28 /* DEditProfileMsgController.m */,
-				7ED810081E55550100954DAF /* DMeViewController.h */,
-				7ED810091E55550100954DAF /* DMeViewController.m */,
 				07DA8F931E60334F006D871B /* DUserProfileViewController.h */,
 				07DA8F941E60334F006D871B /* DUserProfileViewController.m */,
 				074A02961E6D5CB100CA1E2B /* DUserCollectionsController.h */,
@@ -2056,7 +2051,6 @@
 				7ED810FC1E55550100954DAF /* DBaseNetwork.m in Sources */,
 				7ED8114F1E55550100954DAF /* UIView+DLayer.m in Sources */,
 				074671A91E64125400ADBC90 /* DUserListViewCell.m in Sources */,
-				7ED8110F1E55550100954DAF /* DMeViewController.m in Sources */,
 				070F7CE71E77F6AF00423212 /* DSettingTableViewCell.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */,

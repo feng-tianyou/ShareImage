@@ -120,7 +120,7 @@
     
     if (self.users.count > indexPath.row) {
         DUserModel *model = self.users[indexPath.row];
-        DUserProfileViewController *view = [[DUserProfileViewController alloc] initWithUserName:model.username];
+        DUserProfileViewController *view = [[DUserProfileViewController alloc] initWithUserName:model.username type:DUserProfileTypeForOther];
         [self.navigationController pushViewController:view animated:YES];
     }
     

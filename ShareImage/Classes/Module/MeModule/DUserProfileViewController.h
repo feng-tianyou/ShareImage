@@ -8,8 +8,14 @@
 
 #import "DBaseViewController.h"
 
+typedef NS_ENUM(NSInteger, DUserProfileType)
+{
+    DUserProfileTypeForMine,
+    DUserProfileTypeForOther
+};
+
 @interface DUserProfileViewController : DBaseViewController
 
-- (instancetype)initWithUserName:(NSString *)userName;
+- (instancetype)initWithUserName:(NSString *)userName type:(DUserProfileType)type;
 
 @end

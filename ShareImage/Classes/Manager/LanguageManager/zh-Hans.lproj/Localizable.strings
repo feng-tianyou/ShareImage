@@ -46,11 +46,6 @@
 "log Out" = "退出";
 "clean up!" = "清除完毕!";
 
-// DMeViewController
-"mePHOTOS" = "图片";
-"meFOLLOWERS" = "粉丝";
-"meFOLLOWING" = "关注";
-"meRecent Photos" = "最近照片";
 
 
 // DEditProfileViewController

@@ -306,7 +306,7 @@
         {
             if (self.dataArray.count > indexPath.row) {
                DUserModel *user = self.dataArray[indexPath.row];
-                DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:user.username];
+                DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:user.username type:DUserProfileTypeForOther];
                 [self.navigationController pushViewController:userController animated:YES];
             }
         }

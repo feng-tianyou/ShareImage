@@ -10,7 +10,6 @@
 #import "DUserProfileViewController.h"
 
 #import "DSearchViewController.h"
-#import "DMeViewController.h"
 #import "DCommonPhotoController.h"
 #import "DUserCollectionsController.h"
 #import "DSettingViewController.h"
@@ -183,7 +182,7 @@
         [cell setClickIconBlock:^{
             DLog(@"点击头像");
             @strongify(self)
-            DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:userModel.username];
+            DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:userModel.username type:DUserProfileTypeForOther];
             [self.navigationController pushViewController:userController animated:YES];
         }];
         [cell setClickLikeBlock:^{
@@ -216,8 +215,8 @@
 
 #pragma mark - DHomeMenuViewDelegate
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
-    DMeViewController *meViewController = [[DMeViewController alloc] init];
-    [self.navigationController pushViewController:meViewController animated:YES];
+    DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:KGLOBALINFOMANAGER.accountInfo.name type:DUserProfileTypeForMine];
+    [self.navigationController pushViewController:userController animated:YES];
     
 }
 
