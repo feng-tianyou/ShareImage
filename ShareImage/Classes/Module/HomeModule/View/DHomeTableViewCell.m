@@ -63,16 +63,16 @@ static NSString *const cellID = @"homeCell";
     .heightIs(200);
     
     self.iconBgView.sd_layout
-    .topSpaceToView(self.photoView, -35)
+    .topSpaceToView(self.photoView, -25)
     .leftSpaceToView(self.contentView, 20)
-    .widthIs(70)
-    .heightIs(70);
+    .widthIs(50)
+    .heightIs(50);
     
     self.iconView.sd_layout
     .centerXEqualToView(self.iconBgView)
     .centerYEqualToView(self.iconBgView)
-    .widthIs(62)
-    .heightIs(62);
+    .widthIs(46)
+    .heightIs(46);
     
     self.nameLabel.sd_layout
     .topSpaceToView(self.photoView, 2)
@@ -117,7 +117,7 @@ static NSString *const cellID = @"homeCell";
     if (!_iconBgView) {
         _iconBgView = [[UIView alloc] init];
         _iconBgView.backgroundColor = [UIColor whiteColor];
-        [_iconBgView.layer setCornerRadius:35.0];
+        [_iconBgView.layer setCornerRadius:25.0];
         [_iconBgView.layer setMasksToBounds:YES];
     }
     return _iconBgView;
@@ -127,7 +127,7 @@ static NSString *const cellID = @"homeCell";
     if (!_iconView) {
         _iconView = [[UIButton alloc] init];
         [_iconView addTarget:self action:@selector(clickIcon) forControlEvents:UIControlEventTouchUpInside];
-        [_iconView.layer setCornerRadius:31.0];
+        [_iconView.layer setCornerRadius:23.0];
         [_iconView.layer setMasksToBounds:YES];
         _iconView.backgroundColor = [UIColor lightRandom];
     }

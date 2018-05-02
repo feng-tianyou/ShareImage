@@ -14,8 +14,24 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
 @implementation NSString (DNSString)
 
 
+- (CGSize)sizeWithFont:(UIFont *)font maxWidth:(CGFloat)maxWidth{
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSFontAttributeName] = font;
+    CGSize size = [self boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    return size;
+}
 
 
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize{
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSFontAttributeName] = font;
+    CGSize size = [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+    return size;
+}
+
+- (CGSize)sizeWithFont:(UIFont *)font{
+    return [self sizeWithFont:font maxWidth:MAXFLOAT];
+}
 
 - (CGSize)sizeCustomWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
@@ -36,29 +52,6 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
     }
     return resultSize;
 }
-
-
-- (CGSize)sizeWithFont:(UIFont *)font maxWidth:(CGFloat)maxWidth{
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = font;
-    CGSize size = [self boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
-    return size;
-}
-
-
-- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize{
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = font;
-    CGSize size = [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
-    return size;
-}
-
-- (CGSize)sizeWithFont:(UIFont *)font{
-    return [self sizeWithFont:font maxWidth:MAXFLOAT];
-}
-
-
-
 
 #pragma mark - 加密字符串
 - (NSString *)myMD5

@@ -6,6 +6,7 @@
 //  Copyright © 2016年 DaiSuke. All rights reserved.
 //
 
+
 #import "DAlertView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -18,8 +19,8 @@ static NSMutableArray *_custom_alert_queue;
 static CustomAlertBackgroundWindow *_custom_alert_background_window;
 static DAlertView *_custom_alert_current_view;
 
-
-#define LineColor DUIColorFromRGB16(0xe0e0e0)
+#define LineColor   DUIColorFromRGB16(0xdadada)
+#define LineHeight  0.5
 
 
 
@@ -100,7 +101,7 @@ static DAlertView *_custom_alert_current_view;
         case CustomAlertViewBackgroundStyleSolid:
         {
             [UIView animateWithDuration:0.5 animations:^{
-                [[UIColor colorWithWhite:0 alpha:0.5] set];
+                [[UIColor colorWithWhite:0 alpha:0.6] set];
                 CGContextFillRect(context, self.bounds);
             }];
             break;
@@ -217,6 +218,7 @@ static DAlertView *_custom_alert_current_view;
     if (!_custom_alert_background_window) {
         _custom_alert_background_window = [[CustomAlertBackgroundWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [_custom_alert_background_window makeKeyAndVisible];
+        _custom_alert_background_window.style = CustomAlertViewBackgroundStyleSolid;
         _custom_alert_background_window.alpha = 0;
         [UIView animateWithDuration:0.3
                          animations:^{
@@ -258,11 +260,7 @@ static DAlertView *_custom_alert_current_view;
 
 - (void)addButtonWithTitle:(NSString *)title handler:(AlertViewHandler)handler
 {
-    CustomAlertItem *item = [[CustomAlertItem alloc] init];
-    item.title = title;
-    item.type = 0;
-    item.action = handler;
-    [self.items addObject:item];
+    [self addButtonWithTitle:title type:CustomAlertViewButtonTypeDefault handler:handler];
 }
 
 - (void)addButtonWithTitle:(NSString *)title type:(CustomAlertViewButtonType)type handler:(AlertViewHandler)handler
@@ -276,6 +274,7 @@ static DAlertView *_custom_alert_current_view;
 
 - (void)show
 {
+    
     if (![[DAlertView sharedQueue] containsObject:self]) {
         [[DAlertView sharedQueue] addObject:self];
     }
@@ -287,10 +286,17 @@ static DAlertView *_custom_alert_current_view;
     if ([DAlertView currentAlertView].isVisible) {
         DAlertView *alert = [DAlertView currentAlertView];
         [alert dismissAnimated:YES cleanup:NO];
+        //        return;
     }
+    
+    //    if (self.willShowHandler) {
+    //        self.willShowHandler(self);
+    //    }
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:SIAlertViewWillShowNotification object:self userInfo:nil];
     
     self.visible = YES;
     
+    //    [AlertView setAnimating:YES];
     [DAlertView setCurrentAlertView:self];
     
     // transition background
@@ -312,6 +318,13 @@ static DAlertView *_custom_alert_current_view;
     [self validateLayout];
     
     [self transitionInCompletion:^{
+        //        if (self.didShowHandler) {
+        //            self.didShowHandler(self);
+        //        }
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:SIAlertViewDidShowNotification object:self userInfo:nil];
+        //
+        //        [SIAlertView setAnimating:NO];
+        //
         NSInteger index = [[DAlertView sharedQueue] indexOfObject:self];
         if (index < [DAlertView sharedQueue].count - 1) {
             [self dismissAnimated:YES cleanup:NO]; // dismiss to show next alert view
@@ -327,6 +340,13 @@ static DAlertView *_custom_alert_current_view;
 - (void)dismissAnimated:(BOOL)animated cleanup:(BOOL)cleanup
 {
     BOOL isVisible = self.isVisible;
+    
+    //    if (isVisible) {
+    //        if (self.willDismissHandler) {
+    //            self.willDismissHandler(self);
+    //        }
+    //        [[NSNotificationCenter defaultCenter] postNotificationName:SIAlertViewWillDismissNotification object:self userInfo:nil];
+    //    }
     
     void (^dismissComplete)(void) = ^{
         self.visible = NO;
@@ -344,6 +364,15 @@ static DAlertView *_custom_alert_current_view;
         if (cleanup) {
             [[DAlertView sharedQueue] removeObject:self];
         }
+        //
+        //        [SIAlertView setAnimating:NO];
+        
+        //        if (isVisible) {
+        //            if (self.didDismissHandler) {
+        //                self.didDismissHandler(self);
+        //            }
+        //            [[NSNotificationCenter defaultCenter] postNotificationName:SIAlertViewDidDismissNotification object:self userInfo:nil];
+        //        }
         
         // check if we should show next alert
         if (!isVisible) {
@@ -362,6 +391,7 @@ static DAlertView *_custom_alert_current_view;
     };
     
     if (animated && isVisible) {
+        //        [SIAlertView setAnimating:YES];
         [self transitionOutCompletion:dismissComplete];
         
         if ([DAlertView sharedQueue].count == 1) {
@@ -541,9 +571,6 @@ static DAlertView *_custom_alert_current_view;
             y += ALERT_VIEW_GAP;
         }
         self.messageLabel.text = self.message;
-        if(_messageNeedLineSpace){
-            [self.messageLabel addLineSpace];
-        }
         CGFloat height = [self heightForMessageLabel];
         self.messageLabel.frame = CGRectMake(ALERT_VIEW_CONTENT_PADDING_LEFT, y, self.containerView.bounds.size.width - ALERT_VIEW_CONTENT_PADDING_LEFT * 2, height);
         y += height;
@@ -562,49 +589,40 @@ static DAlertView *_custom_alert_current_view;
     }
     if (self.items.count > 0) {
         self.lineContentLabel.backgroundColor = LineColor;
-        CGFloat lineHeight = 1.0;
+        //        CGFloat lineHeight = 2.0;
+        //        if(IOS7){
+        //            lineHeight = 1.0;
+        //        }
         
-        self.lineContentLabel.frame = CGRectMake(0, y + ALERT_VIEW_GAP, self.containerView.bounds.size.width, lineHeight);
-        y += 1;
+        self.lineContentLabel.frame = CGRectMake(0, y + ALERT_VIEW_CONTENT_PADDING_TOP, self.containerView.bounds.size.width, LineHeight);
+        y += LineHeight;
         if (y > ALERT_VIEW_CONTENT_PADDING_TOP) {
-            y += ALERT_VIEW_GAP;
+            y += ALERT_VIEW_CONTENT_PADDING_TOP;
         }
         if (self.items.count == 2) {
             CGFloat width = (self.containerView.bounds.size.width - ALERT_VIEW_BUTTON_PADDING_LEFT * 2) * 0.5;
             UIButton *button = self.buttons[0];
             button.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT, y, width, ALERT_VIEW_BUTTON_HEIGHT);
-            
-            // --- 设置左下角圆角
-            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:button.bounds byRoundingCorners:UIRectCornerBottomLeft cornerRadii:CGSizeMake(5, 5)];
-            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-            maskLayer.frame = button.bounds;
-            maskLayer.path = maskPath.CGPath;
-            button.layer.mask = maskLayer;
-            // ----
-            
-            button.backgroundColor = [UIColor blackColor];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            
             button = self.buttons[1];
             button.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT + width, y, width, ALERT_VIEW_BUTTON_HEIGHT);
             
             self.lineButtonLabel.backgroundColor = LineColor;
-            CGFloat lineHeight = 1.0;
-            self.lineButtonLabel.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT + width, y, lineHeight, ALERT_VIEW_BUTTON_HEIGHT);
+            //            CGFloat lineHeight = 2.0;
+            //            if(IOS7){
+            //                lineHeight = 1.0;
+            //            }
+            self.lineButtonLabel.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT + width, y, LineHeight, ALERT_VIEW_BUTTON_HEIGHT);
         } else {
             for (NSUInteger i = 0; i < self.buttons.count; i++) {
-                @autoreleasepool {
-                    UIButton *button = self.buttons[i];
-                    button.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT, y, self.containerView.bounds.size.width - ALERT_VIEW_BUTTON_PADDING_LEFT * 2, ALERT_VIEW_BUTTON_HEIGHT);
-                    if (self.buttons.count > 1) {
-                        if (i == self.buttons.count - 1 && ((CustomAlertItem *)self.items[i]).type == CustomAlertViewButtonTypeCancel) {
-                            CGRect rect = button.frame;
-                            rect.origin.y += ALERT_VIEW_CANCEL_BUTTON_PADDING_TOP;
-                            button.frame = rect;
-                        }
-                        y += ALERT_VIEW_BUTTON_HEIGHT + ALERT_VIEW_GAP;
+                UIButton *button = self.buttons[i];
+                button.frame = CGRectMake(ALERT_VIEW_BUTTON_PADDING_LEFT, y, self.containerView.bounds.size.width - ALERT_VIEW_BUTTON_PADDING_LEFT * 2, ALERT_VIEW_BUTTON_HEIGHT);
+                if (self.buttons.count > 1) {
+                    if (i == self.buttons.count - 1 && ((CustomAlertItem *)self.items[i]).type == CustomAlertViewButtonTypeCancel) {
+                        CGRect rect = button.frame;
+                        rect.origin.y += ALERT_VIEW_CANCEL_BUTTON_PADDING_TOP;
+                        button.frame = rect;
                     }
+                    y += ALERT_VIEW_BUTTON_HEIGHT + ALERT_VIEW_GAP;
                 }
             }
         }
@@ -633,9 +651,9 @@ static DAlertView *_custom_alert_current_view;
     }
     
     if (self.items.count > 0) {
-        height += 1;
+        height += LineHeight;
         if (height > ALERT_VIEW_CONTENT_PADDING_TOP) {
-            height += ALERT_VIEW_GAP;
+            height += ALERT_VIEW_CONTENT_PADDING_TOP;
         }
         if (self.items.count <= 2) {
             height += ALERT_VIEW_BUTTON_HEIGHT;
@@ -654,16 +672,12 @@ static DAlertView *_custom_alert_current_view;
 - (CGFloat)heightForTitleLabel
 {
     if (self.titleLabel) {
-        CGSize size = [self.title sizeWithFont:self.titleLabel.font maxWidth:ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2];
-        
-        //        CGSize size = [self.title sizeWithFont:self.titleLabel.font
-        //                                   minFontSize:self.titleLabel.font.pointSize * self.titleLabel.minimumScaleFactor
-        //                                actualFontSize:nil
-        //                                      forWidth:ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2
-        //                                 lineBreakMode:self.titleLabel.lineBreakMode];
+        CGSize size = [self.title sizeWithFont:self.titleLabel.font
+                                          maxWidth:(ALERT_VIEW_CONTAINER_WIDTH - (ALERT_VIEW_CONTENT_PADDING_LEFT * 2))];
         return size.height;
     }
-    return 0;
+    
+    return 0.f;
 }
 
 - (CGFloat)heightForMessageLabel
@@ -671,16 +685,11 @@ static DAlertView *_custom_alert_current_view;
     CGFloat minHeight = ALERT_VIEW_MESSAGE_MIN_LINE_COUNT * self.messageLabel.font.lineHeight;
     if (self.messageLabel) {
         CGFloat maxHeight = ALERT_VIEW_MESSAGE_MAX_LINE_COUNT * self.messageLabel.font.lineHeight;
-        CGSize size = [self.message sizeWithFont:self.messageLabel.font maxSize:CGSizeMake(ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2, maxHeight)];
-        
-        //        CGSize size = [self.message sizeWithFont:self.messageLabel.font
-        //                               constrainedToSize:CGSizeMake(ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2, maxHeight)
-        //                                   lineBreakMode:self.messageLabel.lineBreakMode];
-        if(_messageNeedLineSpace){
-            size = [UILabel getContentSizeForHasLineSpaceByContent:self.message font:self.messageLabel.font maxWidth:ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2];
-        }
+        CGSize size = [self.message sizeCustomWithFont:self.messageLabel.font
+                                     constrainedToSize:CGSizeMake(ALERT_VIEW_CONTAINER_WIDTH - ALERT_VIEW_CONTENT_PADDING_LEFT * 2, maxHeight)];
         return MAX(minHeight, size.height);
     }
+    
     return minHeight;
 }
 
@@ -731,10 +740,15 @@ static DAlertView *_custom_alert_current_view;
             self.titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
             self.titleLabel.textAlignment = NSTextAlignmentCenter;
             self.titleLabel.backgroundColor = [UIColor clearColor];
-            self.titleLabel.font = self.titleFont;
-            self.titleLabel.textColor = self.titleColor;
+            self.titleLabel.font = ALERT_VIEW_TITLE_FONT;
+            self.titleLabel.textColor = ALERT_VIEW_TITLE_TEXT_COLOR;
             self.titleLabel.adjustsFontSizeToFitWidth = YES;
             self.titleLabel.minimumScaleFactor = 0.75;
+            //#ifndef __IPHONE_6_0
+            //            self.titleLabel.minimumScaleFactor = 0.75;
+            //#else
+            //            self.titleLabel.minimumFontSize = self.titleLabel.font.pointSize * 0.75;
+            //#endif
             [self.containerView addSubview:self.titleLabel];
 #if DEBUG_LAYOUT
             self.titleLabel.backgroundColor = [UIColor redColor];
@@ -766,8 +780,8 @@ static DAlertView *_custom_alert_current_view;
             }
             
             self.messageLabel.backgroundColor = [UIColor clearColor];
-            self.messageLabel.font = self.messageFont;
-            self.messageLabel.textColor = self.messageColor;
+            self.messageLabel.font = ALERT_VIEW_MESSAGE_FONT;
+            self.messageLabel.textColor = ALERT_VIEW_MESSAGE_TEXT_COLOR;
             self.messageLabel.numberOfLines = ALERT_VIEW_MESSAGE_MAX_LINE_COUNT;
             [self.containerView addSubview:self.messageLabel];
 #if DEBUG_LAYOUT
@@ -775,7 +789,6 @@ static DAlertView *_custom_alert_current_view;
 #endif
         }
         self.messageLabel.text = self.message;
-        
     } else {
         [self.messageLabel removeFromSuperview];
         self.messageLabel = nil;
@@ -792,11 +805,9 @@ static DAlertView *_custom_alert_current_view;
     }
     self.buttons = [[NSMutableArray alloc] initWithCapacity:self.items.count];
     for (NSUInteger i = 0; i < self.items.count; i++) {
-        @autoreleasepool {
-            UIButton *button = [self buttonForItemIndex:i];
-            [self.buttons addObject:button];
-            [self.containerView addSubview:button];
-        }
+        UIButton *button = [self buttonForItemIndex:i];
+        [self.buttons addObject:button];
+        [self.containerView addSubview:button];
     }
     if(self.items.count == 2){
         if(!self.lineButtonLabel){
@@ -813,14 +824,38 @@ static DAlertView *_custom_alert_current_view;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.tag = index;
     button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    button.titleLabel.font = self.buttonFont;
+    button.titleLabel.font = ALERT_VIEW_BUTTON_FONT;
     [button setTitle:item.title forState:UIControlStateNormal];
-    [button setTitleColor:DSystemColorBlue33AACC forState:UIControlStateNormal];
-    [button setTitleColor:DSystemColorBlue33AACC forState:UIControlStateHighlighted];
-    if(_buttonLeftTextColor && index == 0){
-        [button setTitleColor:_buttonLeftTextColor forState:UIControlStateNormal];
-        [button setTitleColor:_buttonLeftTextColor forState:UIControlStateHighlighted];
+    //    UIImage *normalImage = nil;
+    //    UIImage *highlightedImage = nil;
+    switch (item.type) {
+        case CustomAlertViewButtonTypeCancel:
+            //            normalImage = [UIImage imageNamed:@"AlertView.bundle/button-cancel"];
+            //            highlightedImage = [UIImage imageNamed:@"AlertView.bundle/button-cancel-d"];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateNormal];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateHighlighted];
+            break;
+        case CustomAlertViewButtonTypeDestructive:
+            //            normalImage = [UIImage imageNamed:@"AlertView.bundle/button-destructive"];
+            //            highlightedImage = [UIImage imageNamed:@"AlertView.bundle/button-destructive-d"];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateNormal];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateHighlighted];
+            break;
+        case CustomAlertViewButtonTypeDefault:
+        default:
+            //            normalImage = [UIImage imageNamed:@"AlertView.bundle/button-default"];
+            //            highlightedImage = [UIImage imageNamed:@"AlertView.bundle/button-default-d"];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateNormal];
+            [button setTitleColor:ALERT_VIEW_BUTTON_TITLE_COLOR forState:UIControlStateHighlighted];
+            break;
     }
+    //    CGFloat hInset = floorf(normalImage.size.width / 2);
+    //    CGFloat vInset = floorf(normalImage.size.height / 2);
+    //    UIEdgeInsets insets = UIEdgeInsetsMake(vInset, hInset, vInset, hInset);
+    //    normalImage = [normalImage resizableImageWithCapInsets:insets];
+    //    highlightedImage = [highlightedImage resizableImageWithCapInsets:insets];
+    //    [button setBackgroundImage:normalImage forState:UIControlStateNormal];
+    //    [button setBackgroundImage:highlightedImage forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     return button;
@@ -922,6 +957,22 @@ static DAlertView *_custom_alert_current_view;
     }
     _shadowRadius = shadowRadius;
     self.containerView.layer.shadowRadius = shadowRadius;
+}
+
++ (void)showNormalWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel handler:(AlertViewHandler)handler{
+    DAlertView *alert = [[DAlertView alloc] initWithTitle:title andMessage:message];
+    [alert addButtonWithTitle:cancel type:CustomAlertViewButtonTypeCancel handler:handler];
+    [alert show];
+}
+
++ (void)showNormalWithTitle:(NSString *)title message:(NSString *)message cancel:(NSString *)cancel cancelHandler:(AlertViewHandler)cancelHandler submit:(NSString *)submit submitHandler:(AlertViewHandler)submitHandler {
+    
+    DAlertView *alert = [[DAlertView alloc] initWithTitle:title andMessage:message];
+    [alert addButtonWithTitle:cancel type:CustomAlertViewButtonTypeCancel handler:cancelHandler];
+    [alert addButtonWithTitle:submit type:CustomAlertViewButtonTypeDefault handler:submitHandler];
+    [alert show];
+    
+    
 }
 
 @end

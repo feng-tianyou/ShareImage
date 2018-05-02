@@ -20,6 +20,7 @@
 - (CGSize)sizeWithFont:(UIFont *)font maxWidth:(CGFloat)maxWidth;
 - (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 - (CGSize)sizeWithFont:(UIFont *)font;
+- (CGSize)sizeCustomWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
 
 #pragma mark - 加密相关
 
