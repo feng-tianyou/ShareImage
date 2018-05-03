@@ -19,6 +19,8 @@
 #import <MJRefresh/MJRefresh.h>
 
 static NSString * const cellID = @"collection";
+static NSString * const kGetFeaturedCollectionsData = @"getFeaturedCollectionsData";
+static NSString * const kGetCuratedCollectionsData = @"getCuratedCollectionsData";
 
 typedef NS_ENUM(NSInteger, CollectionType) {
     FeaturedCollectionType,
@@ -45,8 +47,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     // Do any additional setup after loading the view.
     self.page = 1;
     self.navRighItemType = DNavigationItemTypeRightSearch;
-    self.headerView.featuredBtn.selected = YES;
-    
+
     [self setupSubViews];
     [self getFeaturedCollectionsData];
 }
@@ -78,7 +79,9 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 }
 
 - (void)getFeaturedCollectionsData{
-    DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    NSMutableDictionary *dic = [self.networkUserInfo mutableCopy];
+    [dic setObject:kGetFeaturedCollectionsData forKey:kParamMethod];
+    DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:dic];
     DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
     paramModel.page = self.page;
     paramModel.per_page = 10;
@@ -87,7 +90,9 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 }
 
 - (void)getCuratedCollectionsData{
-    DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+    NSMutableDictionary *dic = [self.networkUserInfo mutableCopy];
+    [dic setObject:kGetCuratedCollectionsData forKey:kParamMethod];
+    DCollectionsAPIManager *manager = [DCollectionsAPIManager getHTTPManagerByDelegate:self info:dic];
     DCollectionsParamModel *paramModel = [[DCollectionsParamModel alloc] init];
     paramModel.page = self.page;
     paramModel.per_page = 10;
@@ -105,22 +110,6 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     
 }
 
-- (void)clickFeatured:(UIButton *)btn{
-    self.headerView.featuredBtn.selected = !btn.selected;
-    self.headerView.curatedBtn.selected = NO;
-    self.page = 1;
-    self.type = FeaturedCollectionType;
-    [self getFeaturedCollectionsData];
-}
-
-
-- (void)clickCurated:(UIButton *)btn{
-    self.headerView.curatedBtn.selected = !btn.selected;
-    self.headerView.featuredBtn.selected = NO;
-    self.page = 1;
-    self.type = CuratedCollectionType;
-    [self getCuratedCollectionsData];
-}
 
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
     if (!isLeft) {
@@ -164,6 +153,13 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 
 #pragma mark - requet
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
+    NSString *method = [userInfo objectForKey:kParamMethod];
+    if ([kGetFeaturedCollectionsData isEqualToString:method] && self.type != FeaturedCollectionType) {
+        return;
+    }
+    if ([kGetCuratedCollectionsData isEqualToString:method] && self.type != CuratedCollectionType) {
+        return;
+    }
     self.page++;
     [self.collections addObjectsFromArray:arrData];
     [self.collectionView.mj_footer endRefreshing];
@@ -242,8 +238,19 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 - (DCollectionHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[DCollectionHeaderView alloc] init];
-        [_headerView.featuredBtn addTarget:self action:@selector(clickFeatured:) forControlEvents:UIControlEventTouchUpInside];
-        [_headerView.curatedBtn addTarget:self action:@selector(clickCurated:) forControlEvents:UIControlEventTouchUpInside];
+        @weakify(self)
+        [_headerView setClickItemBlock:^(NSInteger integer) {
+            @strongify(self)
+            self.page = 1;
+            if (integer == 0) {
+                self.type = FeaturedCollectionType;
+                [self getFeaturedCollectionsData];
+            } else {
+                self.type = CuratedCollectionType;
+                [self getCuratedCollectionsData];
+            }
+            [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+        }];
     }
     return _headerView;
 }

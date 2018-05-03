@@ -35,6 +35,12 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
     }
 }
 
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    self.customerTabBar.frame = self.tabBar.bounds;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -47,13 +53,8 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
 }
 
 - (void)setupTabBar{
-    
     DTabBar *customerTabBar = [[DTabBar alloc] init];
-    
-    // 成为代理
     customerTabBar.delagate = self;
-    
-    customerTabBar.frame = self.tabBar.bounds;
     [self.tabBar addSubview:customerTabBar];
     self.customerTabBar = customerTabBar;
 }

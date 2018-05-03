@@ -107,6 +107,9 @@
     // 设置加好按钮的frame
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
+    if (iPhoneX) {
+        height -= IPHONEX_BOT_SPACE;
+    }
 //    self.plusButton.center = CGPointMake(width * 0.5, height * 0.5);
     
     // 设置按钮的frame

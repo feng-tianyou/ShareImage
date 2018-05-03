@@ -10,7 +10,6 @@
 
 @interface DCollectionHeaderView : UIView
 
-@property (nonatomic, strong) UIButton *featuredBtn;
-@property (nonatomic, strong) UIButton *curatedBtn;
+@property (nonatomic, copy) NSIntegerBlock clickItemBlock;
 
 @end

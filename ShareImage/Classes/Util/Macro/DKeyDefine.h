@@ -59,6 +59,7 @@
 #define kParamAccessToken   @"access_token"
 #define kParamUid           @"uid"
 
+#define kParamMethod           @"method"
 
 //缓存key
 #define kParamCacheData                 @"cache_data"
