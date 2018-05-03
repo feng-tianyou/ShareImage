@@ -215,7 +215,7 @@
 
 #pragma mark - DHomeMenuViewDelegate
 - (void)homeMenuView:(DHomeMenuView *)homeMenuView didClickHeaderView:(DHomeMenuHeader *)headerView{
-    DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:KGLOBALINFOMANAGER.accountInfo.name type:DUserProfileTypeForMine];
+    DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:KGLOBALINFOMANAGER.accountInfo.username type:DUserProfileTypeForMine];
     [self.navigationController pushViewController:userController animated:YES];
     
 }

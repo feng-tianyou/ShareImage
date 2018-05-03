@@ -216,10 +216,10 @@ static NSString * const cellID = @"collectionPhotos";
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         //设置布局方向为垂直流布局
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.minimumInteritemSpacing = 2.0;
-        layout.minimumLineSpacing = 2.0;
+        layout.minimumInteritemSpacing = 1.5;
+        layout.minimumLineSpacing = 1.5;
         //设置每个item的大小
-        CGFloat wh = (SCREEN_WIDTH - 6)/4;
+        CGFloat wh = (SCREEN_WIDTH - 4.5)/4;
         layout.itemSize = CGSizeMake(wh, 120);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.delegate = self;
