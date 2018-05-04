@@ -72,6 +72,10 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [cell setSeparatorInset:UIEdgeInsetsMake(0, 64, 0, 0)];
+}
+
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
     
@@ -102,8 +106,6 @@
     [self.tableView reloadData];
     [self.mainController addNoDataViewAddInView:self.tableView];
 }
-
-
 
 #pragma mark - getter & setter
 - (DUITableView *)tableView{

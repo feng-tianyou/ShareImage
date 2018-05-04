@@ -57,7 +57,7 @@
         [btn setTitleColor:DSystemColorGray666666 forState:UIControlStateNormal];
         [btn setTitleColor:DSystemColorGray666666 forState:UIControlStateHighlighted];
         [btn setTitleColor:DSystemColorBlack333333 forState:UIControlStateSelected];
-        btn.titleLabel.font = DSystemFontContent;
+        btn.titleLabel.font = DSystemFontText;
         btn.tag = i;
         if (i == _selectIndex) {
             btn.selected = YES;

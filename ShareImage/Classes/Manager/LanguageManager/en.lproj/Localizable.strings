@@ -93,11 +93,11 @@
 "seSearch..." = "Search...";
 
 // DSearchSelectItemView
-"sePHOTOS" = "PHOTOS";
-"seUSERS" = "USERS";
-"seCOLLECTIONS" = "COLLECTIONS";
+"sePhotos" = "Photos";
+"seUsers" = "Users";
+"seCollections" = "Collections";
 "seCancelName" = "Cancel";
-"sePlaceholder" = "search Photos/Users/Collection";
+"sePlaceholder" = "Search Photos/Users/Collection";
 
 
 // DAboutViewController

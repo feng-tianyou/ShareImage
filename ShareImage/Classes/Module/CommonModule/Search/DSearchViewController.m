@@ -68,12 +68,12 @@ static NSString *kGetSearchCollectionsDataMethor = @"kGetSearchCollectionsDataMe
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navLeftItemType = DNavigationItemTypeNone;
+    self.navigationItem.titleView = self.searchBar;
     
     _selectItemView = ({
-        DSelectItemView *view = [[DSelectItemView alloc] initWithTitles:@[kLocalizedLanguage(@"sePHOTOS"), kLocalizedLanguage(@"seUSERS"), kLocalizedLanguage(@"seCOLLECTIONS")]];
+        DSelectItemView *view = [[DSelectItemView alloc] initWithTitles:@[kLocalizedLanguage(@"sePhotos"), kLocalizedLanguage(@"seUsers"), kLocalizedLanguage(@"seCollections")]];
         view;
     });
     [self.view addSubview:_selectItemView];
@@ -121,14 +121,12 @@ static NSString *kGetSearchCollectionsDataMethor = @"kGetSearchCollectionsDataMe
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [self.navigationController.navigationBar addSubview:self.searchBar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    [self.searchBar removeFromSuperview];
 }
 
 
@@ -379,14 +377,15 @@ static NSString *kGetSearchCollectionsDataMethor = @"kGetSearchCollectionsDataMe
         _searchBar.searchBarBackgroundColor = DSystemColorWhite;
         _searchBar.searchBarHeight = 34.0;
         _searchBar.promptImage = [UIImage getImageWithName:@"search_bar_search_icon"];
+        _searchBar.tintColor = [UIColor blackColor];
         _searchBar.promptImageEdage = 10.0;
         _searchBar.cancelLeftEdage = 12.0;
         _searchBar.searchBarLRMargin = 8.0;
         _searchBar.showCancelButton = YES;
-        _searchBar.cancelName = @"取消";
+        _searchBar.cancelName = kLocalizedLanguage(@"seCancelName");
         _searchBar.cancelColor = DSystemColorWhite;
         _searchBar.cancelFont = DSystemFontTitle;
-        _searchBar.placeholder = @"请输入客户姓名或公司名称";
+        _searchBar.placeholder = kLocalizedLanguage(@"sePlaceholder");
         _searchBar.delegate = self;
     }
     return _searchBar;

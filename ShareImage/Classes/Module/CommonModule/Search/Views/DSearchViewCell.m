@@ -67,7 +67,7 @@ static NSString *const cellID = @"UserListCell";
             .topEqualToView(self.contentView)
             .leftEqualToView(self.contentView)
             .rightEqualToView(self.contentView)
-            .bottomEqualToView(self.contentView);
+            .bottomSpaceToView(self.contentView, 1);
         }
             break;
         case UserSearchType:
@@ -153,7 +153,7 @@ static NSString *const cellID = @"UserListCell";
     if (!_bioLabel) {
         _bioLabel = [[UILabel alloc] init];
         _bioLabel.textColor = DSystemColorGray999999;
-        _bioLabel.font = DSystemFontAlert;
+        _bioLabel.font = DSystemFontDate;
     }
     return _bioLabel;
 }
@@ -176,7 +176,9 @@ static NSString *const cellID = @"UserListCell";
     _photoModel = photoModel;
     _searchType = PhotoSearchType;
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:photoModel.urls.small] placeholderImage:nil];
-    self.bioLabel.text = photoModel.title;
+    self.bioLabel.textColor = DSystemColorWhite;
+    self.bioLabel.font = DSystemFontTitle;
+    self.bioLabel.text = photoModel.user.name;
 }
 
 
@@ -184,7 +186,10 @@ static NSString *const cellID = @"UserListCell";
     _userModel = userModel;
     _searchType = UserSearchType;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
+    self.nameLabel.font = DSystemFontTitle;
     self.nameLabel.text = userModel.username;
+    self.bioLabel.textColor = DSystemColorGray999999;
+    self.bioLabel.font = DSystemFontDate;
     self.bioLabel.text = userModel.bio;
 }
 
@@ -192,6 +197,7 @@ static NSString *const cellID = @"UserListCell";
     _collectionModel = collectionModel;
     _searchType = CollectionSearchType;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:collectionModel.cover_photo.urls.small] placeholderImage:nil];
+    self.nameLabel.font = DSystemFontNavigationBar;
     self.nameLabel.text = [NSString stringWithFormat:@"# %@", collectionModel.title];
 }
 
