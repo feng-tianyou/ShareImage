@@ -93,6 +93,8 @@
 "sePHOTOS" = "图片";
 "seUSERS" = "用户";
 "seCOLLECTIONS" = "分类";
+"seCancelName" = "取消";
+"sePlaceholder" = "搜索照片/用户/分类";
 
 
 

@@ -113,7 +113,8 @@
 #pragma mark - 正则验证
 /// 验证邮箱是否合法
 - (BOOL)isEmailAddress;
-
+//根据正则，过滤特殊字符
+- (NSString *)filterCharactorWithRegex:(NSString *)regexStr;
 
 #pragma mark - 数据转换
 /**

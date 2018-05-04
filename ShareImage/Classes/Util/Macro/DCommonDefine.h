@@ -7,6 +7,7 @@
 //
 
 // 全局
+#import "Reachability.h"
 #import "DGlobalInfoManager.h"
 #import "AppDelegate.h"
 

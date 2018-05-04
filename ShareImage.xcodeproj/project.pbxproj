@@ -38,7 +38,6 @@
 		074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 074671AF1E641F7A00ADBC90 /* DCommonPhotosCell.m */; };
 		074A02981E6D5CB100CA1E2B /* DUserCollectionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074A02971E6D5CB100CA1E2B /* DUserCollectionsController.m */; };
 		076970752081F5AA002FF8D4 /* DKColorTable.txt in Resources */ = {isa = PBXBuildFile; fileRef = 076970742081F5A9002FF8D4 /* DKColorTable.txt */; };
-		077040C61E68221F000DEE50 /* DSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 077040C51E68221F000DEE50 /* DSearchBar.m */; };
 		0780959D1E5AC21B00A8FF28 /* UIViewController+DNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */; };
 		078095A01E5AC2DA00A8FF28 /* DAnimationContollerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0780959F1E5AC2DA00A8FF28 /* DAnimationContollerTool.m */; };
 		078D1B041E6A9C40000DC645 /* DChooesRootViewControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 078D1B031E6A9C40000DC645 /* DChooesRootViewControllerTool.m */; };
@@ -78,6 +77,12 @@
 		07D6325A209AF178005EB112 /* DNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D6324C209AF178005EB112 /* DNoDataView.m */; };
 		07D6325B209AF178005EB112 /* DTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D6324E209AF178005EB112 /* DTextField.m */; };
 		07D6325C209AF178005EB112 /* DUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D63251209AF178005EB112 /* DUITableView.m */; };
+		07D63260209AF463005EB112 /* DScrollPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D6325F209AF463005EB112 /* DScrollPageContentView.m */; };
+		07D63263209AF59F005EB112 /* DSearchPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D63262209AF59F005EB112 /* DSearchPhotoView.m */; };
+		07D63266209AF5B6005EB112 /* DSearchUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D63265209AF5B6005EB112 /* DSearchUserView.m */; };
+		07D63269209AF5CA005EB112 /* DSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D63268209AF5CA005EB112 /* DSearchCollectionView.m */; };
+		07D6326D209B0BD5005EB112 /* DCustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D6326C209B0BD5005EB112 /* DCustomSearchBar.m */; };
+		07D63274209B0D39005EB112 /* DSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D63272209B0D39005EB112 /* DSelectItemView.m */; };
 		07DA8F951E60334F006D871B /* DUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA8F941E60334F006D871B /* DUserProfileViewController.m */; };
 		07DF55601E5C13AF004EC4A7 /* DSearchPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF555F1E5C13AF004EC4A7 /* DSearchPhotosModel.m */; };
 		07DF55661E5C38D3004EC4A7 /* DCollectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DF55651E5C38D3004EC4A7 /* DCollectionsModel.m */; };
@@ -198,7 +203,6 @@
 		7ED811A81E5559D600954DAF /* message_project_resource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED811A21E5559D600954DAF /* message_project_resource@2x.png */; };
 		7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED811AB1E5580D200954DAF /* DOAuthViewController.m */; };
 		7EE1018F1E66B42800D5576D /* DSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1018E1E66B42800D5576D /* DSearchViewController.m */; };
-		7EE101931E66BCB300D5576D /* DSearchSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,8 +305,6 @@
 		074A02961E6D5CB100CA1E2B /* DUserCollectionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserCollectionsController.h; sourceTree = "<group>"; };
 		074A02971E6D5CB100CA1E2B /* DUserCollectionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserCollectionsController.m; sourceTree = "<group>"; };
 		076970742081F5A9002FF8D4 /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
-		077040C41E68221F000DEE50 /* DSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchBar.h; sourceTree = "<group>"; };
-		077040C51E68221F000DEE50 /* DSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchBar.m; sourceTree = "<group>"; };
 		0780959B1E5AC21B00A8FF28 /* UIViewController+DNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DNavigation.h"; sourceTree = "<group>"; };
 		0780959C1E5AC21B00A8FF28 /* UIViewController+DNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DNavigation.m"; sourceTree = "<group>"; };
 		0780959E1E5AC2DA00A8FF28 /* DAnimationContollerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAnimationContollerTool.h; sourceTree = "<group>"; };
@@ -366,6 +368,18 @@
 		07D6324E209AF178005EB112 /* DTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTextField.m; sourceTree = "<group>"; };
 		07D63250209AF178005EB112 /* DUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITableView.h; sourceTree = "<group>"; };
 		07D63251209AF178005EB112 /* DUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITableView.m; sourceTree = "<group>"; };
+		07D6325E209AF463005EB112 /* DScrollPageContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DScrollPageContentView.h; sourceTree = "<group>"; };
+		07D6325F209AF463005EB112 /* DScrollPageContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DScrollPageContentView.m; sourceTree = "<group>"; };
+		07D63261209AF59F005EB112 /* DSearchPhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSearchPhotoView.h; sourceTree = "<group>"; };
+		07D63262209AF59F005EB112 /* DSearchPhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSearchPhotoView.m; sourceTree = "<group>"; };
+		07D63264209AF5B6005EB112 /* DSearchUserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSearchUserView.h; sourceTree = "<group>"; };
+		07D63265209AF5B6005EB112 /* DSearchUserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSearchUserView.m; sourceTree = "<group>"; };
+		07D63267209AF5CA005EB112 /* DSearchCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSearchCollectionView.h; sourceTree = "<group>"; };
+		07D63268209AF5CA005EB112 /* DSearchCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSearchCollectionView.m; sourceTree = "<group>"; };
+		07D6326B209B0BD5005EB112 /* DCustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCustomSearchBar.h; sourceTree = "<group>"; };
+		07D6326C209B0BD5005EB112 /* DCustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCustomSearchBar.m; sourceTree = "<group>"; };
+		07D63271209B0D39005EB112 /* DSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSelectItemView.h; sourceTree = "<group>"; };
+		07D63272209B0D39005EB112 /* DSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSelectItemView.m; sourceTree = "<group>"; };
 		07DA8F931E60334F006D871B /* DUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserProfileViewController.h; sourceTree = "<group>"; };
 		07DA8F941E60334F006D871B /* DUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserProfileViewController.m; sourceTree = "<group>"; };
 		07DF555E1E5C13AF004EC4A7 /* DSearchPhotosModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchPhotosModel.h; sourceTree = "<group>"; };
@@ -619,8 +633,6 @@
 		7ED811AB1E5580D200954DAF /* DOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOAuthViewController.m; sourceTree = "<group>"; };
 		7EE1018D1E66B42800D5576D /* DSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchViewController.h; sourceTree = "<group>"; };
 		7EE1018E1E66B42800D5576D /* DSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchViewController.m; sourceTree = "<group>"; };
-		7EE101911E66BCB300D5576D /* DSearchSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSearchSelectItemView.h; sourceTree = "<group>"; };
-		7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSearchSelectItemView.m; sourceTree = "<group>"; };
 		BCCCCB4B3D0941142A77DFC7 /* Pods-ShareImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareImage/Pods-ShareImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -858,6 +870,10 @@
 		07D63239209AF178005EB112 /* CustomViewModule */ = {
 			isa = PBXGroup;
 			children = (
+				07D6326E209B0D39005EB112 /* SelectItemView */,
+				07D6326A209B0BD5005EB112 /* SearchBar */,
+				07D6325D209AF451005EB112 /* ScrollView */,
+				07D6324F209AF178005EB112 /* TableView */,
 				07D6323A209AF178005EB112 /* AlertView */,
 				07D63243209AF178005EB112 /* CATCurveProgressView.h */,
 				07D63244209AF178005EB112 /* CATCurveProgressView.m */,
@@ -871,7 +887,6 @@
 				07D6324C209AF178005EB112 /* DNoDataView.m */,
 				07D6324D209AF178005EB112 /* DTextField.h */,
 				07D6324E209AF178005EB112 /* DTextField.m */,
-				07D6324F209AF178005EB112 /* TableView */,
 			);
 			path = CustomViewModule;
 			sourceTree = "<group>";
@@ -898,6 +913,33 @@
 				07D63251209AF178005EB112 /* DUITableView.m */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		07D6325D209AF451005EB112 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				07D6325E209AF463005EB112 /* DScrollPageContentView.h */,
+				07D6325F209AF463005EB112 /* DScrollPageContentView.m */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		07D6326A209B0BD5005EB112 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				07D6326B209B0BD5005EB112 /* DCustomSearchBar.h */,
+				07D6326C209B0BD5005EB112 /* DCustomSearchBar.m */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		07D6326E209B0D39005EB112 /* SelectItemView */ = {
+			isa = PBXGroup;
+			children = (
+				07D63271209B0D39005EB112 /* DSelectItemView.h */,
+				07D63272209B0D39005EB112 /* DSelectItemView.m */,
+			);
+			path = SelectItemView;
 			sourceTree = "<group>";
 		};
 		07ECEBEF1E6555B700BCF52A /* LLSlideMenu */ = {
@@ -1660,6 +1702,12 @@
 				7EE101901E66BC9500D5576D /* Views */,
 				7EE1018D1E66B42800D5576D /* DSearchViewController.h */,
 				7EE1018E1E66B42800D5576D /* DSearchViewController.m */,
+				07D63261209AF59F005EB112 /* DSearchPhotoView.h */,
+				07D63262209AF59F005EB112 /* DSearchPhotoView.m */,
+				07D63264209AF5B6005EB112 /* DSearchUserView.h */,
+				07D63265209AF5B6005EB112 /* DSearchUserView.m */,
+				07D63267209AF5CA005EB112 /* DSearchCollectionView.h */,
+				07D63268209AF5CA005EB112 /* DSearchCollectionView.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1667,10 +1715,6 @@
 		7EE101901E66BC9500D5576D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7EE101911E66BCB300D5576D /* DSearchSelectItemView.h */,
-				7EE101921E66BCB300D5576D /* DSearchSelectItemView.m */,
-				077040C41E68221F000DEE50 /* DSearchBar.h */,
-				077040C51E68221F000DEE50 /* DSearchBar.m */,
 				078D1B091E6AB585000DC645 /* DSearchViewCell.h */,
 				078D1B0A1E6AB585000DC645 /* DSearchViewCell.m */,
 			);
@@ -2033,6 +2077,7 @@
 				0744FADE1E9F7AFC004EDB9C /* DTZPhotosManager.m in Sources */,
 				07AF4DC01EA079F7006D9376 /* DLocationTool.m in Sources */,
 				7ED810F41E55550100954DAF /* DGlobalInfoManager.m in Sources */,
+				07D6326D209B0BD5005EB112 /* DCustomSearchBar.m in Sources */,
 				7ED810E51E55550100954DAF /* DTabBarButton.m in Sources */,
 				7ED810E01E55550100954DAF /* DNavigationViewController.m in Sources */,
 				07ECEBFB1E6555B700BCF52A /* LLCircleLayer.m in Sources */,
@@ -2044,7 +2089,6 @@
 				070F7CE71E77F6AF00423212 /* DSettingTableViewCell.m in Sources */,
 				7ED810F51E55550100954DAF /* DBaseManager.m in Sources */,
 				0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */,
-				077040C61E68221F000DEE50 /* DSearchBar.m in Sources */,
 				7ED811AC1E5580D200954DAF /* DOAuthViewController.m in Sources */,
 				7ED810E81E55550100954DAF /* DImageCache.m in Sources */,
 				7ED811431E55550100954DAF /* Reachability.m in Sources */,
@@ -2057,6 +2101,7 @@
 				07D63256209AF178005EB112 /* CATCurveProgressView.m in Sources */,
 				07C647531E7A9A00002169FF /* DSettingFooterView.m in Sources */,
 				7ED810DC1E55550100954DAF /* AppDelegate+DShare.m in Sources */,
+				07D63269209AF5CA005EB112 /* DSearchCollectionView.m in Sources */,
 				07D63257209AF178005EB112 /* DCustomNavigationView.m in Sources */,
 				0701B8B21E7BEF510036016F /* DLanguageViewController.m in Sources */,
 				7ED810DB1E55550100954DAF /* AppDelegate+DNotification.m in Sources */,
@@ -2071,6 +2116,8 @@
 				0744FADB1E9F7767004EDB9C /* DMWPhotosManager.m in Sources */,
 				7ED810F91E55550100954DAF /* DLocalError.m in Sources */,
 				7ED811061E55550100954DAF /* DPhotoManager.m in Sources */,
+				07D63260209AF463005EB112 /* DScrollPageContentView.m in Sources */,
+				07D63266209AF5B6005EB112 /* DSearchUserView.m in Sources */,
 				078D1B0B1E6AB585000DC645 /* DSearchViewCell.m in Sources */,
 				7E7873751E559DF700213B1B /* DOAuthParamModel.m in Sources */,
 				7ED811501E55550100954DAF /* UIView+LBExtension.m in Sources */,
@@ -2081,6 +2128,7 @@
 				074671B01E641F7A00ADBC90 /* DCommonPhotosCell.m in Sources */,
 				7ED811051E55550100954DAF /* DUserService.m in Sources */,
 				7E799AB61E742D37001B5B70 /* DEditProfileCell.m in Sources */,
+				07D63274209B0D39005EB112 /* DSelectItemView.m in Sources */,
 				07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */,
 				07D63259209AF178005EB112 /* DMenuAlertView.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
@@ -2096,6 +2144,7 @@
 				7ED810E71E55550100954DAF /* DBaseCache.m in Sources */,
 				7EAFD4AE1E56AEFE00BBA972 /* DPhotosService.m in Sources */,
 				7ED810F71E55550100954DAF /* DError.m in Sources */,
+				07D63263209AF59F005EB112 /* DSearchPhotoView.m in Sources */,
 				07ECEBFA1E6555B700BCF52A /* LLAnimationManager.m in Sources */,
 				7ED810DF1E55550100954DAF /* DBaseViewController.m in Sources */,
 				7ED8115D1E55550100954DAF /* DSandboxTool.m in Sources */,
@@ -2156,7 +2205,6 @@
 				7ED811131E55550100954DAF /* EGOCache.m in Sources */,
 				7ED810FF1E55550100954DAF /* DUserNetwork.m in Sources */,
 				070A8B281E5D221900CE41E2 /* DCollectionsAPIManager.m in Sources */,
-				7EE101931E66BCB300D5576D /* DSearchSelectItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

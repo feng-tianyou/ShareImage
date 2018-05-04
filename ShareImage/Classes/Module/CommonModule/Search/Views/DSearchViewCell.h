@@ -16,7 +16,6 @@
 @property (nonatomic, strong) DPhotosModel *photoModel;
 @property (nonatomic, strong) DCollectionsModel *collectionModel;
 
-@property (nonatomic, assign) SearchType searchType;
 
 
 @end

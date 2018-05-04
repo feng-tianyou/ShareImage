@@ -16,4 +16,19 @@
 
 @property (nonatomic, assign, readonly) SearchType searchType;
 
+/**
+ 请求图片数据
+ */
+- (void)getSearchPhotosData;
+
+/**
+ 请求用户数据
+ */
+- (void)getSearchUsersData;
+
+/**
+ 请求分类数据
+ */
+- (void)getSearchCollectionsData;
+
 @end

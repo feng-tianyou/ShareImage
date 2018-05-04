@@ -366,6 +366,15 @@ static NSString *token = @"fashfkdashfjkldashfjkdashfjkdahsfjdasjkvcxnm%^&%^$&^u
     return [self isValidateByRegex:emailRegex];
 }
 
+//根据正则，过滤特殊字符
+- (NSString *)filterCharactorWithRegex:(NSString *)regexStr{
+    //    NSString *searchText = string;
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexStr options:NSRegularExpressionCaseInsensitive error:&error];
+    NSString *result = [regex stringByReplacingMatchesInString:self options:NSMatchingReportCompletion range:NSMakeRange(0, self.length) withTemplate:@""];
+    return result;
+}
+
 #pragma mark - 数据转换
 
 /**

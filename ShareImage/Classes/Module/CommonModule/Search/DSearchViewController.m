@@ -11,11 +11,14 @@
 #import "DPhotoDetailController.h"
 #import "DCommonPhotoController.h"
 
-
-#import "DSearchSelectItemView.h"
-#import "DSearchBar.h"
+#import "DCustomSearchBar.h"
 #import "DUITableView.h"
-#import "DSearchViewCell.h"
+#import "DSelectItemView.h"
+
+#import "DSearchPhotoView.h"
+#import "DSearchUserView.h"
+#import "DSearchCollectionView.h"
+#import "DScrollPageContentView.h"
 
 #import "DPhotosAPIManager.h"
 #import "DPhotosParamModel.h"
@@ -27,18 +30,29 @@
 
 #import <MJRefresh/MJRefresh.h>
 
+/// 搜索图片
+static NSString *kGetSearchPhotosDataMethor = @"kGetSearchPhotosDataMethor";
+/// 搜索用户
+static NSString *kGetSearchUsersDataMethor = @"kGetSearchUsersDataMethor";
+/// 搜索分类
+static NSString *kGetSearchCollectionsDataMethor = @"kGetSearchCollectionsDataMethor";
 
-@interface DSearchViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface DSearchViewController ()<TGCustomSearchBarDelegate, DScrollPageContentViewDelegate>
 
-@property (nonatomic, strong) DUITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, assign) NSInteger page;
+
+@property (nonatomic, strong) DCustomSearchBar *searchBar;
+@property (nonatomic, strong) DSelectItemView *selectItemView;
+
+@property (nonatomic, strong) NSMutableArray *childMainViews;
+@property (nonatomic, strong) DScrollPageContentView *pageContentView;
+@property (nonatomic, strong) DSearchPhotoView *photoView;
+@property (nonatomic, strong) DSearchUserView *userView;
+@property (nonatomic, strong) DSearchCollectionView *collectionView;
+
+@property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) DMWPhotosManager *manager;
 
-@property (nonatomic, strong) DSearchSelectItemView *selectItemView;
-@property (nonatomic, strong) DSearchBar *searchBar;
 
-@property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
 
 @end
 
@@ -52,61 +66,88 @@
     return self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.navLeftItemType = DNavigationItemTypeNone;
+    
+    _selectItemView = ({
+        DSelectItemView *view = [[DSelectItemView alloc] initWithTitles:@[kLocalizedLanguage(@"sePHOTOS"), kLocalizedLanguage(@"seUSERS"), kLocalizedLanguage(@"seCOLLECTIONS")]];
+        view;
+    });
+    [self.view addSubview:_selectItemView];
+    
+    @weakify(self)
+    [_selectItemView setClickItemBlock:^(NSInteger index){
+        @strongify(self)
+        self.currentIndex = index;
+        [self.pageContentView setPageCententViewCurrentIndex:index];
+        [self commonGetData];
+    }];
+    
+    _childMainViews = [NSMutableArray arrayWithCapacity:3];
+    _photoView = ({
+        DSearchPhotoView *view = [[DSearchPhotoView alloc] init];
+        view.mainController = self;
+        view;
+    });
+    [_childMainViews addObject:_photoView];
+    
+    _userView = ({
+        DSearchUserView *view = [[DSearchUserView alloc] init];
+        view.mainController = self;
+        view;
+    });
+    [_childMainViews addObject:_userView];
+    
+    _collectionView = ({
+        DSearchCollectionView *view = [[DSearchCollectionView alloc] init];
+        view.mainController = self;
+        view;
+    });
+    [_childMainViews addObject:_collectionView];
+    _pageContentView = [[DScrollPageContentView alloc] initWithFrame:CGRectMake(0, self.navBarHeight+50, self.view.width, self.view.height - self.navBarHeight - 50) childMainViews:_childMainViews];
+    _pageContentView.delegate = self;
+    [self.view addSubview:_pageContentView];
 
-    self.page = 1;
-    self.navLeftItemType = DNavigationItemTypeWriteBack;
-    
-    [self.navigationItem setTitleView:self.searchBar];
-    [self.view addSubview:self.selectItemView];
-    [self.view addSubview:self.tableView];
-    
-    [self setupTableViewDownRefresh];
-    [self.searchBar.searchTextField becomeFirstResponder];
-    
-    switch (self.searchType) {
-        case PhotoSearchType:
-            [self clickSearchPhotos:self.selectItemView.photoBtn];
-            break;
-        case UserSearchType:
-            [self clickSearchUsers:self.selectItemView.userBtn];
-            break;
-        case CollectionSearchType:
-            [self clickSearchCollections:self.selectItemView.collectionBtn];
-            break;
-        case OtherSearchType:
-            [self clickSearchPhotos:self.selectItemView.photoBtn];
-            break;
-        default:
-            break;
-    }
-    
+    // 默认选中第一个
+    self.currentIndex = 0;
+    [_pageContentView setPageCententViewCurrentIndex:0];
+    [self setupScrollToTop];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self.navigationController.navigationBar addSubview:self.searchBar];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [self.searchBar removeFromSuperview];
 }
 
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     
+    self.searchBar.sd_layout
+    .leftEqualToView(self.navigationController.navigationBar)
+    .rightEqualToView(self.navigationController.navigationBar)
+    .bottomEqualToView(self.navigationController.navigationBar)
+    .heightIs(44);
+    
     self.selectItemView.sd_layout
     .topSpaceToView(self.view, self.navBarHeight)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
-    .heightIs(50);
+    .heightIs(44);
     
-    self.tableView.sd_layout
+    self.pageContentView.sd_layout
     .topSpaceToView(self.selectItemView, 0)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
@@ -116,41 +157,71 @@
 
 #pragma mark - navEvent
 - (void)navigationBarDidClickNavigationBtn:(UIButton *)navBtn isLeft:(BOOL)isLeft{
-    [self.searchBar.searchTextField resignFirstResponder];
+    [self.searchBar resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - private
-/**
- 下拉刷新
- */
-- (void)setupTableViewDownRefresh{
-    self.tableView.mj_footer = self.footerView;
+/// 设置滚动到顶部视图
+- (void)setupScrollToTop{
+    self.photoView.tableView.scrollsToTop = NO;
+    self.photoView.tableView.scrollsToTop = NO;
+    self.collectionView.tableView.scrollsToTop = NO;
+    [_pageContentView scrollsToTop:NO];
+    if (self.currentIndex == 0) {
+        self.photoView.tableView.scrollsToTop = YES;
+    } else if (self.currentIndex == 1){
+        self.photoView.tableView.scrollsToTop = YES;
+    } else if (self.currentIndex == 2){
+        self.collectionView.tableView.scrollsToTop = YES;
+    }
 }
 
-/**
- 获取更多数据
- */
-- (void)getMoreData{
-    [self getCommonDataWithPage:self.page];
-}
+#pragma mark - request data
 
-/**
- 清除搜索数据
- */
-- (void)clickClearText{
-    self.searchBar.searchTextField.text = @"";
-    [self.searchBar.searchTextField resignFirstResponder];
+/// 根据下标获取对应的数据
+- (void)commonGetData{
+    if (KGLOBALINFOMANAGER.networkStatus == NotReachable) {
+        [self removeNoNetworkAlertView];
+    }
+    if (self.searchBar.text.length == 0) {
+        return;
+    }
+    switch (self.currentIndex) {
+        case 0:
+        {
+            if (self.photoView.dataArray.count > 0) return;
+            [self getSearchPhotosData];
+        }
+            break;
+        case 1:
+        {
+            if (self.userView.dataArray.count > 0) return;
+            [self getSearchUsersData];
+        }
+            break;
+        case 2:
+        {
+            if (self.collectionView.dataArray.count > 0) return;
+            [self getSearchCollectionsData];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /**
  请求图片数据
  */
-- (void)getSearchPhotosDataWithPage:(NSInteger)page{
-    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+- (void)getSearchPhotosData{
+    NSMutableDictionary *dic = [self.networkUserInfo mutableCopy];
+    [dic setObject:kGetSearchPhotosDataMethor forKey:kParamMethod];
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-    paramModel.query = self.searchBar.searchTextField.text;
-    paramModel.page = page;
+    paramModel.query = self.searchBar.text;
+    paramModel.page = self.photoView.page;
     paramModel.per_page = 20;
     [manager fetchSearchPhotosByParamModel:paramModel];
 }
@@ -158,11 +229,13 @@
 /**
  请求用户数据
  */
-- (void)getSearchUsersDataWithPage:(NSInteger)page{
-    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+- (void)getSearchUsersData{
+    NSMutableDictionary *dic = [self.networkUserInfo mutableCopy];
+    [dic setObject:kGetSearchUsersDataMethor forKey:kParamMethod];
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-    paramModel.query = self.searchBar.searchTextField.text;
-    paramModel.page = page;
+    paramModel.query = self.searchBar.text;
+    paramModel.page = self.userView.page;
     paramModel.per_page = 20;
     [manager fetchSearchUsersByParamModel:paramModel];
 }
@@ -170,301 +243,153 @@
 /**
  请求分类数据
  */
-- (void)getSearchCollectionsDataWithPage:(NSInteger)page{
-    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:self.networkUserInfo];
+- (void)getSearchCollectionsData{
+    NSMutableDictionary *dic = [self.networkUserInfo mutableCopy];
+    [dic setObject:kGetSearchCollectionsDataMethor forKey:kParamMethod];
+    DPhotosAPIManager *manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
     DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-    paramModel.query = self.searchBar.searchTextField.text;
-    paramModel.page = page;
+    paramModel.query = self.searchBar.text;
+    paramModel.page = self.collectionView.page;
     paramModel.per_page = 20;
     [manager fetchSearchCollectionsPhotosByParamModel:paramModel];
 }
 
-/**
- 获取数据
 
- @param page 页数
- */
-- (void)getCommonDataWithPage:(NSInteger)page{
-    switch (_searchType) {
-        case PhotoSearchType:
-            [self getSearchPhotosDataWithPage:page];
-            break;
-        case UserSearchType:
-            [self getSearchUsersDataWithPage:page];
-            break;
-        case CollectionSearchType:
-            [self getSearchCollectionsDataWithPage:page];
-            break;
-        default:
-            break;
-    }
-}
-
-#pragma mark - 点击事件
-
-/**
- 点击搜索图片
- */
-- (void)clickSearchPhotos:(UIButton *)button{
-    [self.selectItemView didCilckButton:button];
-    [self.searchBar.searchTextField resignFirstResponder];
-    [self.dataArray removeAllObjects];
-    _searchType = PhotoSearchType;
-    if (self.searchBar.searchTextField.text.length <= 0) return;
-    [self getCommonDataWithPage:1];
-}
-
-/**
- 点击搜索用户
- */
-- (void)clickSearchUsers:(UIButton *)button{
-    [self.selectItemView didCilckButton:button];
-    [self.searchBar.searchTextField resignFirstResponder];
-    [self.dataArray removeAllObjects];
-    _searchType = UserSearchType;
-    if (self.searchBar.searchTextField.text.length <= 0) return;
-    [self getCommonDataWithPage:1];
-}
-
-/**
- 点击搜索分类
- */
-- (void)clickSearchCollections:(UIButton *)button{
-    [self.selectItemView didCilckButton:button];
-    [self.searchBar.searchTextField resignFirstResponder];
-    [self.dataArray removeAllObjects];
-    _searchType = CollectionSearchType;
-    if (self.searchBar.searchTextField.text.length <= 0) return;
-    [self getCommonDataWithPage:1];
-}
-
+#pragma mark - event
 - (void)pressNoDataBtnToRefresh{
-    [self getCommonDataWithPage:1];
+    [self commonGetData];
 }
 
-
-
-#pragma mark - UITableViewDelegate, UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark - DScrollPageContentViewDelegate
+- (void)pageContentView:(DScrollPageContentView *)pageContentView targetIndex:(NSInteger)targetIndex{
     [self.view endEditing:YES];
-    DSearchViewCell *cell = [DSearchViewCell cellWithTableView:tableView];
-    
-    switch (_searchType) {
-        case PhotoSearchType:
-        {
-            cell.searchType = PhotoSearchType;
-            if (self.dataArray.count > indexPath.row) {
-                cell.photoModel = self.dataArray[indexPath.row];
-            }
-            
-        }
-            break;
-        case UserSearchType:
-        {
-            cell.searchType = UserSearchType;
-            if (self.dataArray.count > indexPath.row) {
-                cell.userModel = self.dataArray[indexPath.row];
-            }
-        }
-            break;
-        case CollectionSearchType:
-        {
-            cell.searchType = CollectionSearchType;
-            if (self.dataArray.count > indexPath.row) {
-                cell.collectionModel = self.dataArray[indexPath.row];
-            }
-        }
-            break;
-            
-        default:
-            break;
-    }
-    return cell;
-}
+    [self.selectItemView setSelectIndex:targetIndex];
+    self.currentIndex = targetIndex;
+    // 获取数据
+    [self commonGetData];
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_searchType == PhotoSearchType) return 170;
-    return 50;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    switch (_searchType) {
-        case PhotoSearchType:
-        {
-            if (self.dataArray.count > indexPath.row) {
-                [self.manager photoPreviewWithPhotoModels:self.dataArray currentIndex:indexPath.row currentViewController:self];
-            }
-            
-        }
-            break;
-        case UserSearchType:
-        {
-            if (self.dataArray.count > indexPath.row) {
-               DUserModel *user = self.dataArray[indexPath.row];
-                DUserProfileViewController *userController = [[DUserProfileViewController alloc] initWithUserName:user.username type:DUserProfileTypeForOther];
-                [self.navigationController pushViewController:userController animated:YES];
-            }
-        }
-            break;
-        case CollectionSearchType:
-        {
-            if (self.dataArray.count > indexPath.row) {
-                DCollectionsModel *model = self.dataArray[indexPath.row];
-                DCommonPhotoController *detaildController = nil;
-                if (!model.curated) {
-                    detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerType];
-                    
-                } else {
-                    detaildController = [[DCommonPhotoController alloc] initWithTitle:model.title type:CollectionAPIManagerCuratedType];
-                }
-                detaildController.collectionId = model.c_id;
-                [self.navigationController pushViewController:detaildController animated:YES];
-            }
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [self setupScrollToTop];
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    DLog(@"textFieldShouldReturn---%@", textField.text);
-    [textField resignFirstResponder];
-    if (textField.text.length == 0) {
-        return YES;
+/// 输入框文本文字改变时调用
+- (void)customSearchBar:(DCustomSearchBar *)customSearchBar textFieldDidChange:(UITextField *)textField{
+    
+}
+
+/// 点击键盘搜索时
+- (BOOL)customSearchBarDidClickSearchBtn:(DCustomSearchBar *)customSearchBar text:(NSString *)text{
+    if (text.length == 0) {
+        return NO;
     }
-    [self getCommonDataWithPage:1];
+    [self clearData];
+    [self commonGetData];
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    return YES;
+
+/// 点击取消按钮时
+- (void)customSearchBarDidClickCancelBtn:(DCustomSearchBar *)customSearchBar{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 #pragma mark - request
 - (void)requestServiceSucceedWithModel:(__kindof DJsonModel *)dataModel userInfo:(NSDictionary *)userInfo{
-    
-    switch (_searchType) {
-        case PhotoSearchType:
-        {
-            DSearchPhotosModel *photosModel = dataModel;
-            [self.dataArray addObjectsFromArray:photosModel.photos];
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+    [self removeNoDataView];
+    NSString *method = [userInfo objectForKey:kParamMethod];
+    if ([kGetSearchPhotosDataMethor isEqualToString:method]) {
+        if (self.currentIndex != 0) {
+            return;
         }
+        [self.photoView requestServiceSucceedWithModel:dataModel userInfo:userInfo];
+    } else if ([kGetSearchUsersDataMethor isEqualToString:method]) {
+        if (self.currentIndex != 1) {
+            return;
+        }
+        [self.userView requestServiceSucceedWithModel:dataModel userInfo:userInfo];
+    } else if ([kGetSearchCollectionsDataMethor isEqualToString:method]) {
+        if (self.currentIndex != 2) {
+            return;
+        }
+        [self.collectionView requestServiceSucceedWithModel:dataModel userInfo:userInfo];
+    }
+}
+
+- (void)hasNotMoreData{
+    switch (self.currentIndex) {
+        case 0:
+            [self.photoView hasNotMoreData];
             break;
-        case UserSearchType:
-        {
-            DSearchUsersModel *usersModel = dataModel;
-            [self.dataArray addObjectsFromArray:usersModel.users];
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        }
+        case 1:
+            [self.userView hasNotMoreData];
             break;
-        case CollectionSearchType:
-        {
-            DSearchCollectionsModel *collectionsModel = dataModel;
-            [self.dataArray addObjectsFromArray:collectionsModel.collections];
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        }
+        case 2:
+            [self.collectionView hasNotMoreData];
             break;
             
         default:
             break;
     }
-    
-    [self.tableView.mj_footer endRefreshing];
-    self.tableView.hidden = NO;
-    _footerView.stateLabel.hidden = NO;
-    [self.tableView reloadData];
-    [self.tableView setTableFooterView:[UIView new]];
-    self.page++;
-    [self removeNoDataView];
-}
-
-- (void)hasNotMoreData{
-    [self.tableView.mj_footer endRefreshing];
-    [self.tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
 - (void)clearData{
-    [self.dataArray removeAllObjects];
+    switch (self.currentIndex) {
+        case 0:
+            [self.photoView clearData];
+            break;
+        case 1:
+            [self.userView clearData];
+            break;
+        case 2:
+            [self.collectionView clearData];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)alertNoData{
-    self.tableView.hidden = NO;
-    _footerView.stateLabel.hidden = YES;
-    [self clearData];
-    self.noDataView.titleLabel.text = @"Very Sorry\n No Information You Want";
-    [self addNoDataViewAddInView:self.tableView];
     [self setNoNetworkDelegate:self];
-    [self.tableView.mj_footer endRefreshingWithNoMoreData];
-    [self.tableView reloadData];
+    switch (self.currentIndex) {
+        case 0:
+            [self.photoView alertNoData];
+            break;
+        case 1:
+            [self.userView alertNoData];
+            break;
+        case 2:
+            [self.collectionView alertNoData];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 
 #pragma mark getter & setter
-- (UITableView *)tableView{
-    if (!_tableView) {
-        _tableView = [[DUITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-        _tableView.tableFooterView = [UIView new];
-        _tableView.hidden = YES;
-    }
-    return _tableView;
-}
 
-- (NSMutableArray *)dataArray{
-    if (!_dataArray) {
-        _dataArray = [[NSMutableArray alloc] init];
-    }
-    return _dataArray;
-}
-
-- (DSearchSelectItemView *)selectItemView{
-    if (!_selectItemView) {
-        _selectItemView = [[DSearchSelectItemView alloc] init];
-        [_selectItemView.photoBtn addTarget:self action:@selector(clickSearchPhotos:) forControlEvents:UIControlEventTouchUpInside];
-        [_selectItemView.userBtn addTarget:self action:@selector(clickSearchUsers:) forControlEvents:UIControlEventTouchUpInside];
-        [_selectItemView.collectionBtn addTarget:self action:@selector(clickSearchCollections:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _selectItemView;
-}
-
-- (DSearchBar *)searchBar{
+- (DCustomSearchBar *)searchBar{
     if (!_searchBar) {
-        _searchBar = [[DSearchBar alloc] init];
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:kLocalizedLanguage(@"seSearch...") attributes:@{NSForegroundColorAttributeName:DSystemColorGray999999}];
-        _searchBar.searchTextField.attributedPlaceholder = attr;
-        _searchBar.searchTextField.textColor = DSystemColorGray999999;
-        _searchBar.searchTextField.font = DSystemFontText;
-        [_searchBar.clearButton addTarget:self action:@selector(clickClearText) forControlEvents:UIControlEventTouchUpInside];
-        _searchBar.searchTextField.returnKeyType = UIReturnKeySearch;
-        _searchBar.searchTextField.delegate = self;
-        [_searchBar setFrame:0 y:26 w:SCREEN_WIDTH - 100 h:30];
+        _searchBar = [[DCustomSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44)];
+        _searchBar.backgroundColor = [UIColor clearColor];
+        _searchBar.searchBarBackgroundColor = DSystemColorWhite;
+        _searchBar.searchBarHeight = 34.0;
+        _searchBar.promptImage = [UIImage getImageWithName:@"search_bar_search_icon"];
+        _searchBar.promptImageEdage = 10.0;
+        _searchBar.cancelLeftEdage = 12.0;
+        _searchBar.searchBarLRMargin = 8.0;
+        _searchBar.showCancelButton = YES;
+        _searchBar.cancelName = @"取消";
+        _searchBar.cancelColor = DSystemColorWhite;
+        _searchBar.cancelFont = DSystemFontTitle;
+        _searchBar.placeholder = @"请输入客户姓名或公司名称";
+        _searchBar.delegate = self;
     }
     return _searchBar;
-}
-
-- (MJRefreshAutoNormalFooter *)footerView{
-    if (!_footerView) {
-        @weakify(self);
-        _footerView = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                @strongify(self);
-                [self getMoreData];
-            });
-        }];
-        _footerView.stateLabel.hidden = YES;
-    }
-    return _footerView;
 }
 
 

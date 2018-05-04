@@ -29,7 +29,7 @@
 
 @property (nonatomic, strong) DUserModel *accountInfo;
 
-
+@property (nonatomic, strong) Reachability *reachability;//网络状态
 @property (nonatomic, strong) NSMutableDictionary *dicNetworkTask;
 
 
@@ -79,7 +79,8 @@
 // 弹出其它地方登录控制
 - (BOOL)getIsAlertLogout;
 
-
+//获取网络状态
+- (NetworkStatus)networkStatus;
 #pragma mark <----网络请求管理---->
 - (void)addTask:(NSURLSessionDataTask *)task userInfo:(NSDictionary *)userInfo;
 

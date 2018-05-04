@@ -96,6 +96,8 @@
 "sePHOTOS" = "PHOTOS";
 "seUSERS" = "USERS";
 "seCOLLECTIONS" = "COLLECTIONS";
+"seCancelName" = "Cancel";
+"sePlaceholder" = "search Photos/Users/Collection";
 
 
 // DAboutViewController

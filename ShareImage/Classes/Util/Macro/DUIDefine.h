@@ -49,10 +49,12 @@
 #define DSystemColorGrayE0E0E0      DUIColorFromRGB16(0xe0e0e0)
 #define DSystemColorGrayF3F3F3      DUIColorFromRGB16(0xf3f3f3)
 #define DSystemColorGray999999      DUIColorFromRGB16(0x999999)
+#define DSystemColorGray666666      DUIColorFromRGB16(0x666666)
 
 // black
 #define DSystemColorBlackBBBBBB     DUIColorFromRGB16(0xbbbbbb)
 #define DSystemColorBlack333333     DUIColorFromRGB16(0x333333)
+#define DSystemColorBlacke3e3e3     DUIColorFromRGB16(0xe3e3e3)//列表的线颜色
 
 // blue
 #define DSystemColorBlue33AACC      DUIColorFromRGB16(0x33aacc)
@@ -68,6 +70,7 @@
 #define DSystemColorYellow         DUIColorFromRGB16(0xfff8da) //提示背景
 #define DSystemColorYellowTink     DUIColorFromRGB16(0xff5500)
 #define DSystemColorRedTink        DUIColorFromRGB16(0xf7dede) //断网提示
+#define DSystemColorWhite          DUIColorFromRGB16(0xffffff) //断网提示
 
 #pragma mark - 字体管理
 // =============================字体大小=============================  //
@@ -88,6 +91,6 @@
 #define DUIFontItalicFormSize(_fontSize) [UIFont italicSystemFontOfSize:_fontSize] //斜体
 
 
-
+#define LineWidth                    0.5
 
 #endif /* DUIDefine_h */

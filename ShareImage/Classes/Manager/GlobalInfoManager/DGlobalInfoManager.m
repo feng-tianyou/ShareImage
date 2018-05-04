@@ -33,8 +33,6 @@
     NSNumber *_isAlertLogout;
 }
 
-@property (nonatomic, strong) Reachability *reachability;
-
 @end
 
 @implementation DGlobalInfoManager
