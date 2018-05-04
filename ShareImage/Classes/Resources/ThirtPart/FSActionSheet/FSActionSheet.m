@@ -89,6 +89,7 @@ static NSString * const kFSActionSheetCellIdentifier = @"kFSActionSheetCellIdent
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tableView.frame = self.bounds;
+    
 }
 
 // 默认设置
@@ -236,7 +237,7 @@ static NSString * const kFSActionSheetCellIdentifier = @"kFSActionSheetCellIdent
     
     [self.tableView reloadData];
     // 内容高度
-    CGFloat contentHeight = self.tableView.contentSize.height;
+    CGFloat contentHeight = self.tableView.contentSize.height+IPHONEX_BOT_SPACE;
     // 适配屏幕高度
     CGFloat contentMaxHeight = CGRectGetHeight(self.window.frame)*FSActionSheetContentMaxScale;
     if (contentHeight > contentMaxHeight) {
