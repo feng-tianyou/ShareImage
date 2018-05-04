@@ -143,7 +143,7 @@
     
     if (section == 2) {
         UIView *bgView = [[UIView alloc] init];
-        bgView.backgroundColor = DSystemColorGrayF3F3F3;
+        bgView.dk_backgroundColorPicker = DKColorPickerWithKey(BG);;
         [bgView setFrame:0 y:0 w:self.view.width h:144];
         
         UIButton *logoutBtn = [[UIButton alloc] init];

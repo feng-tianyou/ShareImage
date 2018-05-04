@@ -173,16 +173,18 @@
     localError.isAlertFor2Second = isAlertFor2Second;
     localError.errCode = errorCode;
     switch (errorCode) {
-        
-        case 301:{
+        case 301:
+        {
             [DCacheManager setCacheObjectByData:nil forKey:KVIEW_KEY_LOGOUT];
             [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIF_LOGOUT_KEY object:nil userInfo:@{KLOGOUT_TYPE:@(LogoutTypeForNoOAuth)}];
             return;
         }
-        case 422:{
+        case 422:
+        {
             localError.alertText = @"参数错误";
         }
-        case -1011:{
+        case -1011:
+        {
             localError.alertText = @"服务器错误";
             
             if ([engineError.errorDescription isContainsString:@"401"]) {
@@ -199,8 +201,7 @@
                 localError.alertText = @"服务器错误";
             }
             
-            
-            }
+        }
             break;
         default:{
             localError.alertText = [DErrorRespone errorResponseByError:engineError];

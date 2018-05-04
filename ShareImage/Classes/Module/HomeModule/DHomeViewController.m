@@ -59,10 +59,7 @@
     [super viewWillAppear:animated];
     
     [[UIApplication sharedApplication].keyWindow addSubview:self.slideMenu];
-//    [self.slideMenu ll_closeSlideMenu];
-    
-    
-//    self.title = kLocalizedLanguage(@"tabHome");
+    self.title = kLocalizedLanguage(@"tabHome");
 //    [self.tabBarItem setTitle:kLocalizedLanguage(@"tabHome")];
 }
 
@@ -79,12 +76,6 @@
     
     [self.view addSubview:self.tableView];
 
-}
-
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -253,7 +244,6 @@
         default:
             break;
     }
-    
 }
 
 #pragma mark - 导航栏点击事件
@@ -349,28 +339,20 @@
 - (LLSlideMenu *)slideMenu{
     if (!_slideMenu) {
         _slideMenu = [[LLSlideMenu alloc] init];
-        // 设置菜单宽度  menu width
         _slideMenu.ll_menuWidth = 200.f;
-        
-        // 设置菜单背景色  background color
         _slideMenu.ll_menuBackgroundColor = [UIColor colorWithWhite:0.2 alpha:0.7];
-        
-        // 设置菜单背景图片  background image
-//        _slideMenu.ll_menuBackgroundImage = [UIImage imageNamed:@"image"];
         _slideMenu.ll_distance = 100.f;     // 拉伸距离  pulling distance
         _slideMenu.ll_springDamping = 20;       // 阻力
         _slideMenu.ll_springVelocity = 15;      // 速度
         _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
         _slideMenu.hidden = YES;
-        
+        _slideMenu.ll_isOpen = NO;
         self.menuView = [[DHomeMenuView alloc] init];
         [self.menuView setFrame:0 y:0 w:200 h:SCREEN_HEIGHT];
         self.menuView.delegate = self;
         self.menuView.hidden = YES;
 
         [_slideMenu addSubview:self.menuView];
-        
-        
     }
     return _slideMenu;
 }

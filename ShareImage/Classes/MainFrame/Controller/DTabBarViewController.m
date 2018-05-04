@@ -63,10 +63,10 @@ static NSString *const DCollectionViewControllerName = @"DCollectionViewControll
 - (void)setupAllChildViewController{
     
     // 首页
-    [self setupChildViewController:DHomeViewControllerName title: @"首页" imageName:@"tabbar_home" selectedImageName:@"tabbar_home_select"];
+    [self setupChildViewController:DHomeViewControllerName title: kLocalizedLanguage(@"tabHome") imageName:@"tabbar_home" selectedImageName:@"tabbar_home_select"];
     
     // 消息
-    [self setupChildViewController:DCollectionViewControllerName title:@"分类" imageName:@"tabbar_contract" selectedImageName:@"tabbar_contract_select"];
+    [self setupChildViewController:DCollectionViewControllerName title:kLocalizedLanguage(@"tabCollection") imageName:@"tabbar_contract" selectedImageName:@"tabbar_contract_select"];
 
     // 广场
 //    [self setupChildViewController:DDiscoverViewControllerName title:@"聊天" imageName:@"tabbar_chat" selectedImageName:@"tabbar_chat_select"];

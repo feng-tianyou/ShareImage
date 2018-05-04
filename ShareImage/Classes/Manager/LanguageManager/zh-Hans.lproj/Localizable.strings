@@ -9,8 +9,8 @@
 
 // DNavigationTool
 "navBack" = "返回";
-"navHome" = "首页";
-"navBackHome" = "首页";
+"navHome" = "图享";
+"navBackHome" = "图享";
 "navSend" = "发送";
 "navSave" = "保存";
 "navClear" = "清除";
@@ -24,7 +24,7 @@
 
 
 // DTabBarViewController
-"tabHome" = "首页";
+"tabHome" = "图享";
 "tabCollection" = "分类";
 
 // DHomeViewController

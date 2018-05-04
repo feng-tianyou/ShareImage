@@ -285,6 +285,11 @@ static char* const noNoDataView_KEY = "DataView";
         
         DAlertView *alert = [[DAlertView alloc] initWithTitle:localError.titleText andMessage:localError.alertText];
         __weak UIViewController *weakSelf= self;
+        if (localError.errCode == 3840) {
+            NSMutableDictionary *dicUser = userInfo.mutableCopy;
+            [dicUser setObject:@(YES) forKey:kErrorNeedBackKey];
+            userInfo = dicUser.copy;
+        }
         if(localError.errCode == -1001 && [userInfo objectForKey:KNEEDRELOAD] && [[userInfo objectForKey:KNEEDRELOAD] boolValue]){
             
             [alert addButtonWithTitle:@"取消" type:CustomAlertViewButtonTypeCancel handler:^(DAlertView *alertView) {
