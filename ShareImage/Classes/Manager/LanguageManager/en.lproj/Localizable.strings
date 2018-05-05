@@ -106,6 +106,22 @@
 "abDeveloperWebsite" = "Developer Website:";
 "abUseAgreement" = "Use Agreement";
 
+// SVProgressHUD
+"hudDownloading" = "Downloading...";
+"hudSaveSuccess" = "Save failure";
+"hudSaveFaile" = "Save success";
 
+// DAlertView
+"alertSure" = "Sure";
+"alertVisitPhoto" = "Please allow access to your photo album in the settings - privacy - photo option of iPhone.";
+"alertVisitCamera" = "Please allow access to your photo album in the settings - privacy - camera option of iPhone.";
+
+// FSActionSheet
+"sheetLiked" = "Already like";
+"sheetLike" = "Like";
+"sheetNotLike" = "Cancel like";
+"sheetSave" = "Save";
+"sheetSaveHighPhoto" = "Save high definition pictures";
+"sheetCancel" = "Cancel";
 
 

@@ -205,100 +205,104 @@
 
 - (void)photoBrowserLongPressGesture:(MWPhotoBrowser *)photoBrowser photo:(MWPhoto *)photo {
     self.photo = photo;
-    NSString *strLike = self.photo.liked_by_user ? @"已喜欢":@"喜欢";
+    if ([DPhotoHandleTool checkNeedTipForTakePhoto]) {
+        return;
+    }
+    NSString *strLike = self.photo.liked_by_user ? kLocalizedLanguage(@"sheetLiked"):kLocalizedLanguage(@"sheetLike");
     
     NSArray *titles = nil;
     switch (self.longPressType) {
-        case DMWPhotosManagerTypeForSave:titles = @[@"保存"];
+        case DMWPhotosManagerTypeForSave:titles = @[kLocalizedLanguage(@"sheetSave")];
             break;
-        case DMWPhotosManagerTypeForSaveDownLoad:titles = @[@"保存",@"保存高清图片"];
+        case DMWPhotosManagerTypeForSaveDownLoad:titles = @[kLocalizedLanguage(@"sheetSave"),kLocalizedLanguage(@"sheetSaveHighPhoto")];
             break;
-        case DMWPhotosManagerTypeForSaveDownLoadLike:titles = @[strLike, @"保存",@"保存高清图片"];
+        case DMWPhotosManagerTypeForSaveDownLoadLike:titles = @[strLike, kLocalizedLanguage(@"sheetSave"),kLocalizedLanguage(@"sheetSaveHighPhoto")];
             break;
             
         default:
             break;
     }
     
-    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:titles];
+    FSActionSheet *sheet = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:kLocalizedLanguage(@"sheetCancel") highlightedButtonTitle:nil otherButtonTitles:titles];
     @weakify(self)
     [sheet showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        switch (self.longPressType) {
-            case DMWPhotosManagerTypeForSave:
-            {
-                switch (selectedIndex) {
-                    case 0:
-                    {
-                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
-            };
-                break;
-            case DMWPhotosManagerTypeForSaveDownLoad:
-            {
-                switch (selectedIndex) {
-                    case 0:
-                    {
-                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
-                    }
-                        break;
-                    case 1:
-                    {
-                        [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
-            };
-                break;
-            case DMWPhotosManagerTypeForSaveDownLoadLike:
-            {
-                switch (selectedIndex) {
-                    case 0:
-                    {
-                        @strongify(self)
-                        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                        DPhotosAPIManager *manager = nil;
-                        DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
-                        paramModel.pid = photo.pid;
-                        if (photo.liked_by_user) {
-                            [dic setValue:@"unLike" forKey:@"methor"];
-                            manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
-                            [manager unLikePhotoByParamModel:paramModel];
-                        } else {
-                            [dic setValue:@"like" forKey:@"methor"];
-                            manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
-                            [manager likePhotoByParamModel:paramModel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            switch (self.longPressType) {
+                case DMWPhotosManagerTypeForSave:
+                {
+                    switch (selectedIndex) {
+                        case 0:
+                        {
+                            [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
                         }
+                            break;
+                            
+                        default:
+                            break;
                     }
-                        break;
-                    case 1:
-                    {
-                        [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                };
+                    break;
+                case DMWPhotosManagerTypeForSaveDownLoad:
+                {
+                    switch (selectedIndex) {
+                        case 0:
+                        {
+                            [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                        }
+                            break;
+                        case 1:
+                        {
+                            [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
+                        }
+                            break;
+                            
+                        default:
+                            break;
                     }
-                        break;
-                    case 2:
-                    {
-                        [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
+                };
+                    break;
+                case DMWPhotosManagerTypeForSaveDownLoadLike:
+                {
+                    switch (selectedIndex) {
+                        case 0:
+                        {
+                            @strongify(self)
+                            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                            DPhotosAPIManager *manager = nil;
+                            DPhotosParamModel *paramModel = [[DPhotosParamModel alloc] init];
+                            paramModel.pid = photo.pid;
+                            if (photo.liked_by_user) {
+                                [dic setValue:@"unLike" forKey:@"methor"];
+                                manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                                [manager unLikePhotoByParamModel:paramModel];
+                            } else {
+                                [dic setValue:@"like" forKey:@"methor"];
+                                manager = [DPhotosAPIManager getHTTPManagerByDelegate:self info:dic];
+                                [manager likePhotoByParamModel:paramModel];
+                            }
+                        }
+                            break;
+                        case 1:
+                        {
+                            [self.handleTool imageWriteToSavedPhotosAlbumWithImage:photo.underlyingImage];
+                        }
+                            break;
+                        case 2:
+                        {
+                            [self.handleTool downloadImageWithURL:[NSURL URLWithString:photo.rawImageUrl]];
+                        }
+                            break;
+                            
+                        default:
+                            break;
                     }
-                        break;
-                        
-                    default:
-                        break;
-                }
-            };
-                break;
-                
-            default:
-                break;
-        }
-        
+                };
+                    break;
+                    
+                default:
+                    break;
+            }
+        });
     }];
 }
 
@@ -308,9 +312,9 @@
     NSString *methor = [userInfo objectForKey:@"methor"];
     NSString *tipStr = nil;
     if ([methor isEqualToString:@"like"]) {
-        tipStr = @"喜欢";
+        tipStr = kLocalizedLanguage(@"sheetLike");
     } else {
-        tipStr = @"取消喜欢";
+        tipStr = kLocalizedLanguage(@"sheetNotLike");
     }
     DPhotosModel *photoModel = dataModel;
     self.photo.liked_by_user = photoModel.liked_by_user;

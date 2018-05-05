@@ -16,7 +16,10 @@
 
 - (void)imageWriteToSavedPhotosAlbumWithImage:(UIImage *)image;
 
-
+/// 检查相机授权
++ (BOOL)checkNeedTipForTakeCamera;
+/// 检查相册授权
++ (BOOL)checkNeedTipForTakePhoto;
 
 
 @end

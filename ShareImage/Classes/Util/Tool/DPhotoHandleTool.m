@@ -10,6 +10,10 @@
 #import <SDWebImage/SDWebImageManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+
 @implementation DPhotoHandleTool
 
 + (instancetype)manager{
@@ -27,7 +31,7 @@
                                  float progress = receivedSize / (float)expectedSize;
                                  [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
                                  [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-                                 [SVProgressHUD showProgress:progress status:@"Downloading..."];
+                                 [SVProgressHUD showProgress:progress status:kLocalizedLanguage(@"hudDownloading")];
                              }
                          }
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -55,13 +59,49 @@
     // 写入相册,写入失败不做处理
     [SVProgressHUD dismiss];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
-    [SVProgressHUD setMaximumDismissTimeInterval:1.0];
-    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setMaximumDismissTimeInterval:1.5];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+//    [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
     if (error) {
-        [SVProgressHUD showSuccessWithStatus:@"保存失败"];
+        [SVProgressHUD showSuccessWithStatus:kLocalizedLanguage(@"hudSaveSuccess")];
     } else {
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        [SVProgressHUD showSuccessWithStatus:kLocalizedLanguage(@"hudSaveFaile")];
     }
+}
+
+/// 检查相机授权
++ (BOOL)checkNeedTipForTakeCamera{
+    AVAuthorizationStatus state = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(state == AVAuthorizationStatusRestricted || state == AVAuthorizationStatusDenied)
+    {
+        DAlertView *alertView=[[DAlertView alloc] initWithTitle:nil andMessage:kLocalizedLanguage(@"alertVisitCamera")];
+        [alertView addButtonWithTitle:kLocalizedLanguage(@"alertSure") type:CustomAlertViewButtonTypeCancel handler:nil];
+        [alertView show];
+        return YES;
+    }
+    return NO;
+}
+/// 检查相册授权
++ (BOOL)checkNeedTipForTakePhoto{
+    BOOL flag = NO;
+    if (IOS9) {
+        PHAuthorizationStatus state = [PHPhotoLibrary authorizationStatus];
+        if(state == PHAuthorizationStatusRestricted || state == PHAuthorizationStatusDenied) {
+            flag = YES;
+        }
+    } else {
+        ALAuthorizationStatus state = [ALAssetsLibrary authorizationStatus];
+        if(state == AVAuthorizationStatusRestricted || state == AVAuthorizationStatusDenied) {
+            flag = YES;
+        }
+    }
+    if (flag) {
+        DAlertView *alertView=[[DAlertView alloc] initWithTitle:nil andMessage:kLocalizedLanguage(@"alertVisitPhoto")];
+        [alertView addButtonWithTitle:kLocalizedLanguage(@"alertSure") type:CustomAlertViewButtonTypeCancel handler:nil];
+        [alertView show];
+        return YES;
+    }
+    return NO;
 }
 
 
