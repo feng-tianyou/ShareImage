@@ -20,8 +20,11 @@ typedef NS_ENUM(NSUInteger, LineType){
 
 @property (nonatomic,assign) NSInteger selectIndex;
 
+@property (nonatomic, strong) UIColor *itemNormalColor;
 @property (nonatomic, strong) UIColor *itemHighLightColor;
+@property (nonatomic, strong) UIFont *itemFont;
 @property (nonatomic, strong) UIColor *moveLineColor;
+@property (nonatomic, assign) BOOL hideBottomLine;
 @property (nonatomic, copy) NSIntegerBlock clickItemBlock;
 
 @end

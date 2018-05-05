@@ -11,7 +11,7 @@
 #import "DSearchViewController.h"
 
 #import "DCollectionViewCell.h"
-#import "DCollectionHeaderView.h"
+#import "DSelectItemView.h"
 
 #import "DCollectionsAPIManager.h"
 #import "DCollectionsParamModel.h"
@@ -33,9 +33,9 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 @property (nonatomic, strong) NSMutableArray *collections;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) MJRefreshAutoNormalFooter *footerView;
-@property (nonatomic, strong) DCollectionHeaderView *headerView;
+@property (nonatomic, strong) DSelectItemView *selectItemView;
 @property (nonatomic, assign) CollectionType type;
-
+@property (nonatomic, assign) CGFloat offsetY;
 
 @end
 
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 #pragma mark - 私有方法
 - (void)setupSubViews{
     [self.view addSubview:self.collectionView];
-    [self.view addSubview:self.headerView];
+    [self.view addSubview:self.selectItemView];
     
     self.collectionView.sd_layout
     .topEqualToView(self.view)
@@ -69,11 +69,11 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     .rightEqualToView(self.view)
     .bottomEqualToView(self.view);
     
-    self.headerView.sd_layout
+    self.selectItemView.sd_layout
     .topSpaceToView(self.view, self.navBarHeight)
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
-    .heightIs(50);
+    .heightIs(46);
     
     self.collectionView.mj_footer = self.footerView;
 }
@@ -107,7 +107,6 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     } else {
         [self getCuratedCollectionsData];
     }
-    
 }
 
 
@@ -151,6 +150,20 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint offset = scrollView.contentOffset;
+    if (offset.y > 0) {
+        if (offset.y > self.offsetY) {
+            self.selectItemView.alpha = 0.0;
+        } else {
+            self.selectItemView.alpha = 1.0;
+        }
+        self.offsetY = offset.y;
+    } else {
+        self.selectItemView.alpha = 1.0;
+    }
+}
+
 #pragma mark - requet
 - (void)requestServiceSucceedBackArray:(NSArray *)arrData userInfo:(NSDictionary *)userInfo{
     NSString *method = [userInfo objectForKey:kParamMethod];
@@ -184,6 +197,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
 }
 
 - (void)clearData{
+    self.page = 1;
     [self.collections removeAllObjects];
 }
 
@@ -235,11 +249,18 @@ typedef NS_ENUM(NSInteger, CollectionType) {
     return _footerView;
 }
 
-- (DCollectionHeaderView *)headerView{
-    if (!_headerView) {
-        _headerView = [[DCollectionHeaderView alloc] init];
+
+- (DSelectItemView *)selectItemView{
+    if (!_selectItemView) {
+        _selectItemView = [[DSelectItemView alloc] initWithTitles:@[kLocalizedLanguage(@"colFeatured"), kLocalizedLanguage(@"colCurated")]];
+        _selectItemView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.7];
+        _selectItemView.itemNormalColor = DSystemColorWhite;
+        _selectItemView.itemHighLightColor = DSystemColorBlue33AACC;
+        _selectItemView.moveLineColor = DSystemColorBlue33AACC;
+        _selectItemView.itemFont = [UIFont fontWithName:@"Verdana-Bold" size:15.0];
+        _selectItemView.hideBottomLine = YES;
         @weakify(self)
-        [_headerView setClickItemBlock:^(NSInteger integer) {
+        [_selectItemView setClickItemBlock:^(NSInteger integer) {
             @strongify(self)
             self.page = 1;
             if (integer == 0) {
@@ -252,7 +273,7 @@ typedef NS_ENUM(NSInteger, CollectionType) {
             [self.collectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
         }];
     }
-    return _headerView;
+    return _selectItemView;
 }
 
 @end

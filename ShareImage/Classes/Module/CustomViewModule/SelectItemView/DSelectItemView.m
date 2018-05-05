@@ -62,7 +62,7 @@
         if (i == _selectIndex) {
             btn.selected = YES;
         }
-        btn.backgroundColor = DSystemColorWhite;
+        btn.backgroundColor = [UIColor clearColor];
         [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
         [_items addObject:btn];
         [self addSubview:btn];
@@ -157,6 +157,13 @@
 
 //属性方法
 #pragma mark <----getter、setter---->
+- (void)setItemNormalColor:(UIColor *)itemNormalColor{
+    _itemNormalColor = itemNormalColor;
+    for (UIButton *btn in _items) {
+        [btn setTitleColor:itemNormalColor forState:UIControlStateNormal];
+    }
+}
+
 - (void)setItemHighLightColor:(UIColor *)itemHighLightColor{
     _itemHighLightColor = itemHighLightColor;
     for (UIButton *btn in _items) {
@@ -164,9 +171,21 @@
     }
 }
 
+- (void)setItemFont:(UIFont *)itemFont{
+    _itemFont = itemFont;
+    for (UIButton *btn in _items) {
+         btn.titleLabel.font = itemFont;
+    }
+}
+
 - (void)setMoveLineColor:(UIColor *)moveLineColor{
     _moveLineColor = moveLineColor;
     _moveLine.backgroundColor = moveLineColor;
+}
+
+- (void)setHideBottomLine:(BOOL)hideBottomLine{
+    _hideBottomLine = hideBottomLine;
+    _line.hidden = hideBottomLine;
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex
