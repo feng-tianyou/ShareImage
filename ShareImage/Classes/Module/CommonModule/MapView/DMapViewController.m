@@ -19,7 +19,6 @@
 
 @interface DMapViewController ()<MKMapViewDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) MKMapView *mapView;
 
 @property (nonatomic,assign) CLLocationCoordinate2D coordinate;  //!< 要导航的坐标
@@ -31,24 +30,6 @@
 @implementation DMapViewController
 
 - (void)dealloc {
-    self.locationManager = nil;
-    self.geocoder = nil;
-    switch (self.mapView.mapType) {
-        case MKMapTypeHybrid:
-            self.mapView.mapType = MKMapTypeStandard;
-            break;
-        case MKMapTypeStandard:
-            self.mapView.mapType = MKMapTypeHybrid;
-            break;
-        default:
-            break;
-    }
-    self.mapView.mapType = MKMapTypeStandard;
-    _mapView.showsUserLocation = NO;
-    [_mapView.layer removeAllAnimations];
-    [_mapView removeAnnotations:_mapView.annotations];
-    [_mapView removeOverlays:_mapView.overlays];
-    [_mapView removeFromSuperview];
     
     _mapView.delegate = nil;
     _mapView = nil;
@@ -71,16 +52,13 @@
         self.navRighItemType = DNavigationItemTypeRightMenu;
     }
     
-    
-    [self.view addSubview:self.mapView];
-    self.mapView.frame = self.view.bounds;
-    
-//    DLog(@"%@", self.locationManager);
-    
     //请求定位服务
     if(![CLLocationManager locationServicesEnabled]||[CLLocationManager authorizationStatus]!=kCLAuthorizationStatusAuthorizedWhenInUse){
         [self.locationManager requestWhenInUseAuthorization];
     }
+    
+    [self.view addSubview:self.mapView];
+    self.mapView.frame = self.view.bounds;
     
     // 设置大头针
     [self setAnnotation];
@@ -160,9 +138,15 @@
     if (range.length > 0) {
         address = [self.address substringWithRange:NSMakeRange(0, range.location)];
     }
-    
+    if (address.length == 0) {
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD setMaximumDismissTimeInterval:2.0];
+        [SVProgressHUD showErrorWithStatus:@"你的地址未能定位到！"];
+        return;
+    }
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     @weakify(self)
-    [self.geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         // 取得第一个地表，地表存储了详细的地址信息，：注意：一个地名可能搜索出多个地址
         CLPlacemark *placemark = [placemarks firstObject];
         
@@ -183,39 +167,20 @@
         DMapAnnotation *annotation = [[DMapAnnotation alloc] init];
         annotation.coordinate = locationCoordinate;
         annotation.title = self.address;
-        annotation.image = [UIImage getImageWithName:@"address_big_icon"];
+        annotation.image = [UIImage getImageWithName:@"customer_location_icon"];
         [self.mapView addAnnotation:annotation];
         
-        MKCoordinateRegion region;
-        region.center = locationCoordinate;
+        MKCoordinateSpan span = self.mapView.region.span;
+        span.latitudeDelta = span.latitudeDelta/6.0;
+        span.longitudeDelta = span.longitudeDelta/6.0;
+        MKCoordinateRegion region = MKCoordinateRegionMake(locationCoordinate, span);
+        
         [self.mapView setRegion:region animated:YES];
         [self.mapView setSelectedAnnotations:@[annotation]];
     }];
 }
 
 #pragma mark - MKMapViewDelegate
-
-/**
- 调用非常频繁，不断监测用户的当前位置
- 每次调用，都会把用户的最新位置（userLocation参数）传进来
- */
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    DLog(@"%f  %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-}
-/**
- 地图的显示区域即将发生改变的时候调用
- */
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
-    
-}
-
-/**
- 地图的显示区域已经发生改变的时候调用
- */
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-    [self.mapView removeFromSuperview];
-    [self.view addSubview:mapView];
-}
 
 /// 显示大头针时调用，注意方法中的annotation参数是即将显示的大头针对象
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -225,10 +190,7 @@
         MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:key];
         if (!annotationView) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:key];
-            //允许交互点击
             annotationView.canShowCallout = YES;
-            //annotationView.calloutOffset=CGPointMake(0, 1);//定义详情视图偏移量
-            //annotationView.leftCalloutAccessoryView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_classify_cafe.png"]];//定义详情左侧视图
         }
         // 修改大头针视图
         // 重新设置此类大头针视图的大头针模型（因为有可能草丛缓存吃中取出；哎的）
@@ -238,7 +200,7 @@
         annotationView.image = anno.image;
         return annotationView;
     } else {
-        return nil;
+        return [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
     }
 }
 
@@ -258,13 +220,6 @@
         _locationManager = [[CLLocationManager alloc] init];
     }
     return _locationManager;
-}
-
-- (CLGeocoder *)geocoder{
-    if (!_geocoder) {
-        _geocoder = [[CLGeocoder alloc] init];
-    }
-    return _geocoder;
 }
 
 - (NSArray *)mapTitles{
