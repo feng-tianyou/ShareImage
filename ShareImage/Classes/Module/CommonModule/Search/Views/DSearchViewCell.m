@@ -11,6 +11,7 @@
 #import "DCollectionsModel.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+DImage.h"
 
 static NSString *const cellID = @"UserListCell";
 
@@ -123,9 +124,9 @@ static NSString *const cellID = @"UserListCell";
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
-        _iconView.backgroundColor = [UIColor lightRandom];
-        [_iconView.layer setCornerRadius:17.0];
-        [_iconView.layer setMasksToBounds:YES];
+        _iconView.backgroundColor = [UIColor clearColor];
+//        [_iconView.layer setCornerRadius:17.0];
+//        [_iconView.layer setMasksToBounds:YES];
     }
     return _iconView;
 }
@@ -185,7 +186,8 @@ static NSString *const cellID = @"UserListCell";
 - (void)setUserModel:(DUserModel *)userModel{
     _userModel = userModel;
     _searchType = UserSearchType;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
+    [self.iconView setImageWithURL:userModel.profile_image.medium cornerRadius:17 callBack:nil];
     self.nameLabel.font = DSystemFontTitle;
     self.nameLabel.text = userModel.username;
     self.bioLabel.textColor = DSystemColorGray999999;
@@ -196,7 +198,8 @@ static NSString *const cellID = @"UserListCell";
 - (void)setCollectionModel:(DCollectionsModel *)collectionModel{
     _collectionModel = collectionModel;
     _searchType = CollectionSearchType;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:collectionModel.cover_photo.urls.small] placeholderImage:nil];
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:collectionModel.cover_photo.urls.small] placeholderImage:nil];
+    [self.iconView setImageWithURL:collectionModel.cover_photo.urls.small cornerRadius:17 callBack:nil];
     self.nameLabel.font = DSystemFontNavigationBar;
     self.nameLabel.text = [NSString stringWithFormat:@"# %@", collectionModel.title];
 }

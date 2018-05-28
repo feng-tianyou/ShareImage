@@ -18,6 +18,8 @@
 		070A8B3C1E5D927500CE41E2 /* DUserParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 070A8B3B1E5D927500CE41E2 /* DUserParamModel.m */; };
 		070F7CE41E77F2B200423212 /* DSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F7CE31E77F2B200423212 /* DSettingViewController.m */; };
 		070F7CE71E77F6AF00423212 /* DSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070F7CE61E77F6AF00423212 /* DSettingTableViewCell.m */; };
+		07243E6420BC03D9005824E6 /* UIButton+DWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 07243E6320BC03D9005824E6 /* UIButton+DWebImage.m */; };
+		07243E6720BC0777005824E6 /* UIImageView+DImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 07243E6620BC0777005824E6 /* UIImageView+DImage.m */; };
 		0733B7501E5E7D9E005784CE /* DUserValidRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B74F1E5E7D9E005784CE /* DUserValidRule.m */; };
 		0733B7541E5EDE18005784CE /* DCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7531E5EDE18005784CE /* DCollectionViewController.m */; };
 		0733B7571E5EE365005784CE /* DCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0733B7561E5EE365005784CE /* DCollectionViewCell.m */; };
@@ -267,6 +269,10 @@
 		070F7CE31E77F2B200423212 /* DSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSettingViewController.m; sourceTree = "<group>"; };
 		070F7CE51E77F6AF00423212 /* DSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSettingTableViewCell.h; sourceTree = "<group>"; };
 		070F7CE61E77F6AF00423212 /* DSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSettingTableViewCell.m; sourceTree = "<group>"; };
+		07243E6220BC03D9005824E6 /* UIButton+DWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+DWebImage.h"; sourceTree = "<group>"; };
+		07243E6320BC03D9005824E6 /* UIButton+DWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DWebImage.m"; sourceTree = "<group>"; };
+		07243E6520BC0777005824E6 /* UIImageView+DImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+DImage.h"; sourceTree = "<group>"; };
+		07243E6620BC0777005824E6 /* UIImageView+DImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+DImage.m"; sourceTree = "<group>"; };
 		0733B74E1E5E7D9E005784CE /* DUserValidRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUserValidRule.h; sourceTree = "<group>"; };
 		0733B74F1E5E7D9E005784CE /* DUserValidRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUserValidRule.m; sourceTree = "<group>"; };
 		0733B7521E5EDE18005784CE /* DCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCollectionViewController.h; sourceTree = "<group>"; };
@@ -1609,6 +1615,10 @@
 				7ED810B31E55550100954DAF /* UIView+DLayer.m */,
 				7ED810B41E55550100954DAF /* UIView+LBExtension.h */,
 				7ED810B51E55550100954DAF /* UIView+LBExtension.m */,
+				07243E6220BC03D9005824E6 /* UIButton+DWebImage.h */,
+				07243E6320BC03D9005824E6 /* UIButton+DWebImage.m */,
+				07243E6520BC0777005824E6 /* UIImageView+DImage.h */,
+				07243E6620BC0777005824E6 /* UIImageView+DImage.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2083,6 +2093,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07AF4DC41EA084DC006D9376 /* DMapViewController.m in Sources */,
+				07243E6720BC0777005824E6 /* UIImageView+DImage.m in Sources */,
 				07ECEC0B1E65776900BCF52A /* DHomeMenuHeader.m in Sources */,
 				074671AC1E641F6300ADBC90 /* DPhotoDetailController.m in Sources */,
 				7ED8114A1E55550100954DAF /* UIImage+DUIImage.m in Sources */,
@@ -2156,6 +2167,7 @@
 				7E799AB61E742D37001B5B70 /* DEditProfileCell.m in Sources */,
 				07D63274209B0D39005EB112 /* DSelectItemView.m in Sources */,
 				07ECEC081E6560A900BCF52A /* DHomeMenuCell.m in Sources */,
+				07243E6420BC03D9005824E6 /* UIButton+DWebImage.m in Sources */,
 				07D63259209AF178005EB112 /* DMenuAlertView.m in Sources */,
 				0746719F1E63DA7500ADBC90 /* DWebViewController.m in Sources */,
 				07D63254209AF178005EB112 /* DAlertView.m in Sources */,

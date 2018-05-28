@@ -7,7 +7,8 @@
 //
 
 #import "DUserListViewCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+//#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+DImage.h"
 
 static NSString *const cellID = @"UserListCell";
 
@@ -72,8 +73,8 @@ static NSString *const cellID = @"UserListCell";
 - (UIImageView *)iconView{
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
-        [_iconView.layer setCornerRadius:20.0];
-        [_iconView.layer setMasksToBounds:YES];
+//        [_iconView.layer setCornerRadius:20.0];
+//        [_iconView.layer setMasksToBounds:YES];
     }
     return _iconView;
 }
@@ -99,7 +100,7 @@ static NSString *const cellID = @"UserListCell";
 
 - (void)setUserModel:(DUserModel *)userModel{
     _userModel = userModel;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:userModel.profile_image.medium] placeholderImage:nil];
+    [self.iconView setImageWithURL:userModel.profile_image.medium cornerRadius:20 callBack:nil];
     self.nameLabel.text = userModel.username;
     self.bioLabel.text = userModel.bio;
 }

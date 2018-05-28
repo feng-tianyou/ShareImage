@@ -115,5 +115,10 @@
                                 radius:(CGFloat)radius;
 
 
-
+- (UIImage *)imageByRoundCornerRadiusWithimageViewSize:(CGSize)imageViewSize;
+- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
+                              corners:(UIRectCorner)corners
+                          borderWidth:(CGFloat)borderWidth
+                          borderColor:(UIColor *)borderColor
+                       borderLineJoin:(CGLineJoin)borderLineJoin ;
 @end

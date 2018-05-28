@@ -11,6 +11,8 @@
 #import "DHomeCellTipLabel.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImage+DUIImage.h"
+#import "UIButton+DWebImage.h"
 
 static NSString *const cellID = @"homeCell";
 
@@ -127,9 +129,9 @@ static NSString *const cellID = @"homeCell";
     if (!_iconView) {
         _iconView = [[UIButton alloc] init];
         [_iconView addTarget:self action:@selector(clickIcon) forControlEvents:UIControlEventTouchUpInside];
-        [_iconView.layer setCornerRadius:23.0];
-        [_iconView.layer setMasksToBounds:YES];
-        _iconView.backgroundColor = [UIColor lightRandom];
+//        [_iconView.layer setCornerRadius:23.0];
+//        [_iconView.layer setMasksToBounds:YES];
+        _iconView.backgroundColor = [UIColor whiteColor];
     }
     return _iconView;
 }
@@ -167,7 +169,15 @@ static NSString *const cellID = @"homeCell";
     _photosModel = photosModel;
     
     [self.photoView sd_setImageWithURL:[NSURL URLWithString:photosModel.urls.small] placeholderImage:[UIImage getImageWithName:@""]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.large] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.large] forState:UIControlStateNormal placeholderImage:[UIImage getImageWithName:@""]];
+//    @weakify(self)
+//    [self.iconView sd_setImageWithURL:[NSURL URLWithString:photosModel.user.profile_image.large] forState:UIControlStateNormal completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        image = [image imageByRoundCornerRadiusWithimageViewSize:CGSizeMake(46, 46)];
+//        @strongify(self)
+//        [self.iconView setImage:image forState:UIControlStateNormal];
+//    }];
+    [self.iconView setImageWithURL:photosModel.user.profile_image.large forState:UIControlStateNormal cornerRadius:23];
+    
     self.nameLabel.text = photosModel.user.name;
     
     if (photosModel.likes > 0) {
